@@ -7,7 +7,7 @@ MODEL:
 focal.model:
 logit(y) ~ x1 x2 d1 d2;
 predictor.model:
-yjt(x2 - 16) ~ x1 d1; # sequential specification for predictors
+yjt(x2 - 15.5) ~ x1 d1; # sequential specification for predictors
 d2 ~ x2 x1 d1;
 SEED: 90291;
 BURN: 1000;
