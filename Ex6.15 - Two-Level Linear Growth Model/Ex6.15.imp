@@ -1,0 +1,11 @@
+DATA: data9.dat;
+VARIABLES: level2id y_i time_i v1_i v2_i v3_i d_j v4_j;
+CLUSTERID: level2id;
+NOMINAL: d_j;
+MISSING: 999;
+FIXED: time_i d_j;
+MODEL: y_i ~ time_i d_j time_i*d_j | time_i;
+SIMPLE: time_i | d_j;
+SEED: 90291;
+BURN: 2000;
+ITERATIONS: 10000;

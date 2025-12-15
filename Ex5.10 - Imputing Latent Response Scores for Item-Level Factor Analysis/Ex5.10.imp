@@ -1,0 +1,12 @@
+DATA: data4.dat;
+VARIABLES: id v1:v9 y1:y6 v10:v16 x1:x6;
+ORDINAL: x1:x6 y1:y6;
+MISSING: 999;
+FCS: x1:x6 y1:y6;
+SEED: 90291;
+BURN: 25000;
+ITERATIONS: 10000;
+CHAINS: 20;
+NIMPS: 20;
+OPTIONS: savelatent;
+SAVE: stacked = imps.dat;

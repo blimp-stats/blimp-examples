@@ -1,0 +1,22 @@
+DATA: data22.dat;
+VARIABLES: id x v1:v4 m ycnt v5 v6;
+MISSING: 999;
+TRANSFORM: 
+y = missing(ycnt == 0, ycnt);
+ybin = ifelse(ycnt == 0, 0, 1);
+ORDINAL: x ybin;
+COUNT: y;
+MODEL: 
+mediation.model:
+m ~ 1@m_icept x@alpha;
+y ~ 1@y_icept m@beta x@tau;
+binary.model:
+ybin ~ x m;
+PARAMETERS: 
+x0 = 0;
+x1 = 1;
+ab_at_x0 = alpha * (beta*exp(y_icept + beta*m_icept + tau*x0)); 
+ab_at_x1 = alpha * (beta*exp(y_icept + beta*(m_icept + alpha*x1) + tau*x1));
+SEED: 90291;
+BURN: 5000;
+ITERATIONS: 10000;

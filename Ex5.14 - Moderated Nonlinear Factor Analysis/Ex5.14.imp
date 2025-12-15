@@ -1,0 +1,30 @@
+DATA: data4.dat;
+VARIABLES: id v1:v8 g y1:y6 v9:v21;
+ORDINAL: g;
+MISSING: 999;
+FIXED: g;
+LATENT: latenty;
+MODEL: 
+structural.model:
+latenty ~ 1@0 g;
+var(latenty) ~ 1@0 g;
+measurement.model:
+y1 ~ 1 latenty@load_prior;
+y2 ~ g@difficept1 latenty g*latenty@diffload1;
+y3 ~ g@difficept2 latenty g*latenty@diffload2;
+y4 ~ g@difficept3 latenty g*latenty@diffload3;
+y5 ~ g@difficept4 latenty g*latenty@diffload4;
+y6 ~ g@difficept5 latenty g*latenty@diffload5;
+TEST: diffload1:diffload5 = 0;
+TEST: difficept1:difficept5 = 0;
+PARAMETERS:
+load_prior ~ truncate(0, Inf);
+SIMPLE:
+latenty | g;
+SEED: 90291;
+BURN: 20000;
+ITERATIONS: 10000;
+# OPTIONS: savelatent;
+# CHAINS: 20;
+# NIMPS: 20;
+# SAVE: stacked = imps.dat;

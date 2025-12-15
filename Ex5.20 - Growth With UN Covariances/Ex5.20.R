@@ -1,0 +1,60 @@
+library(fdir)
+library(rblimp)
+
+set()
+load(file = 'data3.rda')
+
+# categorical time
+ex20a <- rblimp(
+   data = data3,
+   fixed = 'd',
+   center = 'y0',
+   model = '
+   y1 ~ 1@d0y1 y0@b1 d@d1;
+   y3 ~ 1@d0y3 y0@b1 d@d3;
+   y6 ~ 1@d0y6 y0@b1 d@d6;
+   y1 y3 y6 ~~ y1 y3 y6',
+   parameters = '
+   # occasion-specific means;
+   t1d0 = d0y1;
+   t1d1 = d0y1 + d1;
+   t3d0 = d0y3;
+   t3d1 = d0y3 + d3;
+   t6d0 = d0y6;
+   t6d1 = d0y6 + d6; ',
+   seed = 90291,
+   burn = 10000,
+   iter = 10000)
+output(ex20a)
+
+# linear time
+ex20b <- rblimp(
+  data = data3,
+  latent = 'icept slope',
+  fixed = 'd',
+  center = 'y0',
+  model = '
+   icept ~ 1 d;
+   slope ~ 1 d;
+   icept ~~ icept@.001;
+   slope ~~ slope@.001;
+   icept ~~ slope@.001;
+   y1 ~ 1@icept slope@-2 y0@b1;
+   y3 ~ 1@icept slope@-1 y0@b1;
+   y6 ~ 1@icept y0@b1;
+   y1 y3 y6 ~~ y1 y3 y6',
+  # parameters = '
+  #  d0y3 = d0y6
+  #  # occasion-specific means;
+  #  t1d0 = d0y1;
+  #  t1d1 = d0y1 + d1;
+  #  t3d0 = d0y3;
+  #  t3d1 = d0y3 + d3;
+  #  t6d0 = d0y6;
+  #  t6d1 = d0y6 + d6; ',
+  seed = 90291,
+  burn = 10000,
+  iter = 10000)
+output(ex20b)
+
+

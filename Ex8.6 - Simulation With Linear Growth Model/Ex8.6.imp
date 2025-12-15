@@ -1,0 +1,28 @@
+SIMULATE:
+	# Calculate number of obs
+	level_1(1) = 4 * 1000; # n_j * J
+	level_2(2) = 1000;
+	
+	# Define correlation inline with `:=`
+	cor := 0.3;
+		
+	# Specify level-2	
+	level_2:		
+		# random slope correlated
+		 c = normal(0, cor);
+		u0 = normal(10 + c,  1.0 - cor);
+		u1 = 0.5 + normal(c, 1.0 - cor) * sqrt(0.2); 
+	# specify level-1
+	level_1: 
+		# Define time centered
+		time0 = level_1.time - 1;
+		y = normal(u0 + time0 * u1, 1);
+VARIABLES: y time0 level_2;
+CLUSTERID: level_2;
+MODEL: 
+	y ~ time0 | time0;
+BURN: 10000;
+ITER: 10000;
+SEED: 198723;
+SAVE:
+	dataset = generated_data.csv;

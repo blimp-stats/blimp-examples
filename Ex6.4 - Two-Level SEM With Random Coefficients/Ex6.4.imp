@@ -1,0 +1,21 @@
+DATA: data8.dat;
+VARIABLES: level1id level2id x1_i x2_i y_i v1_i v2_i d_j
+   v3_j v4_j v5_j x3_j v6_j v7_j;
+CLUSTERID: level2id;
+ORDINAL: d_j;
+MISSING: 999;
+LATENT: level2id = beta0_j beta1_j;
+FIXED: d_j;
+CENTER:
+groupmean = x1_i;
+grandmean = x2_i x3_j d_j;
+MODEL:
+level2.model:
+beta0_j ~ 1 x3_j d_j;
+beta1_j ~ 1;
+beta0_j ~~ beta1_j;
+level1.model:
+y_i ~ 1@beta0_j x1_i@beta1_j x2_i;
+SEED: 90291;
+BURN: 5000;
+ITERATIONS: 10000;

@@ -1,0 +1,226 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                   3.2.0
+
+             Blimp was developed with funding from Institute of
+          Educational Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Not applicable, single-level imputation
+  Residual variance structure:       Not applicable, single-level imputation
+  Prior for random effect variances: Not applicable, single-level imputation
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+SIMULATED DATA SUMMARIES:
+
+  NOTE: The summaries are based on complete data only.
+
+Variables                              Mean        VAR     StdDev  % Missing 
+                                ---------------------------------------------
+  x1                                  0.039      1.018      1.009      0.000 
+  x2                                 -0.009      1.059      1.029      0.000 
+  x1m                                 0.045      1.046      1.023     14.700 
+  x2m                                 0.111      1.015      1.007     22.000 
+  y                                  10.090      1.339      1.157      0.000 
+                                ---------------------------------------------
+
+VARIABLE ORDER IN SIMULATED DATA:
+
+  dataset = 'generated_data.csv'
+
+     x1 x2 x1m x2m y
+
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                          126 to 250             1.041            18  
+                          251 to 500             1.019            17  
+                          376 to 750             1.018            14  
+                          501 to 1000            1.009             6  
+                          626 to 1250            1.004            14  
+                          751 to 1500            1.005             9  
+                          876 to 1750            1.003             9  
+                         1001 to 2000            1.003             6  
+                         1126 to 2250            1.002            14  
+                         1251 to 2500            1.002            13  
+                         1376 to 2750            1.002            13  
+                         1501 to 3000            1.001             2  
+                         1626 to 3250            1.001             1  
+                         1751 to 3500            1.003             5  
+                         1876 to 3750            1.002             5  
+                         2001 to 4000            1.002             5  
+                         2126 to 4250            1.002             5  
+                         2251 to 4500            1.001             1  
+                         2376 to 4750            1.001            14  
+                         2501 to 5000            1.001            14  
+
+
+DATA INFORMATION:
+
+  Sample Size:              1000
+  Missing Data Rates:
+
+                        y = 00.00
+                      x1m = 14.70
+                      x2m = 22.00
+
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         9
+    Predictor Models:       0
+
+  MODELS
+
+   1:
+    [1]  y ~ Intercept x1m x2m
+
+   2:
+    [2]  x1m ~ Intercept
+    [3]  x2m ~ Intercept
+    [4]  x1m x2m <-> x1m x2m 
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Marginal Likelihood
+      DIC2                  8586.070
+      WAIC                  8728.139
+
+    Conditional Likelihood
+      DIC2                  8586.070
+      WAIC                  8728.139
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 5000 iterations using 2 chains.
+
+
+Correlations                         Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  y, x1m                             -0.001      0.045     -0.088      0.087      1.000   4876.778 
+  y, x2m                             -0.001      0.044     -0.085      0.088      1.000   4959.811 
+
+                                -------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 5000 iterations using 2 chains.
+
+  1 block:
+
+Outcome Variable:  y          
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.952      0.046      0.868      1.046      1.000   3934.082 
+
+Coefficients:                   
+  Intercept                          10.074      0.032     10.012     10.138      1.001   3805.590 
+  x1m                                 0.436      0.035      0.367      0.506      1.001   3127.411 
+  x2m                                 0.313      0.038      0.237      0.385      1.001   2369.930 
+
+Standardized Coefficients:      
+  x1m                                 0.385      0.029      0.328      0.440      1.001   2967.304 
+  x2m                                 0.277      0.033      0.211      0.340      1.001   2267.210 
+
+Proportion Variance Explained   
+  by Coefficients                     0.291      0.025      0.243      0.339      1.000   3425.848 
+  by Residual Variation               0.709      0.025      0.661      0.757      1.000   3425.848 
+
+                                -------------------------------------------------------------------
+
+
+  2 block:
+
+Outcome Variable:  x1m        
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.048      0.051      0.956      1.154      1.001   3936.867 
+
+Coefficients:                   
+  Intercept                           0.043      0.034     -0.022      0.110      1.000   3482.313 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        nan        nan 
+  by Residual Variation               0.999      0.064      0.885      1.139      1.000  18494.850 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  x2m        
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.061      0.055      0.961      1.176      1.002   2736.101 
+
+Coefficients:                   
+  Intercept                          -0.009      0.038     -0.081      0.066      1.002   2430.858 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        nan        nan 
+  by Residual Variation               1.000      0.063      0.887      1.129      1.000  18494.850 
+
+                                -------------------------------------------------------------------
+
+
+
+Covariance Matrix: x1m x2m    
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Covariances:                    
+  Cov(x1m,x2m)                        0.323      0.043      0.244      0.409      1.000   2263.352 
+
+Correlations:                   
+  Cor(x1m,x2m)                        0.308      0.035      0.237      0.376      1.000   2089.189 
+
+                                -------------------------------------------------------------------
+
+
+

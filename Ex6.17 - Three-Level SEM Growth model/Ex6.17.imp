@@ -1,0 +1,23 @@
+DATA: data10.dat;
+VARIABLES: level1id level2id level3id y_i time_i v1_i 
+   v2_j:v5_j v6_j d_k v7_k v8_k;
+NOMINAL: d_k;
+CLUSTERID: level2id level3id;
+MISSING: 999;
+LATENT: 
+level2id = beta0_j beta1_j;
+level3id = beta0_k beta1_k;
+MODEL: 
+level3.model:
+beta0_k ~ 1 d_k;
+beta1_k ~ 1 d_k;
+beta0_k ~~ beta1_k;
+level2.model:
+beta0_j ~ 1@beta0_k;
+beta1_j ~ 1@beta1_k;
+beta0_j ~~ beta1_j;
+level1.model:
+y_i ~ 1@beta0_j time_i@beta1_j;
+SEED: 90291;
+BURN: 30000;
+ITERATIONS: 30000;

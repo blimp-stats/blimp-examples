@@ -1,0 +1,24 @@
+DATA: data20.dat;
+VARIABLES: id a1:a3 v1 y m v2 x v3:v22;
+MISSING: 999;
+ORDINAL: x y;
+MODEL:
+m ~ 1@m_icept x@alpha;
+m ~~ m@m_resvar;
+y ~ 1@y_icept m@beta x@tau;
+PARAMETERS:
+den = sqrt(beta^2*m_resvar + 1);
+# Model-implied marginal probabilities at X=0 and X=1
+p_x0 = phi( ( y_icept + beta*(m_icept + alpha*0) + tau*0 ) / den );
+p_x1 = phi( ( y_icept + beta*(m_icept + alpha*1) + tau*1 ) / den );
+# Natural Indirect Effect: P(Y=1 | X=1, M_{X=1}) - P(Y=1 | X=1, M_{X=0})
+nie = phi( ( y_icept + beta*(m_icept + alpha*1) + tau*1 ) / den )
+  - phi( ( y_icept + beta*(m_icept + alpha*0) + tau*1 ) / den );
+# Natural Direct Effect: P(Y=1 | X=1, M_{X=0}) - P(Y=1 | X=0, M_{X=0})
+nde = phi( ( y_icept + beta*(m_icept + alpha*0) + tau*1 ) / den )
+  - phi( ( y_icept + beta*(m_icept + alpha*0) + tau*0 ) / den );
+# Total Effect = P(Y=1|X=1) - P(Y=1|X=0) = NIE + NDE
+te  = p_x1 - p_x0;
+SEED: 90291;
+BURN: 10000;
+ITERATIONS: 10000;

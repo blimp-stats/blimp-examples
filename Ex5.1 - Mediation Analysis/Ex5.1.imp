@@ -1,0 +1,15 @@
+DATA: data4.dat;
+VARIABLES: id a1:a3 v1 y m v2 x v3:v22;
+MISSING: 999;
+MODEL:
+m ~ x@alpha;
+y ~ m@beta x;
+PARAMETERS:
+indirect = alpha * beta;
+SEED: 90291;
+BURN: 1000;
+ITERATIONS: 10000;
+# save model-based multiple imputations;
+# CHAINS: 20;
+# NIMPS: 20;
+# SAVE: stacked = imps.dat;

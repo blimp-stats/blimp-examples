@@ -1,0 +1,34 @@
+DATA: data14.dat;
+VARIABLES: id y1:y6;
+ORDINAL: y1:y6;
+MISSING: 999;
+LATENT: ability;
+MODEL:
+ability ~ 1@0;
+ability ~~ ability@1;
+y1 ~ 1@icept1 ability@load1;
+y2 ~ 1@icept2 ability@load2;
+y3 ~ 1@icept3 ability@load3;
+y4 ~ 1@icept4 ability@load4;
+y5 ~ 1@icept5 ability@load5;
+y6 ~ 1@icept6 ability@load6;
+PARAMETERS:
+discrim1 = load1;
+discrim2 = load2;
+discrim3 = load3;
+discrim4 = load4;
+discrim5 = load5;
+discrim6 = load6;
+difficulty1 = - icept1 / load1;
+difficulty2 = - icept2 / load2;
+difficulty3 = - icept3 / load3;
+difficulty4 = - icept4 / load4;
+difficulty5 = - icept5 / load5;
+difficulty6 = - icept6 / load6;
+SEED: 90291;
+BURN: 3000;
+ITERATIONS: 10000;
+# save model-based multiple imputations;
+# CHAINS: 20;
+# NIMPS: 20;
+# SAVE: stacked = imps.dat;

@@ -1,0 +1,19 @@
+DATA: data6.dat;
+VARIABLES: id d1 x1 v1 d2 v2 x2 v3 v4 y;
+ORDINAL: y d1 d2;
+MISSING: 999;
+FIXED: d1 x1;
+MODEL:
+focal.model:
+logit(y) ~ x1 x2 d1 d2;
+predictor.model:
+yjt(x2 - 16) ~ x1 d1; # sequential specification for predictors
+d2 ~ x2 x1 d1;
+SEED: 90291;
+BURN: 1000;
+ITERATIONS: 10000;
+# save model-based multiple imputations;
+# CHAINS: 20;
+# NIMPS: 20;
+# SAVE: stacked = imps.dat;
+

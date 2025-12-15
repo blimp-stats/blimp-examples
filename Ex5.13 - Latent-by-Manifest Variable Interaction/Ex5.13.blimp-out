@@ -1,0 +1,697 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.2.10
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Not applicable, single-level imputation
+  Prior for random effect variances: Not applicable, single-level imputation
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: The default prior for regression coefficients 
+        in categorical models is 'normal( 0.0, 5.0)'
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                         1251 to 2500            1.799             2  
+                         2501 to 5000            1.263            58  
+                         3751 to 7500            1.409             2  
+                         5001 to 10000           1.171             2  
+                         6251 to 12500           1.216             2  
+                         7501 to 15000           1.081            91  
+                         8751 to 17500           1.101            22  
+                        10001 to 20000           1.067           102  
+                        11251 to 22500           1.183             2  
+                        12501 to 25000           1.052             5  
+                        13751 to 27500           1.070           103  
+                        15001 to 30000           1.077            67  
+                        16251 to 32500           1.057            67  
+                        17501 to 35000           1.045            91  
+                        18751 to 37500           1.029            67  
+                        20001 to 40000           1.042            67  
+                        21251 to 42500           1.039            67  
+                        22501 to 45000           1.055            40  
+                        23751 to 47500           1.034            76  
+                        25001 to 50000           1.033            76  
+
+
+METROPOLIS-HASTINGS ACCEPTANCE RATES:
+
+  Chain 1:
+
+    Variable                            Type    Probability   Target Value 
+    m1                             threshold          0.353          0.350 
+    m2                             threshold          0.366          0.350 
+    m3                             threshold          0.339          0.350 
+    m4                             threshold          0.377          0.350 
+    m5                             threshold          0.349          0.350 
+    m6                             threshold          0.330          0.350 
+    y1                             threshold          0.385          0.350 
+    y2                             threshold          0.367          0.350 
+    y3                             threshold          0.302          0.350 
+    y4                             threshold          0.338          0.350 
+    y5                             threshold          0.366          0.350 
+    y6                             threshold          0.347          0.350 
+    x                             imputation          0.511          0.500 
+
+  NOTE: Suppressing printing of 1 chains.
+        Use keyword 'tuneinfo' in options to override.
+
+
+DATA INFORMATION:
+
+  Sample Size:              300
+  Missing Data Rates:
+
+                       m1 = 04.33
+                       m2 = 02.00
+                       m3 = 01.67
+                       m4 = 02.00
+                       m5 = 02.00
+                       m6 = 04.00
+                       y1 = 03.33
+                       y2 = 04.67
+                       y3 = 03.67
+                       y4 = 03.67
+                       y5 = 04.67
+                       y6 = 03.67
+                        x = 10.67
+
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         67
+    Predictor Models:       3
+
+  PREDICTORS
+    Fixed variables:        d
+    Incomplete continuous:  x
+
+  FACTORS
+    Level-1:                latenty latentm
+
+  MODELS
+
+   structural.model:
+    [1]  latentm ~ x d x*d
+    [2]  latenty ~ latentm x d latentm*d
+
+   measurement.models:
+    [3]  m1 ~ Intercept latentm@xload_prior
+    [4]  m2 ~ Intercept latentm
+    [5]  m3 ~ Intercept latentm
+    [6]  m4 ~ Intercept latentm
+    [7]  m5 ~ Intercept latentm
+    [8]  m6 ~ Intercept latentm
+    [9]  y1 ~ Intercept latenty@yload_prior
+   [10]  y2 ~ Intercept latenty
+   [11]  y3 ~ Intercept latenty
+   [12]  y4 ~ Intercept latenty
+   [13]  y5 ~ Intercept latenty
+   [14]  y6 ~ Intercept latenty
+
+  PRIORS SPECIFIED
+    [1]  xload_prior ~ truncate(0, inf)
+    [2]  yload_prior ~ truncate(0, inf)
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Marginal Likelihood
+      DIC2                  12732.723
+      WAIC                  13523.286
+
+    Conditional Likelihood
+      DIC2                  12732.723
+      WAIC                  13523.286
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 50000 iterations using 2 chains.
+
+
+Correlations                         Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  latentm, latenty                   -0.001      0.084     -0.163      0.165      1.000  48331.156 
+  latentm, m1                        -0.020      0.081     -0.179      0.140      1.000  23730.248 
+  latentm, m2                        -0.004      0.081     -0.164      0.155      1.000  45711.369 
+  latentm, m3                        -0.002      0.082     -0.163      0.159      1.000  45701.162 
+  latentm, m4                         0.004      0.082     -0.158      0.163      1.000  46435.616 
+  latentm, m5                         0.003      0.082     -0.159      0.162      1.000  46234.060 
+  latentm, m6                         0.020      0.083     -0.140      0.183      1.000  45485.976 
+  latentm, y1                         0.034      0.073     -0.111      0.176      1.000  16555.349 
+  latentm, y2                         0.010      0.073     -0.134      0.152      1.000  22581.112 
+  latentm, y3                        -0.032      0.074     -0.179      0.113      1.000  22065.082 
+  latentm, y4                         0.019      0.073     -0.125      0.162      1.000  19723.274 
+  latentm, y5                         0.026      0.073     -0.118      0.168      1.000  18356.819 
+  latentm, y6                        -0.044      0.072     -0.184      0.099      1.000  24520.937 
+  latenty, m1                        -0.012      0.076     -0.163      0.135      1.000  30194.775 
+  latenty, m2                         0.088      0.074     -0.058      0.232      1.000  30908.316 
+  latenty, m3                        -0.000      0.077     -0.152      0.150      1.000  30104.714 
+  latenty, m4                         0.027      0.077     -0.123      0.177      1.000  28355.888 
+  latenty, m5                        -0.039      0.077     -0.189      0.112      1.000  31919.430 
+  latenty, m6                        -0.020      0.078     -0.174      0.132      1.000  33837.812 
+  latenty, y1                        -0.002      0.080     -0.158      0.154      1.000  19399.812 
+  latenty, y2                         0.010      0.080     -0.145      0.168      1.000  38419.468 
+  latenty, y3                         0.018      0.081     -0.141      0.175      1.000  30976.326 
+  latenty, y4                        -0.002      0.080     -0.158      0.156      1.000  34134.772 
+  latenty, y5                        -0.014      0.080     -0.170      0.143      1.000  37264.546 
+  latenty, y6                        -0.001      0.080     -0.160      0.155      1.000  41639.695 
+  m1, m2                              0.002      0.076     -0.146      0.149      1.000  20136.864 
+  m1, m3                              0.027      0.078     -0.127      0.181      1.000  13963.912 
+  m1, m4                             -0.030      0.077     -0.182      0.121      1.000  19865.499 
+  m1, m5                             -0.012      0.078     -0.164      0.141      1.000  14740.765 
+  m1, m6                             -0.005      0.079     -0.161      0.149      1.000  18085.171 
+  m1, y1                             -0.028      0.075     -0.174      0.119      1.000  29542.937 
+  m1, y2                              0.048      0.075     -0.101      0.192      1.000  27909.786 
+  m1, y3                             -0.024      0.075     -0.170      0.125      1.000  29966.671 
+  m1, y4                             -0.003      0.074     -0.149      0.143      1.000  26767.765 
+  m1, y5                             -0.002      0.075     -0.149      0.144      1.000  27657.890 
+  m1, y6                              0.004      0.074     -0.142      0.149      1.000  29342.868 
+  m2, m3                             -0.012      0.078     -0.163      0.141      1.000  19207.911 
+  m2, m4                             -0.024      0.077     -0.175      0.125      1.000  19698.751 
+  m2, m5                             -0.015      0.077     -0.167      0.136      1.000  18167.160 
+  m2, m6                              0.021      0.079     -0.133      0.174      1.000  21150.585 
+  m2, y1                              0.030      0.072     -0.112      0.170      1.000  27760.297 
+  m2, y2                             -0.020      0.072     -0.160      0.121      1.000  28488.019 
+  m2, y3                              0.018      0.073     -0.123      0.161      1.000  29903.012 
+  m2, y4                              0.048      0.072     -0.095      0.188      1.000  28301.003 
+  m2, y5                              0.066      0.073     -0.076      0.206      1.000  30134.813 
+  m2, y6                             -0.011      0.072     -0.152      0.131      1.000  29657.640 
+  m3, m4                              0.012      0.079     -0.144      0.164      1.000  13214.022 
+  m3, m5                             -0.042      0.079     -0.195      0.112      1.000  14397.493 
+  m3, m6                              0.008      0.080     -0.148      0.166      1.000  10174.689 
+  m3, y1                             -0.030      0.076     -0.177      0.120      1.000  28425.861 
+  m3, y2                             -0.000      0.076     -0.150      0.149      1.000  28333.916 
+  m3, y3                              0.019      0.077     -0.131      0.170      1.000  28558.846 
+  m3, y4                             -0.032      0.076     -0.181      0.118      1.000  28927.300 
+  m3, y5                              0.059      0.077     -0.092      0.208      1.000  28763.457 
+  m3, y6                             -0.016      0.076     -0.163      0.134      1.000  29157.403 
+  m4, m5                              0.043      0.079     -0.114      0.197      1.000   9213.703 
+  m4, m6                             -0.023      0.079     -0.179      0.132      1.000  15482.647 
+  m4, y1                             -0.019      0.075     -0.165      0.129      1.000  29693.227 
+  m4, y2                              0.033      0.075     -0.114      0.180      1.000  29019.456 
+  m4, y3                              0.019      0.076     -0.130      0.168      1.000  32093.871 
+  m4, y4                             -0.020      0.076     -0.168      0.127      1.000  28920.989 
+  m4, y5                             -0.002      0.075     -0.149      0.145      1.000  29795.963 
+  m4, y6                              0.039      0.075     -0.109      0.186      1.000  28460.354 
+  m5, m6                              0.016      0.080     -0.142      0.172      1.000  13286.182 
+  m5, y1                              0.025      0.076     -0.124      0.173      1.000  31452.488 
+  m5, y2                             -0.029      0.076     -0.176      0.120      1.000  29083.155 
+  m5, y3                              0.011      0.076     -0.140      0.160      1.000  31122.228 
+  m5, y4                             -0.019      0.076     -0.167      0.131      1.000  28657.163 
+  m5, y5                             -0.030      0.076     -0.177      0.118      1.000  29318.592 
+  m5, y6                             -0.030      0.076     -0.177      0.119      1.000  30254.060 
+  m6, y1                              0.039      0.078     -0.113      0.190      1.000  33005.207 
+  m6, y2                             -0.022      0.078     -0.174      0.131      1.000  29003.015 
+  m6, y3                             -0.050      0.077     -0.199      0.102      1.000  30820.463 
+  m6, y4                              0.049      0.077     -0.104      0.198      1.000  30033.579 
+  m6, y5                             -0.045      0.078     -0.195      0.107      1.000  28246.743 
+  m6, y6                             -0.002      0.077     -0.154      0.147      1.000  28790.027 
+  y1, y2                             -0.024      0.072     -0.165      0.116      1.000   8819.035 
+  y1, y3                             -0.004      0.075     -0.152      0.141      1.001   4370.657 
+  y1, y4                              0.002      0.073     -0.142      0.146      1.000   7220.420 
+  y1, y5                              0.035      0.073     -0.109      0.176      1.001   7505.125 
+  y1, y6                             -0.035      0.072     -0.176      0.107      1.000  10722.381 
+  y2, y3                              0.015      0.074     -0.132      0.159      1.000   4118.055 
+  y2, y4                              0.050      0.072     -0.091      0.190      1.000  10121.998 
+  y2, y5                              0.047      0.072     -0.096      0.186      1.000   7791.978 
+  y2, y6                             -0.100      0.070     -0.234      0.040      1.000  15489.578 
+  y3, y4                             -0.035      0.075     -0.182      0.111      1.001   2977.885 
+  y3, y5                             -0.057      0.074     -0.200      0.088      1.000   5351.745 
+  y3, y6                              0.118      0.073     -0.029      0.258      1.000   4176.121 
+  y4, y5                             -0.012      0.073     -0.156      0.132      1.000   7021.585 
+  y4, y6                             -0.006      0.072     -0.147      0.136      1.000  10476.017 
+  y5, y6                             -0.027      0.072     -0.167      0.114      1.000   7807.141 
+
+                                -------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 50000 iterations using 2 chains.
+
+  structural.model block:
+
+Latent Variable:   latentm    
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                   @   1.000       ---        ---        ---        ---        ---  
+
+Coefficients:                   
+  x                                   0.044      0.008      0.028      0.059      1.065     14.973 
+  d                                   0.076      0.419     -0.744      0.899      1.017    150.156 
+  x*d                                 0.004      0.015     -0.025      0.032      1.015    181.217 
+
+Standardized Coefficients:      
+  x                                   0.351      0.060      0.227      0.461      1.062     16.273 
+  d                                   0.034      0.189     -0.331      0.406      1.017    154.088 
+  x*d                                 0.052      0.197     -0.336      0.433      1.015    178.567 
+
+Proportion Variance Explained   
+  by Coefficients                     0.147      0.036      0.082      0.224      1.037     29.936 
+  by Residual Variation               0.853      0.036      0.776      0.918      1.037     29.936 
+
+                                -------------------------------------------------------------------
+
+
+
+Latent Variable:   latenty    
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                   @   1.000       ---        ---        ---        ---        ---  
+
+Coefficients:                   
+  latentm                             0.603      0.114      0.389      0.836      1.002   3220.610 
+  x                                   0.024      0.009      0.006      0.043      1.002    598.525 
+  d                                   0.320      0.245     -0.142      0.821      1.003   1080.657 
+  latentm*d                          -0.336      0.145     -0.625     -0.053      1.001   3498.093 
+
+Standardized Coefficients:      
+  latentm                             0.549      0.086      0.372      0.707      1.000   5999.193 
+  x                                   0.178      0.066      0.046      0.304      1.002    665.197 
+  d                                   0.132      0.099     -0.059      0.333      1.003   1099.042 
+  latentm*d                          -0.280      0.119     -0.512     -0.045      1.000   3124.359 
+
+Proportion Variance Explained   
+  by Coefficients                     0.292      0.053      0.190      0.396      1.001    955.799 
+  by Residual Variation               0.708      0.053      0.604      0.810      1.001    955.799 
+
+                                -------------------------------------------------------------------
+
+
+  measurement.models block:
+
+Outcome Variable:  m1         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                          -1.214      0.364     -1.972     -0.518      1.053     24.946 
+  latentm                             1.481      0.148      1.215      1.792      1.003    657.090 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.512      0.148      1.238      1.816      1.001   1231.651 
+  Tau 3                               2.858      0.220      2.448      3.307      1.002    859.630 
+
+Standardized Coefficients:      
+  latentm                             0.848      0.022      0.801      0.886      1.001    718.458 
+
+Proportion Variance Explained   
+  by Coefficients                     0.719      0.037      0.641      0.784      1.001    714.364 
+  by Residual Variation               0.281      0.037      0.216      0.359      1.001    714.364 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  m2         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                          -0.012      0.265     -0.534      0.508      1.048     23.421 
+  latentm                             1.101      0.110      0.901      1.331      1.001   1416.544 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.395      0.134      1.151      1.673      1.002   1185.014 
+  Tau 3                               2.451      0.171      2.129      2.801      1.004    979.907 
+
+Standardized Coefficients:      
+  latentm                             0.766      0.029      0.704      0.816      1.002   1645.392 
+
+Proportion Variance Explained   
+  by Coefficients                     0.586      0.044      0.495      0.665      1.002   1636.405 
+  by Residual Variation               0.414      0.044      0.335      0.505      1.002   1636.405 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  m3         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                          -2.075      0.493     -3.115     -1.177      1.053     31.108 
+  latentm                             1.998      0.216      1.618      2.467      1.001    517.544 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.665      0.192      1.326      2.078      1.001    768.408 
+  Tau 3                               2.813      0.266      2.350      3.381      1.002    623.850 
+
+Standardized Coefficients:      
+  latentm                             0.907      0.016      0.872      0.935      1.001    594.817 
+
+Proportion Variance Explained   
+  by Coefficients                     0.823      0.029      0.760      0.874      1.001    592.208 
+  by Residual Variation               0.177      0.029      0.126      0.240      1.001    592.208 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  m4         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                          -1.015      0.413     -1.829     -0.203      1.053     20.347 
+  latentm                             1.798      0.182      1.480      2.191      1.007    682.638 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.798      0.183      1.468      2.181      1.002    741.611 
+  Tau 3                               3.060      0.248      2.624      3.588      1.004    633.159 
+
+Standardized Coefficients:      
+  latentm                             0.889      0.017      0.852      0.918      1.003    747.092 
+
+Proportion Variance Explained   
+  by Coefficients                     0.791      0.030      0.726      0.843      1.003    743.689 
+  by Residual Variation               0.209      0.030      0.157      0.274      1.003    743.689 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  m5         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                          -1.541      0.463     -2.450     -0.646      1.048     59.120 
+  latentm                             1.963      0.208      1.592      2.415      1.007    468.412 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               2.016      0.210      1.635      2.466      1.004    691.324 
+  Tau 3                               3.711      0.326      3.111      4.410      1.005    478.790 
+
+Standardized Coefficients:      
+  latentm                             0.905      0.016      0.869      0.932      1.004    507.506 
+
+Proportion Variance Explained   
+  by Coefficients                     0.818      0.029      0.755      0.869      1.004    506.097 
+  by Residual Variation               0.182      0.029      0.131      0.245      1.004    506.097 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  m6         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                          -2.627      0.607     -3.892     -1.503      1.060     19.417 
+  latentm                             2.312      0.255      1.863      2.855      1.003    463.986 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.931      0.221      1.539      2.394      1.004    631.054 
+  Tau 3                               3.310      0.323      2.732      3.989      1.004    469.816 
+
+Standardized Coefficients:      
+  latentm                             0.929      0.013      0.898      0.950      1.005    445.649 
+
+Proportion Variance Explained   
+  by Coefficients                     0.862      0.025      0.807      0.903      1.005    443.743 
+  by Residual Variation               0.138      0.025      0.097      0.193      1.005    443.743 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  y1         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           1.075      0.224      0.645      1.517      1.009    317.402 
+  latenty                             0.653      0.088      0.495      0.837      1.001    974.181 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               0.765      0.122      0.543      1.016      1.002    495.149 
+  Tau 3                               1.752      0.149      1.472      2.052      1.002    334.377 
+  Tau 4                               2.854      0.180      2.509      3.222      1.003    302.217 
+  Tau 5                               3.859      0.226      3.448      4.322      1.002    318.508 
+
+Standardized Coefficients:      
+  latenty                             0.608      0.047      0.508      0.693      1.001    899.436 
+
+Proportion Variance Explained   
+  by Coefficients                     0.370      0.057      0.258      0.480      1.001    887.103 
+  by Residual Variation               0.630      0.057      0.520      0.742      1.001    887.103 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  y2         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           1.679      0.250      1.210      2.213      1.010    203.770 
+  latenty                             0.559      0.082      0.410      0.733      1.001    928.749 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.200      0.192      0.869      1.619      1.017    184.261 
+  Tau 3                               2.189      0.209      1.826      2.656      1.019    143.771 
+  Tau 4                               3.231      0.227      2.833      3.737      1.017    137.751 
+  Tau 5                               4.314      0.267      3.818      4.890      1.014    167.830 
+
+Standardized Coefficients:      
+  latenty                             0.549      0.052      0.439      0.642      1.002    875.654 
+
+Proportion Variance Explained   
+  by Coefficients                     0.301      0.056      0.192      0.412      1.002    860.776 
+  by Residual Variation               0.699      0.056      0.588      0.808      1.002    860.776 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  y3         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           1.459      0.276      0.944      2.024      1.004    234.005 
+  latenty                             0.768      0.106      0.583      0.995      1.004    320.925 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.231      0.199      0.882      1.656      1.003    171.437 
+  Tau 3                               2.395      0.237      1.967      2.895      1.006    136.287 
+  Tau 4                               3.486      0.275      3.001      4.068      1.006    127.879 
+  Tau 5                               4.551      0.332      3.952      5.252      1.007    128.368 
+
+Standardized Coefficients:      
+  latenty                             0.669      0.046      0.572      0.752      1.003    307.590 
+
+Proportion Variance Explained   
+  by Coefficients                     0.447      0.061      0.327      0.566      1.003    307.291 
+  by Residual Variation               0.553      0.061      0.434      0.673      1.003    307.291 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  y4         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           1.546      0.241      1.078      2.021      1.005    335.704 
+  latenty                             0.680      0.088      0.518      0.861      1.004   1012.157 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.170      0.176      0.851      1.536      1.010    260.455 
+  Tau 3                               2.369      0.199      1.993      2.775      1.014    222.321 
+  Tau 4                               3.380      0.222      2.959      3.821      1.012    223.342 
+  Tau 5                               4.539      0.272      4.029      5.082      1.011    266.726 
+
+Standardized Coefficients:      
+  latenty                             0.623      0.046      0.524      0.704      1.003    955.401 
+
+Proportion Variance Explained   
+  by Coefficients                     0.389      0.057      0.274      0.496      1.003    946.240 
+  by Residual Variation               0.611      0.057      0.504      0.726      1.003    946.240 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  y5         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           1.592      0.240      1.142      2.079      1.014    297.778 
+  latenty                             0.598      0.085      0.445      0.776      1.002    682.548 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.162      0.183      0.851      1.561      1.010    229.944 
+  Tau 3                               2.412      0.209      2.055      2.861      1.009    192.306 
+  Tau 4                               3.459      0.236      3.051      3.961      1.009    184.415 
+  Tau 5                               4.568      0.289      4.060      5.188      1.009    196.585 
+
+Standardized Coefficients:      
+  latenty                             0.574      0.051      0.466      0.666      1.004    597.728 
+
+Proportion Variance Explained   
+  by Coefficients                     0.330      0.058      0.217      0.444      1.004    591.259 
+  by Residual Variation               0.670      0.058      0.556      0.783      1.004    591.259 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  y6         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           1.763      0.260      1.297      2.321      1.014    182.037 
+  latenty                             0.534      0.082      0.384      0.704      1.003    909.435 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+  Tau 2                               1.297      0.201      0.958      1.749      1.010    161.854 
+  Tau 3                               2.325      0.216      1.950      2.790      1.015    125.959 
+  Tau 4                               3.274      0.236      2.858      3.780      1.017    116.999 
+  Tau 5                               4.432      0.276      3.930      5.010      1.016    129.958 
+
+Standardized Coefficients:      
+  latenty                             0.531      0.055      0.416      0.629      1.004    863.587 
+
+Proportion Variance Explained   
+  by Coefficients                     0.282      0.057      0.173      0.396      1.004    853.249 
+  by Residual Variation               0.718      0.057      0.604      0.827      1.004    853.249 
+
+                                -------------------------------------------------------------------
+
+
+
+Additional Parameters:
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  xload_prior                         1.481      0.148      1.215      1.792      1.003    657.090 
+  yload_prior                         0.653      0.088      0.495      0.837      1.001    974.181 
+
+                                -------------------------------------------------------------------
+
+
+
+
+PREDICTOR MODEL ESTIMATES:
+
+  Summaries based on 50000 iterations using 2 chains.
+
+
+Missing predictor:  x          
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                           27.343      0.525     26.316     28.375      1.000  30777.414 
+
+Level 1:                                                                                           
+  d                                   1.079      1.078     -1.020      3.209      1.000  30404.039 
+  Residual Var.                      74.647      6.516     63.239     88.810      1.000  30059.185 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+

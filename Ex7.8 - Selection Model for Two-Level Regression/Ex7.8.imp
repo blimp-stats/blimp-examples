@@ -1,0 +1,20 @@
+DATA: data8.dat;
+VARIABLES: level1id level2id x1_i x2_i y_i v1_i v2_i d_j
+   v3_j v4_j v5_j x3_j v6_j v7_j;
+CLUSTERID: level2id;
+ORDINAL: d_j ymis_i;;
+MISSING: 999;
+TRANSFORM:
+ymis_i = ismissing(y_i);
+FIXED: d_j;
+CENTER: 
+groupmean = x1_i;
+grandmean = x2_i x3_j d_j;
+MODEL: 
+focal.model:
+y_i ~ x1_i x2_i x3_j d_j | x1_i;
+missingness.model:
+ymis_i ~ y_i x1_i;
+SEED: 90291;
+BURN: 10000;
+ITERATIONS: 20000;

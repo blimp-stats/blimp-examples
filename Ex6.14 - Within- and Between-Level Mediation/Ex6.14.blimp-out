@@ -1,0 +1,391 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.2.10
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Latent cluster means (LATENT)
+  Prior for random effect variances: Zero matrix, df = -(p + 1) (PRIOR2)
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                          251 to 500             1.287            46  
+                          501 to 1000            1.180            10  
+                          751 to 1500            1.166            46  
+                         1001 to 2000            1.120             9  
+                         1251 to 2500            1.082            33  
+                         1501 to 3000            1.144             9  
+                         1751 to 3500            1.059            38  
+                         2001 to 4000            1.052             7  
+                         2251 to 4500            1.057             7  
+                         2501 to 5000            1.036             7  
+                         2751 to 5500            1.054             7  
+                         3001 to 6000            1.037            14  
+                         3251 to 6500            1.058            37  
+                         3501 to 7000            1.086            26  
+                         3751 to 7500            1.048            26  
+                         4001 to 8000            1.065            26  
+                         4251 to 8500            1.044            38  
+                         4501 to 9000            1.036            45  
+                         4751 to 9500            1.032            45  
+                         5001 to 10000           1.038            26  
+
+
+DATA INFORMATION:
+
+  Level-2 identifier:       level2id
+  Sample Size:              630
+  Level-2 Clusters:         105
+  Missing Data Rates:
+
+                      m_i = 16.19
+                      y_i = 04.76
+                      x_i = 04.13
+
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         19
+    Generated Parameters:   3
+    Predictor Models:       0
+
+  FACTORS
+    Level-2:                xmean_j mmean_j ymean_j alpha_j beta_j tau_j
+
+  MODELS
+
+   level2.mediation:
+    [1]  mmean_j ~ Intercept xmean_j@alpha_b
+    [2]  ymean_j ~ Intercept mmean_j@beta_b xmean_j@tau_b
+
+   level1.mediation:
+    [3]  m_i ~ mmean_j@1 (x_i-xmean_j)*alpha_j@1
+    [4]  y_i ~ ymean_j@1 (m_i-mmean_j)*beta_j@1 (x_i-xmean_j)*tau_j@1
+
+   level2.models:
+    [5]  alpha_j ~ Intercept@alpha_mean
+    [6]  beta_j ~ Intercept@beta_mean
+    [7]  tau_j ~ Intercept
+    [8]  xmean_j ~ Intercept
+    [9]  alpha_j beta_j <-> alpha_j beta_j 
+
+   level1.models:
+   [10]  x_i ~ xmean_j@1
+
+  GENERATED PARAMETERS
+    [1]  ab_cov = ab_cor*sqrt(alpha_j.totalvar*beta_j.totalvar)
+    [2]  ab_w = alpha_mean*beta_mean+ab_cov
+    [3]  ab_b = alpha_b*beta_b
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Marginal Likelihood
+      DIC2                  8783.132
+      WAIC                  9054.354
+
+    Conditional Likelihood
+      DIC2                  8783.132
+      WAIC                  9054.354
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+
+   Level-1:
+
+Correlations                         Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  m_i, y_i                            0.012      0.056     -0.097      0.119      1.003    741.036 
+  m_i, x_i                            0.002      0.056     -0.104      0.112      1.001   3408.574 
+  y_i, x_i                            0.002      0.056     -0.106      0.112      1.000   2140.842 
+
+                                -------------------------------------------------------------------
+
+
+
+   Level-2:
+
+Correlations                         Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  mmean_j, ymean_j                   -0.003      0.143     -0.278      0.274      1.000   9913.117 
+  mmean_j, alpha_j                    0.023      0.137     -0.249      0.283      1.001   5950.805 
+  mmean_j, beta_j                    -0.030      0.139     -0.295      0.239      1.000   6265.625 
+  mmean_j, tau_j                      0.046      0.140     -0.227      0.312      1.000   7610.455 
+  mmean_j, xmean_j                    0.002      0.140     -0.275      0.271      1.000   9856.080 
+  ymean_j, alpha_j                    0.006      0.140     -0.266      0.278      1.001   6948.858 
+  ymean_j, beta_j                    -0.028      0.142     -0.308      0.247      1.000   7591.429 
+  ymean_j, tau_j                      0.011      0.140     -0.267      0.277      1.000   9907.398 
+  ymean_j, xmean_j                    0.004      0.140     -0.268      0.272      1.000   9015.523 
+  alpha_j, tau_j                     -0.029      0.141     -0.302      0.252      1.000   8188.796 
+  alpha_j, xmean_j                    0.005      0.138     -0.260      0.275      1.001   4672.941 
+  beta_j, tau_j                      -0.020      0.142     -0.304      0.255      1.000   7052.865 
+  beta_j, xmean_j                    -0.036      0.139     -0.304      0.236      1.000   6217.383 
+  tau_j, xmean_j                     -0.003      0.138     -0.269      0.268      1.001   8079.736 
+
+                                -------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+  level2.mediation block:
+
+Latent Variable:   mmean_j    
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.870      0.751      0.729      3.651      1.017    233.554 
+
+Coefficients:                   
+  Intercept                          26.843      3.442     20.804     34.567      1.020    195.128 
+  xmean_j                             0.188      0.357     -0.612      0.824      1.019    199.572 
+
+Standardized Coefficients:      
+  xmean_j                             0.144      0.251     -0.455      0.551      1.018    190.738 
+
+Proportion Variance Explained   
+  by Coefficients                     0.042      0.097      0.000      0.349      1.004    391.015 
+  by Residual Variation               0.958      0.097      0.651      1.000      1.004    391.015 
+
+                                -------------------------------------------------------------------
+
+
+
+Latent Variable:   ymean_j    
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.059      0.049      0.003      0.180      1.014    113.963 
+
+Coefficients:                   
+  Intercept                          -3.263      2.592    -10.087      0.605      1.029     98.736 
+  mmean_j                             0.194      0.084      0.062      0.386      1.021    137.492 
+  xmean_j                             0.179      0.103     -0.013      0.416      1.029    143.679 
+
+Standardized Coefficients:      
+  mmean_j                             0.629      0.192      0.225      0.968      1.010    155.782 
+  xmean_j                             0.434      0.218     -0.031      0.847      1.038    150.043 
+
+Proportion Variance Explained   
+  by Coefficients                     0.685      0.213      0.215      0.979      1.016     96.534 
+  by Residual Variation               0.315      0.213      0.021      0.785      1.016     96.534 
+
+                                -------------------------------------------------------------------
+
+
+  level1.mediation block:
+
+Outcome Variable:  m_i        
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                      12.704      0.980     10.975     14.781      1.002   1292.107 
+
+Coefficients:                   
+  mmean_j                            @1.000        ---        ---        ---        ---        --- 
+  (x_i-xmean_j)*alpha_j              @1.000        ---        ---        ---        ---        --- 
+
+Standardized Coefficients:      
+  (x_i-xmean_j)*alpha_j               0.553      0.042      0.464      0.629      1.001    437.308 
+
+Proportion Variance Explained   
+  by Coefficients                     0.305      0.046      0.216      0.395      1.001    441.046 
+  by Residual Variation               0.695      0.046      0.605      0.784      1.001    441.046 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  y_i        
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.120      0.079      0.977      1.288      1.001    928.662 
+
+Coefficients:                   
+  ymean_j                            @1.000        ---        ---        ---        ---        --- 
+  (m_i-mmean_j)*beta_j               @1.000        ---        ---        ---        ---        --- 
+  (x_i-xmean_j)*tau_j                @1.000        ---        ---        ---        ---        --- 
+
+Standardized Coefficients:      
+  (m_i-mmean_j)*beta_j                0.198      0.054      0.075      0.300      1.016     99.227 
+  (x_i-xmean_j)*tau_j                 0.390      0.048      0.296      0.484      1.013    223.476 
+
+Proportion Variance Explained   
+  by Coefficients                     0.225      0.037      0.158      0.303      1.002    309.210 
+  by Residual Variation               0.775      0.037      0.697      0.842      1.002    309.210 
+
+                                -------------------------------------------------------------------
+
+
+  level2.models block:
+
+Latent Variable:   alpha_j    
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.209      0.101      0.062      0.457      1.005    271.985 
+
+Coefficients:                   
+  Intercept                           0.682      0.084      0.516      0.842      1.006    642.870 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        nan        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        nan        nan 
+
+                                -------------------------------------------------------------------
+
+
+
+Latent Variable:   beta_j     
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.002      0.002      0.000      0.007      1.013    124.001 
+
+Coefficients:                   
+  Intercept                           0.030      0.015      0.000      0.057      1.007    235.876 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        nan        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        nan        nan 
+
+                                -------------------------------------------------------------------
+
+
+
+Latent Variable:   tau_j      
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.006      0.004      0.000      0.016      1.003    214.572 
+
+Coefficients:                   
+  Intercept                           0.148      0.022      0.106      0.194      1.012    372.505 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        nan        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        nan        nan 
+
+                                -------------------------------------------------------------------
+
+
+
+Latent Variable:   xmean_j    
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.150      0.367      0.545      1.991      1.006    395.662 
+
+Coefficients:                   
+  Intercept                           9.608      0.155      9.302      9.910      1.002   1448.668 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        nan        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        nan        nan 
+
+                                -------------------------------------------------------------------
+
+
+
+Covariance Matrix: alpha_j beta_j
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Covariances:                    
+  Cov(alpha_j,beta_j)                 0.001      0.010     -0.020      0.021      1.032     78.252 
+
+Correlations:                   
+  Cor(alpha_j,beta_j)                 0.077      0.476     -0.818      0.872      1.039     62.967 
+
+                                -------------------------------------------------------------------
+
+
+  level1.models block:
+
+Outcome Variable:  x_i        
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       8.029      0.516      7.098      9.135      1.002   2537.419 
+
+Coefficients:                   
+  xmean_j                            @1.000        ---        ---        ---        ---        --- 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        nan        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        nan        nan 
+
+                                -------------------------------------------------------------------
+
+
+
+GENERATED PARAMETERS:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  ab_cov                              0.001      0.010     -0.020      0.021      1.032     78.252 
+  ab_w                                0.021      0.013     -0.004      0.048      1.021    159.431 
+  ab_b                                0.031      0.083     -0.169      0.184      1.019    157.031 
+
+                                -------------------------------------------------------------------
+

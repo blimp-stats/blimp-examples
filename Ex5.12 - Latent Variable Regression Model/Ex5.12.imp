@@ -1,0 +1,26 @@
+DATA: data4.dat;
+VARIABLES: id v1:v5 x v6 v7 d y1:y6 m1:m7 v8:v13;
+ORDINAL: d y1:y6 m1:m7;
+MISSING: 999;
+FIXED: d;
+LATENT: latenty latentm;
+MODEL: 
+structural.model:
+latentm ~ x d;
+latenty ~ latentm x d;
+latentm ~~ latentm@1;
+latenty ~~ latenty@1;
+measurement.models:
+latentm -> m1@xload_prior m2:m6;
+latenty -> y1@yload_prior y2:y6;
+PARAMETERS:
+xload_prior ~ truncate(0, Inf);
+yload_prior ~ truncate(0, Inf);
+SEED: 90291;
+BURN: 50000;
+ITERATIONS: 50000;
+# save model-based multiple imputations;
+# OPTIONS: savelatent;
+# CHAINS: 20;
+# NIMPS: 20;
+# SAVE: stacked = imps.dat;

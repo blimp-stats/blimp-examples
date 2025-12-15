@@ -1,0 +1,13 @@
+DATA: data2.dat;
+VARIABLES: id y1 y2 x1 d1 d2 n1 x2 n2;
+ORDINAL: d1 d2;
+NOMINAL: n1;
+FIXED: x1 d2;
+MISSING: 999;
+FCS: y1 x1 d1 d2 n1 x2;
+SEED: 90291;
+BURN: 1000;
+ITERATIONS: 1000;
+CHAINS: 20;
+NIMPS: 20;
+SAVE: stacked = imps.dat;

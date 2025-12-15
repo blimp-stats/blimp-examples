@@ -1,0 +1,37 @@
+DATA: RICLPM.dat;
+VARIABLES: x1:x5 y1:y5 z2 z1;
+ORDINAL: z1;
+LATENT: RIx RIy;
+MODEL: 
+# define residual calculations
+x1r = x1 - (mux1 + RIx + z1*a1);
+x2r = x2 - (mux2 + RIx + z1*a2);
+x3r = x3 - (mux3 + RIx + z1*a3);
+x4r = x4 - (mux4 + RIx + z1*a4);
+y1r = y1 - (muy1 + RIy + z1*b1);
+y2r = y2 - (muy2 + RIy + z1*b2);
+y3r = y3 - (muy3 + RIy + z1*b3);
+y4r = y4 - (muy4 + RIy + z1*b4);
+random.intercept:
+RIx ~~ RIy;
+x.models:
+x1 ~ 1@mux1 RIx@1 z1@a1;
+x2 ~ 1@mux2 RIx@1 x1r y1r z1@a2;
+x3 ~ 1@mux3 RIx@1 x2r y2r z1@a3;
+x4 ~ 1@mux4 RIx@1 x3r y3r z1@a4;
+x5 ~ 1@mux5 RIx@1 x4r y4r z1@a5;
+y.models:
+y1 ~ 1@muy1 RIy@1 z1@b1;
+y2 ~ 1@muy2 RIy@1 y1r x1r z1@b2;
+y3 ~ 1@muy3 RIy@1 y2r x2r z1@b3;
+y4 ~ 1@muy4 RIy@1 y3r x3r z1@b4;
+y5 ~ 1@muy5 RIy@1 y4r x4r z1@b5;
+covariances:
+x1 ~~ y1;
+x2 ~~ y2;
+x3 ~~ y3;
+x4 ~~ y4;
+x5 ~~ y5;
+SEED: 90291;
+BURN: 5000;
+ITERATIONS: 10000;

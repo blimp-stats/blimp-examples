@@ -1,0 +1,14 @@
+DATA: data1.dat;
+VARIABLES: level1id level2id v1_i v2_i y_i x_i v3_i m_j v4_j;
+CLUSTERID: level2id;
+MISSING: 999;
+CENTER: 
+groupmean = x_i;
+grandmean = m_j;
+MODEL: 
+y_i ~ x_i m_j x_i*m_j | x_i;
+SIMPLE: 
+x_i | m_j;
+SEED: 90291;
+BURN: 10000;
+ITERATIONS: 10000;

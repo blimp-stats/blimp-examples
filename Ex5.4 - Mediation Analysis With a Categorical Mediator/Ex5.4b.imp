@@ -1,0 +1,23 @@
+DATA: data4.dat;
+VARIABLES: id a1:a3 v1 y v2 v3 x v4:v22 m7pt;
+MISSING: 999;
+ORDINAL: m;
+TRANSFORM: m = ifelse(m7pt <= 4, 0, 1);
+CENTER: x;
+MODEL:
+logit(m) ~ 1@m_icept x@alpha;
+y ~ m@beta x;
+PARAMETERS:
+xvalue1 = -.50;
+xvalue2 = 0;
+xvalue3 = .50;
+ab_xval1 = (alpha*exp(m_icept + alpha*xvalue1)) / 
+   (1 + exp(m_icept + alpha*xvalue1))^2 * beta;
+ab_xval2 = (alpha*exp(m_icept + alpha*xvalue2)) / 
+   (1 + exp(m_icept + alpha*xvalue2))^2 * beta;
+ab_xval3 = (alpha*exp(m_icept + alpha*xvalue3)) / 
+   (1 + exp(m_icept + alpha*xvalue3))^2 * beta;
+SEED: 90291;
+BURN: 10000;
+ITERATIONS: 10000;
+OUTPUT: default wald pvalue;

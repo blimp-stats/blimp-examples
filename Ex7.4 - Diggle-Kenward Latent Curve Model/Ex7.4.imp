@@ -1,0 +1,32 @@
+DATA: data23.dat;
+VARIABLES: id y1 y2 y3 y4 y5 y6 d1 d2 d3 d4 d5 d6;
+ORDINAL: d2 d3 d4 d5 d6;
+MISSING: 999;
+LATENT: icept slope;
+MODEL:
+structural.model:
+icept ~ 1;
+slope ~ 1;
+icept <-> slope;
+measurement.model:
+y1 ~ 1@0 icept@1 slope@0;
+y2 ~ 1@0 icept@1 slope@1;
+y3 ~ 1@0 icept@1 slope@2;
+y4 ~ 1@0 icept@1 slope@3;
+y5 ~ 1@0 icept@1 slope@4;
+y6 ~ 1@0 icept@1 slope@5;
+y1 ~~ y1@vconstraint;
+y2 ~~ y2@vconstraint;
+y3 ~~ y3@vconstraint;
+y4 ~~ y4@vconstraint;
+y5 ~~ y5@vconstraint;
+y6 ~~ y6@vconstraint;
+dropout.model:
+d2 ~ y1@marconstraint y2@mnarconstraint;
+d3 ~ y2@marconstraint y3@mnarconstraint;
+d4 ~ y3@marconstraint y4@mnarconstraint;
+d5 ~ y4@marconstraint y5@mnarconstraint;
+d6 ~ y5@marconstraint y6@mnarconstraint;
+SEED: 90291;
+BURN: 100000;
+ITERATIONS: 10000;

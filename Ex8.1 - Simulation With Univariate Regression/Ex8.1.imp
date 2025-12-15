@@ -1,0 +1,13 @@
+SIMULATE: 
+	n = 1000;
+	n: 
+		x = normal(0, 1);
+		y = normal(10 + x*0.5, 1);
+VARIABLES: x y;
+MODEL: 
+	y ~ x;
+BURN: 5000;
+ITER: 5000;
+SEED: 10972;
+SAVE:
+	dataset = generated_data.csv;

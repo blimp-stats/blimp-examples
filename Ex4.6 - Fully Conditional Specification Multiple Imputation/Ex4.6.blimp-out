@@ -1,0 +1,210 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.0.53
+
+         Developed by Craig K. Enders, Brian T. Keller, and Han Du.
+                   Blimp was developed with funding from
+                     Institute of Educational Sciences
+                    awards R305D150056 and R305D190002.
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+      Programming by Brian T. Keller, Co-P.I. Email: blimp@utexas.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Latent Fully conditional specification
+  MCMC algorithm:                    Gibbs sampler (GIBBS)
+  Between-cluster imputation model:  Not applicable, single-level imputation
+  Residual variance structure:       Not applicable, single-level imputation
+  Prior for variances:               Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: The default prior for regression coefficients 
+        in categorical models is 'normal( 0.0, 5.0)'
+
+  NOTE: The following nominal variables have automatically
+        been assigned a reference group.
+
+          'n1' with reference value '1'
+
+        To change reference group use the following command:
+          NOMINAL: variable_name(reference_value);
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 20 chains    Highest PSR   Parameter #  
+                           26 to 50              1.560            16  
+                           51 to 100             1.439            16  
+                           76 to 150             1.188             7  
+                          101 to 200             1.145            35  
+                          126 to 250             1.173            33  
+                          151 to 300             1.105            16  
+                          176 to 350             1.077            14  
+                          201 to 400             1.087            14  
+                          226 to 450             1.069            16  
+                          251 to 500             1.064            14  
+                          276 to 550             1.063            14  
+                          301 to 600             1.059            14  
+                          326 to 650             1.057            14  
+                          351 to 700             1.046            14  
+                          376 to 750             1.035            37  
+                          401 to 800             1.037            35  
+                          426 to 850             1.039            35  
+                          451 to 900             1.038            35  
+                          476 to 950             1.033            16  
+                          501 to 1000            1.034            16  
+
+
+DATA INFORMATION:
+
+  Sample Size:              2000
+  Missing Data Rates:
+
+                       y1 = 21.20
+                       d1 = 03.60
+                       n1 = 06.00
+                       x2 = 11.40
+
+  Nominal Dummy Codes:
+
+                       n1 = n1.2 n1.3 n1.4
+
+
+VARIABLES IN IMPUTATION MODEL:
+
+  Fixed variables:        x1 d2
+  Incomplete continuous:  y1 x2
+  Incomplete ordinal:     d1
+  Incomplete nominal:     n1
+
+  NUMBER OF PARAMETERS
+    Imputation Models:      44
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+PREDICTOR MODEL ESTIMATES:
+
+  Summaries based on 1000 iterations using 20 chains.
+
+
+Missing variable:   y1         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                            9.979      0.089      9.810     10.157      1.056    458.771 
+
+Level 1:                                                                                           
+  x1                                  0.606      0.037      0.536      0.679      1.055    405.214 
+  d1                                  1.435      0.083      1.274      1.602      1.045    533.122 
+  d2                                  0.091      0.170     -0.251      0.426      1.044    593.280 
+  n1.2                               -0.504      0.198     -0.896     -0.109      1.198    119.934 
+  n1.3                               -0.161      0.174     -0.521      0.188      1.154    113.858 
+  n1.4                                0.067      0.209     -0.335      0.475      1.206     95.161 
+  x2                                 -0.135      0.028     -0.188     -0.083      1.062    426.028 
+  Residual Var.                       9.808      0.411      9.066     10.732      1.038    474.061 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+
+
+Missing variable:   d1         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                           -0.128      0.034     -0.195     -0.060      1.069    358.853 
+
+Level 1:                                                                                           
+  y1                                  0.147      0.010      0.127      0.167      1.074    255.495 
+  x1                                 -0.098      0.014     -0.125     -0.068      1.050    381.567 
+  d2                                  0.031      0.061     -0.082      0.150      1.053    465.593 
+  n1.2                                0.072      0.070     -0.064      0.207      1.214    120.879 
+  n1.3                                0.010      0.059     -0.103      0.128      1.200     63.867 
+  n1.4                               -0.096      0.071     -0.237      0.055      1.206    108.518 
+  x2                                 -0.027      0.011     -0.049     -0.007      1.094    238.919 
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+Thresholds:                                                                                        
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+
+
+Missing variable:   n1         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean: n1.2                     -0.914      0.038     -0.984     -0.837      1.143    109.139 
+Grand Mean: n1.3                     -0.548      0.034     -0.616     -0.481      1.131    213.628 
+Grand Mean: n1.4                     -1.087      0.042     -1.176     -1.002      1.160    103.844 
+
+Level 1:                                                                                           
+  n1.2 ~ y1                          -0.057      0.014     -0.084     -0.028      1.210    105.562 
+  n1.2 ~ x1                           0.058      0.018      0.026      0.095      1.140    151.049 
+  n1.2 ~ d1                           0.029      0.051     -0.066      0.133      1.279     95.742 
+  n1.2 ~ d2                           0.070      0.071     -0.065      0.208      1.105    189.058 
+  n1.2 ~ x2                          -0.060      0.012     -0.082     -0.037      1.110    228.856 
+  n1.3 ~ y1                          -0.039      0.012     -0.061     -0.015      1.163     91.144 
+  n1.3 ~ x1                           0.041      0.016      0.009      0.072      1.098    276.926 
+  n1.3 ~ d1                          -0.004      0.041     -0.081      0.077      1.161     93.154 
+  n1.3 ~ d2                           0.217      0.067      0.087      0.349      1.090    249.609 
+  n1.3 ~ x2                          -0.104      0.010     -0.123     -0.083      1.066    271.186 
+  n1.4 ~ y1                          -0.028      0.015     -0.057      0.000      1.211    104.685 
+  n1.4 ~ x1                           0.039      0.020     -0.001      0.077      1.186    140.438 
+  n1.4 ~ d1                          -0.056      0.049     -0.151      0.052      1.220     95.039 
+  n1.4 ~ d2                           0.030      0.082     -0.125      0.201      1.159    123.292 
+  n1.4 ~ x2                          -0.071      0.013     -0.096     -0.047      1.095    192.873 
+  Var(n1.2)                           1.000      0.000      1.000      1.000        nan        nan 
+  Cov(n1.2, n1.3)                     0.500      0.000      0.500      0.500        nan        nan 
+  Var(n1.3)                           1.000      0.000      1.000      1.000        nan        nan 
+  Cov(n1.2, n1.4)                     0.500      0.000      0.500      0.500        nan        nan 
+  Cov(n1.3, n1.4)                     0.500      0.000      0.500      0.500        nan        nan 
+  Var(n1.4)                           1.000      0.000      1.000      1.000        nan        nan 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+
+
+Missing variable:   x2         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                            8.388      0.081      8.231      8.557      1.032    660.621 
+
+Level 1:                                                                                           
+  y1                                 -0.136      0.028     -0.193     -0.084      1.056    456.132 
+  x1                                  0.131      0.037      0.063      0.203      1.038    571.447 
+  d1                                 -0.278      0.107     -0.479     -0.067      1.047    480.429 
+  d2                                  0.236      0.166     -0.103      0.562      1.042    646.896 
+  n1.2                               -0.026      0.167     -0.327      0.303      1.113    165.072 
+  n1.3                               -0.905      0.146     -1.199     -0.620      1.079    288.636 
+  n1.4                               -0.248      0.175     -0.581      0.117      1.093    228.744 
+  Residual Var.                       9.918      0.377      9.263     10.748      1.027    598.807 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+
+
+VARIABLE ORDER IN IMPUTED DATA:
+
+   stacked = 'imps.dat'
+
+     imp# id y1 y2 x1 d1 d2 n1 x2 n2
+

@@ -1,0 +1,23 @@
+DATA: data20.dat;
+VARIABLES: id a1:a3 v1 y m v2 x v3:v22;
+MISSING: 999;
+ORDINAL: x y;
+MODEL:
+m ~ 1@m_icept x@alpha;
+logit(y) ~ 1@y_icept m@beta x@tau;
+PARAMETERS:
+# conditional indirect effect at X = 0
+ab_x0 = alpha * ( beta * exp( y_icept + beta*(m_icept + alpha*0) + tau*0 ) ) /
+   ( 1 + exp( y_icept + beta*(m_icept + alpha*0) + tau*0 ) )^2;
+# conditional indirect effect at X = 1
+ab_x1 = alpha * ( beta * exp( y_icept + beta*(m_icept + alpha*1) + tau*1 ) ) /
+   ( 1 + exp( y_icept + beta*(m_icept + alpha*1) + tau*1 ) )^2;
+# contrast
+ab_diff = ab_x1 - ab_x0;
+SEED: 90291;
+BURN: 10000;
+ITERATIONS: 10000;
+# save model-based multiple imputations;
+# CHAINS: 20;
+# NIMPS: 20;
+# SAVE: stacked = imps.dat;

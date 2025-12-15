@@ -1,0 +1,21 @@
+DATA: data11.dat;
+VARIABLES: level2id y1_i:y4_i x1_i x2_i x3_j;
+MISSING: 999;
+CLUSTERID: level2id;
+LATENT:
+laty_lev1;
+level2id = laty_lev2;
+CENTER:
+grandmean = x1_i x2_i x3_j;
+MODEL:
+structural.model:
+laty_lev1 ~ x1_i x2_i;
+laty_lev2 ~ x3_j;
+measurement.model:
+y1_i ~ laty_lev1@1 laty_lev2@1;
+y2_i ~ laty_lev1 laty_lev2;
+y3_i ~ laty_lev1 laty_lev2;
+y4_i ~ laty_lev1 laty_lev2;
+SEED: 90291;
+BURN: 10000;
+ITERATIONS: 10000;

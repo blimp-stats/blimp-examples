@@ -1,0 +1,556 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.2.10
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Not applicable, single-level imputation
+  Prior for random effect variances: Not applicable, single-level imputation
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: The default prior for regression coefficients 
+        in categorical models is 'normal( 0.0, 5.0)'
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                         2501 to 5000            2.676            55  
+                         5001 to 10000           2.239            55  
+                         7501 to 15000           1.352            81  
+                        10001 to 20000           1.310            58  
+                        12501 to 25000           1.273            72  
+                        15001 to 30000           1.560            55  
+                        17501 to 35000           1.039            72  
+                        20001 to 40000           1.416            55  
+                        22501 to 45000           1.388            55  
+                        25001 to 50000           1.085            63  
+                        27501 to 55000           1.054            90  
+                        30001 to 60000           1.129            81  
+                        32501 to 65000           1.064            55  
+                        35001 to 70000           1.018            61  
+                        37501 to 75000           1.059            90  
+                        40001 to 80000           1.055            90  
+                        42501 to 85000           1.148            55  
+                        45001 to 90000           1.238            55  
+                        47501 to 95000           1.248            55  
+                        50001 to 100000          1.184            55  
+
+
+DATA INFORMATION:
+
+  Sample Size:              1000
+  Missing Data Rates:
+
+                       y1 = 00.00
+                       y2 = 03.60
+                       y3 = 07.20
+                       y4 = 12.00
+                       y5 = 18.00
+                       y6 = 28.80
+                       d2 = 00.00
+                       d3 = 03.60
+                       d4 = 07.20
+                       d5 = 12.00
+                       d6 = 18.00
+
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         13
+    Predictor Models:       0
+
+  FACTORS
+    Level-1:                icept slope
+
+  MODELS
+
+   structural.model:
+    [1]  icept ~ Intercept
+    [2]  slope ~ Intercept
+    [3]  icept slope <-> icept slope 
+
+   measurement.model:
+    [4]  y1 ~ icept@1 slope@0
+    [5]  y2 ~ icept@1 slope@1
+    [6]  y3 ~ icept@1 slope@2
+    [7]  y4 ~ icept@1 slope@3
+    [8]  y5 ~ icept@1 slope@4
+    [9]  y6 ~ icept@1 slope@5
+
+   dropout.model:
+   [10]  d2 ~ Intercept icept@iconstraint slope@sconstraint
+   [11]  d3 ~ Intercept icept@iconstraint slope@sconstraint
+   [12]  d4 ~ Intercept icept@iconstraint slope@sconstraint
+   [13]  d5 ~ Intercept icept@iconstraint slope@sconstraint
+   [14]  d6 ~ Intercept icept@iconstraint slope@sconstraint
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Marginal Likelihood
+      DIC2                  29646.705
+      WAIC                  32146.081
+
+    Conditional Likelihood
+      DIC2                  29646.705
+      WAIC                  32146.081
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+
+Correlations                         Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  icept, y1                           0.001      0.042     -0.079      0.085      1.001   2049.659 
+  icept, y2                           0.003      0.040     -0.076      0.082      1.001   4660.013 
+  icept, y3                           0.003      0.041     -0.078      0.083      1.000   6063.017 
+  icept, y4                          -0.021      0.040     -0.098      0.058      1.000   6720.417 
+  icept, y5                           0.022      0.041     -0.059      0.103      1.000   6746.955 
+  icept, y6                          -0.012      0.043     -0.096      0.073      1.001   7587.189 
+  icept, d2                          -0.002      0.044     -0.087      0.085      1.001   8417.215 
+  icept, d3                           0.001      0.044     -0.086      0.088      1.000   8585.125 
+  icept, d4                           0.005      0.044     -0.083      0.093      1.001   8499.732 
+  icept, d5                           0.016      0.044     -0.072      0.101      1.000   8773.314 
+  icept, d6                          -0.004      0.044     -0.090      0.080      1.000   8597.363 
+  slope, y1                           0.005      0.041     -0.075      0.085      1.001   1306.185 
+  slope, y2                          -0.017      0.039     -0.093      0.059      1.001   4431.233 
+  slope, y3                           0.032      0.038     -0.043      0.105      1.001   5396.522 
+  slope, y4                          -0.019      0.039     -0.095      0.057      1.000   6911.386 
+  slope, y5                          -0.008      0.040     -0.088      0.069      1.001   7460.897 
+  slope, y6                           0.008      0.042     -0.074      0.090      1.001   4717.939 
+  slope, d2                           0.003      0.045     -0.085      0.091      1.000   3541.465 
+  slope, d3                           0.001      0.045     -0.089      0.090      1.001   4031.620 
+  slope, d4                          -0.002      0.044     -0.088      0.085      1.001   5682.512 
+  slope, d5                           0.004      0.044     -0.084      0.089      1.000   6253.985 
+  slope, d6                          -0.006      0.044     -0.093      0.078      1.003   2375.729 
+  y1, y2                              0.023      0.039     -0.053      0.099      1.001   2358.069 
+  y1, y3                             -0.007      0.038     -0.082      0.067      1.001   5869.496 
+  y1, y4                             -0.048      0.038     -0.124      0.026      1.000   7633.708 
+  y1, y5                              0.014      0.040     -0.064      0.092      1.000   7572.521 
+  y1, y6                              0.005      0.043     -0.078      0.089      1.001   6434.783 
+  y1, d2                             -0.004      0.044     -0.090      0.080      1.000   9176.558 
+  y1, d3                              0.001      0.043     -0.084      0.085      1.000   9313.687 
+  y1, d4                              0.013      0.044     -0.073      0.100      1.000   8905.880 
+  y1, d5                              0.020      0.043     -0.066      0.105      1.001   9222.179 
+  y1, d6                              0.017      0.043     -0.068      0.101      1.002   7513.251 
+  y2, y3                             -0.031      0.038     -0.104      0.043      1.000   6103.582 
+  y2, y4                             -0.021      0.038     -0.095      0.053      1.000   9076.662 
+  y2, y5                              0.054      0.039     -0.023      0.130      1.000   8202.719 
+  y2, y6                             -0.016      0.041     -0.096      0.067      1.000   7954.723 
+  y2, d2                              0.001      0.045     -0.086      0.087      1.000   9674.507 
+  y2, d3                             -0.000      0.044     -0.086      0.085      1.001   8275.916 
+  y2, d4                             -0.007      0.044     -0.094      0.080      1.000   9477.308 
+  y2, d5                             -0.004      0.043     -0.090      0.080      1.000   9838.289 
+  y2, d6                             -0.027      0.042     -0.109      0.054      1.000   9535.527 
+  y3, y4                              0.070      0.037     -0.002      0.142      1.001   9001.012 
+  y3, y5                             -0.034      0.039     -0.109      0.043      1.000   9153.518 
+  y3, y6                             -0.005      0.040     -0.085      0.072      1.000   8990.232 
+  y3, d2                              0.001      0.045     -0.087      0.090      1.000   9847.200 
+  y3, d3                             -0.000      0.045     -0.088      0.086      1.000   9660.872 
+  y3, d4                              0.001      0.044     -0.087      0.088      1.000   7302.080 
+  y3, d5                              0.008      0.043     -0.076      0.091      1.000   9097.692 
+  y3, d6                              0.015      0.042     -0.069      0.097      1.000  10001.996 
+  y4, y5                              0.010      0.039     -0.066      0.086      1.001   8034.277 
+  y4, y6                             -0.034      0.041     -0.114      0.046      1.000   8197.217 
+  y4, d2                              0.001      0.045     -0.088      0.090      1.000  10088.780 
+  y4, d3                              0.001      0.045     -0.086      0.088      1.000   9930.509 
+  y4, d4                              0.001      0.045     -0.086      0.089      1.000  10138.615 
+  y4, d5                             -0.001      0.044     -0.087      0.084      1.001   6952.301 
+  y4, d6                             -0.008      0.042     -0.093      0.074      1.000   8344.162 
+  y5, y6                              0.020      0.042     -0.062      0.101      1.000   7864.347 
+  y5, d2                             -0.002      0.045     -0.088      0.089      1.000   9385.914 
+  y5, d3                             -0.001      0.045     -0.089      0.086      1.000   8997.140 
+  y5, d4                             -0.001      0.045     -0.089      0.086      1.001   9899.384 
+  y5, d5                             -0.002      0.046     -0.091      0.087      1.000   9778.605 
+  y5, d6                             -0.002      0.043     -0.088      0.082      1.001   7185.989 
+  y6, d2                              0.001      0.045     -0.087      0.091      1.000   9273.456 
+  y6, d3                              0.002      0.045     -0.087      0.088      1.000   9793.937 
+  y6, d4                              0.000      0.045     -0.086      0.088      1.000   9831.973 
+  y6, d5                              0.001      0.045     -0.085      0.089      1.000   9919.734 
+  y6, d6                              0.001      0.045     -0.085      0.088      1.000   9642.581 
+  d2, d3                              0.000      0.045     -0.088      0.087      1.000  10029.289 
+  d2, d4                              0.001      0.046     -0.089      0.089      1.000   9153.204 
+  d2, d5                             -0.000      0.045     -0.087      0.088      1.000   9871.394 
+  d2, d6                              0.001      0.045     -0.088      0.090      1.000  10487.707 
+  d3, d4                              0.001      0.045     -0.088      0.088      1.000   9689.622 
+  d3, d5                             -0.001      0.045     -0.089      0.086      1.000   9808.136 
+  d3, d6                              0.000      0.044     -0.086      0.087      1.000   9535.121 
+  d4, d5                              0.000      0.045     -0.086      0.087      1.000   9804.901 
+  d4, d6                              0.001      0.045     -0.087      0.088      1.000   9903.964 
+  d5, d6                              0.001      0.045     -0.086      0.090      1.000   9838.082 
+
+                                -------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+  structural.model block:
+
+Latent Variable:   icept      
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.212      0.020      0.175      0.254      1.010    380.253 
+
+Coefficients:                   
+  Intercept                          11.970      0.021     11.928     12.011      1.002   1645.389 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        nan        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        nan        nan 
+
+                                -------------------------------------------------------------------
+
+
+
+Latent Variable:   slope      
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.094      0.007      0.082      0.108      1.011    202.499 
+
+Coefficients:                   
+  Intercept                          -0.995      0.013     -1.019     -0.971      1.016    194.238 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        nan        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        nan        nan 
+
+                                -------------------------------------------------------------------
+
+
+
+Covariance Matrix: icept slope
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Covariances:                    
+  Cov(icept,slope)                    0.005      0.008     -0.011      0.021      1.011    316.572 
+
+Correlations:                   
+  Cor(icept,slope)                    0.037      0.060     -0.074      0.161      1.011    302.846 
+
+                                -------------------------------------------------------------------
+
+
+  measurement.model block:
+
+Outcome Variable:  y1         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.405      0.010      0.386      0.425      1.003   1866.524 
+
+Coefficients:                   
+  icept                              @1.000        ---        ---        ---        ---        --- 
+  slope                              @0.000        ---        ---        ---        ---        --- 
+
+Standardized Coefficients:      
+  icept                               0.586      0.018      0.548      0.619      1.013    314.910 
+  slope                               0.000      0.000      0.000      0.000        nan        nan 
+
+Proportion Variance Explained   
+  by Coefficients                     0.343      0.021      0.300      0.383      1.013    316.109 
+  by Residual Variation               0.657      0.025      0.610      0.709      1.009    459.465 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  y2         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.405      0.010      0.386      0.425      1.003   1866.524 
+
+Coefficients:                   
+  icept                              @1.000        ---        ---        ---        ---        --- 
+  slope                              @1.000        ---        ---        ---        ---        --- 
+
+Standardized Coefficients:      
+  icept                               0.542      0.020      0.500      0.580      1.017    269.676 
+  slope                               0.360      0.011      0.340      0.383      1.013    149.270 
+
+Proportion Variance Explained   
+  by Coefficients                     0.438      0.014      0.411      0.464      1.002    721.700 
+  by Residual Variation               0.562      0.018      0.529      0.598      1.001   1267.846 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  y3         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.405      0.010      0.386      0.425      1.003   1866.524 
+
+Coefficients:                   
+  icept                              @1.000        ---        ---        ---        ---        --- 
+  slope                              @2.000        ---        ---        ---        ---        --- 
+
+Standardized Coefficients:      
+  icept                               0.457      0.019      0.419      0.494      1.021    256.525 
+  slope                               0.608      0.016      0.577      0.640      1.009    168.497 
+
+Proportion Variance Explained   
+  by Coefficients                     0.600      0.010      0.580      0.619      1.009    405.836 
+  by Residual Variation               0.400      0.012      0.377      0.425      1.006    604.923 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  y4         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.405      0.010      0.386      0.425      1.003   1866.524 
+
+Coefficients:                   
+  icept                              @1.000        ---        ---        ---        ---        --- 
+  slope                              @3.000        ---        ---        ---        ---        --- 
+
+Standardized Coefficients:      
+  icept                               0.377      0.017      0.344      0.409      1.023    250.069 
+  slope                               0.752      0.017      0.720      0.784      1.008    190.465 
+
+Proportion Variance Explained   
+  by Coefficients                     0.728      0.008      0.712      0.744      1.017    206.623 
+  by Residual Variation               0.272      0.009      0.254      0.290      1.014    251.660 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  y5         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.405      0.010      0.386      0.425      1.003   1866.524 
+
+Coefficients:                   
+  icept                              @1.000        ---        ---        ---        ---        --- 
+  slope                              @4.000        ---        ---        ---        ---        --- 
+
+Standardized Coefficients:      
+  icept                               0.313      0.014      0.285      0.341      1.024    246.172 
+  slope                               0.834      0.015      0.804      0.862      1.008    207.831 
+
+Proportion Variance Explained   
+  by Coefficients                     0.812      0.007      0.799      0.825      1.019    164.339 
+  by Residual Variation               0.188      0.007      0.174      0.202      1.017    181.386 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  y6         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.405      0.010      0.386      0.425      1.003   1866.524 
+
+Coefficients:                   
+  icept                              @1.000        ---        ---        ---        ---        --- 
+  slope                              @5.000        ---        ---        ---        ---        --- 
+
+Standardized Coefficients:      
+  icept                               0.265      0.012      0.240      0.289      1.025    243.758 
+  slope                               0.882      0.013      0.856      0.907      1.008    217.535 
+
+Proportion Variance Explained   
+  by Coefficients                     0.865      0.006      0.855      0.876      1.019    152.807 
+  by Residual Variation               0.135      0.006      0.124      0.146      1.018    161.897 
+
+                                -------------------------------------------------------------------
+
+
+  dropout.model block:
+
+Outcome Variable:  d2         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                          -0.988      0.544     -2.407     -0.105      1.234     11.505 
+  icept                               0.073      0.041      0.006      0.180      1.177     11.844 
+  slope                               1.998      0.214      1.623      2.421      1.114     28.009 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+
+Standardized Coefficients:      
+  icept                               0.029      0.017      0.002      0.073      1.190     11.706 
+  slope                               0.521      0.045      0.439      0.607      1.102     27.806 
+
+Proportion Variance Explained   
+  by Coefficients                     0.273      0.046      0.195      0.370      1.096     29.035 
+  by Residual Variation               0.727      0.046      0.630      0.805      1.096     29.035 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  d3         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                          -0.926      0.550     -2.373     -0.013      1.238     11.388 
+  icept                               0.073      0.041      0.006      0.180      1.177     11.844 
+  slope                               1.998      0.214      1.623      2.421      1.114     28.009 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+
+Standardized Coefficients:      
+  icept                               0.029      0.017      0.002      0.073      1.190     11.706 
+  slope                               0.521      0.045      0.439      0.607      1.102     27.806 
+
+Proportion Variance Explained   
+  by Coefficients                     0.273      0.046      0.195      0.370      1.096     29.035 
+  by Residual Variation               0.727      0.046      0.630      0.805      1.096     29.035 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  d4         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                          -0.704      0.556     -2.177      0.203      1.238     11.492 
+  icept                               0.073      0.041      0.006      0.180      1.177     11.844 
+  slope                               1.998      0.214      1.623      2.421      1.114     28.009 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+
+Standardized Coefficients:      
+  icept                               0.029      0.017      0.002      0.073      1.190     11.706 
+  slope                               0.521      0.045      0.439      0.607      1.102     27.806 
+
+Proportion Variance Explained   
+  by Coefficients                     0.273      0.046      0.195      0.370      1.096     29.035 
+  by Residual Variation               0.727      0.046      0.630      0.805      1.096     29.035 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  d5         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                          -0.513      0.566     -2.012      0.410      1.232     11.584 
+  icept                               0.073      0.041      0.006      0.180      1.177     11.844 
+  slope                               1.998      0.214      1.623      2.421      1.114     28.009 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+
+Standardized Coefficients:      
+  icept                               0.029      0.017      0.002      0.073      1.190     11.706 
+  slope                               0.521      0.045      0.439      0.607      1.102     27.806 
+
+Proportion Variance Explained   
+  by Coefficients                     0.273      0.046      0.195      0.370      1.096     29.035 
+  by Residual Variation               0.727      0.046      0.630      0.805      1.096     29.035 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  d6         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                          -0.020      0.572     -1.537      0.905      1.241     11.608 
+  icept                               0.073      0.041      0.006      0.180      1.177     11.844 
+  slope                               1.998      0.214      1.623      2.421      1.114     28.009 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+
+Standardized Coefficients:      
+  icept                               0.029      0.017      0.002      0.073      1.190     11.706 
+  slope                               0.521      0.045      0.439      0.607      1.102     27.806 
+
+Proportion Variance Explained   
+  by Coefficients                     0.273      0.046      0.195      0.370      1.096     29.035 
+  by Residual Variation               0.727      0.046      0.630      0.805      1.096     29.035 
+
+                                -------------------------------------------------------------------
+
+
+

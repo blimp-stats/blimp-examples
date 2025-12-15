@@ -1,0 +1,15 @@
+DATA: data4.dat;
+VARIABLES: id x1:x3 v1:v3 y v4:v24;
+NOMINAL: y;
+MISSING: 999;
+FIXED: x2 x3;
+CENTER: x1 x2 x3;
+MODEL: logit(y) ~ x1 x2 x3;
+SEED: 90291;
+BURN: 2000;
+ITERATIONS: 10000;
+# save model-based multiple imputations;
+# CHAINS: 20;
+# NIMPS: 20;
+# SAVE: stacked = imps.dat;
+

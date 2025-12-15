@@ -1,0 +1,291 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                              4.0.0-nightly5
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Default Priors:
+    Multilevel covariance matrices:  Zero matrix, df = -(p + 1) (PRIOR2)
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                          251 to 500             1.210             3  
+                          501 to 1000            1.080            37  
+                          751 to 1500            1.031             1  
+                         1001 to 2000            1.082            27  
+                         1251 to 2500            1.137            27  
+                         1501 to 3000            1.052            31  
+                         1751 to 3500            1.089            27  
+                         2001 to 4000            1.107            27  
+                         2251 to 4500            1.245            37  
+                         2501 to 5000            1.073            37  
+                         2751 to 5500            1.024            37  
+                         3001 to 6000            1.068            37  
+                         3251 to 6500            1.101            37  
+                         3501 to 7000            1.043            37  
+                         3751 to 7500            1.017            38  
+                         4001 to 8000            1.020            37  
+                         4251 to 8500            1.020            27  
+                         4501 to 9000            1.028            27  
+                         4751 to 9500            1.028            31  
+                         5001 to 10000           1.012            31  
+
+
+DATA INFORMATION:
+
+  Time identifier:          time_i
+  Level-2 identifier:       level2id
+  Sample Size:              6000
+  Level-2 Clusters:         1000
+  Missing Data Info:
+
+                      Pattern #:       1     2     3     4
+                          miss % --------------------------
+                      y_i = 11.6       -     -     M     M  
+                dropout_i =  6.8       -     -     M     -  
+                   time_i =  0.0       -     -     -     -  
+                 y_i.lag1 = 23.5       -     M     M     -  
+                                 --------------------------
+                                 %  71.7  16.7   6.8   4.8
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         13
+    Predictor Models:       0
+
+  PREDICTORS
+    Fixed variables:        time_i
+
+  FACTORS
+    Level-2:                beta0_j beta1_j
+
+  MODELS
+
+   latent.variables:
+    [1]  beta0_j ~ Intercept
+    [2]  beta1_j ~ Intercept
+    [3]  beta0_j <-> beta1_j
+
+   growth.model:
+    [4]  y_i ~ beta0_j@1 time_i*beta1_j@1
+
+   missingness.model:
+    [5]  dropout_i ~ (time_i==0)@-3 (time_i==1) (time_i==2) (time_i==3) (time_i==4) 
+                 (time_i==5) (time_i>0)*y_i (time_i>0)*y_i.lag1
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Conditional Likelihood
+      DIC2                  32676.160
+      WAIC                  35438.545
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 10000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  beta0_j                            11.982      0.467     11.667     11.982     12.296     10.410     13.544 
+  beta1_j                            -1.017      0.295     -1.215     -1.015     -0.816     -1.970     -0.090 
+  y_i                                 9.440      2.110      8.010      9.663     11.084      1.975     15.350 
+  dropout_i                           0.058      0.233      0.000      0.000      0.000      0.000      1.000 
+  time_i                              2.500      1.708      1.000      2.500      4.000      0.000      5.000 
+
+                                ------------------------------------------------------------------------------
+
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+   Level-1:
+
+Correlations                       Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  y_i, dropout_i                     -0.000      0.018     -0.036      0.036      0.000      0.997  10644.657 
+
+                                ------------------------------------------------------------------------------
+
+
+   No residual correlations at Level-2.
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+  latent.variables block:
+
+Latent Variable:   beta0_j    
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.219      0.020      0.182      0.261        ---        ---    564.640 
+
+Coefficients:                   
+  Intercept                          11.982      0.021     11.940     12.023  3.169e+05      0.000   1677.219 
+
+Standard Deviations:            
+  Residual SD                         0.468      0.021      0.427      0.511        ---        ---    564.503 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Latent Variable:   beta1_j    
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.088      0.006      0.077      0.100        ---        ---    401.482 
+
+Coefficients:                   
+  Intercept                          -1.017      0.013     -1.041     -0.992   6498.781      0.000    319.964 
+
+Standard Deviations:            
+  Residual SD                         0.296      0.010      0.277      0.317        ---        ---    399.175 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Covariance Matrix: beta0_j beta1_j
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Covariances:                    
+  Cov(beta0_j,beta1_j)                0.003      0.008     -0.013      0.019      0.173      0.677    603.667 
+
+Correlations:                   
+  Cor(beta0_j,beta1_j)                0.025      0.059     -0.087      0.145      0.195      0.659    586.798 
+
+                                ------------------------------------------------------------------------------
+
+
+  growth.model block:
+
+Outcome Variable:  y_i        
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.406      0.010      0.387      0.426        ---        ---   2219.530 
+
+Coefficients:                   
+  beta0_j                           @ 1.000        ---        ---        ---        ---        ---        --- 
+  time_i*beta1_j                    @ 1.000        ---        ---        ---        ---        ---        --- 
+
+Standard Deviations:            
+  Residual SD                         0.637      0.008      0.622      0.652        ---        ---   2219.495 
+
+Standardized Coefficients:      
+  time_i*beta1_j                      0.951      0.001      0.948      0.953  5.086e+05      0.000    977.312 
+
+Proportion Variance Explained   
+  by Coefficients                     0.904      0.003      0.899      0.909        ---        ---    977.311 
+  by Residual Variation               0.096      0.003      0.091      0.101        ---        ---    977.311 
+
+                                ------------------------------------------------------------------------------
+
+
+  missingness.model block:
+
+Outcome Variable:  dropout_i  
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Coefficients:                   
+  (time_i==0)                       @-3.000        ---        ---        ---        ---        ---        --- 
+  (time_i==1)                        -5.373      0.378     -6.140     -4.662    202.045      0.000    555.047 
+  (time_i==2)                        -5.052      0.347     -5.752     -4.398    212.383      0.000    569.744 
+  (time_i==3)                        -4.600      0.320     -5.248     -3.991    206.921      0.000    582.711 
+  (time_i==4)                        -4.149      0.292     -4.753     -3.595    202.359      0.000    618.321 
+  (time_i==5)                        -3.404      0.251     -3.909     -2.920    183.523      0.000    763.969 
+  (time_i>0)*y_i                      0.307      0.081      0.145      0.469     14.396      0.000    112.440 
+  (time_i>0)*y_i.lag1                 0.011      0.072     -0.133      0.160      0.026      0.871    141.611 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        ---        ---        nan 
+
+Standard Deviations:            
+  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Standardized Coefficients:      
+  (time_i==0)                        -0.931      0.011     -0.950     -0.906   6903.382      0.000    154.679 
+  (time_i==1)                        -1.668      0.107     -1.877     -1.459    242.535      0.000    870.756 
+  (time_i==2)                        -1.567      0.098     -1.760     -1.377    255.135      0.000    866.867 
+  (time_i==3)                        -1.428      0.091     -1.604     -1.249    245.752      0.000    909.668 
+  (time_i==4)                        -1.288      0.084     -1.453     -1.124    236.893      0.000    918.181 
+  (time_i==5)                        -1.056      0.073     -1.199     -0.910    207.262      0.000   1037.854 
+  (time_i>0)*y_i                      0.963      0.245      0.460      1.438     15.412      0.000    112.277 
+  (time_i>0)*y_i.lag1                 0.038      0.241     -0.443      0.547      0.029      0.865    141.372 
+
+Proportion Variance Explained   
+  by Coefficients                     0.306      0.017      0.278      0.344        ---        ---    154.826 
+  by Residual Variation               0.694      0.017      0.656      0.722        ---        ---    154.826 
+
+                                ------------------------------------------------------------------------------
+
+
+

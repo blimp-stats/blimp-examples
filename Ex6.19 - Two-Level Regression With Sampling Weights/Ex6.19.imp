@@ -1,0 +1,9 @@
+DATA: data21.dat;
+VARIABLES: level2id level1wgt level2wgt v1 y_i x1_i x2_i x3_i x4_i x5_i;
+CLUSTERID: level2id;
+WEIGHTS: level1wgt level2wgt;
+MISSING: 999;
+MODEL: y_i ~ x1_i x2_i x3_i;
+SEED: 90291;
+BURN: 2000;
+ITERATIONS: 10000;

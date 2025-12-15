@@ -1,0 +1,26 @@
+DATA: data27.dat;
+VARIABLES: y1:y6 z;
+MISSING: 999;
+LATENT: icept slope;
+MODEL:
+# define residuals for calculations
+ry1 = y1 - (icept + (0*slope));
+ry2 = y2 - (icept + (1*slope));
+ry3 = y3 - (icept + (2*slope));
+ry4 = y4 - (icept + (3*slope));
+ry5 = y5 - (icept + (4*slope));
+structural.model:
+icept ~~ slope;
+1 -> icept slope;
+measurement.model:
+{ y1:y6 } ~ 1@icept;
+slope -> y1@0 y2@1 y3@2 y4@3 y5@4 y6@5;
+# autocorrelations
+y2 ~ ry1@ac;
+y3 ~ ry2@ac;
+y4 ~ ry3@ac;
+y5 ~ ry4@ac;
+y6 ~ ry5@ac;
+SEED: 90291;
+BURN: 20000;
+ITERATIONS: 20000;

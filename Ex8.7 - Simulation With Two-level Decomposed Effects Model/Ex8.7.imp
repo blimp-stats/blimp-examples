@@ -1,0 +1,90 @@
+SIMULATE:
+	# Specify clustering
+	id2(2) = 500;      # 500 level-2 clusters
+	id1(1) = 10 * 500; # 10 cluters for each level-2
+
+	# Define constants
+	define:
+	
+		# Define level-22 cov matrix
+		var_u0  = 43.5;
+		var_u1  = 10.0;
+		cov_u01 = 6.257;
+		
+		# Define fixed effects
+		b0 = 46.838;
+		b1 = 3.606;
+		b2 = 1.581;
+		b3 = 1.581;
+		
+		# Define within residual variance
+		var_e = 1.43;
+			
+		# Between cor for x and w;
+		cor_xw = 0.3;
+
+	# Level -2
+	id2:
+		# Generate X between and Level-2 covariate
+		x_b = normal(0, 1);
+		w   = normal(x_b*cor_xw, 1 - cor_xw^2);
+
+		## Generate random effects based on correlation
+		u0 = normal(0, var_u0);
+		u1 = normal(
+				(cov_u01 / var_u0) * u0,
+				 var_u1 - (cov_u01 / sqrt(var_u0))^2
+		);
+
+		# Combine to form y between
+		y_b = b0 + x_b * b2 + w * b3 + u0;
+		
+	# Level-1
+	id1:
+		# generate within deviations
+		x_w = normal(0, 1);
+		y_w = normal(x_w * (b1 + u1), var_e);
+		
+		# Combine within and between
+		x = x_w + x_b;
+		y = y_w + y_b; 
+
+# Variables to keep in data set
+# Not required but cleans up any things not wanted
+VARIABLES: id2 y x w;
+CLUSTERID: id2;
+LATENT: id2 = x_b y_b u1;
+# Specify model with within and between notation
+MODEL: 
+
+	## Centering 
+	# CGM level-2 predictors
+	xb_cgm = x_b - mu_x;
+	w_cgm  = w - mu_w;
+
+	# CWC level-1 predictor
+	x_w    = x - x_b;
+
+	# Outcome Models
+	Outcome_l2:
+
+		y_b ~ 1@mu_y w_cgm xb_cgm;
+		u1 ~ 1;
+		y_b ~~ u1;
+		
+	Outcome_l1:
+		y ~ 1@y_b x_w@u1;
+		
+	# Predictor Models
+	Predictors:
+		# Level-2		
+		x_b ~ 1@mu_x;
+		w   ~ 1@mu_w;
+		x_b ~~ w;
+		# Level-1
+		x ~ 1@x_b;
+
+SEED: 1239871;
+BURN:  20000;
+ITERATIONS: 20000;
+SAVE: dataset = generated_data.csv;

@@ -1,0 +1,59 @@
+SIMULATE: 
+	# Sample Size
+	n = 1000;
+	# Define parameters for model
+	define:
+		mu_x  = 0.0; # mean of x1 and x2
+		var_x = 1.0; # variance of x1 and x2
+		cor   = 0.3;  # between x1 and x2;
+		# Model parameters
+		b0    = 10;
+		b1    = 0.5;
+		b2    = 0.3;
+		s2e   = 1.0;
+
+		# missing prob for x1 and x2
+		pmis_x1 = 0.15;
+		pmis_x2 = 0.25;
+		r2_mis  = 0.6; # pseudo variance explaind by missing cause
+	n: 
+		# Create phantom variable
+		u = normal(0, cor);
+		# Generate correlated x1 and x2 ~ normal(0, 1)
+		x1:x2 = normal(u, 1 - cor) * sqrt(var_x);
+		# Generate y
+		y = normal(b0 + b1 * x1 + b2 * x2, s2e);
+		
+		## Generate missing x1 based to always be MCAR
+		x1m = missing(
+			uniform(0, 1) < pmis_x1,
+			x1
+		);
+
+		## Generate missing x2 based to always be MAR
+		# Generate latent propensity due to y
+		
+		# Define y mean and variance to standardize y
+		mu_y  := b0 + mu_x * b1 + mu_x * b2;
+		var_y := b1^2 * var_x + b2^2 * var_x + s2e;
+
+		# Generate missing propensity by standardizing Y
+	    m_star = normal(
+	    	sqrt(r2_mis) * ((y - mu_y) / sqrt(var_y)),
+	    	1.0 - r2_mis
+	    );
+	    
+	    # Generate missing x2
+		x2m = missing(
+			m_star < iphi(pmis_x2),
+			x2
+		);
+VARIABLES: x1:x2 x1m:x2m y; # Save only x1, x2, and y
+MODEL: 
+	1: y ~ x1m:x2m;
+	2: x1m ~~ x2m;
+BURN: 5000;
+ITER: 5000;
+SEED: 10972;
+SAVE:
+	dataset = generated_data.csv;

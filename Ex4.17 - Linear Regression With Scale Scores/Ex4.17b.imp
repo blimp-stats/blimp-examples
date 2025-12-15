@@ -1,0 +1,23 @@
+DATA: data4.dat;
+VARIABLES: id a1 a2 a3 yscale v zscale n1 d1 d2 y1:y6 x1:x7 z1:z6;
+ORDINAL: y1:y5 x1:x7 d1 d2;
+MISSING: 999;
+MODEL:
+focal.model:
+# scale score predictor using an embedded function
+xscale = x1:+:x7;
+yscale ~  xscale d1 d2;
+predictor.model:
+# sequential specification for x scale items and dummy codes
+x1:x7 d1 d2 ~ 1; 
+auxiliary.models:
+# sequential specification for y scale items
+y1:y5 ~ yscale;
+SEED: 90291;
+BURN: 20000;
+ITERATIONS: 10000;
+# save model-based multiple imputations;
+# CHAINS: 20;
+# NIMPS: 20;
+# SAVE: stacked = imps.dat;
+

@@ -1,0 +1,31 @@
+DATA: data13.dat;
+VARIABLES: x1:x3 m1:m3 y1:y3;
+MISSING: 999;
+LATENT: latentx latentm latenty;
+MODEL: 
+structural.model:
+latenty ~ latentx@b1 latentm@b2 latentx*latentm@b3;
+latenty ~~ latenty@1;
+predictor.model:
+latentx ~~ latentx@1;
+latentm ~~ latentm@1;
+latentx ~~ latentm;
+measurement.models:
+latentx -> x1@xload_prior x2:x3;
+latentm -> m1@mload_prior m2:m3;
+latenty -> y1@yload_prior y2:y3;
+PARAMETERS:
+xload_prior ~ truncate(0, Inf);
+mload_prior ~ truncate(0, Inf);
+yload_prior ~ truncate(0, Inf);
+xslope_mlow = b1 - b3 * (-1);
+xslope_mmean = b1 * (0);
+xslope_mhigh = b1 + b3 * (-1);
+SEED: 90291;
+BURN: 10000;
+ITERATIONS: 10000;
+# save model-based multiple imputations;
+# OPTIONS: savelatent;
+# CHAINS: 20;
+# NIMPS: 20;
+# SAVE: stacked = imps.dat;

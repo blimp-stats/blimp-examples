@@ -1,0 +1,18 @@
+DATA: data4.dat;
+VARIABLES: id v1:v3 y v4:v6 d1 d2 v7:v12 x1:x7 v13:v18;
+ORDINAL: x1:x7 d1 d2;
+MISSING: 999;
+MODEL:
+focal.model:
+xscale = x1:+:x7; # define sum function
+y ~  xscale d1 d2; # embedded sum variable as a predictor
+predictor.model:
+x1:x7 d1 d2 ~ 1; 
+SEED: 90291;
+BURN: 5000;
+ITERATIONS: 10000;
+# save model-based multiple imputations;
+# CHAINS: 20;
+# NIMPS: 20;
+# SAVE: stacked = imps.dat;
+

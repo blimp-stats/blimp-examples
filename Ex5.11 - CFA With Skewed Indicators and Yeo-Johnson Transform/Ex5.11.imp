@@ -1,0 +1,21 @@
+DATA: data12.dat;
+VARIABLES: x1:x3 y1:y3;
+MISSING: 999;
+LATENT: latentx latenty;
+MODEL:
+structural.model:
+latentx ~~ latentx@1;
+latenty ~~ latenty@1;
+latentx ~~ latenty;
+measurement.models:
+latentx -> x1 x3;
+yjt(x2) ~ latentx;
+yjt(y1) ~ latenty;
+latenty -> y2 y3;
+SEED: 90291;
+BURN: 10000;
+ITERATIONS: 10000;
+# OPTIONS: savelatent;
+# CHAINS: 20;
+# NIMPS: 20;
+# SAVE: stacked = imps.dat;

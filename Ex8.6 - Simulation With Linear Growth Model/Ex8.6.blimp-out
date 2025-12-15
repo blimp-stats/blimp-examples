@@ -1,0 +1,160 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                   3.2.0
+
+             Blimp was developed with funding from Institute of
+          Educational Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Latent cluster means (LATENT)
+  Residual variance structure:       Homogeneous level-1 variance (HOV)
+  Prior for random effect variances: Zero matrix, df = -(p + 1) (PRIOR2)
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+SIMULATED DATA SUMMARIES:
+
+Variables                              Mean        VAR     StdDev 
+                                ----------------------------------
+  y                                  10.736      3.309      1.819 
+  time0                               1.500      1.250      1.118 
+  level_2                           499.500  83354.089    288.711 
+                                ----------------------------------
+
+VARIABLE ORDER IN SIMULATED DATA:
+
+  dataset = 'generated_data.csv'
+
+     y time0 level_2
+
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                          251 to 500             1.033            10  
+                          501 to 1000            1.035            10  
+                          751 to 1500            1.029             2  
+                         1001 to 2000            1.010            10  
+                         1251 to 2500            1.009             5  
+                         1501 to 3000            1.004            10  
+                         1751 to 3500            1.004             5  
+                         2001 to 4000            1.012             2  
+                         2251 to 4500            1.005             1  
+                         2501 to 5000            1.008             2  
+                         2751 to 5500            1.022             2  
+                         3001 to 6000            1.009             2  
+                         3251 to 6500            1.005             2  
+                         3501 to 7000            1.010             2  
+                         3751 to 7500            1.016             2  
+                         4001 to 8000            1.015            10  
+                         4251 to 8500            1.008             2  
+                         4501 to 9000            1.006             2  
+                         4751 to 9500            1.014             2  
+                         5001 to 10000           1.014             2  
+
+
+DATA INFORMATION:
+
+  Level-2 identifier:       level_2
+  Sample Size:              4000
+  Level-2 Clusters:         1000
+  Missing Data Rates:
+
+                        y = 00.00
+
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         6
+    Predictor Models:       0
+
+  PREDICTORS
+    Fixed variables:        time0
+
+  MODELS
+    [1]  y ~ Intercept time0 | Intercept time0
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Marginal Likelihood
+      DIC2                  13812.968
+      WAIC                  13813.002
+
+    Conditional Likelihood
+      DIC2                  11791.285
+      WAIC                  12272.942
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  No residual correlations.
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+
+Outcome Variable:  y          
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  L2 : Var(Intercept)                 0.875      0.072      0.743      1.023      1.002    666.311 
+  L2 : Cov(time0,Intercept)           0.153      0.026      0.101      0.203      1.003    556.545 
+  L2 : Var(time0)                     0.203      0.018      0.169      0.241      1.001    791.479 
+  Residual Var.                       0.984      0.031      0.926      1.048      1.002   1294.427 
+
+Coefficients:                   
+  Intercept                          10.009      0.041      9.929     10.087      1.003   1174.552 
+  time0                               0.484      0.020      0.444      0.524      1.001   1341.418 
+
+Standardized Coefficients:      
+  time0                               0.297      0.012      0.273      0.321      1.001   1513.603 
+
+Proportion Variance Explained   
+  by Coefficients                     0.088      0.007      0.075      0.103      1.001   1519.872 
+  by Level-2 Random Intercepts        0.539      0.014      0.512      0.565      1.000   3270.296 
+  by Level-2 Random Slopes            0.076      0.006      0.065      0.090      1.001    736.262 
+  by Level-1 Residual Variation       0.296      0.012      0.274      0.320      1.001   1449.099 
+
+                                -------------------------------------------------------------------
+
+
+

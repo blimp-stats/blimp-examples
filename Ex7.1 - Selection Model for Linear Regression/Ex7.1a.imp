@@ -1,0 +1,20 @@
+DATA: data3.dat;
+VARIABLES: id x1 x2 x3 y d1 d2 v1:v4;
+MISSING: 999;
+ORDINAL: d1 d2;
+FIXED: d1 d2;
+CENTER: x1;
+MODEL: 
+focal.model:
+y ~ d1 d2 x1;
+missingness.model:
+y.missing ~ y;
+auxiliary.model:
+x2 x3 ~ y d1 d2 x1;
+SEED: 90291;
+BURN: 1000;
+ITERATIONS: 10000;
+# save model-based multiple imputations;
+# CHAINS: 20;
+# NIMPS: 20;
+# SAVE: stacked = imps.dat;

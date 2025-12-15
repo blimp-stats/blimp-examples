@@ -1,0 +1,253 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.2.10
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Latent cluster means (LATENT)
+  Prior for random effect variances: Zero matrix, df = -(p + 1) (PRIOR2)
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: The default prior for regression coefficients 
+        in categorical models is 'normal( 0.0, 5.0)'
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                          126 to 250             1.211            20  
+                          251 to 500             1.353            10  
+                          376 to 750             1.160             2  
+                          501 to 1000            1.041             2  
+                          626 to 1250            1.106            20  
+                          751 to 1500            1.024             1  
+                          876 to 1750            1.068             2  
+                         1001 to 2000            1.028             1  
+                         1126 to 2250            1.020            23  
+                         1251 to 2500            1.017            16  
+                         1376 to 2750            1.021            20  
+                         1501 to 3000            1.025            23  
+                         1626 to 3250            1.025            20  
+                         1751 to 3500            1.025             1  
+                         1876 to 3750            1.048             2  
+                         2001 to 4000            1.039             2  
+                         2126 to 4250            1.038             2  
+                         2251 to 4500            1.027             2  
+                         2376 to 4750            1.027            22  
+                         2501 to 5000            1.019             2  
+
+
+DATA INFORMATION:
+
+  Level-2 identifier:       level2id
+  Sample Size:              1748
+  Level-2 Clusters:         437
+  Missing Data Rates:
+
+                      y_i = 10.24
+                      d_j = 00.00
+                      m_j = 00.00
+
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         15
+    Generated Parameters:   6
+    Predictor Models:       0
+
+  PREDICTORS
+    Fixed variables:        time_i
+
+  MODELS
+
+   focal.model:
+    [1]  y_i ~ Intercept@beta0_obs time_i@beta1_obs d_j@beta2_obs m_j@beta0_dif 
+                 (time_i*d_j)@beta3_obs (m_j*time_i)@beta1_dif 
+                 (m_j*d_j)@beta2_dif (m_j*time_i*d_j)@beta3_dif 
+                 | Intercept time_i
+
+   predictor.model:
+    [2]  d_j ~ Intercept m_j
+    [3]  m_j ~ Intercept@ymissmean
+
+  GENERATED PARAMETERS
+    [1]  p_mis = phi(ymissmean)
+    [2]  p_obs = 1-p_mis
+    [3]  beta0 = p_obs*beta0_obs+p_mis*(beta0_obs+beta0_dif)
+    [4]  beta1 = p_obs*beta1_obs+p_mis*(beta1_obs+beta1_dif)
+    [5]  beta2 = p_obs*beta2_obs+p_mis*(beta2_obs+beta2_dif)
+    [6]  beta3 = p_obs*beta3_obs+p_mis*(beta3_obs+beta3_dif)
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Marginal Likelihood
+      DIC2                  7985.967
+      WAIC                  8353.017
+
+    Conditional Likelihood
+      DIC2                  7277.187
+      WAIC                  7837.158
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+
+   Level-2:
+
+Correlations                         Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  d_j, m_j                            0.002      0.068     -0.130      0.132      1.000  10107.069 
+
+                                -------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+  focal.model block:
+
+Outcome Variable:  y_i        
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  L2 : Var(Intercept)                 0.421      0.058      0.317      0.545      1.003    493.337 
+  L2 : Cov(time_i,Intercept)          0.024      0.013     -0.002      0.049      1.006    353.748 
+  L2 : Var(time_i)                    0.029      0.005      0.019      0.040      1.005    342.090 
+  Residual Var.                       0.683      0.036      0.618      0.758      1.002    813.691 
+
+Coefficients:                   
+  Intercept                           5.088      0.108      4.876      5.295      1.000   1598.751 
+  time_i                             -0.150      0.030     -0.208     -0.092      1.001   2110.609 
+  d_j                                 0.031      0.121     -0.205      0.266      1.000   1556.973 
+  m_j                                 0.419      0.191      0.040      0.788      1.000   1487.852 
+  (time_i*d_j)                       -0.210      0.033     -0.274     -0.143      1.001   2207.023 
+  (m_j*time_i)                        0.063      0.092     -0.111      0.248      1.001    496.628 
+  (m_j*d_j)                          -0.353      0.235     -0.814      0.112      1.001   1248.390 
+  (m_j*time_i*d_j)                   -0.548      0.114     -0.781     -0.326      1.000    400.997 
+
+Standardized Coefficients:      
+  time_i                             -0.202      0.040     -0.285     -0.123      1.001   1989.263 
+  d_j                                 0.008      0.031     -0.052      0.068      1.000   1555.976 
+  m_j                                 0.104      0.048      0.010      0.197      1.000   1479.550 
+  (time_i*d_j)                       -0.280      0.044     -0.364     -0.191      1.001   2114.119 
+  (m_j*time_i)                        0.057      0.083     -0.101      0.223      1.002    501.954 
+  (m_j*d_j)                          -0.074      0.049     -0.170      0.023      1.001   1217.384 
+  (m_j*time_i*d_j)                   -0.402      0.078     -0.556     -0.245      1.000    426.078 
+
+Proportion Variance Explained   
+  by Coefficients                     0.459      0.029      0.401      0.514      1.001    439.887 
+  by Level-2 Random Intercepts        0.250      0.021      0.211      0.293      1.001    848.688 
+  by Level-2 Random Slopes            0.052      0.009      0.036      0.072      1.006    341.725 
+  by Level-1 Residual Variation       0.237      0.018      0.205      0.274      1.001    451.632 
+
+                                -------------------------------------------------------------------
+
+
+  predictor.model block:
+
+Outcome Variable:  d_j        
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           0.811      0.077      0.662      0.964      1.001   3468.974 
+  m_j                                -0.487      0.149     -0.783     -0.193      1.001   4036.693 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+
+Standardized Coefficients:      
+  m_j                                -0.202      0.059     -0.315     -0.082      1.001   4035.992 
+
+Proportion Variance Explained   
+  by Coefficients                     0.041      0.024      0.007      0.099      1.001   4092.068 
+  by Residual Variation               0.959      0.024      0.901      0.993      1.001   4092.068 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  m_j        
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                          -0.726      0.066     -0.858     -0.600      1.000   3527.243 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        nan        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        nan        nan 
+
+                                -------------------------------------------------------------------
+
+
+
+GENERATED PARAMETERS:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  p_mis                               0.234      0.020      0.195      0.274      1.000   3534.098 
+  p_obs                               0.766      0.020      0.726      0.805      1.000   3534.098 
+  beta0                               5.186      0.092      5.004      5.360      1.001   1617.177 
+  beta1                              -0.135      0.030     -0.193     -0.072      1.003    765.745 
+  beta2                              -0.054      0.104     -0.254      0.152      1.000   1730.650 
+  beta3                              -0.337      0.038     -0.414     -0.265      1.001    747.532 
+
+                                -------------------------------------------------------------------
+

@@ -1,0 +1,31 @@
+DATA: effect_sizes.dat;
+VARIABLES: study year weeks n1_j n2_j es_j var_j;
+TRANSFORM: log_varj = ln(var_j);
+MISSING: 999;
+CLUSTERID: study;
+LATENT: study = beta0_j;
+MODEL:
+es_j ~ intercept@beta0_j;
+var(es_j) ~ 1@0 # fix variance of each study
+  (study==1)*log_varj@1
+  (study==2)*log_varj@1 
+  (study==3)*log_varj@1 
+  (study==4)*log_varj@1
+  (study==5)*log_varj@1
+  (study==6)*log_varj@1
+  (study==7)*log_varj@1
+  (study==8)*log_varj@1
+  (study==9)*log_varj@1
+  (study==10)*log_varj@1
+  (study==11)*log_varj@1
+  (study==12)*log_varj@1
+  (study==13)*log_varj@1
+  (study==14)*log_varj@1
+  (study==15)*log_varj@1
+  (study==16)*log_varj@1
+  (study==17)*log_varj@1
+  (study==18)*log_varj@1
+  (study==19)*log_varj@1;
+SEED: 90291;
+BURN: 10000;
+ITER: 10000;

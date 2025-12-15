@@ -1,0 +1,16 @@
+DATA: data4.dat;
+VARIABLES: id v1:v3 y x v4 v5 d m v6:v24;
+ORDINAL: d;
+NOMINAL: m;
+MISSING: 999;
+FIXED: m;
+CENTER: x d;
+MODEL: y ~ x m x*m d;
+SIMPLE: x | m;
+SEED: 90291;
+BURN: 1000;
+ITERATIONS: 10000;
+CHAINS: 20;
+NIMPS: 20;
+SAVE: stacked = imps.dat;
+

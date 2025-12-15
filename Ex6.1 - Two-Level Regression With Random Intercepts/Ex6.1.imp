@@ -1,0 +1,12 @@
+DATA: data7.dat;
+VARIABLES: level1id level2id v1_i v2_i d1_i v3_i x1_i v4_i
+   v5_i x2_i y_i d2_j x3_j v6_j;
+CLUSTERID: level2id;
+ORDINAL: d1_i d2_j;
+MISSING: 999;
+FIXED: x2_i d2_j;
+CENTER: grandmean = x1_i x2_i d1_i x3_j;
+MODEL: y_i ~ x1_i x2_i d1_i x3_j d2_j;
+SEED: 90291;
+BURN: 2000;
+ITERATIONS: 10000;

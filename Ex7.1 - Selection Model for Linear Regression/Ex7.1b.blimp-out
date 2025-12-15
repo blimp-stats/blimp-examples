@@ -1,0 +1,272 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.1.41
+
+             Blimp was developed with funding from Institute of
+          Educational Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+              Brian T. Keller, Co-P.I. Email: blimp@utexas.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Not applicable, single-level imputation
+  Residual variance structure:       Not applicable, single-level imputation
+  Prior for random effect variances: Not applicable, single-level imputation
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: The default prior for regression coefficients 
+        in categorical models is 'normal( 0.0, 5.0)'
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                           63 to 125             1.109            40  
+                          126 to 250             1.077            39  
+                          188 to 375             1.030            40  
+                          251 to 500             1.067            45  
+                          313 to 625             1.039            45  
+                          376 to 750             1.055            45  
+                          438 to 875             1.028            38  
+                          501 to 1000            1.028            43  
+                          563 to 1125            1.074            41  
+                          626 to 1250            1.036            39  
+                          688 to 1375            1.023            39  
+                          751 to 1500            1.027            44  
+                          813 to 1625            1.028            43  
+                          876 to 1750            1.032            44  
+                          938 to 1875            1.050            39  
+                         1001 to 2000            1.036            39  
+                         1063 to 2125            1.029            41  
+                         1126 to 2250            1.024            39  
+                         1188 to 2375            1.015            38  
+                         1251 to 2500            1.009            45  
+
+
+METROPOLIS-HASTINGS ACCEPTANCE RATES:
+
+  Chain 1:
+
+    Variable                            Type    Probability   Target Value 
+    x1                            imputation          0.514          0.500 
+    x1                             parameter          0.530          0.500 
+
+  NOTE: Suppressing printing of 1 chains.
+        Use keyword 'tuneinfo' in options to override.
+
+
+DATA INFORMATION:
+
+  Sample Size:              437
+  Missing Data Rates:
+
+                       x2 = 02.52
+                       x3 = 14.42
+                        y = 23.34
+                       x1 = 00.69
+
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         21
+    Predictor Models:       4
+
+  PREDICTORS
+    Fixed variables:        d1 d2
+    Incomplete continuous:  x1
+
+  CENTERED PREDICTORS
+    Grand Mean Centered:    x1
+
+  MODELS
+    [1]  x2 ~ Intercept x3 y d1 d2 x1
+    [2]  x3 ~ Intercept y d1 d2 x1
+    [3]  y ~ Intercept d1 d2 x1
+    [4]  y.missing ~ Intercept y d1
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Marginal Likelihood
+      DIC2                  5341.445
+      WAIC                  5555.647
+
+    Conditional Likelihood
+      DIC2                  5341.445
+      WAIC                  5555.647
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+
+Outcome Variable:  x2         
+
+Grand Mean Centered: x1
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.723      0.054      0.628      0.841      1.000   5784.032 
+
+Coefficients:                   
+  Intercept                           2.449      0.187      2.083      2.815      1.001   6219.257 
+  x3                                  0.499      0.047      0.406      0.590      1.000   5996.237 
+  y                                   0.020      0.048     -0.072      0.116      1.001   4225.769 
+  d1                                 -0.005      0.111     -0.225      0.207      1.001   6699.881 
+  d2                                  0.107      0.087     -0.065      0.279      1.001   7213.175 
+  x1                                  0.355      0.052      0.254      0.459      1.000   8122.574 
+
+Standardized Coefficients:      
+  x3                                  0.598      0.052      0.489      0.694      1.000   5552.763 
+  y                                   0.026      0.061     -0.092      0.146      1.000   4220.324 
+  d1                                 -0.002      0.039     -0.078      0.073      1.001   6703.196 
+  d2                                  0.044      0.035     -0.026      0.113      1.001   7206.336 
+  x1                                  0.249      0.035      0.178      0.317      1.001   8118.302 
+
+Proportion Variance Explained   
+  by Coefficients                     0.526      0.032      0.460      0.584      1.001   5699.268 
+  by Residual Variation               0.474      0.032      0.416      0.540      1.001   5699.268 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  x3         
+
+Grand Mean Centered: x1
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.031      0.083      0.885      1.207      1.000   5500.454 
+
+Coefficients:                   
+  Intercept                           2.156      0.212      1.750      2.578      1.001   3239.385 
+  y                                   0.628      0.039      0.550      0.702      1.000   4825.911 
+  d1                                 -0.172      0.141     -0.454      0.103      1.001   4156.889 
+  d2                                 -0.070      0.108     -0.282      0.143      1.001   7088.101 
+  x1                                  0.277      0.063      0.157      0.403      1.001   6550.958 
+
+Standardized Coefficients:      
+  y                                   0.668      0.033      0.598      0.727      1.001   4048.620 
+  d1                                 -0.050      0.041     -0.131      0.030      1.001   4198.776 
+  d2                                 -0.024      0.036     -0.095      0.048      1.001   7091.859 
+  x1                                  0.161      0.036      0.092      0.233      1.001   6580.985 
+
+Proportion Variance Explained   
+  by Coefficients                     0.532      0.034      0.463      0.594      1.000   4938.266 
+  by Residual Variation               0.468      0.034      0.406      0.537      1.000   4938.266 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  y          
+
+Grand Mean Centered: x1
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       2.098      0.174      1.796      2.474      1.001   3557.613 
+
+Coefficients:                   
+  Intercept                           4.132      0.189      3.761      4.490      1.002   1927.351 
+  d1                                 -1.393      0.188     -1.758     -1.029      1.001   3698.040 
+  d2                                  0.256      0.150     -0.037      0.547      1.000   6631.725 
+  x1                                  0.269      0.088      0.095      0.439      1.001   6165.113 
+
+Standardized Coefficients:      
+  d1                                 -0.378      0.045     -0.461     -0.285      1.001   3447.996 
+  d2                                  0.080      0.047     -0.012      0.170      1.000   6664.639 
+  x1                                  0.147      0.047      0.052      0.236      1.001   6134.060 
+
+Proportion Variance Explained   
+  by Coefficients                     0.171      0.036      0.103      0.244      1.001   3515.579 
+  by Residual Variation               0.829      0.036      0.756      0.897      1.001   3515.579 
+
+                                -------------------------------------------------------------------
+
+
+
+Latent Variable:   y.missing  
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                           0.455      0.354     -0.221      1.164      1.001    757.979 
+  y                                  -0.201      0.084     -0.376     -0.044      1.002    642.816 
+  d1                                 -0.791      0.200     -1.205     -0.415      1.000   1236.147 
+
+Standardized Coefficients:      
+  y                                  -0.297      0.113     -0.513     -0.068      1.002    647.726 
+  d1                                 -0.319      0.070     -0.451     -0.174      1.000   1447.945 
+
+Proportion Variance Explained   
+  by Coefficients                     0.122      0.063      0.036      0.279      1.001    705.500 
+  by Residual Variation               0.878      0.063      0.721      0.964      1.001    705.500 
+
+                                -------------------------------------------------------------------
+
+
+
+
+PREDICTOR MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+
+Missing predictor:  x1         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                            5.368      0.042      5.287      5.448      1.000   1865.475 
+
+Level 1:                                                                                           
+  d1                                  0.025      0.096     -0.162      0.213      1.000   9793.451 
+  d2                                 -0.137      0.084     -0.299      0.031      1.000   9684.494 
+  Residual Var.                       0.748      0.051      0.657      0.856      1.000   9261.839 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+

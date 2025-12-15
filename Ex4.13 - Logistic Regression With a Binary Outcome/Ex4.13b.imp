@@ -1,0 +1,20 @@
+DATA: data1.dat;
+VARIABLES: id v1 y v2 x1 x2 d v3 v4;
+ORDINAL: y d;
+MISSING: 999;
+FIXED: d;
+CENTER: x1 x2;
+MODEL:
+logit(y) ~ 1@b0 x1 x2 d@b3;
+PARAMETERS:
+pp_d0 = exp(b0) / (1 + exp(b0));
+pp_d1 = exp(b0 + b3) / (1 + exp(b0 + b3));
+pp_diff = pp_d1 - pp_d0;
+SEED: 90291;
+BURN: 2000;
+ITERATIONS: 10000;
+# save model-based multiple imputations;
+# OPTIONS: savepredicted;
+# CHAINS: 20;
+# NIMPS: 20;
+# SAVE: stacked = imps.dat;

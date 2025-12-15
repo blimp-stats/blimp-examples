@@ -1,0 +1,11 @@
+DATA: data19.dat;
+VARIABLES: level2id y_i d_j;
+MISSING: 999;
+CLUSTERID: level2id;
+LATENT: level2id = beta0_j;
+MODEL:
+beta0_j ~ 1@0;
+y_i ~ d_j d_j@beta0_j | 1@0;
+SEED: 90291;
+BURN: 1000;
+ITERATIONS: 10000;

@@ -1,0 +1,13 @@
+DATA: data1.dat;
+VARIABLES: id v1:v3 y x1 d x2 v4;
+ORDINAL: d;
+MISSING: 999;
+FIXED: d;
+CENTER: x1 x2;
+MODEL: y ~ x1@b1 x2@b2 d@b3;
+TEST: b1:b3 = 0;
+TEST: b1:b2 = 0;
+TEST: b1=b2;
+SEED: 90291;
+BURN: 1000;
+ITERATIONS: 10000;

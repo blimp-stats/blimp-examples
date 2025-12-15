@@ -1,0 +1,263 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.2.22
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Default Priors:
+    Multilevel covariance matrices:  Not applicable, single-level imputation
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: The default prior for regression coefficients 
+        in categorical models is 'normal( 0.0, 5.0)'
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                          251 to 500             1.053             9  
+                          501 to 1000            1.016            17  
+                          751 to 1500            1.007            19  
+                         1001 to 2000            1.006            19  
+                         1251 to 2500            1.002            24  
+                         1501 to 3000            1.006            23  
+                         1751 to 3500            1.003            24  
+                         2001 to 4000            1.003            20  
+                         2251 to 4500            1.003            23  
+                         2501 to 5000            1.001            20  
+                         2751 to 5500            1.002            24  
+                         3001 to 6000            1.002            20  
+                         3251 to 6500            1.002             1  
+                         3501 to 7000            1.003            15  
+                         3751 to 7500            1.002            15  
+                         4001 to 8000            1.001            24  
+                         4251 to 8500            1.002            20  
+                         4501 to 9000            1.001            20  
+                         4751 to 9500            1.001            24  
+                         5001 to 10000           1.001            19  
+
+
+METROPOLIS-HASTINGS ACCEPTANCE RATES:
+
+  Chain 1:
+
+    Variable                            Type    Probability   Target Value 
+    x                             imputation          0.504          0.500 
+
+  NOTE: Suppressing printing of 1 chains.
+        Use keyword 'tuneinfo' in options to override.
+
+
+DATA INFORMATION:
+
+  Sample Size:              300
+  Missing Data Info:
+
+                      Pattern #:       1     2     3     4     5     6
+                          miss % --------------------------------------
+                        y = 13.3       -     M     -     -     M     M  
+                        m = 10.7       -     -     M     -     -     M  
+                        x =  7.3       -     -     -     M     M     -  
+                                 --------------------------------------
+                                 %  71.7  10.3  10.3   4.7   2.7   0.3
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         6
+    Generated Parameters:   6
+    Predictor Models:       1
+
+  PREDICTORS
+    Incomplete ordinal:     x
+
+  MODELS
+    [1]  m ~ Intercept@m_icept x@alpha
+    [2]  y ~ Intercept@y_icept m@beta x@tau
+
+  GENERATED PARAMETERS
+    [1]  den = sqrt(beta^2*m_resvar+1)
+    [2]  p_x0 = phi((y_icept+beta*(m_icept+alpha*0)+tau*0)/den)
+    [3]  p_x1 = phi((y_icept+beta*(m_icept+alpha*1)+tau*1)/den)
+    [4]  nie = phi((y_icept+beta*(m_icept+alpha*1)+tau*1)/den)-phi((y_icept+beta*(m_icept+alpha*0)+tau*1)/den)
+    [5]  nde = phi((y_icept+beta*(m_icept+alpha*0)+tau*1)/den)-phi((y_icept+beta*(m_icept+alpha*0)+tau*0)/den)
+    [6]  te = p_x1-p_x0
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Conditional Likelihood
+      DIC2                  3044.365
+      WAIC                  3172.043
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 10000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  m                                  27.297      8.667     21.503     28.866     33.786      5.395     45.266 
+  y                                   0.448      0.498      0.000      0.000      1.000      0.000      1.000 
+  x                                   0.337      0.474      0.000      0.000      1.000      0.000      1.000 
+
+                                ------------------------------------------------------------------------------
+
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+Correlations                       Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  m, y                                0.003      0.081     -0.158      0.162      0.001      0.981   9700.350 
+
+                                ------------------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+Outcome Variable:  m          
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                      61.427      5.436     51.917     73.396        ---        ---   7508.208 
+
+Coefficients:                   
+  Intercept                          24.585      0.603     23.392     25.734   1664.730      0.000   6741.596 
+  x                                   8.014      1.032      5.966     10.044     60.359      0.000   7287.748 
+
+Standard Deviations:            
+  Residual SD                         7.838      0.345      7.205      8.567        ---        ---   7514.837 
+
+Standardized Coefficients:      
+  x                                   0.436      0.048      0.335      0.524     80.595      0.000   6933.333 
+
+Proportion Variance Explained   
+  by Coefficients                     0.190      0.042      0.112      0.275        ---        ---   6945.740 
+  by Residual Variation               0.810      0.042      0.725      0.888        ---        ---   6945.740 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y          
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Coefficients:                   
+  Intercept                          -0.998      0.287     -1.573     -0.444     12.199      0.000   3068.282 
+  m                                   0.029      0.011      0.008      0.051      7.420      0.006   2979.475 
+  x                                   0.171      0.190     -0.204      0.546      0.796      0.372   3283.771 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        ---        ---        nan 
+
+Standard Deviations:            
+  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Standardized Coefficients:      
+  m                                   0.244      0.085      0.071      0.404      8.153      0.004   2999.658 
+  x                                   0.077      0.085     -0.092      0.241      0.804      0.370   3281.781 
+
+Proportion Variance Explained   
+  by Coefficients                     0.088      0.042      0.023      0.185        ---        ---   3070.756 
+  by Residual Variation               0.912      0.042      0.815      0.977        ---        ---   3070.756 
+
+                                ------------------------------------------------------------------------------
+
+
+
+GENERATED PARAMETERS:
+
+  Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  den                                 1.026      0.020      1.002      1.078   2594.682      0.000   3006.185 
+  p_x0                                0.395      0.037      0.324      0.469    112.893      0.000   3462.076 
+  p_x1                                0.552      0.053      0.445      0.652    107.802      0.000   3098.036 
+  nie                                 0.089      0.034      0.025      0.158      7.231      0.007   3261.649 
+  nde                                 0.065      0.072     -0.075      0.210      0.810      0.368   3277.462 
+  te                                  0.155      0.065      0.027      0.283      5.730      0.017   3379.627 
+
+                                ------------------------------------------------------------------------------
+
+
+PREDICTOR MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+
+Missing predictor:  x          
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+Grand Mean                           -0.419      0.077     -0.572     -0.268     29.680      0.000   3361.406 
+
+Level 1:                                                                                                      
+  Residual Var.                       1.000      0.000      1.000      1.000        ---        ---        nan 
+Thresholds:                                                                                                   
+  Tau 1                               0.000      0.000      0.000      0.000        ---        ---        nan 
+                                                                                                              
+                                ------------------------------------------------------------------------------
+
+

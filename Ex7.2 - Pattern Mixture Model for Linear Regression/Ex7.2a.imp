@@ -1,0 +1,33 @@
+DATA: data3.dat;
+VARIABLES: id x1 x2 x3 y d1 d2 v1:v4;
+MISSING: 999;
+ORDINAL: d1 d2 ymis;
+CENTER: x1 d2;
+TRANSFORM:
+ymis = ismissing(y);
+MODEL:
+focal.model:
+y ~ 1@b0obs ymis@b0diff d1 d2 x1 ;
+# label residual variance
+y ~~ y@resvar;
+predictor.model:
+# sequential specification for predictors
+ymis ~ 1@ymissmean;
+x1 d1 d2 ~ ymis;
+auxiliary.model:
+x2 x3 ~ y d1 d2 x1;
+PARAMETERS:
+# set b0diff equal to +.20 residual std. dev. units
+cohensd = .20;
+b0diff = cohensd * sqrt(resvar);
+# missingness group proportions
+p_mis = phi(ymissmean);
+p_obs = 1 - p_mis;
+# compute weighted average intercept
+b0_obs = b0obs;
+b0_mis = b0obs + b0diff;
+b0 = (b0_obs * p_obs) + (b0_mis * p_mis);
+SEED: 90291;
+BURN: 2000;
+ITERATIONS: 10000;
+

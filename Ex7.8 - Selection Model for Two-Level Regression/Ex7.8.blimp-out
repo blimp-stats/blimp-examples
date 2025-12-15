@@ -1,0 +1,298 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.2.10
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Latent cluster means (LATENT)
+  Prior for random effect variances: Zero matrix, df = -(p + 1) (PRIOR2)
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: The default prior for regression coefficients 
+        in categorical models is 'normal( 0.0, 5.0)'
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                          251 to 500             1.403            13  
+                          501 to 1000            1.232             5  
+                          751 to 1500            1.129            12  
+                         1001 to 2000            1.147            20  
+                         1251 to 2500            1.076            12  
+                         1501 to 3000            1.079            13  
+                         1751 to 3500            1.060            12  
+                         2001 to 4000            1.058            13  
+                         2251 to 4500            1.059            12  
+                         2501 to 5000            1.113             8  
+                         2751 to 5500            1.046            14  
+                         3001 to 6000            1.036            14  
+                         3251 to 6500            1.026            12  
+                         3501 to 7000            1.058            12  
+                         3751 to 7500            1.046            14  
+                         4001 to 8000            1.047             8  
+                         4251 to 8500            1.033            14  
+                         4501 to 9000            1.014             8  
+                         4751 to 9500            1.020            12  
+                         5001 to 10000           1.030            12  
+
+
+METROPOLIS-HASTINGS ACCEPTANCE RATES:
+
+  Chain 1:
+
+    Variable                            Type    Probability   Target Value 
+    x1_i                          imputation          0.497          0.500 
+    x1_i                          latent imp          0.501          0.500 
+    x2_i                          imputation          0.501          0.500 
+    x2_i                           parameter          0.549          0.500 
+    x3_j                          imputation          0.541          0.500 
+    x3_j                           parameter          0.556          0.500 
+
+  NOTE: Suppressing printing of 1 chains.
+        Use keyword 'tuneinfo' in options to override.
+
+
+DATA INFORMATION:
+
+  Level-2 identifier:       level2id
+  Sample Size:              2680
+  Level-2 Clusters:         132
+  Missing Data Rates:
+
+                      y_i = 13.43
+                   ymis_i = 00.00
+                     x1_i = 03.88
+                     x2_i = 08.88
+                     x3_j = 02.27
+
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         13
+    Predictor Models:       19
+
+  PREDICTORS
+    Fixed variables:        d_j
+    Incomplete continuous:  x1_i x2_i x3_j
+
+  CENTERED PREDICTORS
+    Grand Mean Centered:    x2_i x3_j d_j
+    Group Mean Centered:    x1_i
+
+  MODELS
+
+   focal.model:
+    [1]  y_i ~ Intercept x1_i x2_i x3_j d_j | Intercept x1_i
+
+   missingness.model:
+    [2]  ymis_i ~ Intercept y_i x1_i
+
+
+WARNING MESSAGES:
+
+  WARNING: The following variables are fixed and centered.
+           The variables will be centered with observed means.
+  
+             d_j
+  
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Marginal Likelihood
+      DIC2                  14231.211
+      WAIC                  15312.688
+
+    Conditional Likelihood
+      DIC2                  13439.937
+      WAIC                  14573.452
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 20000 iterations using 2 chains.
+
+
+   Level-1:
+
+Correlations                         Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  y_i, ymis_i                         0.003      0.027     -0.049      0.057      1.000  19036.911 
+
+                                -------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 20000 iterations using 2 chains.
+
+  focal.model block:
+
+Outcome Variable:  y_i        
+
+Grand Mean Centered: d_j x2_i x3_j
+Group Mean Centered: x1_i
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  L2 : Var(Intercept)                 0.618      0.083      0.481      0.807      1.000  12036.828 
+  L2 : Cov(x1_i,Intercept)            0.014      0.016     -0.016      0.047      1.000   3659.103 
+  L2 : Var(x1_i)                      0.020      0.006      0.010      0.034      1.000   1694.425 
+  Residual Var.                       0.358      0.011      0.337      0.381      1.000   9534.367 
+
+Coefficients:                   
+  Intercept                           4.167      0.071      4.029      4.308      1.002    324.785 
+  x1_i                               -0.093      0.020     -0.133     -0.054      1.001   1949.806 
+  x2_i                                0.086      0.008      0.071      0.102      1.000   5030.506 
+  x3_j                                0.053      0.067     -0.081      0.179      1.000    315.479 
+  d_j                                -0.071      0.144     -0.362      0.202      1.005    293.276 
+
+Standardized Coefficients:      
+  x1_i                               -0.094      0.021     -0.134     -0.054      1.001   1922.162 
+  x2_i                                0.185      0.018      0.150      0.221      1.000   4987.674 
+  x3_j                                0.052      0.064     -0.078      0.173      1.000    315.378 
+  d_j                                -0.034      0.068     -0.170      0.096      1.005    293.667 
+
+Proportion Variance Explained   
+  by Coefficients                     0.060      0.016      0.037      0.099      1.000    499.153 
+  by Level-2 Random Intercepts        0.580      0.034      0.515      0.646      1.000   4474.653 
+  by Level-2 Random Slopes            0.020      0.006      0.010      0.035      1.000   1739.186 
+  by Level-1 Residual Variation       0.336      0.027      0.283      0.390      1.000   6082.474 
+
+                                -------------------------------------------------------------------
+
+
+  missingness.model block:
+
+Outcome Variable:  ymis_i     
+
+Group Mean Centered: x1_i
+
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  L2 : Var(Intercept)                 0.523      0.114      0.349      0.792      1.001    815.687 
+  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+
+Coefficients:                   
+  Intercept                          -1.643      0.392     -2.429     -0.912      1.008    385.618 
+  y_i                                 0.014      0.092     -0.162      0.192      1.009    415.466 
+  x1_i                                0.664      0.044      0.579      0.752      1.002    935.868 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
+
+Standardized Coefficients:      
+  y_i                                 0.010      0.067     -0.119      0.139      1.009    421.252 
+  x1_i                                0.488      0.027      0.433      0.538      1.003   1259.988 
+
+Proportion Variance Explained   
+  by Coefficients                     0.241      0.025      0.194      0.291      1.001   1937.599 
+  by Level-2 Random Intercepts        0.260      0.040      0.191      0.346      1.001    990.586 
+  by Level-1 Residual Variation       0.497      0.034      0.430      0.561      1.001    626.236 
+
+                                -------------------------------------------------------------------
+
+
+
+
+PREDICTOR MODEL ESTIMATES:
+
+  Summaries based on 20000 iterations using 2 chains.
+
+
+Missing predictor:  x1_i       
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                            4.048      0.099      3.855      4.247      1.000   6987.505 
+
+Level 1:                                                                                           
+  x2_i                               -0.059      0.013     -0.084     -0.035      1.000  10135.495 
+  Residual Var.                       1.073      0.031      1.014      1.136      1.000  11262.576 
+
+Level 2:                                                                                           
+  x2_i                               -0.133      0.077     -0.282      0.017      1.000  13086.353 
+  d_j                                 0.294      0.189     -0.078      0.662      1.000  13917.374 
+  x3_j                               -0.282      0.098     -0.472     -0.089      1.000  11591.587 
+  Residual Var.                       1.055      0.143      0.816      1.382      1.000   8773.910 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+
+
+Missing predictor:  x2_i       
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                            5.419      0.127      5.166      5.661      1.000   1801.320 
+
+Level 1:                                                                                           
+  x1_i                               -0.169      0.036     -0.240     -0.099      1.000   9739.297 
+  Residual Var.                       3.074      0.090      2.906      3.253      1.000  11715.355 
+
+Level 2:                                                                                           
+  x1_i                               -0.202      0.118     -0.435      0.028      1.001  11145.769 
+  d_j                                 0.358      0.235     -0.101      0.818      1.000  16419.282 
+  x3_j                                0.359      0.123      0.117      0.602      1.000  14158.609 
+  Residual Var.                       1.611      0.223      1.244      2.113      1.000  13006.359 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+
+
+Missing predictor:  x3_j       
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Grand Mean                            2.789      0.093      2.604      2.970      1.002   2161.028 
+
+Level 2:                                                                                           
+  x1_i                               -0.238      0.083     -0.398     -0.074      1.001  10670.351 
+  x2_i                                0.198      0.068      0.063      0.334      1.000  16019.535 
+  d_j                                -0.052      0.172     -0.395      0.284      1.000  15348.645 
+  Residual Var.                       0.892      0.116      0.703      1.154      1.000  14761.933 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+

@@ -1,0 +1,11 @@
+DATA: data2.dat;
+VARIABLES: id y v1 x1 d v2 v3 x2 v4;
+ORDINAL: d;
+MISSING: 999;
+FIXED: x1;
+CENTER: x1 x2;
+MODEL:
+yjt(y - 9) ~ x1 x2 d;
+SEED: 90291;
+BURN: 1000;
+ITERATIONS: 10000;

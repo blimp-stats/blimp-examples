@@ -1,0 +1,17 @@
+DATA: data22.dat;
+VARIABLES: id d1 x1 v1 d2 x2 v2 ycnt v3 v4;
+ORDINAL: d1 d2;
+ORDINAL: d1 d2 ybin;
+COUNT: y;
+TRANSFORM: 
+y = missing(ycnt == 0, ycnt);
+ybin = ifelse(ycnt == 0, 0, 1);
+MISSING: 999;
+FIXED: d1 x1;
+CENTER: x1 x2;
+MODEL: 
+y ~ d1 d2 x1 x2;
+ybin ~ d1 d2 x1 x2;
+SEED: 90291;
+BURN: 5000;
+ITERATIONS: 10000;

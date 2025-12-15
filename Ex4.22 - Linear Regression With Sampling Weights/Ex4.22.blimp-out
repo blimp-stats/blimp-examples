@@ -1,0 +1,129 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.2.10
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Not applicable, single-level imputation
+  Prior for random effect variances: Not applicable, single-level imputation
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                           26 to 50              1.108             1  
+                           51 to 100             1.064             4  
+                           76 to 150             1.065             1  
+                          101 to 200             1.019            10  
+                          126 to 250             1.017             9  
+                          151 to 300             1.010            10  
+                          176 to 350             1.009             3  
+                          201 to 400             1.006             8  
+                          226 to 450             1.007             3  
+                          251 to 500             1.009             3  
+                          276 to 550             1.004             7  
+                          301 to 600             1.002             5  
+                          326 to 650             1.003             9  
+                          351 to 700             1.004             1  
+                          376 to 750             1.004            10  
+                          401 to 800             1.004             1  
+                          426 to 850             1.003             1  
+                          451 to 900             1.004             1  
+                          476 to 950             1.004             1  
+                          501 to 1000            1.003             4  
+
+
+DATA INFORMATION:
+
+  Sample Size:              4847
+  Missing Data Rates:
+
+                        y = 00.00
+
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         5
+    Predictor Models:       0
+
+  SAMPLING WEIGHTS
+    Level-1:                wght
+
+  PREDICTORS
+    Fixed variables:        x1 x2 x3
+
+  MODELS
+    [1]  y ~ Intercept x1 x2 x3
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  No residual correlations.
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+
+Outcome Variable:  y          
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.002      0.020      0.962      1.044      1.000   9299.971 
+
+Coefficients:                   
+  Intercept                          -1.944      0.773     -3.469     -0.438      1.000   9781.218 
+  x1                                 -0.291      0.029     -0.349     -0.235      1.000   9815.180 
+  x2                                 -0.017      0.056     -0.126      0.091      1.000   9533.204 
+  x3                                  0.249      0.032      0.188      0.312      1.000   9753.722 
+
+Standardized Coefficients:      
+  x1                                 -0.142      0.014     -0.170     -0.115      1.000   9872.241 
+  x2                                 -0.005      0.016     -0.037      0.026      1.000   9543.095 
+  x3                                  0.132      0.017      0.100      0.165      1.000   9754.376 
+
+Proportion Variance Explained   
+  by Coefficients                     0.041      0.006      0.031      0.053      1.000   9979.404 
+  by Residual Variation               0.959      0.006      0.947      0.969      1.000   9979.404 
+
+                                -------------------------------------------------------------------
+
+
+

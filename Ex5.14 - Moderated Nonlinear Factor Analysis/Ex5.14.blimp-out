@@ -1,0 +1,525 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.2.10
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Not applicable, single-level imputation
+  Prior for random effect variances: Not applicable, single-level imputation
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: The default prior for regression coefficients 
+        in categorical models is 'normal( 0.0, 5.0)'
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                          501 to 1000            1.581             9  
+                         1001 to 2000            1.149             6  
+                         1501 to 3000            1.064             6  
+                         2001 to 4000            1.128             3  
+                         2501 to 5000            1.088             9  
+                         3001 to 6000            1.070             1  
+                         3501 to 7000            1.032             3  
+                         4001 to 8000            1.029             3  
+                         4501 to 9000            1.024             3  
+                         5001 to 10000           1.020             3  
+                         5501 to 11000           1.018             4  
+                         6001 to 12000           1.011             7  
+                         6501 to 13000           1.016             3  
+                         7001 to 14000           1.018            28  
+                         7501 to 15000           1.018             4  
+                         8001 to 16000           1.020             3  
+                         8501 to 17000           1.032             1  
+                         9001 to 18000           1.012            31  
+                         9501 to 19000           1.014            28  
+                        10001 to 20000           1.020            28  
+
+
+METROPOLIS-HASTINGS ACCEPTANCE RATES:
+
+  Chain 1:
+
+    Variable                            Type    Probability   Target Value 
+    var(latenty)                   parameter          0.480          0.500 
+
+  NOTE: Suppressing printing of 1 chains.
+        Use keyword 'tuneinfo' in options to override.
+
+
+DATA INFORMATION:
+
+  Sample Size:              300
+  Missing Data Rates:
+
+                       y1 = 03.33
+                       y2 = 04.67
+                       y3 = 03.67
+                       y4 = 03.67
+                       y5 = 04.67
+                       y6 = 03.67
+
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         30
+    Predictor Models:       0
+
+  PREDICTORS
+    Fixed variables:        g
+
+  FACTORS
+    Level-1:                latenty
+
+  MODELS
+
+   structural.model:
+    [1]  latenty ~ g
+    [2]  var(latenty) ~ g
+
+   measurement.model:
+    [3]  y1 ~ Intercept latenty@load_prior
+    [4]  y2 ~ Intercept g@difficept1 latenty g*latenty@diffload1
+    [5]  y3 ~ Intercept g@difficept2 latenty g*latenty@diffload2
+    [6]  y4 ~ Intercept g@difficept3 latenty g*latenty@diffload3
+    [7]  y5 ~ Intercept g@difficept4 latenty g*latenty@diffload4
+    [8]  y6 ~ Intercept g@difficept5 latenty g*latenty@diffload5
+
+  PRIORS SPECIFIED
+    [1]  load_prior ~ truncate(0, inf)
+
+
+WARNING MESSAGES:
+
+  WARNING: The focal predictor "latenty" is not centered.
+           Simple intercepts in the conditional effects table are
+           evaluated at a score of zero on the focal predictor.
+  
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Marginal Likelihood
+      DIC2                  5892.821
+      WAIC                  6036.659
+
+    Conditional Likelihood
+      DIC2                  5892.821
+      WAIC                  6036.659
+
+  WALD TESTS (Asparouhov & Muthén, 2021)
+
+  Test #1
+
+    Full:
+      [1]  y2 ~ Intercept g@difficept1 latenty g*latenty@diffload1
+      [2]  y3 ~ Intercept g@difficept2 latenty g*latenty@diffload2
+      [3]  y4 ~ Intercept g@difficept3 latenty g*latenty@diffload3
+      [4]  y5 ~ Intercept g@difficept4 latenty g*latenty@diffload4
+      [5]  y6 ~ Intercept g@difficept5 latenty g*latenty@diffload5
+
+    Restricted:
+      [1]  y2 ~ Intercept g@difficept1 latenty g*latenty@diffload1
+      [2]  y3 ~ Intercept g@difficept2 latenty g*latenty@diffload2
+      [3]  y4 ~ Intercept g@difficept3 latenty g*latenty@diffload3
+      [4]  y5 ~ Intercept g@difficept4 latenty g*latenty@diffload4
+      [5]  y6 ~ Intercept g@difficept5 latenty g*latenty@diffload5
+
+    Constraints in Restricted:
+      [1]  diffload1 = 0
+      [2]  diffload2 = 0
+      [3]  diffload3 = 0
+      [4]  diffload4 = 0
+      [5]  diffload5 = 0
+
+
+    Wald Statistic (Chi-Square)                 3.882
+    Number of Parameters Tested (df)                5
+    Probability                                 0.566
+
+  Test #2
+
+    Full:
+      [1]  y2 ~ Intercept g@difficept1 latenty g*latenty@diffload1
+      [2]  y3 ~ Intercept g@difficept2 latenty g*latenty@diffload2
+      [3]  y4 ~ Intercept g@difficept3 latenty g*latenty@diffload3
+      [4]  y5 ~ Intercept g@difficept4 latenty g*latenty@diffload4
+      [5]  y6 ~ Intercept g@difficept5 latenty g*latenty@diffload5
+
+    Restricted:
+      [1]  y2 ~ Intercept g@difficept1 latenty g*latenty@diffload1
+      [2]  y3 ~ Intercept g@difficept2 latenty g*latenty@diffload2
+      [3]  y4 ~ Intercept g@difficept3 latenty g*latenty@diffload3
+      [4]  y5 ~ Intercept g@difficept4 latenty g*latenty@diffload4
+      [5]  y6 ~ Intercept g@difficept5 latenty g*latenty@diffload5
+
+    Constraints in Restricted:
+      [1]  difficept1 = 0
+      [2]  difficept2 = 0
+      [3]  difficept3 = 0
+      [4]  difficept4 = 0
+      [5]  difficept5 = 0
+
+
+    Wald Statistic (Chi-Square)                 3.068
+    Number of Parameters Tested (df)                5
+    Probability                                 0.689
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+
+Correlations                         Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  latenty, y1                         0.005      0.082     -0.156      0.164      1.000   9994.510 
+  latenty, y2                         0.003      0.083     -0.165      0.164      1.000   9911.622 
+  latenty, y3                         0.001      0.082     -0.161      0.159      1.000   9918.351 
+  latenty, y4                        -0.000      0.083     -0.162      0.163      1.000  10025.810 
+  latenty, y5                         0.001      0.083     -0.162      0.161      1.000  10022.802 
+  latenty, y6                         0.002      0.082     -0.161      0.162      1.000   8850.403 
+  y1, y2                             -0.015      0.069     -0.153      0.120      1.000   6160.728 
+  y1, y3                              0.008      0.072     -0.136      0.148      1.001   5615.471 
+  y1, y4                              0.016      0.071     -0.125      0.153      1.000   5150.796 
+  y1, y5                              0.057      0.071     -0.085      0.195      1.000   5652.663 
+  y1, y6                             -0.039      0.070     -0.175      0.100      1.001   5980.338 
+  y2, y3                              0.024      0.072     -0.123      0.165      1.000   5784.951 
+  y2, y4                              0.065      0.070     -0.078      0.200      1.000   5564.292 
+  y2, y5                              0.059      0.068     -0.075      0.194      1.000   6122.626 
+  y2, y6                             -0.108      0.066     -0.240      0.023      1.000   7642.914 
+  y3, y4                             -0.033      0.073     -0.178      0.109      1.000   6003.317 
+  y3, y5                             -0.049      0.072     -0.190      0.090      1.000   6441.358 
+  y3, y6                              0.119      0.072     -0.026      0.257      1.000   4434.954 
+  y4, y5                             -0.001      0.070     -0.139      0.135      1.001   5520.107 
+  y4, y6                             -0.000      0.069     -0.136      0.132      1.000   7164.795 
+  y5, y6                             -0.013      0.068     -0.146      0.122      1.000   7039.850 
+
+                                -------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+  structural.model block:
+
+Latent Variable:   latenty    
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Q25% Residual Var.                  0.556      0.241      0.176      1.000      1.037     84.146 
+  Q50% Residual Var.                  1.000      0.000      1.000      1.000        nan        nan 
+  Mean Residual Var.                  0.825      0.128      0.676      1.189      1.046     74.962 
+  Q75% Residual Var.                  1.000      0.139      1.000      1.480      1.028    102.212 
+
+Coefficients:                   
+  g                                  -0.066      0.191     -0.449      0.310      1.000    188.696 
+
+Standardized Coefficients:      
+  g                                  -0.035      0.100     -0.231      0.160      1.000    182.238 
+
+Proportion Variance Explained   
+  by Coefficients                     0.005      0.016      0.000      0.056      1.001    313.594 
+  by Residual Variation               0.995      0.016      0.944      1.000      1.001    313.594 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  var(latenty)
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+Coefficients:                   
+  g                                  -0.587      0.517     -1.736      0.392      1.049     78.353 
+
+                                -------------------------------------------------------------------
+
+
+  measurement.model block:
+
+Outcome Variable:  y1         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.095      0.113      0.897      1.339      1.002   2749.165 
+
+Coefficients:                   
+  Intercept                           3.661      0.099      3.469      3.858      1.000    268.269 
+  latenty                             0.785      0.104      0.580      0.986      1.006    356.047 
+
+Standardized Coefficients:      
+  latenty                             0.558      0.052      0.448      0.651      1.002   1770.328 
+
+Proportion Variance Explained   
+  by Coefficients                     0.312      0.057      0.201      0.423      1.002   1787.181 
+  by Residual Variation               0.688      0.057      0.577      0.799      1.002   1787.181 
+
+                                -------------------------------------------------------------------
+
+
+
+Outcome Variable:  y2         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.985      0.096      0.811      1.190      1.000   4234.820 
+
+Coefficients:                   
+  Intercept                           3.763      0.093      3.583      3.945      1.000   1506.730 
+  g                                  -0.064      0.167     -0.392      0.270      1.001    470.971 
+  latenty                             0.678      0.099      0.488      0.874      1.000   3386.666 
+  g*latenty                          -0.020      0.266     -0.395      0.612      1.023    163.691 
+
+Standardized Coefficients:      
+  g                                  -0.027      0.070     -0.165      0.113      1.001    470.450 
+  latenty                             0.523      0.073      0.385      0.672      1.014    289.712 
+  g*latenty                          -0.008      0.097     -0.212      0.172      1.021    157.129 
+
+Proportion Variance Explained   
+  by Coefficients                     0.273      0.053      0.171      0.379      1.000   3419.695 
+  by Residual Variation               0.727      0.053      0.621      0.829      1.000   3419.695 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  latenty | g @ 0                                                                                  
+    Intercept                         3.763      0.093      3.583      3.945      1.000   1506.730 
+    Slope                             0.678      0.099      0.488      0.874      1.000   3386.666 
+                                                                                                   
+  latenty | g @ 1                                                                                  
+    Intercept                         3.699      0.155      3.399      4.013      1.001    242.266 
+    Slope                             0.656      0.254      0.322      1.282      1.025    147.438 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+
+Outcome Variable:  y3         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.844      0.097      0.671      1.049      1.001   2609.632 
+
+Coefficients:                   
+  Intercept                           3.602      0.093      3.425      3.785      1.001   1003.288 
+  g                                   0.132      0.210     -0.283      0.554      1.000    259.183 
+  latenty                             0.796      0.101      0.604      0.999      1.000   2428.451 
+  g*latenty                           0.252      0.339     -0.201      1.067      1.038    106.349 
+
+Standardized Coefficients:      
+  g                                   0.053      0.085     -0.113      0.225      1.000    258.357 
+  latenty                             0.591      0.074      0.455      0.748      1.013    240.402 
+  g*latenty                           0.100      0.097     -0.114      0.272      1.029    125.768 
+
+Proportion Variance Explained   
+  by Coefficients                     0.418      0.060      0.301      0.532      1.000   2195.613 
+  by Residual Variation               0.582      0.060      0.468      0.699      1.000   2195.613 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  latenty | g @ 0                                                                                  
+    Intercept                         3.602      0.093      3.425      3.785      1.001   1003.288 
+    Slope                             0.796      0.101      0.604      0.999      1.000   2428.451 
+                                                                                                   
+  latenty | g @ 1                                                                                  
+    Intercept                         3.733      0.212      3.322      4.176      1.001    183.275 
+    Slope                             1.046      0.332      0.619      1.864      1.040     99.624 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+
+Outcome Variable:  y4         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.884      0.093      0.722      1.082      1.000   3736.631 
+
+Coefficients:                   
+  Intercept                           3.603      0.092      3.425      3.784      1.000   1360.470 
+  g                                   0.152      0.189     -0.215      0.532      1.000    300.543 
+  latenty                             0.723      0.096      0.541      0.920      1.001   3219.869 
+  g*latenty                           0.169      0.310     -0.259      0.927      1.035    123.471 
+
+Standardized Coefficients:      
+  g                                   0.063      0.079     -0.089      0.221      1.000    298.307 
+  latenty                             0.553      0.072      0.419      0.703      1.014    243.719 
+  g*latenty                           0.069      0.098     -0.143      0.245      1.028    140.583 
+
+Proportion Variance Explained   
+  by Coefficients                     0.353      0.056      0.243      0.461      1.000   2958.457 
+  by Residual Variation               0.647      0.056      0.539      0.757      1.000   2958.457 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  latenty | g @ 0                                                                                  
+    Intercept                         3.603      0.092      3.425      3.784      1.000   1360.470 
+    Slope                             0.723      0.096      0.541      0.920      1.001   3219.869 
+                                                                                                   
+  latenty | g @ 1                                                                                  
+    Intercept                         3.755      0.187      3.392      4.140      1.001    199.368 
+    Slope                             0.890      0.303      0.496      1.664      1.037    113.386 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+
+Outcome Variable:  y5         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.846      0.085      0.699      1.032      1.000   4289.919 
+
+Coefficients:                   
+  Intercept                           3.488      0.088      3.317      3.663      1.000   1326.717 
+  g                                   0.176      0.151     -0.115      0.480      1.000    497.350 
+  latenty                             0.711      0.094      0.532      0.903      1.001   3080.201 
+  g*latenty                          -0.148      0.241     -0.493      0.417      1.022    181.905 
+
+Standardized Coefficients:      
+  g                                   0.078      0.066     -0.051      0.212      1.000    491.239 
+  latenty                             0.578      0.073      0.439      0.727      1.014    268.128 
+  g*latenty                          -0.063      0.101     -0.276      0.123      1.025    145.604 
+
+Proportion Variance Explained   
+  by Coefficients                     0.305      0.054      0.198      0.410      1.000   3202.601 
+  by Residual Variation               0.695      0.054      0.590      0.802      1.000   3202.601 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  latenty | g @ 0                                                                                  
+    Intercept                         3.488      0.088      3.317      3.663      1.000   1326.717 
+    Slope                             0.711      0.094      0.532      0.903      1.001   3080.201 
+                                                                                                   
+  latenty | g @ 1                                                                                  
+    Intercept                         3.665      0.140      3.392      3.950      1.000    249.096 
+    Slope                             0.562      0.227      0.257      1.121      1.025    154.273 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+
+Outcome Variable:  y6         
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.979      0.097      0.808      1.189      1.002   4204.767 
+
+Coefficients:                   
+  Intercept                           3.687      0.086      3.514      3.853      1.000   1957.504 
+  g                                   0.052      0.197     -0.338      0.453      1.000    267.995 
+  latenty                             0.559      0.099      0.371      0.758      1.000   3805.969 
+  g*latenty                           0.353      0.328     -0.105      1.162      1.041    104.031 
+
+Standardized Coefficients:      
+  g                                   0.022      0.083     -0.143      0.189      1.001    267.283 
+  latenty                             0.431      0.074      0.292      0.579      1.006    539.367 
+  g*latenty                           0.144      0.092     -0.055      0.311      1.027    169.997 
+
+Proportion Variance Explained   
+  by Coefficients                     0.272      0.054      0.170      0.380      1.002   2879.102 
+  by Residual Variation               0.728      0.054      0.620      0.830      1.002   2879.102 
+
+                                -------------------------------------------------------------------
+
+
+
+Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+  latenty | g @ 0                                                                                  
+    Intercept                         3.687      0.086      3.514      3.853      1.000   1957.504 
+    Slope                             0.559      0.099      0.371      0.758      1.000   3805.969 
+                                                                                                   
+  latenty | g @ 1                                                                                  
+    Intercept                         3.738      0.193      3.359      4.136      1.001    197.718 
+    Slope                             0.904      0.319      0.491      1.710      1.044     98.045 
+                                                                                                   
+                                -------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
+
+Additional Parameters:
+
+Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
+                                -------------------------------------------------------------------
+
+  load_prior                          0.785      0.104      0.580      0.986      1.006    356.047 
+
+                                -------------------------------------------------------------------
+
+
+

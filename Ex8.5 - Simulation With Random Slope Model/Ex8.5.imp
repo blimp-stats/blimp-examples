@@ -1,0 +1,26 @@
+SIMULATE:
+	# Calculate number of obs
+	level_1(1) = 10 * 100; # n_j * J
+	level_2(2) = 100;
+		
+	# Specify level-2	
+	level_2:
+		
+		z  = normal(0, 1); # level-2 predictor
+		u0 = normal(10 + z * -0.5,  1.0);
+		# random slope uncorrelated
+		u1 = normal(0.5, 0.2); 
+	# specify level-1
+	level_1: 
+		x = normal(0, 1);  # level-1 predictor
+		y = normal(u0 + x * u1, 1);
+
+VARIABLES: x y z level_2;
+CLUSTERID: level_2;
+MODEL: 
+	y ~ x z | x;
+BURN: 10000;
+ITER: 10000;
+SEED: 198723;
+SAVE:
+	dataset = generated_data.csv;

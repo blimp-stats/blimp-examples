@@ -1,0 +1,16 @@
+# Equation 4c from McNeish & Hamaker (2020)
+DATA: mcneish_hamaker_2020.dat;
+VARIABLES: y_i x_i w1_j w2_j level2id time;
+MISSING: 999;
+CLUSTERID: level2id; 
+TIMEID: time;
+LATENT: level2id = xmean_j ymean_j phi_j beta_j;
+MODEL:
+level2.models:
+1 -> xmean_j ymean_j phi_j beta_j;
+level1.models:
+x_i ~ 1@xmean_j;
+y_i ~ 1@ymean_j (y_i.lag - ymean_j)@phi_j (x_i - xmean_j)@beta_j;
+SEED: 90291;
+BURN: 20000;
+ITER: 20000;

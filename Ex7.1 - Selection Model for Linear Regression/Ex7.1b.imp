@@ -1,0 +1,20 @@
+DATA: data3.dat;
+VARIABLES: id x1 x2 x3 y d1 d2 v1:v4;
+MISSING: 999;
+ORDINAL: d1 d2;
+FIXED: d1 d2;
+CENTER: x1;
+MODEL: 
+# focal analysis model
+y ~ d1 d2 x1;
+# auxiliary variable models
+x2 x3 ~ y d1 d2 x1;
+# selection model
+y.missing ~ y d1;
+SEED: 90291;
+BURN: 2500;
+ITERATIONS: 10000;
+# save model-based multiple imputations;
+# CHAINS: 20;
+# NIMPS: 20;
+# SAVE: stacked = imps.dat;
