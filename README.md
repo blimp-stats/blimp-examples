@@ -1,5 +1,7 @@
 # Blimp User Guide Examples
 
+- [See for rblimp version of examples](https://github.com/blimp-stats/rblimp-examples)
+
 ## CHAPTER 4: REGRESSION MODEL ANALYSIS EXAMPLES
 
 - 4.1: Correlations and Descriptive Statistics  
