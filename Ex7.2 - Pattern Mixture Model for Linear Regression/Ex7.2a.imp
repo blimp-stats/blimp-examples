@@ -9,7 +9,7 @@ MODEL:
 focal.model:
 y ~ 1@b0obs ymis@b0diff d1 d2 x1 ;
 # label residual variance
-y ~~ y@resvar;
+y@resvar;
 predictor.model:
 # sequential specification for predictors
 ymis ~ 1@ymissmean;

@@ -15,10 +15,10 @@ y1 ~ 1@0 icept@1 slope@1;
 y3 ~ 1@0 icept@1 slope@3;
 y6 ~ 1@0 icept@1 slope@6;
 # common residual variance
-y0 ~~ y0@resvar;
-y1 ~~ y1@resvar;
-y3 ~~ y3@resvar;
-y6 ~~ y6@resvar;
+y0@resvar;
+y1@resvar;
+y3@resvar;
+y6@resvar;
 SEED: 90291;
 BURN: 10000;
 ITERATIONS: 10000;

@@ -4,8 +4,8 @@ MISSING: 999;
 LATENT: latentx latenty;
 MODEL:
 structural.model:
-latentx ~~ latentx@1;
-latenty ~~ latenty@1;
+latentx@1;
+latenty@1;
 latentx ~~ latenty;
 measurement.models:
 latentx -> x1 x3;

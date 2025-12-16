@@ -5,7 +5,7 @@ MISSING: 999;
 LATENT: ability;
 MODEL:
 ability ~ 1@0;
-ability ~~ ability@1;
+ability@1;
 y1 ~ 1@icept1 ability@load1;
 y2 ~ 1@icept2 ability@load2;
 y3 ~ 1@icept3 ability@load3;
