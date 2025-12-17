@@ -1,0 +1,21 @@
+DATA: RICLPM.dat;
+VARIABLES: x1:x5 y1:y5 z2 z1;
+LATENT: RIx RIy;
+MODEL:
+# define residual calculations
+{ v in x y, i in 1:4 } : [v][i]r = [v][i] - (mu[v][i] + RI[v]);
+random.intercept:
+RIx ~~ RIy;
+x.models:
+x1 ~ 1@mux1 RIx@1;
+{ i in 2:5 } : x[i] ~ 1@mux[i] RIx@1 x[i-1]r y[i-1]r;
+y.models:
+y1 ~ 1@muy1 RIy@1;
+{ i in 2:5 } : y[i] ~ 1@muy[i] RIy@1 y[i-1]r x[i-1]r;
+covariances:
+{ i in 1:5 } : x[i] ~~ y[i];
+distal.outcome:
+z2 ~ RIx RIy;
+SEED: 90291;
+BURN: 5000;
+ITERATIONS: 10000;
