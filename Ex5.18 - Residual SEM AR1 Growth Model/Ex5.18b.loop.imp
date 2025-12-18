@@ -4,13 +4,13 @@ MISSING: 999;
 LATENT: icept slope;
 MODEL:
 # define residuals for calculations
-{ i in 1:5 } : r_[i] = y[i] - (icept + ([i-1] * slope));
+{ i in 1:5 } : ry[i] = y[i] - (icept + ([i-1] * slope));
 structural.model:
 icept ~~ slope;
 1 -> icept slope;
 measurement.model:
 y1 ~ 1@icept slope@0;
-{ i in 2:6 } : y[i] ~ 1@icept slope@[i-1] r_[i-1]@ac;
+{ i in 2:6 } : y[i] ~ 1@icept slope@[i-1] ry[i-1]@ac;
 SEED: 90291;
 BURN: 20000;
 ITERATIONS: 20000;
