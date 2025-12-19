@@ -1,0 +1,409 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                   4.0.0
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Default Priors:
+    Multilevel covariance matrices:  Not applicable, single-level imputation
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                          251 to 500             1.140            24  
+                          501 to 1000            1.023            27  
+                          751 to 1500            1.018            19  
+                         1001 to 2000            1.011            20  
+                         1251 to 2500            1.010            24  
+                         1501 to 3000            1.010            36  
+                         1751 to 3500            1.007            21  
+                         2001 to 4000            1.011            24  
+                         2251 to 4500            1.007            36  
+                         2501 to 5000            1.008            27  
+                         2751 to 5500            1.006            47  
+                         3001 to 6000            1.010            41  
+                         3251 to 6500            1.006            46  
+                         3501 to 7000            1.004            36  
+                         3751 to 7500            1.004            27  
+                         4001 to 8000            1.004            44  
+                         4251 to 8500            1.008            46  
+                         4501 to 9000            1.003            46  
+                         4751 to 9500            1.002            46  
+                         5001 to 10000           1.002            20  
+
+
+METROPOLIS-HASTINGS ACCEPTANCE RATES:
+
+  Chain 1:
+
+    Variable                            Type    Probability   Target Value 
+    yjt(x2)                        parameter          0.451          0.500 
+    yjt(y1)                        parameter          0.485          0.500 
+
+  NOTE: Suppressing printing of 1 chains.
+        Use keyword 'tuneinfo' in options to override.
+
+
+DATA INFORMATION:
+
+  Sample Size:              500
+  Missing Data Info:
+
+                      Pattern #:       1
+                          miss % --------
+                       x1 =  0.0       -  
+                       x2 =  0.0       -  
+                       x3 =  0.0       -  
+                       y1 =  0.0       -  
+                       y2 =  0.0       -  
+                       y3 =  0.0       -  
+                                 --------
+                                 % 100.0
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         19
+    Predictor Models:       0
+
+  FACTORS
+    Level-1:                latentx latenty
+
+  MODELS
+
+   structural.model:
+    [1]  latentx ~ Intercept@0
+    [2]  latenty ~ Intercept@0
+    [3]  latentx <-> latenty
+
+   measurement.models:
+    [4]  x1 ~ Intercept latentx@1
+    [5]  yjt(x2) ~ Intercept latentx
+    [6]  x3 ~ Intercept latentx
+    [7]  yjt(y1) ~ Intercept latenty
+    [8]  y2 ~ Intercept latenty@1
+    [9]  y3 ~ Intercept latenty
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Conditional Likelihood
+      DIC2                  11650.795
+      WAIC                  12038.626
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 10000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  latentx                             0.000      0.987     -0.688     -0.016      0.669     -2.745      2.998 
+  latenty                            -0.001      0.984     -0.685      0.001      0.695     -3.020      2.827 
+  x1                                 -0.022      1.405     -0.991     -0.039      1.020     -3.958      3.588 
+  x2                                  0.693      2.234     -0.687      0.045      1.376     -2.746     12.754 
+  x3                                  0.035      1.399     -0.937     -0.060      0.990     -3.907      4.159 
+  y1                                  0.688      2.444     -0.741     -0.066      1.291     -2.500     17.437 
+  y2                                 -0.016      1.308     -0.897     -0.008      0.901     -3.733      4.150 
+  y3                                  0.048      1.297     -0.844      0.018      0.944     -3.418      4.107 
+
+                                ------------------------------------------------------------------------------
+
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+Correlations                       Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  latentx, x1                        -0.022      0.056     -0.130      0.088      0.159      0.690   7321.462 
+  latentx, yjt(x2)                    0.001      0.064     -0.123      0.128      0.000      0.987  10069.896 
+  latentx, x3                         0.000      0.063     -0.123      0.124      0.000      0.999   9288.209 
+  latentx, yjt(y1)                   -0.002      0.053     -0.107      0.104      0.002      0.968   8570.880 
+  latentx, y2                        -0.020      0.058     -0.136      0.094      0.118      0.732   6467.741 
+  latentx, y3                         0.033      0.053     -0.071      0.138      0.386      0.534   8311.755 
+  latenty, x1                         0.017      0.055     -0.091      0.123      0.090      0.764   8134.441 
+  latenty, yjt(x2)                   -0.021      0.057     -0.134      0.090      0.143      0.705   8192.821 
+  latenty, x3                         0.009      0.055     -0.101      0.117      0.025      0.876   8252.129 
+  latenty, yjt(y1)                    0.001      0.063     -0.123      0.122      0.000      0.999   9177.903 
+  latenty, y2                        -0.025      0.060     -0.140      0.093      0.168      0.682   4136.386 
+  latenty, y3                        -0.000      0.064     -0.126      0.124      0.000      0.999   9926.096 
+  x1, yjt(x2)                        -0.005      0.063     -0.129      0.116      0.009      0.924   3591.968 
+  x1, x3                             -0.010      0.061     -0.125      0.110      0.022      0.881   2999.423 
+  x1, yjt(y1)                         0.019      0.052     -0.084      0.121      0.132      0.716   9721.230 
+  x1, y2                             -0.007      0.055     -0.111      0.101      0.016      0.899   9273.820 
+  x1, y3                              0.013      0.052     -0.089      0.116      0.062      0.803   9991.218 
+  yjt(x2), x3                         0.012      0.062     -0.111      0.136      0.032      0.857   3809.715 
+  yjt(x2), yjt(y1)                   -0.021      0.055     -0.129      0.088      0.140      0.708   9775.805 
+  yjt(x2), y2                         0.012      0.057     -0.101      0.123      0.043      0.835   9410.663 
+  yjt(x2), y3                        -0.026      0.054     -0.130      0.083      0.223      0.637   9450.735 
+  x3, yjt(y1)                         0.002      0.053     -0.101      0.106      0.002      0.966   9567.586 
+  x3, y2                             -0.030      0.056     -0.140      0.078      0.296      0.586   9660.222 
+  x3, y3                              0.054      0.053     -0.049      0.157      1.057      0.304   9622.368 
+  yjt(y1), y2                        -0.012      0.061     -0.132      0.108      0.035      0.851   3948.571 
+  yjt(y1), y3                         0.026      0.060     -0.091      0.143      0.183      0.669   2614.168 
+  y2, y3                             -0.013      0.062     -0.132      0.107      0.038      0.846   4823.955 
+
+                                ------------------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+  structural.model block:
+
+Latent Variable:   latentx    
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                     @ 1.000        ---        ---        ---        ---        ---        --- 
+
+Standard Deviations:            
+  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Latent Variable:   latenty    
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                     @ 1.000        ---        ---        ---        ---        ---        --- 
+
+Standard Deviations:            
+  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Covariance Matrix: latentx latenty
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Covariances:                    
+  Cov(latentx,latenty)               -0.040      0.062     -0.160      0.082      0.401      0.527   3411.616 
+
+Correlations:                   
+  Cor(latentx,latenty)               -0.040      0.062     -0.160      0.082      0.401      0.527   3411.616 
+
+                                ------------------------------------------------------------------------------
+
+
+  measurement.models block:
+
+Outcome Variable:  x1         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.052      0.091      0.883      1.239        ---        ---   2941.367 
+
+Coefficients:                   
+  Intercept                          -0.022      0.064     -0.148      0.102      0.125      0.724   1984.822 
+  latentx                           @ 1.000        ---        ---        ---        ---        ---        --- 
+
+Standard Deviations:            
+  Residual SD                         1.026      0.044      0.939      1.113        ---        ---   2909.752 
+
+Standardized Coefficients:      
+  latentx                             0.693      0.021      0.652      0.733   1133.021      0.000   2214.211 
+
+Proportion Variance Explained   
+  by Coefficients                     0.480      0.029      0.426      0.538        ---        ---   2209.315 
+  by Residual Variation               0.520      0.029      0.462      0.574        ---        ---   2209.315 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  yjt(x2)    
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.840      0.100      0.653      1.037        ---        ---   1330.695 
+
+Coefficients:                   
+  Intercept                           0.068      0.071     -0.070      0.205      0.919      0.338   1300.744 
+  latentx                             1.095      0.069      0.962      1.233    251.311      0.000   1333.899 
+
+Transformation:                 
+  Yeo-Johnson (lambda)                0.312      0.039      0.234      0.387        ---        ---   1040.013 
+
+Standard Deviations:            
+  Residual SD                         0.916      0.054      0.808      1.018        ---        ---   1311.137 
+
+Standardized Coefficients:      
+  latentx                             0.763      0.032      0.698      0.822    578.671      0.000   1215.817 
+
+Proportion Variance Explained   
+  by Coefficients                     0.581      0.048      0.487      0.675        ---        ---   1202.680 
+  by Residual Variation               0.419      0.048      0.325      0.513        ---        ---   1202.680 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  x3         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.021      0.096      0.845      1.219        ---        ---   2119.015 
+
+Coefficients:                   
+  Intercept                           0.035      0.063     -0.093      0.157      0.295      0.587   1654.150 
+  latentx                             0.984      0.067      0.855      1.115    218.671      0.000   2556.751 
+
+Standard Deviations:            
+  Residual SD                         1.010      0.047      0.919      1.104        ---        ---   2098.649 
+
+Standardized Coefficients:      
+  latentx                             0.693      0.033      0.625      0.753    443.811      0.000   2029.823 
+
+Proportion Variance Explained   
+  by Coefficients                     0.480      0.045      0.390      0.567        ---        ---   2011.292 
+  by Residual Variation               0.520      0.045      0.433      0.610        ---        ---   2011.292 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  yjt(y1)    
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.321      0.118      1.105      1.571        ---        ---   2249.131 
+
+Coefficients:                   
+  Intercept                          -0.044      0.071     -0.182      0.096      0.384      0.536   2257.949 
+  latenty                             0.863      0.079      0.710      1.019    119.572      0.000   1757.701 
+
+Transformation:                 
+  Yeo-Johnson (lambda)                0.217      0.039      0.141      0.292        ---        ---   1395.658 
+
+Standard Deviations:            
+  Residual SD                         1.149      0.051      1.051      1.253        ---        ---   2241.415 
+
+Standardized Coefficients:      
+  latenty                             0.594      0.042      0.506      0.671    197.113      0.000   1827.621 
+
+Proportion Variance Explained   
+  by Coefficients                     0.353      0.050      0.256      0.450        ---        ---   1822.222 
+  by Residual Variation               0.647      0.050      0.550      0.744        ---        ---   1822.222 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y2         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.791      0.093      0.621      0.980        ---        ---   1086.828 
+
+Coefficients:                   
+  Intercept                          -0.015      0.060     -0.134      0.103      0.064      0.800   1925.164 
+  latenty                           @ 1.000        ---        ---        ---        ---        ---        --- 
+
+Standard Deviations:            
+  Residual SD                         0.889      0.052      0.788      0.990        ---        ---   1066.418 
+
+Standardized Coefficients:      
+  latenty                             0.742      0.025      0.693      0.790    874.821      0.000   1009.629 
+
+Proportion Variance Explained   
+  by Coefficients                     0.550      0.037      0.480      0.624        ---        ---   1001.848 
+  by Residual Variation               0.450      0.037      0.376      0.520        ---        ---   1001.848 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y3         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.100      0.095      0.923      1.298        ---        ---   2213.874 
+
+Coefficients:                   
+  Intercept                           0.049      0.059     -0.067      0.164      0.682      0.409   2658.419 
+  latenty                             0.778      0.071      0.643      0.919    120.510      0.000   1414.210 
+
+Standard Deviations:            
+  Residual SD                         1.049      0.045      0.961      1.139        ---        ---   2205.886 
+
+Standardized Coefficients:      
+  latenty                             0.589      0.042      0.503      0.667    198.236      0.000   1573.534 
+
+Proportion Variance Explained   
+  by Coefficients                     0.347      0.049      0.253      0.445        ---        ---   1564.734 
+  by Residual Variation               0.653      0.049      0.555      0.747        ---        ---   1564.734 
+
+                                ------------------------------------------------------------------------------
+
+
+

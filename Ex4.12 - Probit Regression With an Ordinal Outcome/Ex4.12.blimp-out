@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                  3.2.10
+                                   4.0.0
 
              Blimp was developed with funding from Institute of
            Education Sciences awards R305D150056 and R305D190002.
@@ -24,15 +24,17 @@ ALGORITHMIC OPTIONS SPECIFIED:
   Imputation method:                 Fully Bayesian model-based
   MCMC algorithm:                    Full conditional Metropolis sampler with
                                        Auto-Derived Conditional Distributions
-  Between-cluster imputation model:  Not applicable, single-level imputation
-  Prior for random effect variances: Not applicable, single-level imputation
-  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
-  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Default Priors:
+    Multilevel covariance matrices:  Not applicable, single-level imputation
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
   Chain Starting Values:             Random starting values
 
 
   NOTE: The default prior for regression coefficients 
         in categorical models is 'normal( 0.0, 5.0)'
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
 
 
 BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
@@ -81,12 +83,16 @@ METROPOLIS-HASTINGS ACCEPTANCE RATES:
 DATA INFORMATION:
 
   Sample Size:              630
-  Missing Data Rates:
+  Missing Data Info:
 
-                        y = 04.76
-                       x1 = 16.19
-                       x2 = 04.13
-
+                      Pattern #:       1     2     3     4     5
+                          miss % --------------------------------
+                        y =  4.8       -     -     -     M     M  
+                       x1 = 16.2       -     M     -     M     -  
+                       x2 =  4.1       -     -     M     -     -  
+                        d =  0.0       -     -     -     -     -  
+                                 --------------------------------
+                                 %  78.9  12.2   4.1   4.0   0.8
 
 
 MODEL INFORMATION:
@@ -116,13 +122,26 @@ MODEL FIT:
 
   INFORMATION CRITERIA
 
-    Marginal Likelihood
-      DIC2                  1860.311
-      WAIC                  1895.787
-
     Conditional Likelihood
       DIC2                  1860.311
       WAIC                  1895.787
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 10000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  y                                   3.980      1.266      3.000      4.000      5.000      1.000      7.000 
+  x1                                 28.568      4.412     25.989     28.040     31.212     13.990     42.372 
+  x2                                  9.619      3.022      8.000      9.466     12.000     -0.019     17.090 
+  d                                   0.484      0.500      0.000      0.000      1.000      0.000      1.000 
+
+                                ------------------------------------------------------------------------------
+
 
 
 CORRELATIONS AMONG RESIDUALS:
@@ -134,6 +153,7 @@ CORRELATIONS AMONG RESIDUALS:
 OUTCOME MODEL ESTIMATES:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
 
 
 Outcome Variable:  y          
@@ -141,35 +161,38 @@ Outcome Variable:  y
 Grand Mean Centered: x1 x2
 
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
+  Residual Var.                       1.000      0.000      1.000      1.000        ---        ---        nan 
 
 Coefficients:                   
-  Intercept                           2.267      0.161      1.959      2.596      1.028     28.518 
-  x1                                  0.036      0.012      0.012      0.060      1.002   2583.928 
-  x2                                  0.138      0.017      0.105      0.171      1.002   1036.927 
-  d                                   0.176      0.088      0.003      0.348      1.000   6137.573 
+  Intercept                           2.267      0.161      1.959      2.596    198.745      0.000     28.518 
+  x1                                  0.036      0.012      0.012      0.060      9.106      0.003   2583.928 
+  x2                                  0.138      0.017      0.105      0.171     67.670      0.000   1036.927 
+  d                                   0.176      0.088      0.003      0.348      3.961      0.047   6137.573 
 
 Thresholds:                     
-  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
-  Tau 2                               0.964      0.144      0.706      1.263      1.029     30.221 
-  Tau 3                               1.925      0.159      1.622      2.258      1.035     26.940 
-  Tau 4                               2.891      0.168      2.566      3.222      1.030     25.627 
-  Tau 5                               3.705      0.180      3.358      4.072      1.025     25.543 
-  Tau 6                               4.525      0.205      4.160      4.965      1.030     27.924 
+  Tau 1                               0.000      0.000      0.000      0.000        ---        ---        nan 
+  Tau 2                               0.964      0.144      0.706      1.263        ---        ---     30.221 
+  Tau 3                               1.925      0.159      1.622      2.258        ---        ---     26.940 
+  Tau 4                               2.891      0.168      2.566      3.222        ---        ---     25.627 
+  Tau 5                               3.705      0.180      3.358      4.072        ---        ---     25.543 
+  Tau 6                               4.525      0.205      4.160      4.965        ---        ---     27.924 
+
+Standard Deviations:            
+  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
 
 Standardized Coefficients:      
-  x1                                  0.141      0.046      0.049      0.229      1.002   2877.311 
-  x2                                  0.370      0.040      0.288      0.444      1.001   1464.270 
-  d                                   0.077      0.039      0.001      0.153      1.000   6163.140 
+  x1                                  0.141      0.046      0.049      0.229      9.352      0.002   2877.311 
+  x2                                  0.370      0.040      0.288      0.444     84.724      0.000   1464.270 
+  d                                   0.077      0.039      0.001      0.153      3.997      0.046   6163.140 
 
 Proportion Variance Explained   
-  by Coefficients                     0.219      0.030      0.161      0.280      1.006    296.553 
-  by Residual Variation               0.781      0.030      0.720      0.839      1.006    296.553 
+  by Coefficients                     0.219      0.030      0.161      0.280        ---        ---    296.553 
+  by Residual Variation               0.781      0.030      0.720      0.839        ---        ---    296.553 
 
-                                -------------------------------------------------------------------
+                                ------------------------------------------------------------------------------
 
 
 
@@ -177,36 +200,38 @@ Proportion Variance Explained
 PREDICTOR MODEL ESTIMATES:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
 
 
 Missing predictor:  x1         
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 
-Grand Mean                           28.557      0.184     28.200     28.927      1.001   1256.993 
+Grand Mean                           28.557      0.184     28.200     28.927  24094.329      0.000   1256.993 
 
-Level 1:                                                                                           
-  x2                                  0.586      0.060      0.469      0.704      1.000   3087.591 
-  d                                   1.968      0.346      1.299      2.643      1.000   4244.821 
-  Residual Var.                      15.063      0.936     13.408     17.055      1.000   5000.043 
-                                                                                                   
-                                -------------------------------------------------------------------
+Level 1:                                                                                                      
+  x2                                  0.586      0.060      0.469      0.704     96.668      0.000   3087.591 
+  d                                   1.968      0.346      1.299      2.643     32.463      0.000   4244.821 
+  Residual Var.                      15.063      0.936     13.408     17.055        ---        ---   5000.043 
+                                                                                                              
+                                ------------------------------------------------------------------------------
 
 
 
 Missing predictor:  x2         
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 
-Grand Mean                            9.616      0.121      9.375      9.849      1.000   1296.250 
+Grand Mean                            9.616      0.121      9.375      9.849   6348.053      0.000   1296.250 
 
-Level 1:                                                                                           
-  x1                                  0.293      0.029      0.234      0.349      1.000   5033.623 
-  d                                  -0.195      0.237     -0.664      0.267      1.000   7237.582 
-  Residual Var.                       7.530      0.461      6.689      8.505      1.000   4808.995 
-                                                                                                   
-                                -------------------------------------------------------------------
+Level 1:                                                                                                      
+  x1                                  0.293      0.029      0.234      0.349    103.499      0.000   5033.623 
+  d                                  -0.195      0.237     -0.664      0.267      0.670      0.413   7237.582 
+  Residual Var.                       7.530      0.461      6.689      8.505        ---        ---   4808.995 
+                                                                                                              
+                                ------------------------------------------------------------------------------
 
 

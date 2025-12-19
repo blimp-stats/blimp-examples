@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                  3.2.10
+                                   4.0.0
 
              Blimp was developed with funding from Institute of
            Education Sciences awards R305D150056 and R305D190002.
@@ -24,15 +24,17 @@ ALGORITHMIC OPTIONS SPECIFIED:
   Imputation method:                 Fully Bayesian model-based
   MCMC algorithm:                    Full conditional Metropolis sampler with
                                        Auto-Derived Conditional Distributions
-  Between-cluster imputation model:  Latent cluster means (LATENT)
-  Prior for random effect variances: Zero matrix, df = -(p + 1) (PRIOR2)
-  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
-  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Default Priors:
+    Multilevel covariance matrices:  Zero matrix, df = -(p + 1) (PRIOR2)
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
   Chain Starting Values:             Random starting values
 
 
   NOTE: The default prior for regression coefficients 
         in categorical models is 'normal( 0.0, 5.0)'
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
 
   NOTE: The following nominal variables have automatically
         been assigned a reference group.
@@ -50,25 +52,25 @@ BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
 
   Comparing iterations across 2 chains     Highest PSR   Parameter #  
                           376 to 750             1.321             8  
-                          751 to 1500            1.536             3  
-                         1126 to 2250            2.115             3  
-                         1501 to 3000            1.541             3  
-                         1876 to 3750            1.100             3  
-                         2251 to 4500            1.294             3  
-                         2626 to 5250            1.013            10  
+                          751 to 1500            1.930            14  
+                         1126 to 2250            2.532            14  
+                         1501 to 3000            1.843            13  
+                         1876 to 3750            1.128            13  
+                         2251 to 4500            1.322            13  
+                         2626 to 5250            1.019            13  
                          3001 to 6000            1.036            10  
-                         3376 to 6750            1.028             3  
-                         3751 to 7500            1.028             2  
-                         4126 to 8250            1.119             3  
-                         4501 to 9000            1.044             3  
-                         4876 to 9750            1.043            15  
-                         5251 to 10500           1.047             3  
-                         5626 to 11250           1.040             3  
-                         6001 to 12000           1.033            15  
-                         6376 to 12750           1.035            15  
-                         6751 to 13500           1.022            15  
-                         7126 to 14250           1.023            15  
-                         7501 to 15000           1.046             3  
+                         3376 to 6750            1.032            14  
+                         3751 to 7500            1.029            13  
+                         4126 to 8250            1.143            14  
+                         4501 to 9000            1.046            14  
+                         4876 to 9750            1.043            22  
+                         5251 to 10500           1.059            14  
+                         5626 to 11250           1.051            14  
+                         6001 to 12000           1.033            22  
+                         6376 to 12750           1.035            22  
+                         6751 to 13500           1.022            22  
+                         7126 to 14250           1.030            14  
+                         7501 to 15000           1.057            14  
 
 
 DATA INFORMATION:
@@ -78,19 +80,24 @@ DATA INFORMATION:
   Sample Size:              6874
   Level-2 Clusters:         982
   Level-3 Clusters:         29
-  Missing Data Rates:
-
-                      y_i = 11.45
-
   Nominal Dummy Codes:
 
                       d_k = d_k.1
+  Missing Data Info:
+
+                      Pattern #:       1     2
+                          miss % --------------
+                      y_i = 11.4       -     M  
+                   time_i =  0.0       -     -  
+                      d_k =  0.0       -     -  
+                                 --------------
+                                 %  88.6  11.4
 
 
 MODEL INFORMATION:
 
   NUMBER OF PARAMETERS
-    Outcome Models:         17
+    Outcome Models:         11
     Predictor Models:       0
 
   PREDICTORS
@@ -122,6 +129,22 @@ MODEL FIT:
       WAIC                  38268.094
 
 
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 10000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  y_i                                51.967      5.326     48.286     52.000     55.027     35.454     69.708 
+  time_i                              3.000      2.000      1.000      3.000      5.000      0.000      6.000 
+  d_k.1                               0.552      0.506      0.000      1.000      1.000      0.000      1.000 
+
+                                ------------------------------------------------------------------------------
+
+
+
 CORRELATIONS AMONG RESIDUALS:
 
   No residual correlations.
@@ -131,55 +154,65 @@ CORRELATIONS AMONG RESIDUALS:
 OUTCOME MODEL ESTIMATES:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
 
 
 Outcome Variable:  y_i        
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 Variances:                      
-  L2 : Var(Intercept)                 8.996      0.723      7.650     10.491      1.028    161.660 
-  L2 : Cov(time_i,Intercept)          0.021      0.109     -0.196      0.230      1.107     28.715 
-  L2 : Var(time_i)                    0.049      0.026      0.013      0.108      1.191     10.970 
-  L3 : Var(Intercept)                 3.211      1.273      1.697      6.607      1.001   1497.185 
-  L3 : Cov(time_i,Intercept)          0.093      0.158     -0.217      0.430      1.002   1737.476 
-  L3 : Var(time_i)                    0.094      0.040      0.047      0.200      1.001   3515.523 
-  Residual Var.                      12.561      0.271     12.034     13.101      1.020    126.719 
+  L2 : Var(Intercept)                 8.996      0.723      7.650     10.491        ---        ---    161.660 
+  L2 : Cov(time_i,Intercept)          0.021      0.109     -0.196      0.230        ---        ---     28.715 
+  L2 : Var(time_i)                    0.049      0.026      0.013      0.108        ---        ---     10.970 
+  L3 : Var(Intercept)                 3.211      1.273      1.697      6.607        ---        ---   1497.185 
+  L3 : Cov(time_i,Intercept)          0.093      0.158     -0.217      0.430        ---        ---   1737.476 
+  L3 : Var(time_i)                    0.094      0.040      0.047      0.200        ---        ---   3515.523 
+  Residual Var.                      12.561      0.271     12.034     13.101        ---        ---    126.719 
 
 Coefficients:                   
-  Intercept                          50.107      0.548     49.058     51.195      1.018    107.259 
-  time_i                              0.450      0.096      0.272      0.647      1.020    254.912 
-  d_k.1                              -0.189      0.725     -1.697      1.189      1.019     81.516 
-  time_i*d_k.1                        0.297      0.126      0.036      0.533      1.012    292.395 
+  Intercept                          50.107      0.548     49.058     51.195   8356.039      0.000    107.259 
+  time_i                              0.450      0.096      0.272      0.647     22.420      0.000    254.912 
+  d_k.1                              -0.189      0.725     -1.697      1.189      0.083      0.773     81.516 
+  time_i*d_k.1                        0.297      0.126      0.036      0.533      5.496      0.019    292.395 
+
+Standard Deviations:            
+  L2 : SD(Intercept)                  2.999      0.120      2.766      3.239        ---        ---    159.482 
+  L2 : Cor(time_i,Intercept)          0.033      0.194     -0.219      0.563        ---        ---     19.723 
+  L2 : SD(time_i)                     0.221      0.058      0.113      0.329        ---        ---      9.765 
+  L3 : SD(Intercept)                  1.792      0.323      1.303      2.570        ---        ---   1410.116 
+  L3 : Cor(time_i,Intercept)          0.180      0.240     -0.322      0.606        ---        ---   2028.887 
+  L3 : SD(time_i)                     0.307      0.059      0.216      0.448        ---        ---   3289.444 
+  Residual SD                         3.544      0.038      3.469      3.620        ---        ---    126.490 
 
 Standardized Coefficients:      
-  time_i                              0.166      0.035      0.099      0.237      1.021    271.101 
-  d_k.1                              -0.017      0.064     -0.150      0.104      1.018     81.733 
-  time_i*d_k.1                        0.117      0.049      0.014      0.209      1.011    311.745 
+  time_i                              0.166      0.035      0.099      0.237     22.526      0.000    271.101 
+  d_k.1                              -0.017      0.064     -0.150      0.104      0.086      0.769     81.733 
+  time_i*d_k.1                        0.117      0.049      0.014      0.209      5.563      0.018    311.745 
 
 Proportion Variance Explained   
-  by Coefficients                     0.065      0.016      0.040      0.103      1.015     91.855 
-  by Level-2 Random Intercepts        0.326      0.024      0.276      0.367      1.006    890.856 
-  by Level-2 Random Slopes            0.007      0.004      0.002      0.015      1.189     11.048 
-  by Level-3 Random Intercepts        0.157      0.046      0.093      0.271      1.002   1034.890 
-  by Level-3 Random Slopes            0.013      0.005      0.006      0.026      1.000   3442.539 
-  by Level-1 Residual Variation       0.427      0.027      0.365      0.472      1.008    603.937 
+  by Coefficients                     0.065      0.016      0.040      0.103        ---        ---     91.855 
+  by Level-2 Random Intercepts        0.326      0.024      0.276      0.367        ---        ---    890.856 
+  by Level-2 Random Slopes            0.007      0.004      0.002      0.015        ---        ---     11.048 
+  by Level-3 Random Intercepts        0.157      0.046      0.093      0.271        ---        ---   1034.890 
+  by Level-3 Random Slopes            0.013      0.005      0.006      0.026        ---        ---   3442.539 
+  by Level-1 Residual Variation       0.427      0.027      0.365      0.472        ---        ---    603.937 
 
-                                -------------------------------------------------------------------
+                                ------------------------------------------------------------------------------
 
 
 
-Conditional Effects                  Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
-  time_i | d_k.1 @ 0                                                                               
-    Intercept                        50.107      0.548     49.058     51.195      1.018    107.259 
-    Slope                             0.450      0.096      0.272      0.647      1.020    254.912 
-                                                                                                   
-  time_i | d_k.1 @ 1                                                                               
-    Intercept                        49.932      0.481     48.888     50.833      1.004     64.696 
-    Slope                             0.748      0.085      0.575      0.912      1.005    181.842 
-                                                                                                   
-                                -------------------------------------------------------------------
+Conditional Effects                Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+  time_i | d_k.1 @ 0                                                                                          
+    Intercept                        50.107      0.548     49.058     51.195   8356.039      0.000    107.259 
+    Slope                             0.450      0.096      0.272      0.647     22.420      0.000    254.912 
+                                                                                                              
+  time_i | d_k.1 @ 1                                                                                          
+    Intercept                        49.932      0.481     48.888     50.833  10749.815      0.000     64.696 
+    Slope                             0.748      0.085      0.575      0.912     77.280      0.000    181.842 
+                                                                                                              
+                                ------------------------------------------------------------------------------
 
                                 NOTE: Intercepts are computed by setting all predictors
                                       not involved in the conditional effect to zero.

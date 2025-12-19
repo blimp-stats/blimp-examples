@@ -91,4 +91,15 @@
 - 7.10: Two-Level Diggle–Kenward Growth Curve Model  
 
 
+## CHAPTER 8: MONTE CARLO STUDIES IN BLIMP
 
+- 8.1: Simulation With Linear Regression
+- 8.2: Simulation With Bivariate Regression
+- 8.3: Simulation With Bifactor Model
+- 8.4: Simulation With Random Intercept Model
+- 8.5: Simulation With Random Slopes
+- 8.6: Simulation With Linear Growth Model
+- 8.7: Simulation With Two-level Decomposed Effects Model
+- 8.8: Simulation With Missing Data Generation
+- 8.9: Simulation With Dynamical System
+- 8.10: Simulation With Dynamical System Parallel Process  

@@ -1,0 +1,405 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                   4.0.0
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Default Priors:
+    Multilevel covariance matrices:  Not applicable, single-level imputation
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: The default prior for regression coefficients 
+        in categorical models is 'normal( 0.0, 5.0)'
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                           76 to 150             1.422            11  
+                          151 to 300             1.309            47  
+                          226 to 450             1.132            47  
+                          301 to 600             1.097             7  
+                          376 to 750             1.126            23  
+                          451 to 900             1.099            31  
+                          526 to 1050            1.055            51  
+                          601 to 1200            1.064            50  
+                          676 to 1350            1.049            23  
+                          751 to 1500            1.065            27  
+                          826 to 1650            1.034            50  
+                          901 to 1800            1.060            47  
+                          976 to 1950            1.102            47  
+                         1051 to 2100            1.085            47  
+                         1126 to 2250            1.053            47  
+                         1201 to 2400            1.046            47  
+                         1276 to 2550            1.058            47  
+                         1351 to 2700            1.084            47  
+                         1426 to 2850            1.089            47  
+                         1501 to 3000            1.072            47  
+
+
+DATA INFORMATION:
+
+  Sample Size:              291
+  Missing Data Info:
+
+                      Pattern #:       1     2     3     4     5     6     7
+                          miss % --------------------------------------------
+                       y1 =  0.3       -     -     -     -     -     -     M  
+                       y2 =  1.7       -     -     M     -     -     -     -  
+                       y3 =  0.7       -     -     -     -     -     M     -  
+                       y4 =  0.7       -     -     -     M     -     -     -  
+                       y5 =  1.7       -     M     -     -     -     -     -  
+                       y6 =  0.7       -     -     -     -     M     -     -  
+                                 --------------------------------------------
+                                 %  94.2   1.7   1.7   0.7   0.7   0.7   0.3
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         12
+    Generated Parameters:   12
+    Predictor Models:       0
+
+  FACTORS
+    Level-1:                ability
+
+  MODELS
+    [1]  ability ~ Intercept@0
+    [2]  y1 ~ Intercept@icept1 ability@load1
+    [3]  y2 ~ Intercept@icept2 ability@load2
+    [4]  y3 ~ Intercept@icept3 ability@load3
+    [5]  y4 ~ Intercept@icept4 ability@load4
+    [6]  y5 ~ Intercept@icept5 ability@load5
+    [7]  y6 ~ Intercept@icept6 ability@load6
+
+  GENERATED PARAMETERS
+    [1]  discrim1 = load1
+    [2]  discrim2 = load2
+    [3]  discrim3 = load3
+    [4]  discrim4 = load4
+    [5]  discrim5 = load5
+    [6]  discrim6 = load6
+    [7]  difficulty1 = -icept1/load1
+    [8]  difficulty2 = -icept2/load2
+    [9]  difficulty3 = -icept3/load3
+   [10]  difficulty4 = -icept4/load4
+   [11]  difficulty5 = -icept5/load5
+   [12]  difficulty6 = -icept6/load6
+
+
+WARNING MESSAGES:
+
+  WARNING: 9 observations have all variables in the imputation
+           model missing. They have been dropped from data set.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Conditional Likelihood
+      DIC2                  6408.988
+      WAIC                  7194.033
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 10000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  ability                            -0.005      0.991     -0.676     -0.020      0.659     -2.843      2.871 
+  y1                                  0.562      0.497      0.000      1.000      1.000      0.000      1.000 
+  y2                                  0.582      0.494      0.000      1.000      1.000      0.000      1.000 
+  y3                                  0.528      0.500      0.000      1.000      1.000      0.000      1.000 
+  y4                                  0.527      0.500      0.000      1.000      1.000      0.000      1.000 
+  y5                                  0.490      0.501      0.000      0.000      1.000      0.000      1.000 
+  y6                                  0.552      0.498      0.000      1.000      1.000      0.000      1.000 
+
+                                ------------------------------------------------------------------------------
+
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+Correlations                       Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  ability, y1                         0.002      0.084     -0.167      0.166      0.000      0.988   9389.417 
+  ability, y2                         0.000      0.083     -0.165      0.165      0.000      0.997   9554.746 
+  ability, y3                         0.000      0.083     -0.166      0.162      0.000      0.999   9862.491 
+  ability, y4                         0.001      0.084     -0.159      0.166      0.000      0.988   9802.648 
+  ability, y5                         0.002      0.083     -0.160      0.163      0.000      0.989  10015.231 
+  ability, y6                         0.001      0.083     -0.160      0.163      0.000      0.992  10205.956 
+  y1, y2                              0.018      0.080     -0.142      0.173      0.049      0.825   6498.861 
+  y1, y3                             -0.029      0.080     -0.188      0.128      0.126      0.723   7782.335 
+  y1, y4                             -0.011      0.080     -0.166      0.145      0.016      0.898   7222.537 
+  y1, y5                              0.030      0.081     -0.129      0.184      0.129      0.719   6388.418 
+  y1, y6                             -0.000      0.081     -0.161      0.158      0.000      0.995   8385.468 
+  y2, y3                              0.003      0.080     -0.157      0.158      0.001      0.973   7808.181 
+  y2, y4                              0.002      0.080     -0.153      0.160      0.001      0.972   7501.031 
+  y2, y5                              0.005      0.081     -0.160      0.159      0.001      0.970   7339.001 
+  y2, y6                             -0.026      0.079     -0.181      0.128      0.113      0.737   7707.174 
+  y3, y4                              0.015      0.081     -0.148      0.173      0.032      0.859   6388.312 
+  y3, y5                              0.004      0.080     -0.154      0.159      0.003      0.959   6817.428 
+  y3, y6                              0.008      0.080     -0.149      0.166      0.010      0.920   5386.288 
+  y4, y5                             -0.024      0.080     -0.183      0.132      0.098      0.754   8306.399 
+  y4, y6                              0.018      0.081     -0.141      0.174      0.051      0.821   7580.404 
+  y5, y6                             -0.003      0.080     -0.163      0.151      0.003      0.955   7584.067 
+
+                                ------------------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+Latent Variable:   ability    
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                     @ 1.000        ---        ---        ---        ---        ---        --- 
+
+Standard Deviations:            
+  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y1         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Coefficients:                   
+  Intercept                           0.196      0.092      0.017      0.378      4.575      0.032   1947.668 
+  ability                             0.711      0.151      0.450      1.052     22.672      0.000    751.373 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        ---        ---        nan 
+
+Standard Deviations:            
+  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Standardized Coefficients:      
+  ability                             0.576      0.078      0.409      0.716     53.653      0.000    796.656 
+
+Proportion Variance Explained   
+  by Coefficients                     0.332      0.088      0.167      0.513        ---        ---    771.710 
+  by Residual Variation               0.668      0.088      0.487      0.833        ---        ---    771.710 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y2         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Coefficients:                   
+  Intercept                           0.252      0.089      0.081      0.430      8.070      0.005   1787.663 
+  ability                             0.641      0.141      0.406      0.957     21.320      0.000    847.292 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        ---        ---        nan 
+
+Standard Deviations:            
+  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Standardized Coefficients:      
+  ability                             0.535      0.079      0.374      0.684     45.348      0.000    875.863 
+
+Proportion Variance Explained   
+  by Coefficients                     0.287      0.084      0.140      0.468        ---        ---    841.904 
+  by Residual Variation               0.713      0.084      0.532      0.860        ---        ---    841.904 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y3         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Coefficients:                   
+  Intercept                           0.109      0.101     -0.091      0.311      1.148      0.284   1500.283 
+  ability                             0.898      0.181      0.596      1.309     25.415      0.000    465.105 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        ---        ---        nan 
+
+Standard Deviations:            
+  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Standardized Coefficients:      
+  ability                             0.665      0.071      0.510      0.790     86.011      0.000    496.246 
+
+Proportion Variance Explained   
+  by Coefficients                     0.442      0.093      0.260      0.624        ---        ---    486.533 
+  by Residual Variation               0.558      0.093      0.376      0.740        ---        ---    486.533 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y4         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Coefficients:                   
+  Intercept                           0.096      0.098     -0.092      0.290      1.014      0.314   1735.028 
+  ability                             0.802      0.161      0.527      1.161     25.562      0.000    674.705 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        ---        ---        nan 
+
+Standard Deviations:            
+  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Standardized Coefficients:      
+  ability                             0.623      0.073      0.467      0.751     71.612      0.000    718.564 
+
+Proportion Variance Explained   
+  by Coefficients                     0.388      0.089      0.218      0.564        ---        ---    692.276 
+  by Residual Variation               0.612      0.089      0.436      0.782        ---        ---    692.276 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y5         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Coefficients:                   
+  Intercept                          -0.022      0.094     -0.204      0.164      0.050      0.823   1969.021 
+  ability                             0.783      0.160      0.509      1.134     24.678      0.000    649.992 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        ---        ---        nan 
+
+Standard Deviations:            
+  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Standardized Coefficients:      
+  ability                             0.612      0.075      0.452      0.745     66.136      0.000    675.095 
+
+Proportion Variance Explained   
+  by Coefficients                     0.375      0.090      0.205      0.555        ---        ---    656.947 
+  by Residual Variation               0.625      0.090      0.445      0.795        ---        ---    656.947 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y6         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Coefficients:                   
+  Intercept                           0.173      0.093     -0.009      0.360      3.429      0.064   1897.335 
+  ability                             0.746      0.152      0.486      1.076     24.703      0.000    761.412 
+
+Thresholds:                     
+  Tau 1                               0.000      0.000      0.000      0.000        ---        ---        nan 
+
+Standard Deviations:            
+  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
+
+Standardized Coefficients:      
+  ability                             0.594      0.074      0.436      0.727     62.917      0.000    799.946 
+
+Proportion Variance Explained   
+  by Coefficients                     0.353      0.087      0.190      0.529        ---        ---    766.209 
+  by Residual Variation               0.647      0.087      0.471      0.810        ---        ---    766.209 
+
+                                ------------------------------------------------------------------------------
+
+
+
+GENERATED PARAMETERS:
+
+  Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  discrim1                            0.711      0.151      0.450      1.052     22.672      0.000    751.373 
+  discrim2                            0.641      0.141      0.406      0.957     21.320      0.000    847.292 
+  discrim3                            0.898      0.181      0.596      1.309     25.415      0.000    465.105 
+  discrim4                            0.802      0.161      0.527      1.161     25.562      0.000    674.705 
+  discrim5                            0.783      0.160      0.509      1.134     24.678      0.000    649.992 
+  discrim6                            0.746      0.152      0.486      1.076     24.703      0.000    761.412 
+  difficulty1                        -0.275      0.139     -0.572     -0.025      4.082      0.043   2074.164 
+  difficulty2                        -0.394      0.157     -0.749     -0.124      6.634      0.010   2202.355 
+  difficulty3                        -0.121      0.113     -0.344      0.102      1.135      0.287   1756.005 
+  difficulty4                        -0.120      0.125     -0.378      0.115      0.983      0.321   1779.424 
+  difficulty5                         0.027      0.123     -0.211      0.272      0.051      0.821   2143.063 
+  difficulty6                        -0.231      0.133     -0.517      0.012      3.138      0.076   2019.562 
+
+                                ------------------------------------------------------------------------------
+

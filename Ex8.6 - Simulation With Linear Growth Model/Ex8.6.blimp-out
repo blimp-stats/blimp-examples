@@ -2,10 +2,10 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                   3.2.0
+                                   4.0.0
 
              Blimp was developed with funding from Institute of
-          Educational Sciences awards R305D150056 and R305D190002.
+           Education Sciences awards R305D150056 and R305D190002.
 
             Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
            Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
@@ -24,22 +24,25 @@ ALGORITHMIC OPTIONS SPECIFIED:
   Imputation method:                 Fully Bayesian model-based
   MCMC algorithm:                    Full conditional Metropolis sampler with
                                        Auto-Derived Conditional Distributions
-  Between-cluster imputation model:  Latent cluster means (LATENT)
-  Residual variance structure:       Homogeneous level-1 variance (HOV)
-  Prior for random effect variances: Zero matrix, df = -(p + 1) (PRIOR2)
-  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
-  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Default Priors:
+    Multilevel covariance matrices:  Zero matrix, df = -(p + 1) (PRIOR2)
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
   Chain Starting Values:             Random starting values
 
 
+  NOTE: For complete list of priors include 'pinfo' in the options.
+
 SIMULATED DATA SUMMARIES:
 
-Variables                              Mean        VAR     StdDev 
-                                ----------------------------------
-  y                                  10.736      3.309      1.819 
-  time0                               1.500      1.250      1.118 
-  level_2                           499.500  83354.089    288.711 
-                                ----------------------------------
+Variables                              Mean        VAR     StdDev        25%        50%        75% 
+                                -------------------------------------------------------------------
+
+  y                                  10.718      3.449      1.857      9.486     10.630     11.883 
+  time0                               1.500      1.250      1.118      0.500      1.500      2.500 
+  level_2                           500.500  83354.089    288.711    250.500    500.500    750.500 
+
+                                -------------------------------------------------------------------
 
 VARIABLE ORDER IN SIMULATED DATA:
 
@@ -55,26 +58,26 @@ BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
         iterations to create twice as many chains.
 
   Comparing iterations across 2 chains     Highest PSR   Parameter #  
-                          251 to 500             1.033            10  
-                          501 to 1000            1.035            10  
-                          751 to 1500            1.029             2  
-                         1001 to 2000            1.010            10  
-                         1251 to 2500            1.009             5  
-                         1501 to 3000            1.004            10  
-                         1751 to 3500            1.004             5  
-                         2001 to 4000            1.012             2  
-                         2251 to 4500            1.005             1  
-                         2501 to 5000            1.008             2  
-                         2751 to 5500            1.022             2  
-                         3001 to 6000            1.009             2  
-                         3251 to 6500            1.005             2  
-                         3501 to 7000            1.010             2  
-                         3751 to 7500            1.016             2  
-                         4001 to 8000            1.015            10  
-                         4251 to 8500            1.008             2  
-                         4501 to 9000            1.006             2  
-                         4751 to 9500            1.014             2  
-                         5001 to 10000           1.014             2  
+                          251 to 500             1.041             8  
+                          501 to 1000            1.069            14  
+                          751 to 1500            1.054             9  
+                         1001 to 2000            1.020             8  
+                         1251 to 2500            1.011             5  
+                         1501 to 3000            1.009            14  
+                         1751 to 3500            1.008            14  
+                         2001 to 4000            1.016             8  
+                         2251 to 4500            1.003            14  
+                         2501 to 5000            1.007             5  
+                         2751 to 5500            1.019             8  
+                         3001 to 6000            1.009             8  
+                         3251 to 6500            1.007             8  
+                         3501 to 7000            1.013             8  
+                         3751 to 7500            1.013             8  
+                         4001 to 8000            1.010             8  
+                         4251 to 8500            1.005             8  
+                         4501 to 9000            1.004             8  
+                         4751 to 9500            1.011             8  
+                         5001 to 10000           1.011             8  
 
 
 DATA INFORMATION:
@@ -82,10 +85,14 @@ DATA INFORMATION:
   Level-2 identifier:       level_2
   Sample Size:              4000
   Level-2 Clusters:         1000
-  Missing Data Rates:
+  Missing Data Info:
 
-                        y = 00.00
-
+                      Pattern #:       1
+                          miss % --------
+                        y =  0.0       -  
+                    time0 =  0.0       -  
+                                 --------
+                                 % 100.0
 
 
 MODEL INFORMATION:
@@ -112,12 +119,27 @@ MODEL FIT:
   INFORMATION CRITERIA
 
     Marginal Likelihood
-      DIC2                  13812.968
-      WAIC                  13813.002
+      DIC2                  13953.163
+      WAIC                  13953.203
 
     Conditional Likelihood
-      DIC2                  11791.285
-      WAIC                  12272.942
+      DIC2                  11888.432
+      WAIC                  12380.480
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 10000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  y                                  10.718      1.857      9.486     10.630     11.883      2.561     18.077 
+  time0                               1.500      1.118      0.500      1.500      2.500      0.000      3.000 
+
+                                ------------------------------------------------------------------------------
+
 
 
 CORRELATIONS AMONG RESIDUALS:
@@ -129,32 +151,39 @@ CORRELATIONS AMONG RESIDUALS:
 OUTCOME MODEL ESTIMATES:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
 
 
 Outcome Variable:  y          
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 Variances:                      
-  L2 : Var(Intercept)                 0.875      0.072      0.743      1.023      1.002    666.311 
-  L2 : Cov(time0,Intercept)           0.153      0.026      0.101      0.203      1.003    556.545 
-  L2 : Var(time0)                     0.203      0.018      0.169      0.241      1.001    791.479 
-  Residual Var.                       0.984      0.031      0.926      1.048      1.002   1294.427 
+  L2 : Var(Intercept)                 1.107      0.086      0.951      1.287        ---        ---    719.936 
+  L2 : Cov(time0,Intercept)           0.141      0.029      0.081      0.195        ---        ---    477.483 
+  L2 : Var(time0)                     0.181      0.018      0.146      0.218        ---        ---    533.803 
+  Residual Var.                       1.006      0.032      0.947      1.072        ---        ---   1026.632 
 
 Coefficients:                   
-  Intercept                          10.009      0.041      9.929     10.087      1.003   1174.552 
-  time0                               0.484      0.020      0.444      0.524      1.001   1341.418 
+  Intercept                           9.986      0.044      9.901     10.071  52108.737      0.000   1030.039 
+  time0                               0.486      0.020      0.448      0.526    602.670      0.000   1539.120 
+
+Standard Deviations:            
+  L2 : SD(Intercept)                  1.052      0.041      0.975      1.135        ---        ---    718.209 
+  L2 : Cor(time0,Intercept)           0.316      0.077      0.168      0.472        ---        ---    378.100 
+  L2 : SD(time0)                      0.425      0.021      0.382      0.467        ---        ---    530.440 
+  Residual SD                         1.003      0.016      0.973      1.035        ---        ---   1027.292 
 
 Standardized Coefficients:      
-  time0                               0.297      0.012      0.273      0.321      1.001   1513.603 
+  time0                               0.292      0.012      0.270      0.315    621.768      0.000   1743.655 
 
 Proportion Variance Explained   
-  by Coefficients                     0.088      0.007      0.075      0.103      1.001   1519.872 
-  by Level-2 Random Intercepts        0.539      0.014      0.512      0.565      1.000   3270.296 
-  by Level-2 Random Slopes            0.076      0.006      0.065      0.090      1.001    736.262 
-  by Level-1 Residual Variation       0.296      0.012      0.274      0.320      1.001   1449.099 
+  by Coefficients                     0.085      0.007      0.073      0.099        ---        ---   1750.974 
+  by Level-2 Random Intercepts        0.559      0.014      0.532      0.585        ---        ---   3937.434 
+  by Level-2 Random Slopes            0.065      0.006      0.053      0.078        ---        ---    512.339 
+  by Level-1 Residual Variation       0.290      0.012      0.268      0.315        ---        ---   1228.712 
 
-                                -------------------------------------------------------------------
+                                ------------------------------------------------------------------------------
 
 
 

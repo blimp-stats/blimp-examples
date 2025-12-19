@@ -4,8 +4,8 @@ ORDINAL: y1:y5 x1:x7 m;
 MISSING: 999;
 MODEL:
 focal.model:
-xscale = x1:+:x7; # define function
-yscale ~ xscale m m*xscale; # embedded sum function as predictor
+sum_score = x1:+:x7; # define function
+yscale ~ sum_score m m*xscale; # embedded sum function as predictor
 predictor.model:
 x1:x7 m ~ 1; # sequential specification for predictors
 auxiliary.model:

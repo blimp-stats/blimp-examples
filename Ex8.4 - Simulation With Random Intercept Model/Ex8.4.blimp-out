@@ -2,10 +2,10 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                   3.2.0
+                                   4.0.0
 
              Blimp was developed with funding from Institute of
-          Educational Sciences awards R305D150056 and R305D190002.
+           Education Sciences awards R305D150056 and R305D190002.
 
             Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
            Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
@@ -24,23 +24,26 @@ ALGORITHMIC OPTIONS SPECIFIED:
   Imputation method:                 Fully Bayesian model-based
   MCMC algorithm:                    Full conditional Metropolis sampler with
                                        Auto-Derived Conditional Distributions
-  Between-cluster imputation model:  Latent cluster means (LATENT)
-  Residual variance structure:       Homogeneous level-1 variance (HOV)
-  Prior for random effect variances: Zero matrix, df = -(p + 1) (PRIOR2)
-  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
-  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Default Priors:
+    Multilevel covariance matrices:  Zero matrix, df = -(p + 1) (PRIOR2)
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
   Chain Starting Values:             Random starting values
 
 
+  NOTE: For complete list of priors include 'pinfo' in the options.
+
 SIMULATED DATA SUMMARIES:
 
-Variables                              Mean        VAR     StdDev 
-                                ----------------------------------
-  x                                  -0.005      1.002      1.001 
-  y                                   9.913      2.432      1.560 
-  z                                  -0.072      1.277      1.130 
-  level_2                            49.500    834.084     28.881 
-                                ----------------------------------
+Variables                              Mean        VAR     StdDev        25%        50%        75% 
+                                -------------------------------------------------------------------
+
+  x                                  -0.005      1.002      1.001     -0.687      0.010      0.640 
+  y                                   9.913      2.432      1.560      8.793      9.836     10.970 
+  z                                  -0.072      1.277      1.130     -0.888     -0.150      0.731 
+  level_2                            50.500    834.084     28.881     25.500     50.500     75.500 
+
+                                -------------------------------------------------------------------
 
 VARIABLE ORDER IN SIMULATED DATA:
 
@@ -72,10 +75,10 @@ BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
                          1751 to 3500            1.018             5  
                          1876 to 3750            1.009             5  
                          2001 to 4000            1.009             3  
-                         2126 to 4250            1.010            10  
+                         2126 to 4250            1.010            12  
                          2251 to 4500            1.010             5  
                          2376 to 4750            1.011             5  
-                         2501 to 5000            1.007             7  
+                         2501 to 5000            1.007             9  
 
 
 DATA INFORMATION:
@@ -83,10 +86,15 @@ DATA INFORMATION:
   Level-2 identifier:       level_2
   Sample Size:              1000
   Level-2 Clusters:         100
-  Missing Data Rates:
+  Missing Data Info:
 
-                        y = 00.00
-
+                      Pattern #:       1
+                          miss % --------
+                        y =  0.0       -  
+                        x =  0.0       -  
+                        z =  0.0       -  
+                                 --------
+                                 % 100.0
 
 
 MODEL INFORMATION:
@@ -121,6 +129,22 @@ MODEL FIT:
       WAIC                  2887.698
 
 
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 5000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  y                                   9.913      1.560      8.793      9.836     10.970      5.698     15.009 
+  x                                  -0.005      1.001     -0.687      0.010      0.640     -3.185      3.207 
+  z                                  -0.072      1.135     -0.888     -0.150      0.731     -2.769      2.560 
+
+                                ------------------------------------------------------------------------------
+
+
+
 CORRELATIONS AMONG RESIDUALS:
 
   No residual correlations.
@@ -130,31 +154,36 @@ CORRELATIONS AMONG RESIDUALS:
 OUTCOME MODEL ESTIMATES:
 
   Summaries based on 5000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
 
 
 Outcome Variable:  y          
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 Variances:                      
-  L2 : Var(Intercept)                 0.802      0.134      0.591      1.124      1.000   2732.720 
-  Residual Var.                       0.980      0.046      0.898      1.077      1.002   3889.921 
+  L2 : Var(Intercept)                 0.802      0.134      0.591      1.124        ---        ---   2732.720 
+  Residual Var.                       0.980      0.046      0.898      1.077        ---        ---   3889.921 
 
 Coefficients:                   
-  Intercept                           9.876      0.097      9.683     10.066      1.010    229.440 
-  x                                   0.498      0.033      0.435      0.562      1.001   3897.197 
-  z                                  -0.580      0.086     -0.748     -0.417      1.001    335.756 
+  Intercept                           9.876      0.097      9.683     10.066  10282.277      0.000    229.440 
+  x                                   0.498      0.033      0.435      0.562    232.880      0.000   3897.197 
+  z                                  -0.580      0.086     -0.748     -0.417     45.770      0.000    335.756 
+
+Standard Deviations:            
+  L2 : SD(Intercept)                  0.896      0.074      0.769      1.060        ---        ---   2715.926 
+  Residual SD                         0.990      0.023      0.947      1.038        ---        ---   3891.683 
 
 Standardized Coefficients:      
-  x                                   0.318      0.022      0.275      0.362      1.001   1602.521 
-  z                                  -0.419      0.053     -0.514     -0.310      1.001    355.267 
+  x                                   0.318      0.022      0.275      0.362    201.394      0.000   1602.521 
+  z                                  -0.419      0.053     -0.514     -0.310     63.211      0.000    355.267 
 
 Proportion Variance Explained   
-  by Coefficients                     0.268      0.041      0.193      0.347      1.001    411.741 
-  by Level-2 Random Intercepts        0.327      0.041      0.257      0.417      1.001   1330.810 
-  by Level-1 Residual Variation       0.401      0.032      0.339      0.463      1.000    727.512 
+  by Coefficients                     0.268      0.041      0.193      0.347        ---        ---    411.741 
+  by Level-2 Random Intercepts        0.327      0.041      0.257      0.417        ---        ---   1330.810 
+  by Level-1 Residual Variation       0.401      0.032      0.339      0.463        ---        ---    727.512 
 
-                                -------------------------------------------------------------------
+                                ------------------------------------------------------------------------------
 
 
 

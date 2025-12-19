@@ -1,0 +1,184 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                   4.0.0
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Default Priors:
+    Multilevel covariance matrices:  Zero matrix, df = -(p + 1) (PRIOR2)
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                           26 to 50              1.265             1  
+                           51 to 100             1.118             1  
+                           76 to 150             1.454             2  
+                          101 to 200             1.052             1  
+                          126 to 250             1.040             2  
+                          151 to 300             1.009            11  
+                          176 to 350             1.006            10  
+                          201 to 400             1.017            12  
+                          226 to 450             1.019            11  
+                          251 to 500             1.101            12  
+                          276 to 550             1.121             2  
+                          301 to 600             1.073             1  
+                          326 to 650             1.019            12  
+                          351 to 700             1.011            12  
+                          376 to 750             1.025            12  
+                          401 to 800             1.026             2  
+                          426 to 850             1.018             2  
+                          451 to 900             1.073             1  
+                          476 to 950             1.034            12  
+                          501 to 1000            1.022             1  
+
+
+DATA INFORMATION:
+
+  Level-2 identifier:       level2id
+  Sample Size:              1424
+  Level-2 Clusters:         437
+  Missing Data Info:
+
+                      Pattern #:       1
+                          miss % --------
+                      y_i =  0.0       -  
+                      d_j =  0.0       -  
+                                 --------
+                                 % 100.0
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         4
+    Predictor Models:       0
+
+  PREDICTORS
+    Fixed variables:        d_j
+
+  FACTORS
+    Level-2:                beta0_j
+
+  MODELS
+    [1]  beta0_j ~ Intercept@0
+    [2]  y_i ~ Intercept d_j d_j*beta0_j@1
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Conditional Likelihood
+      DIC2                  6063.138
+      WAIC                  6231.406
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 10000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  beta0_j                             0.001      0.695     -0.467      0.007      0.475     -2.108      2.030 
+  y_i                                 4.385      1.559      3.000      5.000      6.000     -2.149      7.625 
+  d_j                                 0.753      0.432      1.000      1.000      1.000      0.000      1.000 
+
+                                ------------------------------------------------------------------------------
+
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  No residual correlations.
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+Latent Variable:   beta0_j    
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.489      0.082      0.337      0.661        ---        ---    634.435 
+
+Standard Deviations:            
+  Residual SD                         0.699      0.059      0.580      0.813        ---        ---    617.819 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y_i        
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.967      0.085      1.809      2.143        ---        ---   4010.766 
+
+Coefficients:                   
+  Intercept                           4.940      0.135      4.675      5.209   1332.068      0.000  10071.619 
+  d_j                                -0.602      0.146     -0.888     -0.319     17.088      0.000   7953.130 
+  d_j*beta0_j                       @ 1.000        ---        ---        ---        ---        ---        --- 
+
+Standard Deviations:            
+  Residual SD                         1.402      0.030      1.345      1.464        ---        ---   4024.019 
+
+Standardized Coefficients:      
+  d_j                                -0.102      0.024     -0.150     -0.054     17.414      0.000   7966.190 
+  d_j*beta0_j                         0.429      0.029      0.364      0.479    219.479      0.000    675.180 
+
+Proportion Variance Explained   
+  by Coefficients                     0.194      0.025      0.144      0.240        ---        ---    699.539 
+  by Residual Variation               0.806      0.025      0.760      0.856        ---        ---    699.539 
+
+                                ------------------------------------------------------------------------------
+
+
+

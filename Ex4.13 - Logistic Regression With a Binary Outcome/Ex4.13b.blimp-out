@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                  3.2.10
+                                   4.0.0
 
              Blimp was developed with funding from Institute of
            Education Sciences awards R305D150056 and R305D190002.
@@ -24,15 +24,17 @@ ALGORITHMIC OPTIONS SPECIFIED:
   Imputation method:                 Fully Bayesian model-based
   MCMC algorithm:                    Full conditional Metropolis sampler with
                                        Auto-Derived Conditional Distributions
-  Between-cluster imputation model:  Not applicable, single-level imputation
-  Prior for random effect variances: Not applicable, single-level imputation
-  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
-  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Default Priors:
+    Multilevel covariance matrices:  Not applicable, single-level imputation
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
   Chain Starting Values:             Random starting values
 
 
   NOTE: The default prior for regression coefficients 
         in categorical models is 'normal( 0.0, 5.0)'
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
 
 
 BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
@@ -80,12 +82,16 @@ METROPOLIS-HASTINGS ACCEPTANCE RATES:
 DATA INFORMATION:
 
   Sample Size:              630
-  Missing Data Rates:
+  Missing Data Info:
 
-                        y = 05.08
-                       x1 = 16.19
-                       x2 = 04.13
-
+                      Pattern #:       1     2     3     4     5
+                          miss % --------------------------------
+                        y =  5.1       -     -     M     -     M  
+                       x1 = 16.2       -     M     M     -     -  
+                       x2 =  4.1       -     -     -     M     -  
+                        d =  0.0       -     -     -     -     -  
+                                 --------------------------------
+                                 %  78.9  11.9   4.3   4.1   0.8
 
 
 MODEL INFORMATION:
@@ -121,13 +127,26 @@ MODEL FIT:
 
   INFORMATION CRITERIA
 
-    Marginal Likelihood
-      DIC2                  765.958
-      WAIC                  767.774
-
     Conditional Likelihood
       DIC2                  765.958
       WAIC                  767.774
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 10000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  y                                   0.315      0.465      0.000      0.000      1.000      0.000      1.000 
+  x1                                 28.560      4.404     25.986     28.038     31.185     13.987     42.347 
+  x2                                  9.630      3.021      8.000      9.593     12.000     -0.004     17.142 
+  d                                   0.484      0.500      0.000      0.000      1.000      0.000      1.000 
+
+                                ------------------------------------------------------------------------------
+
 
 
 CORRELATIONS AMONG RESIDUALS:
@@ -139,6 +158,7 @@ CORRELATIONS AMONG RESIDUALS:
 OUTCOME MODEL ESTIMATES:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
 
 
 Outcome Variable:  logit(y)   
@@ -146,77 +166,80 @@ Outcome Variable:  logit(y)
 Grand Mean Centered: x1 x2
 
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 
 Coefficients:                   
-  Intercept                          -0.783      0.130     -1.043     -0.534      1.000   5865.216 
-  x1                                 -0.051      0.025     -0.100     -0.001      1.000   4414.372 
-  x2                                 -0.122      0.035     -0.192     -0.054      1.000   5067.998 
-  d                                  -0.096      0.187     -0.456      0.274      1.000   6861.395 
+  Intercept                          -0.783      0.130     -1.043     -0.534     36.478      0.000   5865.216 
+  x1                                 -0.051      0.025     -0.100     -0.001      4.040      0.044   4414.372 
+  x2                                 -0.122      0.035     -0.192     -0.054     11.991      0.001   5067.998 
+  d                                  -0.096      0.187     -0.456      0.274      0.241      0.623   6861.395 
 
 Odds Ratio:                     
-  Intercept                           0.457      0.060      0.352      0.586      1.000   5900.251 
-  x1                                  0.951      0.024      0.905      0.999      1.000   4415.021 
-  x2                                  0.885      0.031      0.825      0.947      1.000   5085.749 
-  d                                   0.908      0.176      0.634      1.316      1.000   6833.299 
+  Intercept                           0.457      0.060      0.352      0.586        ---        ---   5900.251 
+  x1                                  0.951      0.024      0.905      0.999        ---        ---   4415.021 
+  x2                                  0.885      0.031      0.825      0.947        ---        ---   5085.749 
+  d                                   0.908      0.176      0.634      1.316        ---        ---   6833.299 
 
 Proportion Variance Explained   
-  by Coefficients                     0.019      0.007      0.008      0.034      1.000   5409.058 
-  by Residual Variation               0.981      0.007      0.966      0.992      1.000   5409.058 
+  by Coefficients                     0.019      0.007      0.008      0.034        ---        ---   5409.058 
+  by Residual Variation               0.981      0.007      0.966      0.992        ---        ---   5409.058 
 
-                                -------------------------------------------------------------------
+                                ------------------------------------------------------------------------------
 
 
 
 GENERATED PARAMETERS:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
 
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 
-  pp_d0                               0.314      0.028      0.261      0.370      1.000   5875.105 
-  pp_d1                               0.294      0.028      0.241      0.351      1.000   6026.071 
-  pp_diff                            -0.020      0.039     -0.096      0.058      1.000   6879.214 
+  pp_d0                               0.314      0.028      0.261      0.370    127.111      0.000   5875.105 
+  pp_d1                               0.294      0.028      0.241      0.351    110.931      0.000   6026.071 
+  pp_diff                            -0.020      0.039     -0.096      0.058      0.241      0.624   6879.214 
 
-                                -------------------------------------------------------------------
+                                ------------------------------------------------------------------------------
 
 
 PREDICTOR MODEL ESTIMATES:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
 
 
 Missing predictor:  x1         
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 
-Grand Mean                           28.560      0.184     28.208     28.926      1.002   1124.127 
+Grand Mean                           28.560      0.184     28.208     28.926  24117.079      0.000   1124.127 
 
-Level 1:                                                                                           
-  x2                                  0.579      0.060      0.459      0.697      1.001   2836.228 
-  d                                   1.963      0.340      1.303      2.637      1.000   5006.124 
-  Residual Var.                      15.098      0.961     13.386     17.127      1.000   4269.328 
-                                                                                                   
-                                -------------------------------------------------------------------
+Level 1:                                                                                                      
+  x2                                  0.579      0.060      0.459      0.697     92.294      0.000   2836.228 
+  d                                   1.963      0.340      1.303      2.637     33.456      0.000   5006.124 
+  Residual Var.                      15.098      0.961     13.386     17.127        ---        ---   4269.328 
+                                                                                                              
+                                ------------------------------------------------------------------------------
 
 
 
 Missing predictor:  x2         
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 
-Grand Mean                            9.634      0.120      9.399      9.874      1.001   1369.530 
+Grand Mean                            9.634      0.120      9.399      9.874   6456.982      0.000   1369.530 
 
-Level 1:                                                                                           
-  x1                                  0.290      0.029      0.233      0.346      1.000   4585.262 
-  d                                  -0.175      0.238     -0.640      0.292      1.000   5950.225 
-  Residual Var.                       7.563      0.463      6.716      8.525      1.000   4739.087 
-                                                                                                   
-                                -------------------------------------------------------------------
+Level 1:                                                                                                      
+  x1                                  0.290      0.029      0.233      0.346    100.203      0.000   4585.262 
+  d                                  -0.175      0.238     -0.640      0.292      0.543      0.461   5950.225 
+  Residual Var.                       7.563      0.463      6.716      8.525        ---        ---   4739.087 
+                                                                                                              
+                                ------------------------------------------------------------------------------
 
 

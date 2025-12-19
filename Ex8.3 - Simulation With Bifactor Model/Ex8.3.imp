@@ -18,7 +18,7 @@ SIMULATE:
 
 	n: 
 		# Generate factor scores f1 and f2 ~ normal(0, 1)
-		f1:f2 = normal(u, 1);
+		f1:f2 = normal(0, 1);
 		
 		# Generate items with equal loadings
 		y1_1:y1_5 = normal(f1, v_1);

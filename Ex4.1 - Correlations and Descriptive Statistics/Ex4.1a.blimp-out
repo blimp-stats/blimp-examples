@@ -2,13 +2,13 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                  3.1.41
+                                   4.0.0
 
              Blimp was developed with funding from Institute of
-          Educational Sciences awards R305D150056 and R305D190002.
+           Education Sciences awards R305D150056 and R305D190002.
 
             Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
-              Brian T. Keller, Co-P.I. Email: blimp@utexas.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
                  Han Du, Co-P.I. Email: hdu@psych.ucla.edu
                  Roy Levy, Co-P.I. Email: roy.levy@asu.edu
 
@@ -24,13 +24,14 @@ ALGORITHMIC OPTIONS SPECIFIED:
   Imputation method:                 Fully Bayesian model-based
   MCMC algorithm:                    Full conditional Metropolis sampler with
                                        Auto-Derived Conditional Distributions
-  Between-cluster imputation model:  Not applicable, single-level imputation
-  Residual variance structure:       Not applicable, single-level imputation
-  Prior for random effect variances: Not applicable, single-level imputation
-  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
-  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Default Priors:
+    Multilevel covariance matrices:  Not applicable, single-level imputation
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
   Chain Starting Values:             Random starting values
 
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
 
 
 BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
@@ -39,50 +40,40 @@ BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
         iterations to create twice as many chains.
 
   Comparing iterations across 2 chains     Highest PSR   Parameter #  
-                          251 to 500             2.205            14  
-                          501 to 1000            1.384            14  
-                          751 to 1500            1.074            14  
-                         1001 to 2000            1.158            14  
-                         1251 to 2500            1.123            14  
-                         1501 to 3000            1.147            15  
-                         1751 to 3500            1.155            15  
-                         2001 to 4000            1.103            15  
-                         2251 to 4500            1.059            15  
-                         2501 to 5000            1.053            14  
-                         2751 to 5500            1.072            14  
-                         3001 to 6000            1.064            14  
-                         3251 to 6500            1.055            14  
-                         3501 to 7000            1.056            14  
-                         3751 to 7500            1.071            14  
-                         4001 to 8000            1.073            14  
-                         4251 to 8500            1.051            14  
-                         4501 to 9000            1.018            14  
-                         4751 to 9500            1.015            13  
-                         5001 to 10000           1.019            13  
-
-
-METROPOLIS-HASTINGS ACCEPTANCE RATES:
-
-  Chain 1:
-
-    Variable                            Type    Probability   Target Value 
-    x1 <-> y1                      parameter          0.486          0.500 
-    x1 <-> y2                      parameter          0.526          0.500 
-    y1 <-> y2                      parameter          0.501          0.500 
-
-  NOTE: Suppressing printing of 1 chains.
-        Use keyword 'tuneinfo' in options to override.
+                          251 to 500             1.017            16  
+                          501 to 1000            1.005             2  
+                          751 to 1500            1.005            12  
+                         1001 to 2000            1.007            12  
+                         1251 to 2500            1.001            17  
+                         1501 to 3000            1.003            12  
+                         1751 to 3500            1.002            18  
+                         2001 to 4000            1.002            17  
+                         2251 to 4500            1.001             3  
+                         2501 to 5000            1.001             2  
+                         2751 to 5500            1.001            21  
+                         3001 to 6000            1.001             7  
+                         3251 to 6500            1.001             7  
+                         3501 to 7000            1.001             7  
+                         3751 to 7500            1.000            12  
+                         4001 to 8000            1.000            21  
+                         4251 to 8500            1.001            21  
+                         4501 to 9000            1.001            20  
+                         4751 to 9500            1.001             7  
+                         5001 to 10000           1.000             7  
 
 
 DATA INFORMATION:
 
   Sample Size:              630
-  Missing Data Rates:
+  Missing Data Info:
 
-                       x1 = 04.13
-                       y1 = 04.76
-                       y2 = 16.19
-
+                      Pattern #:       1     2     3     4     5
+                          miss % --------------------------------
+                       y1 =  4.8       -     -     -     M     M  
+                       y2 = 16.2       -     M     -     M     -  
+                       x1 =  4.1       -     -     M     -     -  
+                                 --------------------------------
+                                 %  78.9  12.2   4.1   4.0   0.8
 
 
 MODEL INFORMATION:
@@ -95,9 +86,7 @@ MODEL INFORMATION:
     [1]  x1 ~ Intercept
     [2]  y1 ~ Intercept
     [3]  y2 ~ Intercept
-    [4]  x1 <-> y1
-    [5]  x1 <-> y2
-    [6]  y1 <-> y2
+    [4]  x1 y1 y2 <-> x1 y1 y2 
 
 
 WARNING MESSAGES:
@@ -110,84 +99,117 @@ MODEL FIT:
 
   INFORMATION CRITERIA
 
-    Marginal Likelihood
-      DIC2                  12433.353
-      WAIC                  13220.523
-
     Conditional Likelihood
-      DIC2                  12433.353
-      WAIC                  13220.523
+      DIC2                  8728.791
+      WAIC                  8789.791
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 10000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  x1                                  9.621      3.021      8.000      9.487     12.000     -0.015     17.099 
+  y1                                  3.982      1.267      3.000      4.000      5.000      0.873      7.102 
+  y2                                 28.594      4.424     25.992     28.070     31.295     13.989     42.427 
+
+                                ------------------------------------------------------------------------------
+
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  No residual correlations.
+
 
 
 OUTCOME MODEL ESTIMATES:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
 
 
 Outcome Variable:  x1         
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                       9.180      0.531      8.225     10.287      1.000   8920.088 
+  Residual Var.                       9.218      0.532      8.270     10.363        ---        ---   8785.863 
 
 Coefficients:                   
-  Intercept                           9.615      0.122      9.377      9.852      1.004   1148.520 
+  Intercept                           9.621      0.123      9.378      9.858   6099.461      0.000   5341.236 
+
+Standard Deviations:            
+  Residual SD                         3.036      0.087      2.876      3.219        ---        ---   8793.301 
 
 Proportion Variance Explained   
-  by Coefficients                     0.000      0.000      0.000      0.000        nan        nan 
-  by Residual Variation               1.000      0.000      1.000      1.000        nan        nan 
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
 
-                                -------------------------------------------------------------------
+                                ------------------------------------------------------------------------------
 
 
 
 Outcome Variable:  y1         
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                       1.612      0.094      1.444      1.812      1.000   7750.961 
+  Residual Var.                       1.622      0.095      1.453      1.824        ---        ---   9031.770 
 
 Coefficients:                   
-  Intercept                           3.981      0.051      3.882      4.080      1.004   1493.297 
+  Intercept                           3.982      0.051      3.883      4.081   6018.659      0.000   5745.473 
+
+Standard Deviations:            
+  Residual SD                         1.274      0.037      1.206      1.351        ---        ---   9031.732 
 
 Proportion Variance Explained   
-  by Coefficients                     0.000      0.000      0.000      0.000        nan        nan 
-  by Residual Variation               1.000      0.000      1.000      1.000        nan        nan 
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
 
-                                -------------------------------------------------------------------
+                                ------------------------------------------------------------------------------
 
 
 
 Outcome Variable:  y2         
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                      19.577      1.219     17.396     22.179      1.000   3936.570 
+  Residual Var.                      19.780      1.248     17.545     22.472        ---        ---   6528.871 
 
 Coefficients:                   
-  Intercept                          28.574      0.188     28.207     28.943      1.003   1096.535 
+  Intercept                          28.593      0.194     28.212     28.979  21718.204      0.000   4767.181 
+
+Standard Deviations:            
+  Residual SD                         4.447      0.140      4.189      4.740        ---        ---   6525.560 
 
 Proportion Variance Explained   
-  by Coefficients                     0.000      0.000      0.000      0.000        nan        nan 
-  by Residual Variation               1.000      0.000      1.000      1.000        nan        nan 
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
 
-                                -------------------------------------------------------------------
+                                ------------------------------------------------------------------------------
 
 
 
-Correlations:
+Covariance Matrix: x1 y1 y2   
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Covariances:                    
+  Cov(x1,y1)                          1.628      0.172      1.313      1.977     90.391      0.000   8966.900 
+  Cov(x1,y2)                          5.712      0.666      4.461      7.101     74.186      0.000   6084.275 
+  Cov(y1,y2)                          1.736      0.264      1.234      2.267     43.460      0.000   6873.364 
 
-  x1 <-> y1                           0.395      0.032      0.325      0.451      1.043    132.269 
-  x1 <-> y2                           0.406      0.038      0.335      0.483      1.028     83.799 
-  y1 <-> y2                           0.290      0.040      0.209      0.363      1.066     92.326 
+Correlations:                   
+  Cor(x1,y1)                          0.422      0.034      0.354      0.485    154.943      0.000   8660.913 
+  Cor(x1,y2)                          0.424      0.038      0.344      0.495    122.004      0.000   5593.993 
+  Cor(y1,y2)                          0.307      0.041      0.223      0.383     56.637      0.000   6898.768 
 
-                                -------------------------------------------------------------------
+                                ------------------------------------------------------------------------------
 
 
 
