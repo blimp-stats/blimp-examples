@@ -1,0 +1,43 @@
+SIMULATE:
+	# Calculate number of obs
+	level_1(1) = 50 * 100; # n_j * J
+	level_2(2) = 100;
+
+	# Specify level-2	
+	level_2:
+		yb ~ normal(0, 1);
+		xb ~ normal(0, 1);
+		yb ~~ xb := .3;
+
+	# Specify level-1
+	level_1:
+		# Define time variable
+		time = level_1.time;
+
+		# Create correlated residuals
+		e_y ~ normal(0, 1);
+		e_x ~ normal(0, 1);
+		e_x ~~ e_y := 0.3;
+		
+		# Create variables with complete data
+		yc = yb + (xc.lag - xb)*-.3 + (yc.lag - yb)*.3 + e_y;
+		xc = xb + (yc.lag - yb)*-.3 + (xc.lag - xb)*.3 + e_x;
+		
+		# Specify missing data (MCAR; no missing on first or last)
+		y = missing((time > 1) and (time < 50) and (bernoulli(0.5)), yc);
+		x = missing((time > 1) and (time < 50) and (bernoulli(0.5)), xc);
+		
+VARIABLES: x y time level_2;
+CLUSTERID: level_2;
+LATENT: level_2 = b0j g0j;
+TIMEID: time;
+MODEL: 
+	y ~ 1@b0j (x.lag - g0j) (y.lag - b0j);
+	x ~ 1@g0j (x.lag - g0j) (y.lag - b0j);
+	b0j ~~ g0j;
+	x  ~~ y;
+SEED: 12893;
+BURN: 10000;
+ITER: 10000;
+SAVE: dataset = generated_data.csv; 
+

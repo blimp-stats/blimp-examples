@@ -27,14 +27,14 @@ SIMULATE:
 	id2:
 		# Generate X between and Level-2 covariate
 		x_b = normal(0, 1);
-		w   = normal(x_b*cor_xw, 1 - cor_xw^2);
+		w   = normal(0, 1);
+		x_b ~~ w := cor_xw;
 
 		## Generate random effects based on correlation
 		u0 = normal(0, var_u0);
-		u1 = normal(
-				(cov_u01 / var_u0) * u0,
-				 var_u1 - (cov_u01 / sqrt(var_u0))^2
-		);
+		u1 = normal(0, var_u1);
+		# Compute correlation based on covariance
+		u0 ~~ u1 := cov_u01 / (sqrt(var_u0) * sqrt(var_u1));
 
 		# Combine to form y between
 		y_b = b0 + x_b * b2 + w * b3 + u0;
