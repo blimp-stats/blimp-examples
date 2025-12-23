@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                  3.2.10
+                                   4.0.0
 
              Blimp was developed with funding from Institute of
            Education Sciences awards R305D150056 and R305D190002.
@@ -24,15 +24,17 @@ ALGORITHMIC OPTIONS SPECIFIED:
   Imputation method:                 Fully Bayesian model-based
   MCMC algorithm:                    Full conditional Metropolis sampler with
                                        Auto-Derived Conditional Distributions
-  Between-cluster imputation model:  Not applicable, single-level imputation
-  Prior for random effect variances: Not applicable, single-level imputation
-  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
-  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Default Priors:
+    Multilevel covariance matrices:  Not applicable, single-level imputation
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
   Chain Starting Values:             Random starting values
 
 
   NOTE: The default prior for regression coefficients 
         in categorical models is 'normal( 0.0, 5.0)'
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
 
   NOTE: The following nominal variables have automatically
         been assigned a reference group.
@@ -86,14 +88,19 @@ METROPOLIS-HASTINGS ACCEPTANCE RATES:
 DATA INFORMATION:
 
   Sample Size:              300
-  Missing Data Rates:
-
-                        y = 07.33
-                       x1 = 06.00
-
   Nominal Dummy Codes:
 
                         y = y.2 y.3
+  Missing Data Info:
+
+                      Pattern #:       1     2     3     4
+                          miss % --------------------------
+                        y =  7.3       -     M     -     M  
+                       x1 =  6.0       -     -     M     M  
+                       x2 =  0.0       -     -     -     -  
+                       x3 =  0.0       -     -     -     -  
+                                 --------------------------
+                                 %  87.0   7.0   5.7   0.3
 
 
 MODEL INFORMATION:
@@ -128,23 +135,48 @@ MODEL FIT:
 
   INFORMATION CRITERIA
 
-    Marginal Likelihood
-      DIC2                  622.331
-      WAIC                  624.647
-
     Conditional Likelihood
       DIC2                  622.331
       WAIC                  624.647
 
 
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 10000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  y.2                                 0.458      0.499      0.000      0.000      1.000      0.000      1.000 
+  y.3                                 0.334      0.472      0.000      0.000      1.000      0.000      1.000 
+  x1                                 11.557      4.551      8.000     10.000     14.000      4.446     26.013 
+  x2                                 -0.000      1.806     -0.890      0.110      1.110     -2.890      3.110 
+  x3                                 -0.000      5.302     -3.757      0.243      4.243    -14.757      9.243 
+
+                                ------------------------------------------------------------------------------
+
+
+
 CORRELATIONS AMONG RESIDUALS:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+Correlations                       Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  y.2, y.3                           -0.251      0.089     -0.412     -0.059      7.691      0.006   2542.950 
+
+                                ------------------------------------------------------------------------------
+
 
 
 OUTCOME MODEL ESTIMATES:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
 
 
 Outcome Variable:  logit(y)   
@@ -152,45 +184,47 @@ Outcome Variable:  logit(y)
 Grand Mean Centered: x1 x2 x3
 
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 y.2                             
 
+
 Coefficients:                   
-  Intercept                           0.913      0.178      0.581      1.289      1.002   1984.774 
-  x1                                  0.138      0.061      0.027      0.266      1.003   1586.119 
-  x2                                 -0.101      0.125     -0.347      0.139      1.001   3001.549 
-  x3                                 -0.030      0.033     -0.096      0.035      1.000   3169.766 
+  Intercept                           0.913      0.178      0.581      1.289     26.537      0.000   1984.774 
+  x1                                  0.138      0.061      0.027      0.266      5.337      0.021   1586.119 
+  x2                                 -0.101      0.125     -0.347      0.139      0.665      0.415   3001.549 
+  x3                                 -0.030      0.033     -0.096      0.035      0.833      0.361   3169.766 
 
 Odds Ratio:                     
-  Intercept                           2.492      0.466      1.787      3.629      1.002   1952.096 
-  x1                                  1.149      0.070      1.027      1.305      1.003   1567.559 
-  x2                                  0.904      0.114      0.707      1.149      1.000   3014.890 
-  x3                                  0.970      0.032      0.908      1.035      1.000   3173.890 
+  Intercept                           2.492      0.466      1.787      3.629        ---        ---   1952.096 
+  x1                                  1.149      0.070      1.027      1.305        ---        ---   1567.559 
+  x2                                  0.904      0.114      0.707      1.149        ---        ---   3014.890 
+  x3                                  0.970      0.032      0.908      1.035        ---        ---   3173.890 
 
 Proportion Variance Explained   
-  by Coefficients                     0.029      0.019      0.006      0.078      1.002   1451.557 
-  by Residual Variation               0.971      0.019      0.922      0.994      1.002   1451.557 
+  by Coefficients                     0.029      0.019      0.006      0.078        ---        ---   1451.557 
+  by Residual Variation               0.971      0.019      0.922      0.994        ---        ---   1451.557 
 
 y.3                             
 
+
 Coefficients:                   
-  Intercept                           0.542      0.189      0.183      0.934      1.002   2133.943 
-  x1                                  0.077      0.061     -0.037      0.204      1.004   1471.919 
-  x2                                  0.137      0.134     -0.123      0.400      1.001   3019.032 
-  x3                                 -0.090      0.036     -0.161     -0.022      1.000   3061.295 
+  Intercept                           0.542      0.189      0.183      0.934      8.380      0.004   2133.943 
+  x1                                  0.077      0.061     -0.037      0.204      1.641      0.200   1471.919 
+  x2                                  0.137      0.134     -0.123      0.400      1.060      0.303   3019.032 
+  x3                                 -0.090      0.036     -0.161     -0.022      6.504      0.011   3061.295 
 
 Odds Ratio:                     
-  Intercept                           1.719      0.340      1.200      2.544      1.002   2001.881 
-  x1                                  1.080      0.067      0.963      1.226      1.004   1435.613 
-  x2                                  1.147      0.156      0.884      1.492      1.001   3028.915 
-  x3                                  0.914      0.032      0.851      0.978      1.000   3068.038 
+  Intercept                           1.719      0.340      1.200      2.544        ---        ---   2001.881 
+  x1                                  1.080      0.067      0.963      1.226        ---        ---   1435.613 
+  x2                                  1.147      0.156      0.884      1.492        ---        ---   3028.915 
+  x3                                  0.914      0.032      0.851      0.978        ---        ---   3068.038 
 
 Proportion Variance Explained   
-  by Coefficients                     0.051      0.023      0.018      0.106      1.001   1659.113 
-  by Residual Variation               0.949      0.023      0.894      0.982      1.001   1659.113 
+  by Coefficients                     0.051      0.023      0.018      0.106        ---        ---   1659.113 
+  by Residual Variation               0.949      0.023      0.894      0.982        ---        ---   1659.113 
 
-                                -------------------------------------------------------------------
+                                ------------------------------------------------------------------------------
 
 
 
@@ -198,20 +232,22 @@ Proportion Variance Explained
 PREDICTOR MODEL ESTIMATES:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
 
 
 Missing predictor:  x1         
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 
-Grand Mean                           11.548      0.189     11.197     11.921      1.000   1963.289 
+Grand Mean                           11.548      0.189     11.197     11.921   3721.400      0.000   1963.289 
 
-Level 1:                                                                                           
-  x2                                  1.624      0.113      1.403      1.844      1.000   8167.568 
-  x3                                 -0.107      0.039     -0.183     -0.030      1.000   6648.351 
-  Residual Var.                      10.850      0.930      9.227     12.869      1.000   7018.379 
-                                                                                                   
-                                -------------------------------------------------------------------
+Level 1:                                                                                                      
+  x2                                  1.624      0.113      1.403      1.844    207.059      0.000   8167.568 
+  x3                                 -0.107      0.039     -0.183     -0.030      7.520      0.006   6648.351 
+  Residual Var.                      10.850      0.930      9.227     12.869        ---        ---   7018.379 
+                                                                                                              
+                                ------------------------------------------------------------------------------
 
 

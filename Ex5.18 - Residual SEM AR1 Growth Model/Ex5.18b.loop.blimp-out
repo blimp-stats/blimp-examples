@@ -1,0 +1,414 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                   4.0.0
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Default Priors:
+    Multilevel covariance matrices:  Not applicable, single-level imputation
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                          501 to 1000            4.501            12  
+                         1001 to 2000            1.122            12  
+                         1501 to 3000            1.045             3  
+                         2001 to 4000            1.042             8  
+                         2501 to 5000            1.029            61  
+                         3001 to 6000            1.020            62  
+                         3501 to 7000            1.036            11  
+                         4001 to 8000            1.038            11  
+                         4501 to 9000            1.054            12  
+                         5001 to 10000           1.066            12  
+                         5501 to 11000           1.070             8  
+                         6001 to 12000           1.013            61  
+                         6501 to 13000           1.012            12  
+                         7001 to 14000           1.037            61  
+                         7501 to 15000           1.055            61  
+                         8001 to 16000           1.038            61  
+                         8501 to 17000           1.030            61  
+                         9001 to 18000           1.022            11  
+                         9501 to 19000           1.035            11  
+                        10001 to 20000           1.008            12  
+
+
+DATA INFORMATION:
+
+  Sample Size:              1000
+  Missing Data Info:
+
+                      Pattern #:       1
+                          miss % --------
+                       y1 =  0.0       -  
+                       y2 =  0.0       -  
+                       y3 =  0.0       -  
+                       y4 =  0.0       -  
+                       y5 =  0.0       -  
+                       y6 =  0.0       -  
+                                 --------
+                                 % 100.0
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         12
+    Predictor Models:       0
+
+  FACTORS
+    Level-1:                icept slope
+
+  DEFINED VARIABLES
+    [1]  ry1 = y1 - (icept + (0 * slope)) 
+    [2]  ry2 = y2 - (icept + (1 * slope)) 
+    [3]  ry3 = y3 - (icept + (2 * slope)) 
+    [4]  ry4 = y4 - (icept + (3 * slope)) 
+    [5]  ry5 = y5 - (icept + (4 * slope)) 
+
+  MODELS
+
+   structural.model:
+    [1]  icept ~ Intercept
+    [2]  slope ~ Intercept
+    [3]  icept <-> slope
+
+   measurement.model:
+    [4]  y1 ~ icept@1 slope@0
+    [5]  y2 ~ icept@1 slope@1 ry1@ac
+    [6]  y3 ~ icept@1 slope@2 ry2@ac
+    [7]  y4 ~ icept@1 slope@3 ry3@ac
+    [8]  y5 ~ icept@1 slope@4 ry4@ac
+    [9]  y6 ~ icept@1 slope@5 ry5@ac
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Conditional Likelihood
+      DIC2                  18967.903
+      WAIC                  19740.561
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 20000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  icept                               1.567      0.985      0.894      1.565      2.236     -1.521      4.696 
+  slope                               0.150      0.211      0.008      0.150      0.292     -0.539      0.839 
+  y1                                  1.575      1.457      0.618      1.569      2.591     -2.683      6.026 
+  y2                                  1.712      1.423      0.711      1.711      2.714     -3.000      5.881 
+  y3                                  1.840      1.399      0.935      1.882      2.775     -2.322      6.131 
+  y4                                  2.033      1.420      1.063      2.038      2.973     -2.394      6.550 
+  y5                                  2.153      1.439      1.240      2.155      3.116     -2.632      7.062 
+  y6                                  2.325      1.528      1.288      2.314      3.340     -2.403      6.607 
+
+                                ------------------------------------------------------------------------------
+
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 20000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+Correlations                       Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  icept, y1                          -0.003      0.044     -0.089      0.083      0.002      0.961   5661.568 
+  icept, y2                           0.030      0.041     -0.051      0.110      0.541      0.462   6691.014 
+  icept, y3                          -0.031      0.040     -0.108      0.048      0.572      0.449   9232.738 
+  icept, y4                          -0.019      0.039     -0.096      0.059      0.232      0.630  14418.270 
+  icept, y5                           0.002      0.040     -0.078      0.082      0.002      0.961  12462.879 
+  icept, y6                           0.013      0.042     -0.069      0.097      0.103      0.749   7427.190 
+  slope, y1                           0.004      0.045     -0.084      0.091      0.006      0.938   6932.613 
+  slope, y2                          -0.003      0.042     -0.084      0.080      0.004      0.949   9240.142 
+  slope, y3                           0.001      0.042     -0.082      0.082      0.000      0.984   7127.918 
+  slope, y4                           0.005      0.042     -0.077      0.088      0.018      0.895   8866.739 
+  slope, y5                          -0.009      0.043     -0.094      0.076      0.040      0.842  10213.747 
+  slope, y6                          -0.000      0.044     -0.086      0.087      0.000      0.998   4419.905 
+  y1, y2                              0.022      0.042     -0.062      0.104      0.262      0.609   2338.493 
+  y1, y3                             -0.020      0.039     -0.097      0.056      0.259      0.611   3974.166 
+  y1, y4                             -0.025      0.039     -0.102      0.052      0.417      0.518   6306.652 
+  y1, y5                              0.015      0.039     -0.062      0.092      0.151      0.697  11332.247 
+  y1, y6                              0.007      0.042     -0.075      0.088      0.031      0.860   1978.040 
+  y2, y3                              0.007      0.038     -0.068      0.081      0.033      0.857   1782.608 
+  y2, y4                              0.037      0.035     -0.032      0.106      1.109      0.292  17740.514 
+  y2, y5                             -0.003      0.036     -0.073      0.069      0.005      0.942  15263.647 
+  y2, y6                             -0.012      0.038     -0.085      0.061      0.103      0.748  12894.975 
+  y3, y4                             -0.032      0.039     -0.108      0.044      0.689      0.406   1438.640 
+  y3, y5                             -0.023      0.036     -0.093      0.048      0.388      0.533  16328.897 
+  y3, y6                              0.023      0.038     -0.052      0.097      0.362      0.547   4908.876 
+  y4, y5                             -0.001      0.038     -0.075      0.074      0.001      0.979   5764.240 
+  y4, y6                              0.004      0.039     -0.073      0.079      0.010      0.920   4442.081 
+  y5, y6                              0.003      0.041     -0.078      0.081      0.004      0.952   9599.440 
+
+                                ------------------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 20000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+  structural.model block:
+
+Latent Variable:   icept      
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.993      0.159      0.648      1.270        ---        ---    197.880 
+
+Coefficients:                   
+  Intercept                           1.567      0.043      1.482      1.652   1307.344      0.000   3054.661 
+
+Standard Deviations:            
+  Residual SD                         0.996      0.082      0.805      1.127        ---        ---    191.131 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Latent Variable:   slope      
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.046      0.009      0.027      0.063        ---        ---    200.184 
+
+Coefficients:                   
+  Intercept                           0.150      0.011      0.129      0.172    187.257      0.000   2424.690 
+
+Standard Deviations:            
+  Residual SD                         0.214      0.022      0.163      0.250        ---        ---    194.241 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Covariance Matrix: icept slope
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Covariances:                    
+  Cov(icept,slope)                   -0.072      0.030     -0.129     -0.011      5.532      0.019    193.502 
+
+Correlations:                   
+  Cor(icept,slope)                   -0.341      0.102     -0.481     -0.075     10.030      0.002    190.223 
+
+                                ------------------------------------------------------------------------------
+
+
+  measurement.model block:
+
+Outcome Variable:  y1         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.144      0.154      0.888      1.485        ---        ---    208.134 
+
+Coefficients:                   
+  icept                             @ 1.000        ---        ---        ---        ---        ---        --- 
+  slope                             @ 0.000        ---        ---        ---        ---        ---        --- 
+
+Standard Deviations:            
+  Residual SD                         1.070      0.071      0.943      1.219        ---        ---    211.970 
+
+Standardized Coefficients:      
+  slope                               0.000      0.000      0.000      0.000        nan        nan        nan 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y2         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.803      0.044      0.721      0.894        ---        ---   1212.080 
+
+Coefficients:                   
+  icept                             @ 1.000        ---        ---        ---        ---        ---        --- 
+  slope                             @ 1.000        ---        ---        ---        ---        ---        --- 
+  ry1                                 0.485      0.035      0.420      0.554    193.639      0.000    273.911 
+
+Standard Deviations:            
+  Residual SD                         0.896      0.025      0.849      0.945        ---        ---   1215.391 
+
+Standardized Coefficients:      
+  slope                               0.202      0.026      0.144      0.245     59.253      0.000    180.796 
+  ry1                                 0.489      0.044      0.409      0.580    124.053      0.000    203.372 
+
+Proportion Variance Explained   
+  by Coefficients                     0.281      0.036      0.221      0.361        ---        ---    239.980 
+  by Residual Variation               0.719      0.036      0.639      0.779        ---        ---    239.980 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y3         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.860      0.045      0.778      0.953        ---        ---   3055.193 
+
+Coefficients:                   
+  icept                             @ 1.000        ---        ---        ---        ---        ---        --- 
+  slope                             @ 2.000        ---        ---        ---        ---        ---        --- 
+  ry2                                 0.485      0.035      0.420      0.554    193.639      0.000    273.911 
+
+Standard Deviations:            
+  Residual SD                         0.927      0.024      0.882      0.976        ---        ---   3062.457 
+
+Standardized Coefficients:      
+  slope                               0.374      0.041      0.278      0.440     80.303      0.000    183.390 
+  ry2                                 0.444      0.043      0.367      0.534    107.703      0.000    208.569 
+
+Proportion Variance Explained   
+  by Coefficients                     0.338      0.023      0.295      0.387        ---        ---   1358.826 
+  by Residual Variation               0.662      0.023      0.613      0.705        ---        ---   1358.826 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y4         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.859      0.049      0.770      0.962        ---        ---   1480.211 
+
+Coefficients:                   
+  icept                             @ 1.000        ---        ---        ---        ---        ---        --- 
+  slope                             @ 3.000        ---        ---        ---        ---        ---        --- 
+  ry3                                 0.485      0.035      0.420      0.554    193.639      0.000    273.911 
+
+Standard Deviations:            
+  Residual SD                         0.927      0.026      0.878      0.981        ---        ---   1484.615 
+
+Standardized Coefficients:      
+  slope                               0.517      0.049      0.398      0.591    108.296      0.000    186.604 
+  ry3                                 0.412      0.041      0.342      0.498    104.401      0.000    211.807 
+
+Proportion Variance Explained   
+  by Coefficients                     0.438      0.027      0.383      0.490        ---        ---    404.273 
+  by Residual Variation               0.562      0.027      0.510      0.617        ---        ---    404.273 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y5         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.718      0.047      0.631      0.815        ---        ---    813.031 
+
+Coefficients:                   
+  icept                             @ 1.000        ---        ---        ---        ---        ---        --- 
+  slope                             @ 4.000        ---        ---        ---        ---        ---        --- 
+  ry4                                 0.485      0.035      0.420      0.554    193.639      0.000    273.911 
+
+Standard Deviations:            
+  Residual SD                         0.847      0.028      0.794      0.903        ---        ---    815.201 
+
+Standardized Coefficients:      
+  slope                               0.652      0.052      0.523      0.726    155.654      0.000    188.607 
+  ry4                                 0.389      0.044      0.314      0.487     77.718      0.000    209.485 
+
+Proportion Variance Explained   
+  by Coefficients                     0.580      0.037      0.498      0.643        ---        ---    231.980 
+  by Residual Variation               0.420      0.037      0.357      0.502        ---        ---    231.980 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y6         
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.700      0.050      0.607      0.802        ---        ---    658.415 
+
+Coefficients:                   
+  icept                             @ 1.000        ---        ---        ---        ---        ---        --- 
+  slope                             @ 5.000        ---        ---        ---        ---        ---        --- 
+  ry5                                 0.485      0.035      0.420      0.554    193.639      0.000    273.911 
+
+Standard Deviations:            
+  Residual SD                         0.837      0.030      0.779      0.896        ---        ---    662.984 
+
+Standardized Coefficients:      
+  slope                               0.743      0.049      0.617      0.811    221.855      0.000    190.664 
+  ry5                                 0.332      0.046      0.257      0.438     52.541      0.000    210.275 
+
+Proportion Variance Explained   
+  by Coefficients                     0.660      0.043      0.561      0.726        ---        ---    206.401 
+  by Residual Variation               0.340      0.043      0.274      0.439        ---        ---    206.401 
+
+                                ------------------------------------------------------------------------------
+
+
+

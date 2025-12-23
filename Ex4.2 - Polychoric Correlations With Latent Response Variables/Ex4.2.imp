@@ -3,7 +3,7 @@ VARIABLES: id n1 d1 o1 y1 x1 d2 x2 x3;
 ORDINAL: d1 o1;
 MISSING: 999;
 MODEL:
-d1 o1 y1 x1 <-> d1 o1 y1 x1;
+d1 o1 y1 x1 ~~ d1 o1 y1 x1;
 SEED: 90291;
 BURN: 30000;
 ITERATIONS: 10000;

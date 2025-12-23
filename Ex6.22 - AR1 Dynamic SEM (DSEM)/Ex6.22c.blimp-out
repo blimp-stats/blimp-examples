@@ -1,0 +1,404 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                   4.0.0
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Default Priors:
+    Multilevel covariance matrices:  Zero matrix, df = -(p + 1) (PRIOR2)
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                          501 to 1000            1.310            21  
+                         1001 to 2000            1.136            28  
+                         1501 to 3000            1.343            21  
+                         2001 to 4000            1.134            25  
+                         2501 to 5000            1.212            21  
+                         3001 to 6000            1.128            32  
+                         3501 to 7000            1.073            25  
+                         4001 to 8000            1.088            20  
+                         4501 to 9000            1.023            29  
+                         5001 to 10000           1.050            21  
+                         5501 to 11000           1.148            21  
+                         6001 to 12000           1.077            21  
+                         6501 to 13000           1.056            20  
+                         7001 to 14000           1.059            21  
+                         7501 to 15000           1.091            21  
+                         8001 to 16000           1.178            21  
+                         8501 to 17000           1.163            21  
+                         9001 to 18000           1.081            21  
+                         9501 to 19000           1.043            20  
+                        10001 to 20000           1.051            20  
+
+
+METROPOLIS-HASTINGS ACCEPTANCE RATES:
+
+  Chain 1:
+
+    Variable                            Type    Probability   Target Value 
+    logvar_j                      latent imp          0.507          0.500 
+    var(y_i)                      imputation          0.500          0.500 
+
+  NOTE: Suppressing printing of 1 chains.
+        Use keyword 'tuneinfo' in options to override.
+
+
+DATA INFORMATION:
+
+  Time identifier:          time
+  Level-2 identifier:       level2id
+  Sample Size:              5000
+  Level-2 Clusters:         100
+  Missing Data Info:
+
+                      Pattern #:       1     2
+                          miss % --------------
+                      y_i =  0.0       -     -  
+                      x_i =  0.0       -     -  
+                     w1_j =  0.0       -     -  
+                     w2_j =  0.0       -     -  
+                 y_i.lag1 =  2.0       -     M  
+                                 --------------
+                                 %  98.0   2.0
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         20
+    Predictor Models:       0
+
+  PREDICTORS
+    Fixed variables:        w1_j w2_j
+
+  FACTORS
+    Level-2:                xmean_j ymean_j phi_j beta_j logvar_j
+
+  MODELS
+
+   level2.models:
+    [1]  beta_j ~ Intercept w1_j w2_j
+    [2]  phi_j ~ Intercept w1_j w2_j
+    [3]  xmean_j ~ Intercept
+    [4]  ymean_j ~ Intercept w1_j w2_j xmean_j
+
+   level1.models:
+    [5]  x_i ~ xmean_j@1
+    [6]  y_i ~ ymean_j@1 (y_i.lag1-ymean_j)*phi_j@1 (x_i-xmean_j)*beta_j@1
+
+   variance.model:
+    [7]  logvar_j ~ Intercept w1_j w2_j
+    [8]  var(y_i) ~ logvar_j@1
+
+
+WARNING MESSAGES:
+
+  WARNING: Automatically specifying intercept only model for
+           the following variables:
+  
+             'ymean_j'
+             'phi_j'
+             'beta_j'
+  
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Conditional Likelihood
+      DIC2                  28851.499
+      WAIC                  28557.240
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 20000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  beta_j                              0.790      0.872      0.236      0.699      1.350     -1.569      2.887 
+  phi_j                               0.192      0.140      0.098      0.179      0.280     -0.137      0.559 
+  xmean_j                             0.019      0.017      0.007      0.019      0.030     -0.024      0.061 
+  ymean_j                             0.017      0.772     -0.505     -0.051      0.527     -1.714      1.906 
+  x_i                                 0.013      1.000     -0.642      0.015      0.679     -3.567      3.701 
+  y_i                                 0.008      1.809     -1.128     -0.063      1.089    -10.624      8.448 
+  logvar_j                            0.044      0.410     -0.234      0.035      0.311     -0.987      1.102 
+  w1_j                               -0.055      0.867     -0.629     -0.285      0.473     -2.098      2.415 
+  w2_j                                0.136      0.986     -0.540      0.173      0.671     -2.490      2.544 
+
+                                ------------------------------------------------------------------------------
+
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 20000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+   Level-1:
+
+Correlations                       Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  x_i, y_i                           -0.000      0.020     -0.039      0.038      0.000      0.991  18712.679 
+
+                                ------------------------------------------------------------------------------
+
+
+
+   Level-2:
+
+Correlations                       Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  beta_j, phi_j                      -0.040      0.131     -0.292      0.218      0.091      0.763  17989.280 
+  beta_j, xmean_j                     0.022      0.158     -0.292      0.312      0.015      0.903    535.311 
+  beta_j, ymean_j                    -0.134      0.126     -0.364      0.132      1.058      0.304   2606.929 
+  beta_j, logvar_j                   -0.000      0.121     -0.233      0.235      0.000      0.997  11898.990 
+  phi_j, xmean_j                      0.002      0.141     -0.273      0.280      0.000      0.989  18677.364 
+  phi_j, ymean_j                      0.006      0.137     -0.264      0.272      0.002      0.965  19115.488 
+  phi_j, logvar_j                     0.015      0.137     -0.256      0.279      0.009      0.923  15253.046 
+  xmean_j, ymean_j                    0.002      0.144     -0.284      0.280      0.000      0.996  20200.203 
+  xmean_j, logvar_j                  -0.008      0.138     -0.276      0.261      0.003      0.960  14088.728 
+  ymean_j, logvar_j                   0.019      0.130     -0.237      0.269      0.020      0.888  14382.512 
+
+                                ------------------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 20000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+  level2.models block:
+
+Latent Variable:   beta_j     
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.634      0.098      0.475      0.860        ---        ---  16363.899 
+
+Coefficients:                   
+  Intercept                           0.759      0.082      0.600      0.921     85.424      0.000  17738.533 
+  w1_j                                0.282      0.096      0.095      0.470      8.690      0.003  17901.636 
+  w2_j                                0.346      0.084      0.179      0.507     16.877      0.000  18363.553 
+
+Standard Deviations:            
+  Residual SD                         0.796      0.061      0.689      0.927        ---        ---  16313.614 
+
+Standardized Coefficients:      
+  w1_j                                0.274      0.087      0.093      0.432      9.716      0.002  17923.398 
+  w2_j                                0.382      0.083      0.201      0.526     20.708      0.000  18192.455 
+
+Proportion Variance Explained   
+  by Coefficients                     0.206      0.068      0.081      0.343        ---        ---  18233.692 
+  by Residual Variation               0.794      0.068      0.657      0.919        ---        ---  18233.692 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Latent Variable:   phi_j      
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.007      0.003      0.003      0.013        ---        ---   1732.150 
+
+Coefficients:                   
+  Intercept                           0.191      0.014      0.164      0.219    188.498      0.000   4384.626 
+  w1_j                                0.120      0.015      0.089      0.150     60.933      0.000   4783.610 
+  w2_j                                0.055      0.014      0.027      0.083     15.285      0.000   4357.409 
+
+Standard Deviations:            
+  Residual SD                         0.084      0.015      0.057      0.115        ---        ---   1617.020 
+
+Standardized Coefficients:      
+  w1_j                                0.741      0.068      0.585      0.852    115.826      0.000   2610.009 
+  w2_j                                0.385      0.091      0.194      0.553     17.473      0.000   3786.062 
+
+Proportion Variance Explained   
+  by Coefficients                     0.641      0.095      0.436      0.809        ---        ---   1966.842 
+  by Residual Variation               0.359      0.095      0.191      0.564        ---        ---   1966.842 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Latent Variable:   xmean_j    
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.000      0.001      0.000      0.004        ---        ---      7.768 
+
+Coefficients:                   
+  Intercept                           0.018      0.011     -0.003      0.041      2.823      0.093    110.921 
+
+Standard Deviations:            
+  Residual SD                         0.011      0.017      0.000      0.060        ---        ---      4.448 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Latent Variable:   ymean_j    
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.282      0.115      0.030      0.463        ---        ---    197.671 
+
+Coefficients:                   
+  Intercept                           0.059     60.690    -12.138    101.930      0.018      0.892     55.475 
+  w1_j                                0.494      0.079      0.339      0.652     38.784      0.000   3491.619 
+  w2_j                                0.316      0.067      0.182      0.447     22.152      0.000   5233.679 
+  xmean_j                            -4.929   3499.321  -5869.661    659.073      0.018      0.893     55.513 
+
+Standard Deviations:            
+  Residual SD                         0.531      0.130      0.172      0.681        ---        ---    151.543 
+
+Standardized Coefficients:      
+  w1_j                                0.547      0.075      0.386      0.683     51.988      0.000   2910.464 
+  w2_j                                0.397      0.077      0.235      0.537     25.908      0.000   4307.925 
+  xmean_j                            -0.129      0.398     -0.735      0.667      0.062      0.803    145.575 
+
+Proportion Variance Explained   
+  by Coefficients                     0.539      0.173      0.311      0.949        ---        ---    180.809 
+  by Residual Variation               0.461      0.173      0.051      0.689        ---        ---    180.809 
+
+                                ------------------------------------------------------------------------------
+
+
+  level1.models block:
+
+Outcome Variable:  x_i        
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.001      0.020      0.962      1.041        ---        ---  19869.674 
+
+Coefficients:                   
+  xmean_j                           @ 1.000        ---        ---        ---        ---        ---        --- 
+
+Standard Deviations:            
+  Residual SD                         1.000      0.010      0.981      1.020        ---        ---  19863.132 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y_i        
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Q25% Residual Var.                  0.792      0.030      0.734      0.850        ---        ---   3327.220 
+  Q50% Residual Var.                  1.035      0.034      0.971      1.104        ---        ---   3866.338 
+  Mean Residual Var.                  1.137      0.026      1.089      1.191        ---        ---   2690.851 
+  Q75% Residual Var.                  1.365      0.054      1.265      1.475        ---        ---   3259.726 
+
+Coefficients:                   
+  ymean_j                           @ 1.000        ---        ---        ---        ---        ---        --- 
+  (y_i.lag1-ymean_j)*phi_j          @ 1.000        ---        ---        ---        ---        ---        --- 
+  (x_i-xmean_j)*beta_j              @ 1.000        ---        ---        ---        ---        ---        --- 
+
+Standardized Coefficients:      
+  (y_i.lag1-ymean_j)*phi_j            0.289      0.011      0.268      0.311    690.373      0.000   4583.135 
+  (x_i-xmean_j)*beta_j                0.710      0.006      0.697      0.723  12035.844      0.000   6062.878 
+
+Proportion Variance Explained   
+  by Coefficients                     0.576      0.009      0.559      0.593        ---        ---   4551.044 
+  by Residual Variation               0.424      0.009      0.407      0.441        ---        ---   4551.044 
+
+                                ------------------------------------------------------------------------------
+
+
+  variance.model block:
+
+Latent Variable:   logvar_j   
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.093      0.021      0.061      0.142        ---        ---   2778.540 
+
+Coefficients:                   
+  Intercept                           0.056      0.038     -0.017      0.131      2.214      0.137   5607.806 
+  w1_j                                0.324      0.043      0.238      0.409     55.985      0.000   5344.679 
+  w2_j                                0.049      0.038     -0.027      0.125      1.643      0.200   5224.407 
+
+Standard Deviations:            
+  Residual SD                         0.305      0.033      0.246      0.376        ---        ---   2718.585 
+
+Standardized Coefficients:      
+  w1_j                                0.676      0.064      0.530      0.781    108.498      0.000   4103.811 
+  w2_j                                0.117      0.089     -0.062      0.286      1.685      0.194   5193.699 
+
+Proportion Variance Explained   
+  by Coefficients                     0.461      0.083      0.289      0.609        ---        ---   4085.145 
+  by Residual Variation               0.539      0.083      0.391      0.711        ---        ---   4085.145 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  var(y_i)   
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+Coefficients:                   
+  logvar_j                          @ 1.000        ---        ---        ---        ---        ---        --- 
+
+                                ------------------------------------------------------------------------------
+
+
+

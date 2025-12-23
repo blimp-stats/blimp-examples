@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                  3.2.10
+                                   4.0.0
 
              Blimp was developed with funding from Institute of
            Education Sciences awards R305D150056 and R305D190002.
@@ -24,15 +24,17 @@ ALGORITHMIC OPTIONS SPECIFIED:
   Imputation method:                 Fully Bayesian model-based
   MCMC algorithm:                    Full conditional Metropolis sampler with
                                        Auto-Derived Conditional Distributions
-  Between-cluster imputation model:  Not applicable, single-level imputation
-  Prior for random effect variances: Not applicable, single-level imputation
-  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
-  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Default Priors:
+    Multilevel covariance matrices:  Not applicable, single-level imputation
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
   Chain Starting Values:             Random starting values
 
 
   NOTE: The default prior for regression coefficients 
         in categorical models is 'normal( 0.0, 5.0)'
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
 
   NOTE: The following nominal variables have automatically
         been assigned a reference group.
@@ -49,26 +51,26 @@ BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
         iterations to create twice as many chains.
 
   Comparing iterations across 2 chains     Highest PSR   Parameter #  
-                           51 to 100             1.138            30  
-                          101 to 200             1.136            30  
-                          151 to 300             1.192            24  
-                          201 to 400             1.107            17  
-                          251 to 500             1.155            30  
-                          301 to 600             1.061            30  
-                          351 to 700             1.116            30  
-                          401 to 800             1.032            29  
-                          451 to 900             1.029            30  
-                          501 to 1000            1.047            22  
-                          551 to 1100            1.056            22  
-                          601 to 1200            1.035            30  
-                          651 to 1300            1.023            16  
-                          701 to 1400            1.029            30  
-                          751 to 1500            1.018            30  
-                          801 to 1600            1.042            19  
-                          851 to 1700            1.042            19  
-                          901 to 1800            1.038            19  
-                          951 to 1900            1.029            19  
-                         1001 to 2000            1.019            19  
+                           51 to 100             1.138            31  
+                          101 to 200             1.136            31  
+                          151 to 300             1.192            25  
+                          201 to 400             1.107            18  
+                          251 to 500             1.155            31  
+                          301 to 600             1.061            31  
+                          351 to 700             1.116            31  
+                          401 to 800             1.032            30  
+                          451 to 900             1.029            31  
+                          501 to 1000            1.047            23  
+                          551 to 1100            1.056            23  
+                          601 to 1200            1.035            31  
+                          651 to 1300            1.023            17  
+                          701 to 1400            1.029            31  
+                          751 to 1500            1.018            31  
+                          801 to 1600            1.042            20  
+                          851 to 1700            1.042            20  
+                          901 to 1800            1.038            20  
+                          951 to 1900            1.029            20  
+                         1001 to 2000            1.019            20  
 
 
 METROPOLIS-HASTINGS ACCEPTANCE RATES:
@@ -86,15 +88,19 @@ METROPOLIS-HASTINGS ACCEPTANCE RATES:
 DATA INFORMATION:
 
   Sample Size:              2000
-  Missing Data Rates:
-
-                        y = 21.20
-                        d = 03.60
-                        n = 06.00
-
   Nominal Dummy Codes:
 
                         n = n.2 n.3 n.4
+  Missing Data Info:
+
+                      Pattern #:       1     2     3     4     5     6     7     8
+                          miss % --------------------------------------------------
+                        y = 21.2       -     M     -     -     M     M     -     M  
+                        x =  0.0       -     -     -     -     -     -     -     -  
+                        d =  3.6       -     -     -     M     -     M     M     M  
+                        n =  6.0       -     -     M     -     M     -     M     M  
+                                 --------------------------------------------------
+                                 %  71.7  18.9   4.5   2.5   1.4   0.9   0.1   0.1
 
 
 MODEL INFORMATION:
@@ -129,13 +135,28 @@ MODEL FIT:
 
   INFORMATION CRITERIA
 
-    Marginal Likelihood
-      DIC2                  10678.580
-      WAIC                  10844.411
-
     Conditional Likelihood
       DIC2                  10678.580
       WAIC                  10844.411
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 10000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  y                                   9.963      3.889      7.085      9.000     12.000     -1.537     29.000 
+  d                                   0.452      0.498      0.000      0.000      1.000      0.000      1.000 
+  n.2                                 0.108      0.310      0.000      0.000      0.000      0.000      1.000 
+  n.3                                 0.237      0.425      0.000      0.000      0.000      0.000      1.000 
+  n.4                                 0.070      0.255      0.000      0.000      0.000      0.000      1.000 
+  x                                   0.000      2.321     -1.549      0.451      2.451     -3.549      3.451 
+
+                                ------------------------------------------------------------------------------
+
 
 
 CORRELATIONS AMONG RESIDUALS:
@@ -147,6 +168,7 @@ CORRELATIONS AMONG RESIDUALS:
 OUTCOME MODEL ESTIMATES:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
 
 
 Outcome Variable:  y          
@@ -154,31 +176,34 @@ Outcome Variable:  y
 Grand Mean Centered: x
 
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                      11.357      0.409     10.588     12.205      1.000   5962.466 
+  Residual Var.                      11.357      0.409     10.588     12.205        ---        ---   5962.466 
 
 Coefficients:                   
-  Intercept                           8.957      0.134      8.696      9.221      1.000   6063.248 
-  x                                   0.596      0.037      0.521      0.667      1.000   5934.629 
-  d                                   2.759      0.174      2.412      3.095      1.000   5781.589 
-  n.2                                -1.018      0.290     -1.571     -0.442      1.000   4865.933 
-  n.3                                -0.450      0.212     -0.874     -0.034      1.000   5552.950 
-  n.4                                -0.356      0.352     -1.026      0.340      1.000   5161.006 
+  Intercept                           8.957      0.134      8.696      9.221   4436.359      0.000   6063.248 
+  x                                   0.596      0.037      0.521      0.667    260.284      0.000   5934.629 
+  d                                   2.759      0.174      2.412      3.095    251.709      0.000   5781.589 
+  n.2                                -1.018      0.290     -1.571     -0.442     12.268      0.000   4865.933 
+  n.3                                -0.450      0.212     -0.874     -0.034      4.519      0.034   5552.950 
+  n.4                                -0.356      0.352     -1.026      0.340      1.010      0.315   5161.006 
+
+Standard Deviations:            
+  Residual SD                         3.370      0.061      3.254      3.494        ---        ---   5953.779 
 
 Standardized Coefficients:      
-  x                                   0.355      0.020      0.314      0.393      1.000   5917.043 
-  d                                   0.352      0.020      0.312      0.391      1.000   5732.915 
-  n.2                                -0.081      0.023     -0.125     -0.035      1.000   4770.647 
-  n.3                                -0.049      0.023     -0.095     -0.004      1.000   5556.326 
-  n.4                                -0.023      0.023     -0.067      0.022      1.000   5139.345 
+  x                                   0.355      0.020      0.314      0.393    309.869      0.000   5917.043 
+  d                                   0.352      0.020      0.312      0.391    305.542      0.000   5732.915 
+  n.2                                -0.081      0.023     -0.125     -0.035     12.381      0.000   4770.647 
+  n.3                                -0.049      0.023     -0.095     -0.004      4.544      0.033   5556.326 
+  n.4                                -0.023      0.023     -0.067      0.022      1.010      0.315   5139.345 
 
 Proportion Variance Explained   
-  by Coefficients                     0.252      0.018      0.216      0.287      1.000   5717.307 
-  by Residual Variation               0.748      0.018      0.713      0.784      1.000   5717.307 
+  by Coefficients                     0.252      0.018      0.216      0.287        ---        ---   5717.307 
+  by Residual Variation               0.748      0.018      0.713      0.784        ---        ---   5717.307 
 
-                                -------------------------------------------------------------------
+                                ------------------------------------------------------------------------------
 
 
 
@@ -186,51 +211,53 @@ Proportion Variance Explained
 PREDICTOR MODEL ESTIMATES:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
 
 
 Missing predictor:  d          
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 
-Grand Mean                           -0.121      0.029     -0.179     -0.066      1.001   3897.899 
+Grand Mean                           -0.121      0.029     -0.179     -0.066     18.008      0.000   3897.899 
 
-Level 1:                                                                                           
-  x                                  -0.011      0.013     -0.036      0.015      1.000   3622.146 
-  n.2                                -0.010      0.066     -0.141      0.118      1.001    844.367 
-  n.3                                 0.038      0.055     -0.068      0.145      1.003   1163.154 
-  n.4                                -0.102      0.073     -0.241      0.045      1.004    655.979 
-  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
-Thresholds:                                                                                        
-  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
-                                                                                                   
-                                -------------------------------------------------------------------
+Level 1:                                                                                                      
+  x                                  -0.011      0.013     -0.036      0.015      0.681      0.409   3622.146 
+  n.2                                -0.010      0.066     -0.141      0.118      0.024      0.878    844.367 
+  n.3                                 0.038      0.055     -0.068      0.145      0.510      0.475   1163.154 
+  n.4                                -0.102      0.073     -0.241      0.045      1.943      0.163    655.979 
+  Residual Var.                       1.000      0.000      1.000      1.000        ---        ---        nan 
+Thresholds:                                                                                                   
+  Tau 1                               0.000      0.000      0.000      0.000        ---        ---        nan 
+                                                                                                              
+                                ------------------------------------------------------------------------------
 
 
 
 Missing predictor:  n          
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 
-Grand Mean: n.2                      -0.901      0.038     -0.977     -0.828      1.003   1261.351 
-Grand Mean: n.3                      -0.521      0.031     -0.584     -0.461      1.000   1910.994 
-Grand Mean: n.4                      -1.088      0.042     -1.172     -1.005      1.002    745.037 
+Grand Mean: n.2                      -0.901      0.038     -0.977     -0.828    564.342      0.000   1261.351 
+Grand Mean: n.3                      -0.521      0.031     -0.584     -0.461    277.490      0.000   1910.994 
+Grand Mean: n.4                      -1.088      0.042     -1.172     -1.005    660.818      0.000    745.037 
 
-Level 1:                                                                                           
-  n.2 ~ x                             0.022      0.016     -0.009      0.054      1.003   1141.175 
-  n.2 ~ d                            -0.041      0.046     -0.129      0.047      1.001    973.687 
-  n.3 ~ x                             0.013      0.013     -0.013      0.040      1.000   1963.298 
-  n.3 ~ d                            -0.018      0.038     -0.090      0.060      1.001   1301.163 
-  n.4 ~ x                             0.020      0.018     -0.013      0.056      1.004    954.374 
-  n.4 ~ d                            -0.087      0.050     -0.184      0.013      1.002    740.311 
-  Var(n.2)                            1.000      0.000      1.000      1.000        nan        nan 
-  Cov(n.3, n.2)                       0.500      0.000      0.500      0.500        nan        nan 
-  Cov(n.4, n.2)                       1.000      0.000      1.000      1.000        nan        nan 
-  Var(n.3)                            0.500      0.000      0.500      0.500        nan        nan 
-  Cov(n.4, n.3)                       0.500      0.000      0.500      0.500        nan        nan 
-  Var(n.4)                            1.000      0.000      1.000      1.000        nan        nan 
-                                                                                                   
-                                -------------------------------------------------------------------
+Level 1:                                                                                                      
+  n.2 ~ x                             0.022      0.016     -0.009      0.054      1.989      0.158   1141.175 
+  n.2 ~ d                            -0.041      0.046     -0.129      0.047      0.813      0.367    973.687 
+  n.3 ~ x                             0.013      0.013     -0.013      0.040      0.957      0.328   1963.298 
+  n.3 ~ d                            -0.018      0.038     -0.090      0.060      0.202      0.653   1301.163 
+  n.4 ~ x                             0.020      0.018     -0.013      0.056      1.351      0.245    954.374 
+  n.4 ~ d                            -0.087      0.050     -0.184      0.013      2.987      0.084    740.311 
+  Var(n.2)                            1.000      0.000      1.000      1.000        ---        ---        nan 
+  Cov(n.3, n.2)                       0.500      0.000      0.500      0.500        ---        ---        nan 
+  Cov(n.4, n.2)                       1.000      0.000      1.000      1.000        ---        ---        nan 
+  Var(n.3)                            0.500      0.000      0.500      0.500        ---        ---        nan 
+  Cov(n.4, n.3)                       0.500      0.000      0.500      0.500        ---        ---        nan 
+  Var(n.4)                            1.000      0.000      1.000      1.000        ---        ---        nan 
+                                                                                                              
+                                ------------------------------------------------------------------------------
 
 

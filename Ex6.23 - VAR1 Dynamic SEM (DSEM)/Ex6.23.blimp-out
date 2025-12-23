@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                              4.0.0-nightly5
+                                   4.0.0
 
              Blimp was developed with funding from Institute of
            Education Sciences awards R305D150056 and R305D190002.
@@ -29,4 +29,467 @@ ALGORITHMIC OPTIONS SPECIFIED:
     Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
     Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
   Chain Starting Values:             Random starting values
+
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                          501 to 1000            2.222            56  
+                         1001 to 2000            1.058            18  
+                         1501 to 3000            1.143            13  
+                         2001 to 4000            1.131            13  
+                         2501 to 5000            1.084            13  
+                         3001 to 6000            1.095            52  
+                         3501 to 7000            1.090            52  
+                         4001 to 8000            1.033            13  
+                         4501 to 9000            1.060            13  
+                         5001 to 10000           1.029            17  
+                         5501 to 11000           1.025            52  
+                         6001 to 12000           1.045            16  
+                         6501 to 13000           1.075            41  
+                         7001 to 14000           1.037            41  
+                         7501 to 15000           1.026            17  
+                         8001 to 16000           1.029            18  
+                         8501 to 17000           1.051            18  
+                         9001 to 18000           1.044            18  
+                         9501 to 19000           1.034            17  
+                        10001 to 20000           1.047            52  
+
+
+METROPOLIS-HASTINGS ACCEPTANCE RATES:
+
+  Chain 1:
+
+    Variable                            Type    Probability   Target Value 
+    _i y_i ...)                    parameter          0.555          0.500 
+    xvarlog_j                     latent imp          0.501          0.500 
+    yvarlog_j                     latent imp          0.496          0.500 
+    var(x_i)                      imputation          0.496          0.500 
+    var(y_i)                      imputation          0.507          0.500 
+
+  NOTE: Suppressing printing of 1 chains.
+        Use keyword 'tuneinfo' in options to override.
+
+
+DATA INFORMATION:
+
+  Time identifier:          time
+  Level-2 identifier:       level2id
+  Sample Size:              5000
+  Level-2 Clusters:         100
+  Missing Data Info:
+
+                      Pattern #:       1     2
+                          miss % --------------
+                      y_i =  0.0       -     -  
+                      x_i =  0.0       -     -  
+                 y_i.lag1 =  2.0       -     M  
+                 x_i.lag1 =  2.0       -     M  
+                                 --------------
+                                 %  98.0   2.0
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         18
+    Predictor Models:       0
+
+  FACTORS
+    Level-2:                xmean_j ymean_j phi1_j phi2_j phi3_j phi4_j
+                            yvarlog_j xvarlog_j
+
+  MODELS
+
+   level2.models:
+    [1]  phi1_j ~ Intercept
+    [2]  phi2_j ~ Intercept
+    [3]  phi3_j ~ Intercept
+    [4]  phi4_j ~ Intercept
+    [5]  xmean_j ~ Intercept
+    [6]  ymean_j ~ Intercept
+    [7]  xmean_j <-> ymean_j
+
+   level1.models:
+    [8]  x_i ~ xmean_j@1 (x_i.lag1-xmean_j)*phi2_j@1 (y_i.lag1-ymean_j)*phi3_j@1
+    [9]  y_i ~ ymean_j@1 (y_i.lag1-ymean_j)*phi1_j@1 (x_i.lag1-xmean_j)*phi4_j@1
+   [10]  x_i <-> y_i
+
+   variance.model:
+   [11]  xvarlog_j ~ Intercept
+   [12]  yvarlog_j ~ Intercept
+   [13]  var(x_i) ~ xvarlog_j@1
+   [14]  var(y_i) ~ yvarlog_j@1
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Conditional Likelihood
+      DIC2                  61706.399
+      WAIC                  62810.796
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 20000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  phi1_j                              0.171      0.137      0.076      0.167      0.264     -0.153      0.516 
+  phi2_j                              0.007      0.050     -0.027      0.007      0.041     -0.120      0.132 
+  phi3_j                             -0.019      0.026     -0.036     -0.019     -0.002     -0.083      0.046 
+  phi4_j                              0.037      0.043      0.008      0.037      0.066     -0.070      0.145 
+  xmean_j                             0.008      0.057     -0.031      0.008      0.046     -0.134      0.150 
+  ymean_j                            -0.015      0.790     -0.545     -0.076      0.523     -1.790      1.878 
+  x_i                                 0.013      1.000     -0.642      0.015      0.679     -3.567      3.701 
+  y_i                                 0.008      1.809     -1.128     -0.063      1.089    -10.624      8.448 
+  xvarlog_j                           0.007      0.295     -0.194     -0.009      0.199     -0.706      0.825 
+  yvarlog_j                           0.698      0.586      0.312      0.716      1.066     -0.640      2.132 
+
+                                ------------------------------------------------------------------------------
+
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 20000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+   No residual correlations at Level-1.
+
+   Level-2:
+
+Correlations                       Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  phi1_j, phi2_j                      0.052      0.145     -0.234      0.329      0.126      0.722  15383.982 
+  phi1_j, phi3_j                      0.041      0.147     -0.249      0.323      0.075      0.784  12844.767 
+  phi1_j, phi4_j                      0.003      0.146     -0.282      0.290      0.000      0.987  18659.732 
+  phi1_j, xmean_j                     0.024      0.154     -0.283      0.316      0.021      0.884   2606.642 
+  phi1_j, ymean_j                     0.211      0.125     -0.046      0.441      2.711      0.100  17789.658 
+  phi1_j, xvarlog_j                  -0.043      0.135     -0.302      0.222      0.096      0.756  13431.610 
+  phi1_j, yvarlog_j                   0.174      0.127     -0.085      0.411      1.825      0.177  13732.624 
+  phi2_j, phi3_j                     -0.001      0.146     -0.283      0.287      0.000      0.997  19230.001 
+  phi2_j, phi4_j                      0.017      0.147     -0.273      0.298      0.011      0.918  18297.142 
+  phi2_j, xmean_j                    -0.012      0.145     -0.295      0.269      0.007      0.933  18640.198 
+  phi2_j, ymean_j                    -0.019      0.143     -0.296      0.263      0.017      0.895  19103.533 
+  phi2_j, xvarlog_j                  -0.010      0.143     -0.288      0.272      0.005      0.944  15814.528 
+  phi2_j, yvarlog_j                  -0.022      0.142     -0.300      0.259      0.024      0.878  17355.118 
+  phi3_j, phi4_j                      0.004      0.147     -0.283      0.290      0.001      0.980  19759.540 
+  phi3_j, xmean_j                    -0.015      0.146     -0.300      0.269      0.010      0.918  19157.951 
+  phi3_j, ymean_j                    -0.015      0.145     -0.297      0.269      0.009      0.923  18176.946 
+  phi3_j, xvarlog_j                   0.019      0.144     -0.266      0.299      0.016      0.898  16184.167 
+  phi3_j, yvarlog_j                  -0.028      0.146     -0.309      0.262      0.034      0.854  13683.509 
+  phi4_j, xmean_j                     0.009      0.147     -0.278      0.291      0.003      0.955  18917.391 
+  phi4_j, ymean_j                     0.022      0.145     -0.264      0.304      0.023      0.880  18834.084 
+  phi4_j, xvarlog_j                  -0.007      0.145     -0.291      0.275      0.003      0.958  18929.172 
+  phi4_j, yvarlog_j                   0.035      0.145     -0.248      0.319      0.059      0.808  11465.370 
+  xmean_j, xvarlog_j                  0.009      0.144     -0.272      0.288      0.004      0.949   9920.984 
+  xmean_j, yvarlog_j                  0.034      0.155     -0.273      0.326      0.045      0.832   1946.429 
+  ymean_j, xvarlog_j                 -0.087      0.123     -0.324      0.158      0.499      0.480  12539.422 
+  ymean_j, yvarlog_j                  0.231      0.111      0.003      0.437      4.211      0.040  15511.667 
+  xvarlog_j, yvarlog_j               -0.157      0.120     -0.384      0.084      1.674      0.196  10573.652 
+
+                                ------------------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 20000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+  level2.models block:
+
+Latent Variable:   phi1_j     
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.019      0.005      0.011      0.031        ---        ---   3568.005 
+
+Coefficients:                   
+  Intercept                           0.171      0.021      0.130      0.213     64.957      0.000   1220.893 
+
+Standard Deviations:            
+  Residual SD                         0.139      0.018      0.106      0.177        ---        ---   3453.225 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Latent Variable:   phi2_j     
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.003      0.002      0.000      0.008        ---        ---    312.586 
+
+Coefficients:                   
+  Intercept                           0.007      0.018     -0.029      0.043      0.141      0.708    279.332 
+
+Standard Deviations:            
+  Residual SD                         0.051      0.020      0.013      0.092        ---        ---    216.546 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Latent Variable:   phi3_j     
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.001      0.001      0.000      0.003        ---        ---    278.178 
+
+Coefficients:                   
+  Intercept                          -0.019      0.011     -0.039      0.003      3.136      0.077    324.235 
+
+Standard Deviations:            
+  Residual SD                         0.025      0.012      0.005      0.052        ---        ---    177.055 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Latent Variable:   phi4_j     
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.002      0.002      0.000      0.008        ---        ---    222.182 
+
+Coefficients:                   
+  Intercept                           0.037      0.023     -0.008      0.080      2.638      0.104    197.045 
+
+Standard Deviations:            
+  Residual SD                         0.042      0.022      0.009      0.092        ---        ---    165.111 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Latent Variable:   xmean_j    
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.003      0.003      0.000      0.010        ---        ---    368.289 
+
+Coefficients:                   
+  Intercept                           0.008      0.016     -0.024      0.038      0.241      0.623    964.088 
+
+Standard Deviations:            
+  Residual SD                         0.058      0.022      0.018      0.101        ---        ---    274.696 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Latent Variable:   ymean_j    
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.654      0.110      0.479      0.909        ---        ---   8762.271 
+
+Coefficients:                   
+  Intercept                          -0.016      0.087     -0.186      0.154      0.036      0.850   9606.159 
+
+Standard Deviations:            
+  Residual SD                         0.809      0.067      0.692      0.953        ---        ---   8721.411 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Covariance Matrix: xmean_j ymean_j
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Covariances:                    
+  Cov(xmean_j,ymean_j)                0.005      0.014     -0.021      0.034      0.144      0.704    979.222 
+
+Correlations:                   
+  Cor(xmean_j,ymean_j)                0.105      0.318     -0.604      0.704      0.088      0.767    382.006 
+
+                                ------------------------------------------------------------------------------
+
+
+  level1.models block:
+
+Outcome Variable:  x_i        
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Q25% Residual Var.                  0.824      0.025      0.775      0.875        ---        ---   3170.871 
+  Q50% Residual Var.                  0.990      0.028      0.937      1.049        ---        ---   2939.901 
+  Mean Residual Var.                  1.053      0.024      1.006      1.102        ---        ---   1389.611 
+  Q75% Residual Var.                  1.220      0.044      1.139      1.311        ---        ---   1924.503 
+
+Coefficients:                   
+  xmean_j                           @ 1.000        ---        ---        ---        ---        ---        --- 
+  (x_i.lag1-xmean_j)*phi2_j         @ 1.000        ---        ---        ---        ---        ---        --- 
+  (y_i.lag1-ymean_j)*phi3_j         @ 1.000        ---        ---        ---        ---        ---        --- 
+
+Standardized Coefficients:      
+  (x_i.lag1-xmean_j)*phi2_j           0.052      0.018      0.017      0.088      8.234      0.004    233.608 
+  (y_i.lag1-ymean_j)*phi3_j           0.053      0.016      0.023      0.087     10.643      0.001    267.517 
+
+Proportion Variance Explained   
+  by Coefficients                     0.006      0.002      0.002      0.011        ---        ---    339.587 
+  by Residual Variation               0.994      0.002      0.989      0.998        ---        ---    339.587 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y_i        
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Q25% Residual Var.                  1.367      0.065      1.244      1.497        ---        ---   3731.572 
+  Q50% Residual Var.                  2.048      0.078      1.899      2.205        ---        ---   3671.537 
+  Mean Residual Var.                  2.382      0.055      2.277      2.492        ---        ---   2769.697 
+  Q75% Residual Var.                  2.902      0.123      2.676      3.158        ---        ---   4100.989 
+
+Coefficients:                   
+  ymean_j                           @ 1.000        ---        ---        ---        ---        ---        --- 
+  (y_i.lag1-ymean_j)*phi1_j         @ 1.000        ---        ---        ---        ---        ---        --- 
+  (x_i.lag1-xmean_j)*phi4_j         @ 1.000        ---        ---        ---        ---        ---        --- 
+
+Standardized Coefficients:      
+  (y_i.lag1-ymean_j)*phi1_j           0.251      0.018      0.217      0.285    202.763      0.000   1109.405 
+  (x_i.lag1-xmean_j)*phi4_j           0.038      0.014      0.012      0.065      7.777      0.005    137.463 
+
+Proportion Variance Explained   
+  by Coefficients                     0.069      0.009      0.053      0.087        ---        ---   2392.006 
+  by Residual Variation               0.931      0.009      0.913      0.947        ---        ---   2392.006 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Covariance Matrix: x_i y_i    
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Average Covariances:            
+  Cov(x_i,y_i)                        1.343      0.068      1.214      1.479    394.693      0.000   1314.044 
+
+Correlations:                   
+  Cor(x_i,y_i)                        0.536      0.012      0.512      0.558   2058.664      0.000   1330.198 
+
+                                ------------------------------------------------------------------------------
+
+
+  variance.model block:
+
+Latent Variable:   xvarlog_j  
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.089      0.020      0.058      0.135        ---        ---   2345.337 
+
+Coefficients:                   
+  Intercept                           0.006      0.037     -0.064      0.079      0.034      0.854   4057.823 
+
+Standard Deviations:            
+  Residual SD                         0.299      0.032      0.241      0.367        ---        ---   2279.250 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Latent Variable:   yvarlog_j  
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.353      0.059      0.262      0.489        ---        ---   7628.030 
+
+Coefficients:                   
+  Intercept                           0.698      0.063      0.574      0.822    121.860      0.000   9767.693 
+
+Standard Deviations:            
+  Residual SD                         0.594      0.048      0.512      0.699        ---        ---   7454.479 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  var(x_i)   
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+Coefficients:                   
+  xvarlog_j                         @ 1.000        ---        ---        ---        ---        ---        --- 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  var(y_i)   
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+Coefficients:                   
+  yvarlog_j                         @ 1.000        ---        ---        ---        ---        ---        --- 
+
+                                ------------------------------------------------------------------------------
+
+
 

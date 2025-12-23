@@ -1,0 +1,23 @@
+SIMULATE:
+	# Calculate number of obs
+	level_1(1) = 50 * 100; # n_j * J
+	level_2(2) = 100;
+	
+	# Specify level-2	
+	level_2:
+		u0 = normal(10,  1.0);
+	# specify level-1
+	level_1: 
+		y = normal(u0 + (y.lag - u0) * 0.5, 1);
+		time = level_1.time; # Define time variable
+VARIABLES: y time level_2;
+CLUSTERID: level_2;
+TIMEID: time;
+LATENT: level_2 = b0j;
+MODEL: 
+	y ~ 1@b0j (y.lag - b0j);
+BURN: 5000;
+ITER: 5000;
+SEED: 198723;
+SAVE:
+	dataset = generated_data.csv;

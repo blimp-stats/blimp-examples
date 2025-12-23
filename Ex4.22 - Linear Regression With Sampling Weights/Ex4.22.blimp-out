@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                  3.2.10
+                                   4.0.0
 
              Blimp was developed with funding from Institute of
            Education Sciences awards R305D150056 and R305D190002.
@@ -24,12 +24,14 @@ ALGORITHMIC OPTIONS SPECIFIED:
   Imputation method:                 Fully Bayesian model-based
   MCMC algorithm:                    Full conditional Metropolis sampler with
                                        Auto-Derived Conditional Distributions
-  Between-cluster imputation model:  Not applicable, single-level imputation
-  Prior for random effect variances: Not applicable, single-level imputation
-  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
-  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Default Priors:
+    Multilevel covariance matrices:  Not applicable, single-level imputation
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
   Chain Starting Values:             Random starting values
 
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
 
 
 BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
@@ -41,19 +43,19 @@ BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
                            26 to 50              1.108             1  
                            51 to 100             1.064             4  
                            76 to 150             1.065             1  
-                          101 to 200             1.019            10  
-                          126 to 250             1.017             9  
-                          151 to 300             1.010            10  
+                          101 to 200             1.019            11  
+                          126 to 250             1.017            10  
+                          151 to 300             1.010            11  
                           176 to 350             1.009             3  
-                          201 to 400             1.006             8  
+                          201 to 400             1.006             9  
                           226 to 450             1.007             3  
                           251 to 500             1.009             3  
-                          276 to 550             1.004             7  
+                          276 to 550             1.004             8  
                           301 to 600             1.002             5  
-                          326 to 650             1.003             9  
-                          351 to 700             1.004             1  
-                          376 to 750             1.004            10  
-                          401 to 800             1.004             1  
+                          326 to 650             1.003            10  
+                          351 to 700             1.004             6  
+                          376 to 750             1.004            11  
+                          401 to 800             1.004             6  
                           426 to 850             1.003             1  
                           451 to 900             1.004             1  
                           476 to 950             1.004             1  
@@ -63,10 +65,16 @@ BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
 DATA INFORMATION:
 
   Sample Size:              4847
-  Missing Data Rates:
+  Missing Data Info:
 
-                        y = 00.00
-
+                      Pattern #:       1
+                          miss % --------
+                        y =  0.0       -  
+                       x1 =  0.0       -  
+                       x2 =  0.0       -  
+                       x3 =  0.0       -  
+                                 --------
+                                 % 100.0
 
 
 MODEL INFORMATION:
@@ -90,6 +98,23 @@ WARNING MESSAGES:
   No warning messages.
 
 
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 10000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  y                                  -0.197      1.028     -0.752      0.086      0.506     -2.010      1.344 
+  x1                                  1.511      0.500      1.000      2.000      2.000      1.000      2.000 
+  x2                                 15.795      0.296     15.580     15.830     16.080     15.250     16.330 
+  x3                                 10.101      0.542     10.000     10.000     10.000      8.000     12.000 
+
+                                ------------------------------------------------------------------------------
+
+
+
 CORRELATIONS AMONG RESIDUALS:
 
   No residual correlations.
@@ -99,31 +124,35 @@ CORRELATIONS AMONG RESIDUALS:
 OUTCOME MODEL ESTIMATES:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
 
 
 Outcome Variable:  y          
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                       1.002      0.020      0.962      1.044      1.000   9299.971 
+  Residual Var.                       1.002      0.020      0.962      1.044        ---        ---   9299.971 
 
 Coefficients:                   
-  Intercept                          -1.944      0.773     -3.469     -0.438      1.000   9781.218 
-  x1                                 -0.291      0.029     -0.349     -0.235      1.000   9815.180 
-  x2                                 -0.017      0.056     -0.126      0.091      1.000   9533.204 
-  x3                                  0.249      0.032      0.188      0.312      1.000   9753.722 
+  Intercept                          -1.944      0.773     -3.469     -0.438      6.342      0.012   9781.218 
+  x1                                 -0.291      0.029     -0.349     -0.235    101.835      0.000   9815.180 
+  x2                                 -0.017      0.056     -0.126      0.091      0.103      0.748   9533.204 
+  x3                                  0.249      0.032      0.188      0.312     61.546      0.000   9753.722 
+
+Standard Deviations:            
+  Residual SD                         1.001      0.010      0.981      1.022        ---        ---   9300.117 
 
 Standardized Coefficients:      
-  x1                                 -0.142      0.014     -0.170     -0.115      1.000   9872.241 
-  x2                                 -0.005      0.016     -0.037      0.026      1.000   9543.095 
-  x3                                  0.132      0.017      0.100      0.165      1.000   9754.376 
+  x1                                 -0.142      0.014     -0.170     -0.115    104.971      0.000   9872.241 
+  x2                                 -0.005      0.016     -0.037      0.026      0.103      0.748   9543.095 
+  x3                                  0.132      0.017      0.100      0.165     62.959      0.000   9754.376 
 
 Proportion Variance Explained   
-  by Coefficients                     0.041      0.006      0.031      0.053      1.000   9979.404 
-  by Residual Variation               0.959      0.006      0.947      0.969      1.000   9979.404 
+  by Coefficients                     0.041      0.006      0.031      0.053        ---        ---   9979.404 
+  by Residual Variation               0.959      0.006      0.947      0.969        ---        ---   9979.404 
 
-                                -------------------------------------------------------------------
+                                ------------------------------------------------------------------------------
 
 
 

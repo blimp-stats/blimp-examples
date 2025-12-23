@@ -4,7 +4,7 @@ SIMULATE:
 	
 	define:	
 		# Factor correlation
-		cor = 0.3;
+		f1 ~~ f2 = 0.3;
 		# reliability for items loading on factor 1
 		rel_1 = 0.7;
 		# reliability for items loading on factor 2
@@ -17,11 +17,8 @@ SIMULATE:
 		v_2 = (1 / rel_2) - 1;
 
 	n: 
-		# Create phantom variable
-		u = normal(0, cor);
-
 		# Generate factor scores f1 and f2 ~ normal(0, 1)
-		f1:f2 = normal(u, 1 - cor);
+		f1:f2 = normal(0, 1);
 		
 		# Generate items with equal loadings
 		y1_1:y1_5 = normal(f1, v_1);

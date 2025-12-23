@@ -1,0 +1,194 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                   4.0.0
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Default Priors:
+    Multilevel covariance matrices:  Zero matrix, df = -(p + 1) (PRIOR2)
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: The default prior for regression coefficients 
+        in categorical models is 'normal( 0.0, 5.0)'
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                           51 to 100             1.365            16  
+                          101 to 200             1.095             2  
+                          151 to 300             1.114             2  
+                          201 to 400             1.021            17  
+                          251 to 500             1.014             7  
+                          301 to 600             1.037             2  
+                          351 to 700             1.015             2  
+                          401 to 800             1.047             2  
+                          451 to 900             1.008             2  
+                          501 to 1000            1.006            14  
+                          551 to 1100            1.005             2  
+                          601 to 1200            1.011             2  
+                          651 to 1300            1.017             7  
+                          701 to 1400            1.003             1  
+                          751 to 1500            1.004            12  
+                          801 to 1600            1.018             2  
+                          851 to 1700            1.014             2  
+                          901 to 1800            1.014             2  
+                          951 to 1900            1.014             2  
+                         1001 to 2000            1.021             2  
+
+
+DATA INFORMATION:
+
+  Level-2 identifier:       level2id
+  Sample Size:              822
+  Level-2 Clusters:         180
+  Missing Data Info:
+
+                      Pattern #:       1
+                          miss % --------
+                      y_i =  0.0       -  
+                   time_i =  0.0       -  
+                                 --------
+                                 % 100.0
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         6
+    Generated Parameters:   6
+    Predictor Models:       0
+
+  PREDICTORS
+    Fixed variables:        time_i
+
+  MODELS
+    [1]  logit(y_i) ~ (time_i==1)@alpha1 (time_i==2)@alpha2 (time_i==3)@alpha3 
+                 (time_i==4)@alpha4 (time_i==5)@alpha5 (time_i==6)@alpha6
+
+  GENERATED PARAMETERS
+    [1]  hazard.1 = exp(alpha1)/(1+exp(alpha1))
+    [2]  hazard.2 = exp(alpha2)/(1+exp(alpha2))
+    [3]  hazard.3 = exp(alpha3)/(1+exp(alpha3))
+    [4]  hazard.4 = exp(alpha4)/(1+exp(alpha4))
+    [5]  hazard.5 = exp(alpha5)/(1+exp(alpha5))
+    [6]  hazard.6 = exp(alpha6)/(1+exp(alpha6))
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Conditional Likelihood
+      DIC2                  663.734
+      WAIC                  663.965
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 10000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  y_i                                 0.153      0.360      0.000      0.000      0.000      0.000      1.000 
+  time_i                              3.072      1.620      2.000      3.000      4.000      1.000      6.000 
+
+                                ------------------------------------------------------------------------------
+
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  No residual correlations.
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+Outcome Variable:  logit(y_i) 
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+Coefficients:                   
+  (time_i==1)                        -2.376      0.269     -2.933     -1.891     78.887      0.000   2845.623 
+  (time_i==2)                        -3.072      0.380     -3.897     -2.411     66.245      0.000   1729.202 
+  (time_i==3)                        -1.710      0.219     -2.151     -1.303     61.659      0.000   4593.746 
+  (time_i==4)                        -1.280      0.207     -1.702     -0.888     38.610      0.000   6557.822 
+  (time_i==5)                        -1.164      0.230     -1.629     -0.720     25.713      0.000   6790.428 
+  (time_i==6)                        -0.726      0.242     -1.222     -0.268      9.163      0.002   8348.690 
+
+Odds Ratio:                     
+  (time_i==1)                         0.093      0.025      0.053      0.151        ---        ---   2989.175 
+  (time_i==2)                         0.046      0.018      0.020      0.090        ---        ---   1826.705 
+  (time_i==3)                         0.181      0.040      0.116      0.272        ---        ---   4702.778 
+  (time_i==4)                         0.278      0.059      0.182      0.412        ---        ---   6625.294 
+  (time_i==5)                         0.312      0.074      0.196      0.487        ---        ---   6898.591 
+  (time_i==6)                         0.484      0.120      0.295      0.765        ---        ---   8403.473 
+
+Proportion Variance Explained   
+  by Coefficients                     0.044      0.006      0.033      0.058        ---        ---   3078.188 
+  by Residual Variation               0.956      0.006      0.942      0.967        ---        ---   3078.188 
+
+                                ------------------------------------------------------------------------------
+
+
+
+GENERATED PARAMETERS:
+
+  Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  hazard.1                            0.085      0.021      0.051      0.131     17.075      0.000   2958.136 
+  hazard.2                            0.044      0.016      0.020      0.082      8.198      0.004   1814.420 
+  hazard.3                            0.153      0.028      0.104      0.214     30.013      0.000   4660.855 
+  hazard.4                            0.217      0.035      0.154      0.292     39.062      0.000   6586.381 
+  hazard.5                            0.238      0.041      0.164      0.327     33.467      0.000   6830.576 
+  hazard.6                            0.326      0.052      0.228      0.433     39.010      0.000   8354.131 
+
+                                ------------------------------------------------------------------------------
+

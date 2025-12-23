@@ -2,15 +2,18 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                  3.0.53
+                                   4.0.0
 
-         Developed by Craig K. Enders, Brian T. Keller, and Han Du.
-                   Blimp was developed with funding from
-                     Institute of Educational Sciences
-                    awards R305D150056 and R305D190002.
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
             Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
-      Programming by Brian T. Keller, Co-P.I. Email: blimp@utexas.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
                  Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
                    There is no expressed license given.
 
 ---------------------------------------------------------------------------
@@ -19,17 +22,19 @@
 ALGORITHMIC OPTIONS SPECIFIED:
 
   Imputation method:                 Fully Bayesian model-based
-  MCMC algorithm:                    Full conditional Metropolis sampler
-  Between-cluster imputation model:  Not applicable, single-level imputation
-  Residual variance structure:       Not applicable, single-level imputation
-  Prior for random effect variances: Not applicable, single-level imputation
-  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
-  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Default Priors:
+    Multilevel covariance matrices:  Not applicable, single-level imputation
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
   Chain Starting Values:             Random starting values
 
 
   NOTE: The default prior for regression coefficients 
         in categorical models is 'normal( 0.0, 5.0)'
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
 
 
 BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
@@ -38,26 +43,26 @@ BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
         iterations to create twice as many chains.
 
   Comparing iterations across 2 chains     Highest PSR   Parameter #  
-                           26 to 50              1.269            14  
-                           51 to 100             1.219            21  
-                           76 to 150             1.157            21  
-                          101 to 200             1.071            21  
-                          126 to 250             1.050            24  
-                          151 to 300             1.148            21  
-                          176 to 350             1.160            21  
-                          201 to 400             1.040            21  
-                          226 to 450             1.124            21  
-                          251 to 500             1.094            21  
-                          276 to 550             1.039            21  
-                          301 to 600             1.016            21  
-                          326 to 650             1.016            12  
-                          351 to 700             1.016            21  
-                          376 to 750             1.034            21  
-                          401 to 800             1.060            21  
-                          426 to 850             1.030            21  
-                          451 to 900             1.018            21  
-                          476 to 950             1.009             1  
-                          501 to 1000            1.010            21  
+                           26 to 50              1.272            14  
+                           51 to 100             1.167            16  
+                           76 to 150             1.123             2  
+                          101 to 200             1.077             7  
+                          126 to 250             1.122            22  
+                          151 to 300             1.080            22  
+                          176 to 350             1.045            22  
+                          201 to 400             1.047            22  
+                          226 to 450             1.016            24  
+                          251 to 500             1.039            16  
+                          276 to 550             1.020            18  
+                          301 to 600             1.010            26  
+                          326 to 650             1.010            19  
+                          351 to 700             1.012            18  
+                          376 to 750             1.041            16  
+                          401 to 800             1.011            16  
+                          426 to 850             1.006            22  
+                          451 to 900             1.011            22  
+                          476 to 950             1.009            22  
+                          501 to 1000            1.011            22  
 
 
 METROPOLIS-HASTINGS ACCEPTANCE RATES:
@@ -65,9 +70,9 @@ METROPOLIS-HASTINGS ACCEPTANCE RATES:
   Chain 1:
 
     Variable                            Type    Probability   Target Value 
-    d2                            imputation          0.515          0.500 
-    x1                            imputation          0.502          0.500 
-    x1                             parameter          0.516          0.500 
+    d2                            imputation          0.510          0.500 
+    x1                            imputation          0.507          0.500 
+    x1                             parameter          0.544          0.500 
 
   NOTE: Suppressing printing of 1 chains.
         Use keyword 'tuneinfo' in options to override.
@@ -76,12 +81,17 @@ METROPOLIS-HASTINGS ACCEPTANCE RATES:
 DATA INFORMATION:
 
   Sample Size:              250
-  Missing Data Rates:
+  Missing Data Info:
 
-                        y = 16.80
-                       d2 = 05.20
-                       x1 = 08.80
-
+                      Pattern #:       1     2     3     4     5     6
+                          miss % --------------------------------------
+                        y = 16.8       -     M     -     -     M     M  
+                       d1 =  0.0       -     -     -     -     -     -  
+                       d2 =  5.2       -     -     -     M     -     M  
+                       x1 =  8.8       -     -     M     -     M     -  
+                       x2 =  0.0       -     -     -     -     -     -  
+                                 --------------------------------------
+                                 %  72.0  14.0   6.8   4.4   2.0   0.8
 
 
 MODEL INFORMATION:
@@ -104,12 +114,51 @@ MODEL INFORMATION:
 
 WARNING MESSAGES:
 
-  No warning messages.
+  WARNING: The following variables are fixed and centered.
+           The variables will be centered with observed means.
+  
+             x2
+  
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Conditional Likelihood
+      DIC2                  1719.278
+      WAIC                  1736.468
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 10000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  y                                  56.655      9.442     50.866     56.974     63.035     22.127     85.051 
+  d2                                  0.398      0.490      0.000      0.000      1.000      0.000      1.000 
+  x1                                 18.101      7.776     13.001     17.023     22.005     -0.878     56.000 
+  d1                                  0.492      0.501      0.000      0.000      1.000      0.000      1.000 
+  x2                                  0.000      8.659     -5.096     -0.096      5.904    -24.096     25.904 
+
+                                ------------------------------------------------------------------------------
+
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  No residual correlations.
+
 
 
 OUTCOME MODEL ESTIMATES:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
 
 
 Outcome Variable:  y          
@@ -117,31 +166,34 @@ Outcome Variable:  y
 Grand Mean Centered: x1 x2
 
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                      52.125      5.323     43.125     63.876      1.000   6754.614 
+  Residual Var.                      52.700      5.402     43.446     64.779        ---        ---   5934.616 
 
 Coefficients:                   
-  Intercept                          60.954      0.898     59.208     62.743      1.000   5113.782 
-  x1                                 -0.256      0.085     -0.422     -0.088      1.000   3927.188 
-  x2                                  0.372      0.067      0.241      0.500      1.001   6619.649 
-  d1                                 -4.043      1.025     -6.034     -2.018      1.000   6994.870 
-  d2                                 -3.672      1.076     -5.754     -1.498      1.000   5628.502 
-  (x1^2)                             -0.014      0.006     -0.026     -0.002      1.001   2371.178 
+  Intercept                          60.969      0.910     59.176     62.755   4489.315      0.000   4865.658 
+  x1                                 -0.259      0.085     -0.421     -0.087      9.133      0.003   4612.463 
+  x2                                  0.372      0.067      0.241      0.503     31.135      0.000   6557.651 
+  d1                                 -4.035      1.039     -6.091     -2.004     15.116      0.000   6258.281 
+  d2                                 -3.684      1.063     -5.765     -1.593     11.986      0.001   5511.932 
+  (x1^2)                             -0.014      0.006     -0.027     -0.002      5.313      0.021   2437.256 
+
+Standard Deviations:            
+  Residual SD                         7.259      0.369      6.591      8.049        ---        ---   5929.303 
 
 Standardized Coefficients:      
-  x1                                 -0.209      0.068     -0.342     -0.071      1.000   3651.670 
-  x2                                  0.338      0.058      0.220      0.447      1.001   6096.367 
-  d1                                 -0.213      0.052     -0.312     -0.106      1.000   6828.195 
-  d2                                 -0.189      0.054     -0.291     -0.077      1.000   5838.346 
-  (x1^2)                             -0.193      0.079     -0.340     -0.034      1.001   2452.680 
+  x1                                 -0.210      0.068     -0.338     -0.071      9.386      0.002   4474.531 
+  x2                                  0.337      0.058      0.220      0.446     33.575      0.000   5535.799 
+  d1                                 -0.211      0.052     -0.313     -0.105     16.108      0.000   6208.721 
+  d2                                 -0.189      0.053     -0.290     -0.082     12.605      0.000   5482.819 
+  (x1^2)                             -0.194      0.080     -0.343     -0.030      5.735      0.017   2556.252 
 
 Proportion Variance Explained   
-  by Coefficients                     0.426      0.050      0.323      0.519      1.001   4672.352 
-  by Residual Variation               0.574      0.050      0.481      0.677      1.001   4672.352 
+  by Coefficients                     0.425      0.051      0.321      0.521        ---        ---   4671.587 
+  by Residual Variation               0.575      0.051      0.479      0.679        ---        ---   4671.587 
 
-                                -------------------------------------------------------------------
+                                ------------------------------------------------------------------------------
 
 
 
@@ -149,40 +201,42 @@ Proportion Variance Explained
 PREDICTOR MODEL ESTIMATES:
 
   Summaries based on 10000 iterations using 2 chains.
+  NOTE: Estimate column based on posterior median.
+
 
 
 Missing predictor:  d2         
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 
-Grand Mean                           -0.267      0.083     -0.428     -0.104      1.001   3349.336 
+Grand Mean                           -0.267      0.083     -0.429     -0.104     10.371      0.001   3677.069 
 
-Level 1:                                                                                           
-  d1                                  0.388      0.168      0.066      0.723      1.001   3667.651 
-  x1                                  0.002      0.013     -0.023      0.027      1.002   2752.798 
-  x2                                 -0.012      0.011     -0.034      0.010      1.003   2625.545 
-  Residual Var.                       1.000      0.000      1.000      1.000        nan        nan 
-Thresholds:                                                                                        
-  Tau 1                               0.000      0.000      0.000      0.000        nan        nan 
-                                                                                                   
-                                -------------------------------------------------------------------
+Level 1:                                                                                                      
+  d1                                  0.391      0.169      0.057      0.723      5.295      0.021   3904.036 
+  x1                                  0.003      0.013     -0.023      0.027      0.040      0.842   3051.579 
+  x2                                 -0.012      0.011     -0.035      0.010      1.162      0.281   2776.862 
+  Residual Var.                       1.000      0.000      1.000      1.000        ---        ---        nan 
+Thresholds:                                                                                                   
+  Tau 1                               0.000      0.000      0.000      0.000        ---        ---        nan 
+                                                                                                              
+                                ------------------------------------------------------------------------------
 
 
 
 Missing predictor:  x1         
 
-Parameters                           Median     StdDev       2.5%      97.5%        PSR      N_Eff 
-                                -------------------------------------------------------------------
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
 
-Grand Mean                           18.100      0.462     17.197     19.005      1.001   1356.610 
+Grand Mean                           18.119      0.457     17.219     18.996   1569.125      0.000   1494.577 
 
-Level 1:                                                                                           
-  d1                                 -2.134      0.930     -3.986     -0.313      1.000   6582.630 
-  d2                                  0.097      0.586     -1.057      1.223      1.001   4098.448 
-  x2                                 -0.423      0.053     -0.526     -0.320      1.000   5108.264 
-  Residual Var.                      45.770      4.361     38.320     55.527      1.000   6679.392 
-                                                                                                   
-                                -------------------------------------------------------------------
+Level 1:                                                                                                      
+  d1                                 -2.138      0.944     -4.000     -0.304      5.135      0.023   6123.945 
+  d2                                  0.107      0.574     -1.037      1.195      0.034      0.853   4590.062 
+  x2                                 -0.423      0.053     -0.530     -0.319     62.813      0.000   4864.945 
+  Residual Var.                      45.787      4.364     38.366     55.472        ---        ---   6718.374 
+                                                                                                              
+                                ------------------------------------------------------------------------------
 
 
