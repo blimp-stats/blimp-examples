@@ -1,0 +1,20 @@
+DATA: mcneish_hamaker_2020_trend.dat;
+VARIABLES: y_i x_i w1_j w2_j level2id time;
+MISSING: 999;
+CLUSTERID: level2id; 
+TIMEID: time;
+LATENT: level2id = ymean_j xmean_j phi_j beta_j trend_j;
+MODEL:
+# definition variable for the predicted value of y_i.lag
+y_i_lag_hat = ymean_j + (time-1)*trend_j + x_i.lag*beta_j; 
+# remove default dsem prior on missing time = 0 outcome
+y_i_lag_res = ifelse(time <= 1, 0, y_i.lag - y_i_lag_hat);
+level2.models:
+1 -> ymean_j xmean_j phi_j beta_j trend_j;
+level1.models:
+x_i ~ 1@xmean_j;
+y_i ~ 1@ymean_j y_i_lag_res@phi_j x_i@beta_j time@trend_j;
+SEED: 90291;
+BURN: 10000;
+ITER: 10000;
+
