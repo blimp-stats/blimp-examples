@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                   4.0.0
+                                   4.0.3
 
              Blimp was developed with funding from Institute of
            Education Sciences awards R305D150056 and R305D190002.
@@ -36,30 +36,31 @@ ALGORITHMIC OPTIONS SPECIFIED:
 
 BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
 
-  NOTE: Split chain PSR is being used. This splits each chain's
-        iterations to create twice as many chains.
+  NOTE: Rank-normalized Rhat (Vehtari et al., 2021) is being used.
+        This applies rank normalization and chain folding for robust
+        convergence detection across all chains.
 
-  Comparing iterations across 2 chains     Highest PSR   Parameter #  
-                           26 to 50              1.265             1  
-                           51 to 100             1.118             1  
-                           76 to 150             1.454             2  
-                          101 to 200             1.052             1  
-                          126 to 250             1.040             2  
-                          151 to 300             1.009            11  
-                          176 to 350             1.006            10  
-                          201 to 400             1.017            12  
-                          226 to 450             1.019            11  
-                          251 to 500             1.101            12  
-                          276 to 550             1.121             2  
-                          301 to 600             1.073             1  
-                          326 to 650             1.019            12  
-                          351 to 700             1.011            12  
-                          376 to 750             1.025            12  
-                          401 to 800             1.026             2  
-                          426 to 850             1.018             2  
-                          451 to 900             1.073             1  
-                          476 to 950             1.034            12  
-                          501 to 1000            1.022             1  
+  Comparing iterations across 4 chains     Highest Rhat   Parameter #  
+                           26 to 50              1.373             1  
+                           51 to 100             1.173             1  
+                           76 to 150             1.279             1  
+                          101 to 200             1.058             1  
+                          126 to 250             1.070             1  
+                          151 to 300             1.029             2  
+                          176 to 350             1.010             1  
+                          201 to 400             1.017            11  
+                          226 to 450             1.011             1  
+                          251 to 500             1.052            12  
+                          276 to 550             1.054             1  
+                          301 to 600             1.040             1  
+                          326 to 650             1.021            11  
+                          351 to 700             1.019            12  
+                          376 to 750             1.021            12  
+                          401 to 800             1.018             1  
+                          426 to 850             1.014             1  
+                          451 to 900             1.031             1  
+                          476 to 950             1.013            12  
+                          501 to 1000            1.014             1  
 
 
 DATA INFORMATION:
@@ -105,8 +106,8 @@ MODEL FIT:
   INFORMATION CRITERIA
 
     Conditional Likelihood
-      DIC2                  6063.138
-      WAIC                  6231.406
+      DIC2                  6061.121
+      WAIC                  6229.543
 
 
 IMPUTED DATA SUMMARIES:
@@ -117,7 +118,7 @@ IMPUTED DATA SUMMARIES:
 Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
                                 ------------------------------------------------------------------------------
 
-  beta0_j                             0.001      0.695     -0.467      0.007      0.475     -2.108      2.030 
+  beta0_j                             0.001      0.693     -0.464      0.006      0.473     -2.101      2.022 
   y_i                                 4.385      1.559      3.000      5.000      6.000     -2.149      7.625 
   d_j                                 0.753      0.432      1.000      1.000      1.000      0.000      1.000 
 
@@ -133,7 +134,7 @@ CORRELATIONS AMONG RESIDUALS:
 
 OUTCOME MODEL ESTIMATES:
 
-  Summaries based on 10000 iterations using 2 chains.
+  Summaries based on 10000 iterations using 4 chains.
   NOTE: Estimate column based on posterior median.
 
 
@@ -142,10 +143,10 @@ Latent Variable:   beta0_j
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                       0.489      0.082      0.337      0.661        ---        ---    634.435 
+  Residual Var.                       0.484      0.079      0.339      0.648        ---        ---    802.698 
 
 Standard Deviations:            
-  Residual SD                         0.699      0.059      0.580      0.813        ---        ---    617.819 
+  Residual SD                         0.696      0.057      0.582      0.805        ---        ---    782.695 
 
 Proportion Variance Explained   
   by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
@@ -160,23 +161,23 @@ Outcome Variable:  y_i
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                       1.967      0.085      1.809      2.143        ---        ---   4010.766 
+  Residual Var.                       1.970      0.086      1.810      2.144        ---        ---   3811.670 
 
 Coefficients:                   
-  Intercept                           4.940      0.135      4.675      5.209   1332.068      0.000  10071.619 
-  d_j                                -0.602      0.146     -0.888     -0.319     17.088      0.000   7953.130 
+  Intercept                           4.942      0.136      4.677      5.207   1324.016      0.000  10265.312 
+  d_j                                -0.603      0.147     -0.885     -0.316     16.906      0.000   8318.842 
   d_j*beta0_j                       @ 1.000        ---        ---        ---        ---        ---        --- 
 
 Standard Deviations:            
-  Residual SD                         1.402      0.030      1.345      1.464        ---        ---   4024.019 
+  Residual SD                         1.404      0.030      1.345      1.464        ---        ---   3825.096 
 
 Standardized Coefficients:      
-  d_j                                -0.102      0.024     -0.150     -0.054     17.414      0.000   7966.190 
-  d_j*beta0_j                         0.429      0.029      0.364      0.479    219.479      0.000    675.180 
+  d_j                                -0.102      0.025     -0.150     -0.054     17.199      0.000   8234.532 
+  d_j*beta0_j                         0.426      0.028      0.368      0.477    228.561      0.000    842.751 
 
 Proportion Variance Explained   
-  by Coefficients                     0.194      0.025      0.144      0.240        ---        ---    699.539 
-  by Residual Variation               0.806      0.025      0.760      0.856        ---        ---    699.539 
+  by Coefficients                     0.193      0.024      0.145      0.239        ---        ---    867.025 
+  by Residual Variation               0.807      0.024      0.761      0.855        ---        ---    867.025 
 
                                 ------------------------------------------------------------------------------
 

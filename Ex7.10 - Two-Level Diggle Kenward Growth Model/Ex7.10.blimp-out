@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                   4.0.0
+                                   4.0.3
 
              Blimp was developed with funding from Institute of
            Education Sciences awards R305D150056 and R305D190002.
@@ -36,48 +36,49 @@ ALGORITHMIC OPTIONS SPECIFIED:
 
 BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
 
-  NOTE: Split chain PSR is being used. This splits each chain's
-        iterations to create twice as many chains.
+  NOTE: Rank-normalized Rhat (Vehtari et al., 2021) is being used.
+        This applies rank normalization and chain folding for robust
+        convergence detection across all chains.
 
-  Comparing iterations across 2 chains     Highest PSR   Parameter #  
-                          251 to 500             1.366            36  
-                          501 to 1000            1.175            27  
-                          751 to 1500            1.279            36  
-                         1001 to 2000            1.101            27  
-                         1251 to 2500            1.076            39  
-                         1501 to 3000            1.026            36  
-                         1751 to 3500            1.028            36  
-                         2001 to 4000            1.046            36  
-                         2251 to 4500            1.057            36  
-                         2501 to 5000            1.027            27  
-                         2751 to 5500            1.009            36  
-                         3001 to 6000            1.041            36  
-                         3251 to 6500            1.013            27  
-                         3501 to 7000            1.011            36  
-                         3751 to 7500            1.008            36  
-                         4001 to 8000            1.005            37  
-                         4251 to 8500            1.012            27  
-                         4501 to 9000            1.013            27  
-                         4751 to 9500            1.009            27  
-                         5001 to 10000           1.010            27  
+  Comparing iterations across 4 chains     Highest Rhat   Parameter #  
+                          251 to 500             1.078             1  
+                          501 to 1000            1.075            36  
+                          751 to 1500            1.041            36  
+                         1001 to 2000            1.028            36  
+                         1251 to 2500            1.022            27  
+                         1501 to 3000            1.007             1  
+                         1751 to 3500            1.012             1  
+                         2001 to 4000            1.012             1  
+                         2251 to 4500            1.008            27  
+                         2501 to 5000            1.011            24  
+                         2751 to 5500            1.014            25  
+                         3001 to 6000            1.015            36  
+                         3251 to 6500            1.007            36  
+                         3501 to 7000            1.009            25  
+                         3751 to 7500            1.009            24  
+                         4001 to 8000            1.011            36  
+                         4251 to 8500            1.004             1  
+                         4501 to 9000            1.004            36  
+                         4751 to 9500            1.003             1  
+                         5001 to 10000           1.002            32  
 
 
 DATA INFORMATION:
 
   Time identifier:          time_i
   Level-2 identifier:       level2id
-  Sample Size:              6000
+  Sample Size:              5592
   Level-2 Clusters:         1000
   Missing Data Info:
 
-                      Pattern #:       1     2     3     4
-                          miss % --------------------------
-                      y_i = 11.6       -     -     M     M  
-                dropout_i =  6.8       -     -     M     -  
-                   time_i =  0.0       -     -     -     -  
-                 y_i.lag1 = 23.5       -     M     M     -  
-                                 --------------------------
-                                 %  71.7  16.7   6.8   4.8
+                      Pattern #:       1     2     3
+                          miss % --------------------
+                      y_i =  5.2       -     -     M  
+                dropout_i =  0.0       -     -     -  
+                   time_i =  0.0       -     -     -  
+                 y_i.lag1 = 17.9       -     M     -  
+                                 --------------------
+                                 %  77.0  17.9   5.2
 
 
 MODEL INFORMATION:
@@ -109,7 +110,8 @@ MODEL INFORMATION:
 
 WARNING MESSAGES:
 
-  No warning messages.
+  WARNING: 408 post-dropout observations have been dropped from data set.
+           Use OPTIONS: nodrop; to keep these observations.
 
 
 MODEL FIT:
@@ -118,8 +120,8 @@ MODEL FIT:
   INFORMATION CRITERIA
 
     Conditional Likelihood
-      DIC2                  32717.953
-      WAIC                  35493.397
+      DIC2                  30523.779
+      WAIC                  32983.635
 
 
 IMPUTED DATA SUMMARIES:
@@ -130,11 +132,11 @@ IMPUTED DATA SUMMARIES:
 Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
                                 ------------------------------------------------------------------------------
 
-  beta0_j                            11.981      0.468     11.666     11.981     12.296     10.403     13.542 
-  beta1_j                            -1.014      0.297     -1.214     -1.013     -0.813     -1.970     -0.082 
-  y_i                                 9.446      2.108      8.018      9.669     11.087      1.975     15.350 
-  dropout_i                           0.058      0.234      0.000      0.000      0.000      0.000      1.000 
-  time_i                              2.500      1.708      1.000      2.500      4.000      0.000      5.000 
+  beta0_j                            11.979      0.468     11.664     11.979     12.294     10.408     13.543 
+  beta1_j                            -1.013      0.297     -1.212     -1.012     -0.811     -1.971     -0.079 
+  y_i                                 9.510      2.124      8.076      9.753     11.172      1.994     15.350 
+  dropout_i                           0.052      0.221      0.000      0.000      0.000      0.000      1.000 
+  time_i                              2.384      1.692      1.000      2.000      4.000      0.000      5.000 
 
                                 ------------------------------------------------------------------------------
 
@@ -142,7 +144,7 @@ Variables                              Mean     StdDev        25%        50%    
 
 CORRELATIONS AMONG RESIDUALS:
 
-  Summaries based on 10000 iterations using 2 chains.
+  Summaries based on 10000 iterations using 4 chains.
   NOTE: Estimate column based on posterior median.
 
 
@@ -151,7 +153,7 @@ CORRELATIONS AMONG RESIDUALS:
 Correlations                       Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 
-  y_i, dropout_i                      0.000      0.018     -0.036      0.036      0.000      0.997   9939.745 
+  y_i, dropout_i                     -0.000      0.019     -0.038      0.037      0.000      0.995  10249.377 
 
                                 ------------------------------------------------------------------------------
 
@@ -160,7 +162,7 @@ Correlations                       Estimate     StdDev       2.5%      97.5%    
 
 OUTCOME MODEL ESTIMATES:
 
-  Summaries based on 10000 iterations using 2 chains.
+  Summaries based on 10000 iterations using 4 chains.
   NOTE: Estimate column based on posterior median.
 
   latent.variables block:
@@ -170,13 +172,13 @@ Latent Variable:   beta0_j
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                       0.220      0.021      0.182      0.264        ---        ---    583.344 
+  Residual Var.                       0.220      0.021      0.182      0.263        ---        ---   1106.624 
 
 Coefficients:                   
-  Intercept                          11.981      0.021     11.940     12.023  3.175e+05      0.000    756.468 
+  Intercept                          11.980      0.021     11.939     12.021  3.228e+05      0.000   2844.470 
 
 Standard Deviations:            
-  Residual SD                         0.469      0.022      0.427      0.514        ---        ---    588.049 
+  Residual SD                         0.469      0.022      0.427      0.513        ---        ---   1098.764 
 
 Proportion Variance Explained   
   by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
@@ -191,13 +193,13 @@ Latent Variable:   beta1_j
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                       0.088      0.006      0.077      0.101        ---        ---    311.642 
+  Residual Var.                       0.089      0.006      0.078      0.100        ---        ---   2309.272 
 
 Coefficients:                   
-  Intercept                          -1.014      0.013     -1.040     -0.988   5789.654      0.000    158.685 
+  Intercept                          -1.013      0.011     -1.035     -0.990   7790.173      0.000   3331.840 
 
 Standard Deviations:            
-  Residual SD                         0.297      0.010      0.278      0.317        ---        ---    310.972 
+  Residual SD                         0.298      0.010      0.279      0.317        ---        ---   2309.290 
 
 Proportion Variance Explained   
   by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
@@ -212,10 +214,10 @@ Covariance Matrix: beta0_j beta1_j
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Covariances:                    
-  Cov(beta0_j,beta1_j)                0.003      0.008     -0.013      0.018      0.138      0.710    532.856 
+  Cov(beta0_j,beta1_j)                0.003      0.008     -0.013      0.018      0.163      0.686   1383.343 
 
 Correlations:                   
-  Cor(beta0_j,beta1_j)                0.023      0.058     -0.090      0.138      0.160      0.689    521.146 
+  Cor(beta0_j,beta1_j)                0.024      0.058     -0.084      0.139      0.185      0.667   1341.877 
 
                                 ------------------------------------------------------------------------------
 
@@ -227,21 +229,21 @@ Outcome Variable:  y_i
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                       0.406      0.010      0.387      0.426        ---        ---   1783.321 
+  Residual Var.                       0.406      0.010      0.387      0.426        ---        ---   3038.963 
 
 Coefficients:                   
   beta0_j                           @ 1.000        ---        ---        ---        ---        ---        --- 
   time_i*beta1_j                    @ 1.000        ---        ---        ---        ---        ---        --- 
 
 Standard Deviations:            
-  Residual SD                         0.637      0.008      0.622      0.653        ---        ---   1784.991 
+  Residual SD                         0.637      0.008      0.622      0.653        ---        ---   3042.741 
 
 Standardized Coefficients:      
-  time_i*beta1_j                      0.951      0.001      0.948      0.953  4.829e+05      0.000    460.309 
+  time_i*beta1_j                      0.951      0.001      0.948      0.954  5.533e+05      0.000   2528.336 
 
 Proportion Variance Explained   
-  by Coefficients                     0.904      0.003      0.898      0.909        ---        ---    460.386 
-  by Residual Variation               0.096      0.003      0.091      0.102        ---        ---    460.386 
+  by Coefficients                     0.905      0.002      0.900      0.909        ---        ---   2528.861 
+  by Residual Variation               0.095      0.002      0.091      0.100        ---        ---   2528.861 
 
                                 ------------------------------------------------------------------------------
 
@@ -257,13 +259,13 @@ Variances:
 
 Coefficients:                   
   Intercept                         @-3.000        ---        ---        ---        ---        ---        --- 
-  (time_i==1)                        -2.751      0.402     -3.549     -1.976     46.944      0.000    351.331 
-  (time_i==2)                        -2.392      0.375     -3.154     -1.672     40.999      0.000    366.891 
-  (time_i==3)                        -1.915      0.343     -2.596     -1.250     31.315      0.000    406.163 
-  (time_i==4)                        -1.439      0.310     -2.054     -0.838     21.681      0.000    395.817 
-  (time_i==5)                        -0.651      0.268     -1.185     -0.141      5.930      0.015    489.282 
-  (time_i>0)*y_i                      0.337      0.092      0.163      0.533     13.628      0.000     52.914 
-  (time_i>0)*y_i.lag1                 0.014      0.078     -0.150      0.162      0.023      0.880     61.368 
+  (time_i==1)                        -2.796      0.388     -3.583     -2.053     52.101      0.000    868.400 
+  (time_i==2)                        -2.443      0.362     -3.186     -1.737     45.735      0.000    862.985 
+  (time_i==3)                        -1.949      0.330     -2.623     -1.318     35.058      0.000    871.452 
+  (time_i==4)                        -1.467      0.298     -2.058     -0.889     24.396      0.000    869.299 
+  (time_i==5)                        -0.677      0.264     -1.212     -0.178      6.658      0.010    890.485 
+  (time_i>0)*y_i                      0.359      0.051      0.259      0.460     49.049      0.000    411.065 
+  (time_i>0)*y_i.lag1                -0.002      0.046     -0.092      0.089      0.002      0.969    655.667 
 
 Thresholds:                     
   Tau 1                               0.000      0.000      0.000      0.000        ---        ---        nan 
@@ -272,17 +274,17 @@ Standard Deviations:
   Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
 
 Standardized Coefficients:      
-  (time_i==1)                        -0.847      0.116     -1.072     -0.619     53.340      0.000    457.644 
-  (time_i==2)                        -0.736      0.108     -0.949     -0.523     46.287      0.000    451.181 
-  (time_i==3)                        -0.589      0.100     -0.785     -0.389     34.569      0.000    496.899 
-  (time_i==4)                        -0.443      0.091     -0.621     -0.261     23.432      0.000    476.299 
-  (time_i==5)                        -0.200      0.081     -0.358     -0.044      6.132      0.013    541.636 
-  (time_i>0)*y_i                      1.048      0.272      0.517      1.608     14.937      0.000     53.055 
-  (time_i>0)*y_i.lag1                 0.047      0.260     -0.491      0.548      0.026      0.871     61.588 
+  (time_i==1)                        -0.892      0.119     -1.129     -0.661     56.349      0.000    884.808 
+  (time_i==2)                        -0.768      0.110     -0.990     -0.552     49.247      0.000    878.725 
+  (time_i==3)                        -0.605      0.099     -0.804     -0.412     37.293      0.000    886.201 
+  (time_i==4)                        -0.445      0.088     -0.618     -0.272     25.609      0.000    883.189 
+  (time_i==5)                        -0.199      0.077     -0.353     -0.053      6.806      0.009    900.566 
+  (time_i>0)*y_i                      1.156      0.157      0.841      1.461     53.640      0.000    405.256 
+  (time_i>0)*y_i.lag1                -0.007      0.161     -0.318      0.310      0.001      0.971    657.809 
 
 Proportion Variance Explained   
-  by Coefficients                     0.317      0.020      0.284      0.366        ---        ---     68.300 
-  by Residual Variation               0.683      0.020      0.634      0.716        ---        ---     68.300 
+  by Coefficients                     0.306      0.012      0.284      0.332        ---        ---    893.678 
+  by Residual Variation               0.694      0.012      0.668      0.716        ---        ---    893.678 
 
                                 ------------------------------------------------------------------------------
 

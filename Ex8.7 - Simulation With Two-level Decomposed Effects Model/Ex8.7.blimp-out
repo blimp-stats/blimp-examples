@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                   4.0.0
+                                   4.0.3
 
              Blimp was developed with funding from Institute of
            Education Sciences awards R305D150056 and R305D190002.
@@ -45,6 +45,7 @@ Variables                              Mean        VAR     StdDev        25%    
 
                                 -------------------------------------------------------------------
 
+
 VARIABLE ORDER IN SIMULATED DATA:
 
   dataset = 'generated_data.csv'
@@ -55,30 +56,31 @@ VARIABLE ORDER IN SIMULATED DATA:
 
 BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
 
-  NOTE: Split chain PSR is being used. This splits each chain's
-        iterations to create twice as many chains.
+  NOTE: Rank-normalized Rhat (Vehtari et al., 2021) is being used.
+        This applies rank normalization and chain folding for robust
+        convergence detection across all chains.
 
-  Comparing iterations across 2 chains     Highest PSR   Parameter #  
-                          501 to 1000            1.065            22  
-                         1001 to 2000            1.026            22  
-                         1501 to 3000            1.012            23  
-                         2001 to 4000            1.006             7  
-                         2501 to 5000            1.012            21  
-                         3001 to 6000            1.004            16  
-                         3501 to 7000            1.005            22  
-                         4001 to 8000            1.004            21  
-                         4501 to 9000            1.003            22  
-                         5001 to 10000           1.005            23  
-                         5501 to 11000           1.005            22  
-                         6001 to 12000           1.003            23  
-                         6501 to 13000           1.003            23  
-                         7001 to 14000           1.002            26  
-                         7501 to 15000           1.002            13  
-                         8001 to 16000           1.001            25  
-                         8501 to 17000           1.004            21  
+  Comparing iterations across 4 chains     Highest Rhat   Parameter #  
+                          501 to 1000            1.021            24  
+                         1001 to 2000            1.012            16  
+                         1501 to 3000            1.009            12  
+                         2001 to 4000            1.007            21  
+                         2501 to 5000            1.007            21  
+                         3001 to 6000            1.003            21  
+                         3501 to 7000            1.006            21  
+                         4001 to 8000            1.002            21  
+                         4501 to 9000            1.004            21  
+                         5001 to 10000           1.003            21  
+                         5501 to 11000           1.003            21  
+                         6001 to 12000           1.003            21  
+                         6501 to 13000           1.002            21  
+                         7001 to 14000           1.001            25  
+                         7501 to 15000           1.002            21  
+                         8001 to 16000           1.002            21  
+                         8501 to 17000           1.003            21  
                          9001 to 18000           1.002            21  
                          9501 to 19000           1.002            21  
-                        10001 to 20000           1.002            22  
+                        10001 to 20000           1.002            21  
 
 
 DATA INFORMATION:
@@ -139,8 +141,8 @@ MODEL FIT:
   INFORMATION CRITERIA
 
     Conditional Likelihood
-      DIC2                  39515.729
-      WAIC                  40093.230
+      DIC2                  39517.912
+      WAIC                  40097.472
 
 
 IMPUTED DATA SUMMARIES:
@@ -151,10 +153,10 @@ IMPUTED DATA SUMMARIES:
 Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
                                 ------------------------------------------------------------------------------
 
-  u1                                  3.448      3.198      1.340      3.464      5.536     -7.301     12.620 
-  y_b                                46.851      7.425     41.441     46.919     51.985     28.794     68.633 
+  u1                                  3.448      3.198      1.340      3.463      5.537     -7.301     12.618 
+  y_b                                46.850      7.430     41.434     46.906     51.981     28.714     68.715 
   y                                  46.846      8.903     40.708     46.448     52.659     16.647     90.936 
-  x_b                                 0.071      0.968     -0.591      0.070      0.744     -2.773      3.043 
+  x_b                                 0.070      0.968     -0.592      0.068      0.743     -2.766      3.031 
   w                                  -0.010      1.029     -0.708     -0.063      0.611     -3.161      3.012 
   x                                   0.071      1.396     -0.866      0.060      1.024     -5.225      4.789 
 
@@ -164,7 +166,7 @@ Variables                              Mean     StdDev        25%        50%    
 
 CORRELATIONS AMONG RESIDUALS:
 
-  Summaries based on 20000 iterations using 2 chains.
+  Summaries based on 20000 iterations using 4 chains.
   NOTE: Estimate column based on posterior median.
 
 
@@ -173,7 +175,7 @@ CORRELATIONS AMONG RESIDUALS:
 Correlations                       Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 
-  y, x                               -0.000      0.020     -0.039      0.039      0.000      0.996  19374.492 
+  y, x                               -0.000      0.020     -0.039      0.039      0.000      0.996  18786.841 
 
                                 ------------------------------------------------------------------------------
 
@@ -184,10 +186,10 @@ Correlations                       Estimate     StdDev       2.5%      97.5%    
 Correlations                       Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 
-  u1, x_b                            -0.046      0.047     -0.139      0.048      0.961      0.327   6723.325 
-  u1, w                              -0.066      0.045     -0.154      0.023      2.146      0.143  20130.302 
-  y_b, x_b                           -0.015      0.062     -0.136      0.106      0.059      0.808  19614.870 
-  y_b, w                             -0.022      0.062     -0.143      0.097      0.130      0.718  19572.785 
+  u1, x_b                            -0.046      0.047     -0.140      0.047      0.944      0.331   6335.320 
+  u1, w                              -0.066      0.045     -0.155      0.023      2.116      0.146  20253.691 
+  y_b, x_b                           -0.015      0.062     -0.136      0.107      0.061      0.804  19075.663 
+  y_b, w                             -0.023      0.062     -0.143      0.100      0.131      0.718  19435.251 
 
                                 ------------------------------------------------------------------------------
 
@@ -195,7 +197,7 @@ Correlations                       Estimate     StdDev       2.5%      97.5%    
 
 OUTCOME MODEL ESTIMATES:
 
-  Summaries based on 20000 iterations using 2 chains.
+  Summaries based on 20000 iterations using 4 chains.
   NOTE: Estimate column based on posterior median.
 
   outcome_l2 block:
@@ -205,13 +207,13 @@ Latent Variable:   u1
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                      10.322      0.675      9.091     11.757        ---        ---  18249.995 
+  Residual Var.                      10.328      0.672      9.112     11.753        ---        ---  18355.433 
 
 Coefficients:                   
-  Intercept                           3.448      0.145      3.162      3.731    561.901      0.000  15672.327 
+  Intercept                           3.448      0.144      3.166      3.729    572.980      0.000  15835.566 
 
 Standard Deviations:            
-  Residual SD                         3.213      0.105      3.015      3.429        ---        ---  18211.216 
+  Residual SD                         3.214      0.104      3.019      3.428        ---        ---  18351.455 
 
 Proportion Variance Explained   
   by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
@@ -226,23 +228,23 @@ Latent Variable:   y_b
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                      47.233      3.105     41.551     53.738        ---        ---   5753.138 
+  Residual Var.                      47.262      3.167     41.536     53.994        ---        ---   6538.499 
 
 Coefficients:                   
-  Intercept                          46.852      0.343     46.173     47.521  18634.025      0.000   7930.472 
-  w_cgm                               1.859      0.301      1.267      2.453     38.086      0.000   8637.709 
-  xb_cgm                              1.966      0.338      1.296      2.638     33.768      0.000   3883.887 
+  Intercept                          46.855      0.344     46.185     47.523  18566.110      0.000   5685.345 
+  w_cgm                               1.857      0.304      1.274      2.464     37.387      0.000   8888.767 
+  xb_cgm                              1.980      0.337      1.318      2.644     34.501      0.000   4007.866 
 
 Standard Deviations:            
-  Residual SD                         6.873      0.225      6.446      7.331        ---        ---   5760.765 
+  Residual SD                         6.875      0.229      6.445      7.348        ---        ---   6542.427 
 
 Standardized Coefficients:      
-  w_cgm                               0.254      0.040      0.175      0.329     41.135      0.000   7101.280 
-  xb_cgm                              0.253      0.042      0.168      0.332     36.718      0.000   3816.611 
+  w_cgm                               0.253      0.040      0.175      0.330     40.656      0.000   7646.810 
+  xb_cgm                              0.254      0.041      0.170      0.334     37.338      0.000   3358.074 
 
 Proportion Variance Explained   
-  by Coefficients                     0.169      0.028      0.116      0.227        ---        ---   8289.763 
-  by Residual Variation               0.831      0.028      0.773      0.884        ---        ---   8289.763 
+  by Coefficients                     0.170      0.028      0.116      0.227        ---        ---   6536.020 
+  by Residual Variation               0.830      0.028      0.773      0.884        ---        ---   6536.020 
 
                                 ------------------------------------------------------------------------------
 
@@ -253,10 +255,10 @@ Covariance Matrix: u1 y_b
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Covariances:                    
-  Cov(u1,y_b)                         7.296      1.096      5.229      9.543     44.611      0.000   4710.539 
+  Cov(u1,y_b)                         7.278      1.099      5.234      9.538     44.188      0.000   5974.154 
 
 Correlations:                   
-  Cor(u1,y_b)                         0.332      0.042      0.246      0.411     61.578      0.000   4128.894 
+  Cor(u1,y_b)                         0.330      0.042      0.245      0.410     61.400      0.000   5106.832 
 
                                 ------------------------------------------------------------------------------
 
@@ -268,21 +270,21 @@ Outcome Variable:  y
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                       1.477      0.033      1.414      1.544        ---        ---  12996.162 
+  Residual Var.                       1.478      0.033      1.415      1.543        ---        ---  13640.954 
 
 Coefficients:                   
   y_b                               @ 1.000        ---        ---        ---        ---        ---        --- 
   (x_w)*u1                          @ 1.000        ---        ---        ---        ---        ---        --- 
 
 Standard Deviations:            
-  Residual SD                         1.215      0.014      1.189      1.243        ---        ---  12995.807 
+  Residual SD                         1.216      0.013      1.190      1.242        ---        ---  13639.896 
 
 Standardized Coefficients:      
-  (x_w)*u1                            0.969      0.001      0.967      0.970  1.577e+06      0.000   1635.339 
+  (x_w)*u1                            0.969      0.001      0.967      0.970  1.647e+06      0.000   2557.567 
 
 Proportion Variance Explained   
-  by Coefficients                     0.939      0.001      0.936      0.942        ---        ---   1635.144 
-  by Residual Variation               0.061      0.001      0.058      0.064        ---        ---   1635.144 
+  by Coefficients                     0.939      0.001      0.936      0.942        ---        ---   2556.895 
+  by Residual Variation               0.061      0.001      0.058      0.064        ---        ---   2556.895 
 
                                 ------------------------------------------------------------------------------
 
@@ -294,13 +296,13 @@ Latent Variable:   x_b
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                       0.945      0.067      0.823      1.090        ---        ---   3916.141 
+  Residual Var.                       0.946      0.067      0.825      1.087        ---        ---   2842.458 
 
 Coefficients:                   
-  Intercept                           0.071      0.045     -0.018      0.160      2.424      0.119   6219.712 
+  Intercept                           0.070      0.046     -0.021      0.161      2.358      0.125   5080.180 
 
 Standard Deviations:            
-  Residual SD                         0.972      0.035      0.907      1.044        ---        ---   3896.135 
+  Residual SD                         0.973      0.035      0.909      1.043        ---        ---   2831.226 
 
 Proportion Variance Explained   
   by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
@@ -315,13 +317,13 @@ Outcome Variable:  w
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                       1.071      0.068      0.947      1.216        ---        ---  19787.759 
+  Residual Var.                       1.070      0.068      0.947      1.216        ---        ---  19396.033 
 
 Coefficients:                   
-  Intercept                          -0.010      0.046     -0.101      0.081      0.047      0.828  13527.579 
+  Intercept                          -0.009      0.047     -0.100      0.082      0.039      0.844  13964.249 
 
 Standard Deviations:            
-  Residual SD                         1.035      0.033      0.973      1.103        ---        ---  19795.393 
+  Residual SD                         1.035      0.033      0.973      1.103        ---        ---  19416.866 
 
 Proportion Variance Explained   
   by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
@@ -336,13 +338,13 @@ Outcome Variable:  x
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                       1.012      0.022      0.971      1.055        ---        ---   7138.021 
+  Residual Var.                       1.012      0.021      0.971      1.054        ---        ---   7508.679 
 
 Coefficients:                   
   x_b                               @ 1.000        ---        ---        ---        ---        ---        --- 
 
 Standard Deviations:            
-  Residual SD                         1.006      0.011      0.985      1.027        ---        ---   7135.379 
+  Residual SD                         1.006      0.010      0.986      1.026        ---        ---   7505.764 
 
 Proportion Variance Explained   
   by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
@@ -357,10 +359,10 @@ Covariance Matrix: w x_b
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Covariances:                    
-  Cov(w,x_b)                          0.305      0.050      0.212      0.407     37.626      0.000   9107.322 
+  Cov(w,x_b)                          0.304      0.050      0.210      0.408     37.120      0.000   7168.149 
 
 Correlations:                   
-  Cor(w,x_b)                          0.304      0.043      0.218      0.385     49.745      0.000   7756.250 
+  Cor(w,x_b)                          0.303      0.043      0.215      0.386     48.641      0.000   5095.692 
 
                                 ------------------------------------------------------------------------------
 

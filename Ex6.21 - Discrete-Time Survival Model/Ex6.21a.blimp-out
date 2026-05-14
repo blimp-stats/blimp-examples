@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                   4.0.0
+                                   4.0.3
 
              Blimp was developed with funding from Institute of
            Education Sciences awards R305D150056 and R305D190002.
@@ -39,30 +39,31 @@ ALGORITHMIC OPTIONS SPECIFIED:
 
 BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
 
-  NOTE: Split chain PSR is being used. This splits each chain's
-        iterations to create twice as many chains.
+  NOTE: Rank-normalized Rhat (Vehtari et al., 2021) is being used.
+        This applies rank normalization and chain folding for robust
+        convergence detection across all chains.
 
-  Comparing iterations across 2 chains     Highest PSR   Parameter #  
-                           51 to 100             1.365            16  
-                          101 to 200             1.095             2  
-                          151 to 300             1.114             2  
-                          201 to 400             1.021            17  
-                          251 to 500             1.014             7  
-                          301 to 600             1.037             2  
-                          351 to 700             1.015             2  
-                          401 to 800             1.047             2  
-                          451 to 900             1.008             2  
-                          501 to 1000            1.006            14  
-                          551 to 1100            1.005             2  
-                          601 to 1200            1.011             2  
-                          651 to 1300            1.017             7  
-                          701 to 1400            1.003             1  
-                          751 to 1500            1.004            12  
-                          801 to 1600            1.018             2  
-                          851 to 1700            1.014             2  
-                          901 to 1800            1.014             2  
-                          951 to 1900            1.014             2  
-                         1001 to 2000            1.021             2  
+  Comparing iterations across 4 chains     Highest Rhat   Parameter #  
+                           51 to 100             1.124             2  
+                          101 to 200             1.048             2  
+                          151 to 300             1.060             2  
+                          201 to 400             1.015             1  
+                          251 to 500             1.013             3  
+                          301 to 600             1.024             2  
+                          351 to 700             1.012             1  
+                          401 to 800             1.023             2  
+                          451 to 900             1.006             1  
+                          501 to 1000            1.010             1  
+                          551 to 1100            1.002            10  
+                          601 to 1200            1.005             1  
+                          651 to 1300            1.010             1  
+                          701 to 1400            1.007             1  
+                          751 to 1500            1.010             1  
+                          801 to 1600            1.009             2  
+                          851 to 1700            1.006             1  
+                          901 to 1800            1.007             1  
+                          951 to 1900            1.011             2  
+                         1001 to 2000            1.012             2  
 
 
 DATA INFORMATION:
@@ -114,8 +115,8 @@ MODEL FIT:
   INFORMATION CRITERIA
 
     Conditional Likelihood
-      DIC2                  663.734
-      WAIC                  663.965
+      DIC2                  663.749
+      WAIC                  663.971
 
 
 IMPUTED DATA SUMMARIES:
@@ -141,7 +142,7 @@ CORRELATIONS AMONG RESIDUALS:
 
 OUTCOME MODEL ESTIMATES:
 
-  Summaries based on 10000 iterations using 2 chains.
+  Summaries based on 10000 iterations using 4 chains.
   NOTE: Estimate column based on posterior median.
 
 
@@ -151,24 +152,24 @@ Parameters                         Estimate     StdDev       2.5%      97.5%    
                                 ------------------------------------------------------------------------------
 
 Coefficients:                   
-  (time_i==1)                        -2.376      0.269     -2.933     -1.891     78.887      0.000   2845.623 
-  (time_i==2)                        -3.072      0.380     -3.897     -2.411     66.245      0.000   1729.202 
-  (time_i==3)                        -1.710      0.219     -2.151     -1.303     61.659      0.000   4593.746 
-  (time_i==4)                        -1.280      0.207     -1.702     -0.888     38.610      0.000   6557.822 
-  (time_i==5)                        -1.164      0.230     -1.629     -0.720     25.713      0.000   6790.428 
-  (time_i==6)                        -0.726      0.242     -1.222     -0.268      9.163      0.002   8348.690 
+  (time_i==1)                        -2.380      0.270     -2.940     -1.890     78.150      0.000   2745.043 
+  (time_i==2)                        -3.063      0.382     -3.895     -2.406     65.122      0.000   1642.311 
+  (time_i==3)                        -1.717      0.219     -2.155     -1.302     61.636      0.000   4735.923 
+  (time_i==4)                        -1.280      0.208     -1.704     -0.885     38.087      0.000   6611.942 
+  (time_i==5)                        -1.166      0.228     -1.628     -0.727     26.338      0.000   6702.124 
+  (time_i==6)                        -0.724      0.240     -1.213     -0.268      9.253      0.002   8511.832 
 
 Odds Ratio:                     
-  (time_i==1)                         0.093      0.025      0.053      0.151        ---        ---   2989.175 
-  (time_i==2)                         0.046      0.018      0.020      0.090        ---        ---   1826.705 
-  (time_i==3)                         0.181      0.040      0.116      0.272        ---        ---   4702.778 
-  (time_i==4)                         0.278      0.059      0.182      0.412        ---        ---   6625.294 
-  (time_i==5)                         0.312      0.074      0.196      0.487        ---        ---   6898.591 
-  (time_i==6)                         0.484      0.120      0.295      0.765        ---        ---   8403.473 
+  (time_i==1)                         0.093      0.025      0.053      0.151        ---        ---   2862.743 
+  (time_i==2)                         0.047      0.018      0.020      0.090        ---        ---   1669.210 
+  (time_i==3)                         0.180      0.040      0.116      0.272        ---        ---   4828.404 
+  (time_i==4)                         0.278      0.059      0.182      0.413        ---        ---   6682.006 
+  (time_i==5)                         0.312      0.073      0.196      0.483        ---        ---   6835.184 
+  (time_i==6)                         0.485      0.119      0.297      0.765        ---        ---   8502.905 
 
 Proportion Variance Explained   
-  by Coefficients                     0.044      0.006      0.033      0.058        ---        ---   3078.188 
-  by Residual Variation               0.956      0.006      0.942      0.967        ---        ---   3078.188 
+  by Coefficients                     0.044      0.006      0.033      0.058        ---        ---   3181.870 
+  by Residual Variation               0.956      0.006      0.942      0.967        ---        ---   3181.870 
 
                                 ------------------------------------------------------------------------------
 
@@ -176,19 +177,19 @@ Proportion Variance Explained
 
 GENERATED PARAMETERS:
 
-  Summaries based on 10000 iterations using 2 chains.
+  Summaries based on 10000 iterations using 4 chains.
   NOTE: Estimate column based on posterior median.
 
 
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 
-  hazard.1                            0.085      0.021      0.051      0.131     17.075      0.000   2958.136 
-  hazard.2                            0.044      0.016      0.020      0.082      8.198      0.004   1814.420 
-  hazard.3                            0.153      0.028      0.104      0.214     30.013      0.000   4660.855 
-  hazard.4                            0.217      0.035      0.154      0.292     39.062      0.000   6586.381 
-  hazard.5                            0.238      0.041      0.164      0.327     33.467      0.000   6830.576 
-  hazard.6                            0.326      0.052      0.228      0.433     39.010      0.000   8354.131 
+  hazard.1                            0.085      0.021      0.050      0.131     16.829      0.000   2834.152 
+  hazard.2                            0.045      0.016      0.020      0.083      8.140      0.004   1660.586 
+  hazard.3                            0.152      0.028      0.104      0.214     29.739      0.000   4791.808 
+  hazard.4                            0.218      0.035      0.154      0.292     38.547      0.000   6642.422 
+  hazard.5                            0.238      0.041      0.164      0.326     34.063      0.000   6750.689 
+  hazard.6                            0.326      0.052      0.229      0.433     39.749      0.000   8493.325 
 
                                 ------------------------------------------------------------------------------
 
