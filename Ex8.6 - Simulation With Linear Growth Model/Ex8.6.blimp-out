@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                   4.0.0
+                                   4.0.3
 
              Blimp was developed with funding from Institute of
            Education Sciences awards R305D150056 and R305D190002.
@@ -44,6 +44,7 @@ Variables                              Mean        VAR     StdDev        25%    
 
                                 -------------------------------------------------------------------
 
+
 VARIABLE ORDER IN SIMULATED DATA:
 
   dataset = 'generated_data.csv'
@@ -54,30 +55,31 @@ VARIABLE ORDER IN SIMULATED DATA:
 
 BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
 
-  NOTE: Split chain PSR is being used. This splits each chain's
-        iterations to create twice as many chains.
+  NOTE: Rank-normalized Rhat (Vehtari et al., 2021) is being used.
+        This applies rank normalization and chain folding for robust
+        convergence detection across all chains.
 
-  Comparing iterations across 2 chains     Highest PSR   Parameter #  
-                          251 to 500             1.041             8  
-                          501 to 1000            1.069            14  
-                          751 to 1500            1.054             9  
-                         1001 to 2000            1.020             8  
-                         1251 to 2500            1.011             5  
-                         1501 to 3000            1.009            14  
-                         1751 to 3500            1.008            14  
-                         2001 to 4000            1.016             8  
-                         2251 to 4500            1.003            14  
-                         2501 to 5000            1.007             5  
-                         2751 to 5500            1.019             8  
-                         3001 to 6000            1.009             8  
+  Comparing iterations across 4 chains     Highest Rhat   Parameter #  
+                          251 to 500             1.093             8  
+                          501 to 1000            1.046            14  
+                          751 to 1500            1.036            14  
+                         1001 to 2000            1.014             8  
+                         1251 to 2500            1.012            14  
+                         1501 to 3000            1.009             3  
+                         1751 to 3500            1.008             5  
+                         2001 to 4000            1.017             8  
+                         2251 to 4500            1.005             8  
+                         2501 to 5000            1.011             8  
+                         2751 to 5500            1.012             8  
+                         3001 to 6000            1.010             8  
                          3251 to 6500            1.007             8  
-                         3501 to 7000            1.013             8  
-                         3751 to 7500            1.013             8  
-                         4001 to 8000            1.010             8  
+                         3501 to 7000            1.006             8  
+                         3751 to 7500            1.006             8  
+                         4001 to 8000            1.007             8  
                          4251 to 8500            1.005             8  
                          4501 to 9000            1.004             8  
-                         4751 to 9500            1.011             8  
-                         5001 to 10000           1.011             8  
+                         4751 to 9500            1.008             8  
+                         5001 to 10000           1.007             8  
 
 
 DATA INFORMATION:
@@ -119,12 +121,12 @@ MODEL FIT:
   INFORMATION CRITERIA
 
     Marginal Likelihood
-      DIC2                  13953.163
-      WAIC                  13953.203
+      DIC2                  13952.976
+      WAIC                  13953.016
 
     Conditional Likelihood
-      DIC2                  11888.432
-      WAIC                  12380.480
+      DIC2                  11883.682
+      WAIC                  12375.628
 
 
 IMPUTED DATA SUMMARIES:
@@ -150,7 +152,7 @@ CORRELATIONS AMONG RESIDUALS:
 
 OUTCOME MODEL ESTIMATES:
 
-  Summaries based on 10000 iterations using 2 chains.
+  Summaries based on 10000 iterations using 4 chains.
   NOTE: Estimate column based on posterior median.
 
 
@@ -159,29 +161,29 @@ Outcome Variable:  y
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Variances:                      
-  L2 : Var(Intercept)                 1.107      0.086      0.951      1.287        ---        ---    719.936 
-  L2 : Cov(time0,Intercept)           0.141      0.029      0.081      0.195        ---        ---    477.483 
-  L2 : Var(time0)                     0.181      0.018      0.146      0.218        ---        ---    533.803 
-  Residual Var.                       1.006      0.032      0.947      1.072        ---        ---   1026.632 
+  L2 : Var(Intercept)                 1.110      0.084      0.955      1.284        ---        ---    842.122 
+  L2 : Cov(time0,Intercept)           0.139      0.029      0.080      0.195        ---        ---    558.939 
+  L2 : Var(time0)                     0.182      0.018      0.147      0.219        ---        ---    534.761 
+  Residual Var.                       1.005      0.032      0.945      1.070        ---        ---   1208.386 
 
 Coefficients:                   
-  Intercept                           9.986      0.044      9.901     10.071  52108.737      0.000   1030.039 
-  time0                               0.486      0.020      0.448      0.526    602.670      0.000   1539.120 
+  Intercept                           9.987      0.043      9.902     10.070  53344.903      0.000    997.143 
+  time0                               0.486      0.020      0.448      0.525    613.537      0.000   1474.149 
 
 Standard Deviations:            
-  L2 : SD(Intercept)                  1.052      0.041      0.975      1.135        ---        ---    718.209 
-  L2 : Cor(time0,Intercept)           0.316      0.077      0.168      0.472        ---        ---    378.100 
-  L2 : SD(time0)                      0.425      0.021      0.382      0.467        ---        ---    530.440 
-  Residual SD                         1.003      0.016      0.973      1.035        ---        ---   1027.292 
+  L2 : SD(Intercept)                  1.053      0.040      0.977      1.133        ---        ---    839.668 
+  L2 : Cor(time0,Intercept)           0.311      0.076      0.167      0.467        ---        ---    433.414 
+  L2 : SD(time0)                      0.426      0.021      0.383      0.468        ---        ---    531.105 
+  Residual SD                         1.003      0.016      0.972      1.034        ---        ---   1208.838 
 
 Standardized Coefficients:      
-  time0                               0.292      0.012      0.270      0.315    621.768      0.000   1743.655 
+  time0                               0.292      0.012      0.270      0.315    633.811      0.000   1735.676 
 
 Proportion Variance Explained   
-  by Coefficients                     0.085      0.007      0.073      0.099        ---        ---   1750.974 
-  by Level-2 Random Intercepts        0.559      0.014      0.532      0.585        ---        ---   3937.434 
-  by Level-2 Random Slopes            0.065      0.006      0.053      0.078        ---        ---    512.339 
-  by Level-1 Residual Variation       0.290      0.012      0.268      0.315        ---        ---   1228.712 
+  by Coefficients                     0.085      0.007      0.073      0.099        ---        ---   1742.302 
+  by Level-2 Random Intercepts        0.559      0.014      0.532      0.585        ---        ---   4022.359 
+  by Level-2 Random Slopes            0.066      0.006      0.053      0.078        ---        ---    517.098 
+  by Level-1 Residual Variation       0.290      0.012      0.267      0.314        ---        ---   1324.837 
 
                                 ------------------------------------------------------------------------------
 

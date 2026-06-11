@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                   4.0.0
+                                   4.0.3
 
              Blimp was developed with funding from Institute of
            Education Sciences awards R305D150056 and R305D190002.
@@ -36,30 +36,31 @@ ALGORITHMIC OPTIONS SPECIFIED:
 
 BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
 
-  NOTE: Split chain PSR is being used. This splits each chain's
-        iterations to create twice as many chains.
+  NOTE: Rank-normalized Rhat (Vehtari et al., 2021) is being used.
+        This applies rank normalization and chain folding for robust
+        convergence detection across all chains.
 
-  Comparing iterations across 2 chains     Highest PSR   Parameter #  
-                          251 to 500             1.031             3  
-                          501 to 1000            1.063             3  
-                          751 to 1500            1.049             3  
-                         1001 to 2000            1.020             3  
-                         1251 to 2500            1.003             2  
-                         1501 to 3000            1.006             3  
-                         1751 to 3500            1.013             3  
-                         2001 to 4000            1.003             3  
-                         2251 to 4500            1.011             3  
-                         2501 to 5000            1.009             3  
-                         2751 to 5500            1.006             3  
-                         3001 to 6000            1.004             3  
-                         3251 to 6500            1.003             3  
-                         3501 to 7000            1.008             3  
-                         3751 to 7500            1.005             3  
-                         4001 to 8000            1.002             3  
-                         4251 to 8500            1.002             1  
-                         4501 to 9000            1.007             3  
-                         4751 to 9500            1.012             3  
-                         5001 to 10000           1.008             1  
+  Comparing iterations across 4 chains     Highest Rhat   Parameter #  
+                          251 to 500             1.184             1  
+                          501 to 1000            1.051             1  
+                          751 to 1500            1.039             1  
+                         1001 to 2000            1.024             1  
+                         1251 to 2500            1.008             1  
+                         1501 to 3000            1.007             3  
+                         1751 to 3500            1.010             1  
+                         2001 to 4000            1.005             1  
+                         2251 to 4500            1.007             1  
+                         2501 to 5000            1.006             1  
+                         2751 to 5500            1.003             1  
+                         3001 to 6000            1.002             1  
+                         3251 to 6500            1.004             1  
+                         3501 to 7000            1.009             1  
+                         3751 to 7500            1.007             1  
+                         4001 to 8000            1.006             1  
+                         4251 to 8500            1.003             1  
+                         4501 to 9000            1.005             1  
+                         4751 to 9500            1.009             1  
+                         5001 to 10000           1.007             1  
 
 
 DATA INFORMATION:
@@ -118,8 +119,8 @@ MODEL FIT:
   INFORMATION CRITERIA
 
     Conditional Likelihood
-      DIC2                  -7.423
-      WAIC                  -1.475
+      DIC2                  -7.394
+      WAIC                  -2.394
 
 
 IMPUTED DATA SUMMARIES:
@@ -130,7 +131,7 @@ IMPUTED DATA SUMMARIES:
 Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
                                 ------------------------------------------------------------------------------
 
-  beta0_j                             0.098      0.182     -0.026      0.080      0.209     -0.210      0.482 
+  beta0_j                             0.097      0.179     -0.024      0.080      0.207     -0.205      0.475 
   es_j                                0.164      0.359     -0.060      0.070      0.268     -0.320      1.180 
   log_varj                           -3.360      0.852     -3.920     -3.579     -2.553     -4.733     -1.973 
 
@@ -140,7 +141,7 @@ Variables                              Mean     StdDev        25%        50%    
 
 CORRELATIONS AMONG RESIDUALS:
 
-  Summaries based on 10000 iterations using 2 chains.
+  Summaries based on 10000 iterations using 4 chains.
   NOTE: Estimate column based on posterior median.
 
 
@@ -149,7 +150,7 @@ CORRELATIONS AMONG RESIDUALS:
 Correlations                       Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 
-  beta0_j, es_j                       0.147      0.311     -0.486      0.689      0.179      0.672   7809.257 
+  beta0_j, es_j                       0.152      0.314     -0.494      0.692      0.193      0.660   8467.210 
 
                                 ------------------------------------------------------------------------------
 
@@ -157,7 +158,7 @@ Correlations                       Estimate     StdDev       2.5%      97.5%    
 
 OUTCOME MODEL ESTIMATES:
 
-  Summaries based on 10000 iterations using 2 chains.
+  Summaries based on 10000 iterations using 4 chains.
   NOTE: Estimate column based on posterior median.
 
 
@@ -166,13 +167,13 @@ Latent Variable:   beta0_j
 Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
                                 ------------------------------------------------------------------------------
 Variances:                      
-  Residual Var.                       0.037      0.043      0.003      0.166        ---        ---   1152.901 
+  Residual Var.                       0.036      0.041      0.002      0.154        ---        ---    834.941 
 
 Coefficients:                   
-  Intercept                           0.095      0.068     -0.030      0.239      2.042      0.153   2320.907 
+  Intercept                           0.093      0.068     -0.028      0.241      2.014      0.156   2376.182 
 
 Standard Deviations:            
-  Residual SD                         0.194      0.089      0.055      0.408        ---        ---    819.915 
+  Residual SD                         0.191      0.088      0.043      0.392        ---        ---    507.704 
 
 Proportion Variance Explained   
   by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
