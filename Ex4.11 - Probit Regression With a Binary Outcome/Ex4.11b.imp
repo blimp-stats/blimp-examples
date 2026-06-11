@@ -11,11 +11,10 @@ pp_d0 = phi(b0);
 pp_d1 = phi(b0 + b3);
 pp_diff = pp_d1 - pp_d0;
 SEED: 90291;
-BURN: 1000;
+BURN: 10000;
 ITERATIONS: 10000;
 # save model-based multiple imputations;
 # OPTIONS: savepredicted;
-# CHAINS: 20;
 # NIMPS: 20;
 # SAVE: stacked = imps.dat;
 

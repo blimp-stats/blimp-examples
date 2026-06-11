@@ -53,8 +53,8 @@ VARIABLES: x1:x2 x1m:x2m y; # Save only x1, x2, and y
 MODEL: 
 	1: y ~ x1m:x2m;
 	2: x1m ~~ x2m;
-BURN: 5000;
-ITER: 5000;
+BURN: 10000;
+ITER: 10000;
 SEED: 10972;
 SAVE:
 	dataset = generated_data.csv;

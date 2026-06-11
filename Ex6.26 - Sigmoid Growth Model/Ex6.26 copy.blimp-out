@@ -1,0 +1,364 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                   4.0.2
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Default Priors:
+    Multilevel covariance matrices:  Zero matrix, df = -(p + 1) (PRIOR2)
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 4 chains     Highest PSR   Parameter #  
+                         5001 to 10000           1.075            14  
+                        10001 to 20000           1.074            14  
+                        15001 to 30000           1.085            14  
+                        20001 to 40000           1.085            14  
+                        25001 to 50000           1.079            14  
+                        30001 to 60000           1.078            14  
+                        35001 to 70000           1.071            11  
+                        40001 to 80000           1.082            11  
+                        45001 to 90000           1.083            11  
+                        50001 to 100000          1.081            11  
+                        55001 to 110000          1.082            11  
+                        60001 to 120000          1.064             3  
+                        65001 to 130000          1.065             3  
+                        70001 to 140000          1.068             1  
+                        75001 to 150000          1.071             1  
+                        80001 to 160000          1.068             1  
+                        85001 to 170000          1.064             1  
+                        90001 to 180000          1.062             1  
+                        95001 to 190000          1.053             1  
+                       100001 to 200000          1.044             1  
+
+
+PARAMETER INFORMATION:
+
+  Printing out PSR for last 5 comparisons:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 4 chains  
+                  [1]   80001 to 160000
+                  [2]   85001 to 170000
+                  [3]   90001 to 180000
+                  [4]   95001 to 190000
+                  [5]  100001 to 200000
+
+                                      [1]    [2]    [3]    [4]    [5]    Prior               
+Latent Variable:   alpha_i    
+
+    Variances:                      
+  1  Residual Var.                    1.07   1.06   1.06   1.05   1.04   IG(0.0, 0.0)        
+
+    Coefficients:                   
+  2  Intercept                        1.00   1.00   1.00   1.00   1.00   See 'a_prior' below 
+
+    Standard Deviations:            
+  3  Residual SD                      1.07   1.06   1.06   1.05   1.04   ---
+
+    Proportion Variance Explained   
+  4  by Coefficients                   nan    nan    nan    nan    nan   ---
+  5  by Residual Variation             nan    nan    nan    nan    nan   ---
+
+
+Latent Variable:   lambda_i   
+
+    Variances:                      
+  6  Residual Var.                    1.01   1.01   1.01   1.01   1.01   IG(0.0, 0.0)        
+
+    Coefficients:                   
+  7  Intercept                        1.00   1.00   1.00   1.00   1.00   See 'l_prior' below 
+
+    Standard Deviations:            
+  8  Residual SD                      1.01   1.01   1.01   1.01   1.01   ---
+
+    Proportion Variance Explained   
+  9  by Coefficients                   nan    nan    nan    nan    nan   ---
+ 10  by Residual Variation             nan    nan    nan    nan    nan   ---
+
+
+Outcome Variable:  pds        
+
+    Variances:                      
+ 11  Residual Var.                    1.04   1.02   1.02   1.01   1.01   IG(-1.0, 0.0)       
+
+    Coefficients:                   
+ 12  Intercept                         nan    nan    nan    nan    nan   ---                 
+ 13  nlfunc                            nan    nan    nan    nan    nan   ---                 
+
+    Standard Deviations:            
+ 14  Residual SD                      1.04   1.02   1.02   1.01   1.01   ---
+
+    Standardized Coefficients:      
+ 15  nlfunc                           1.03   1.02   1.01   1.01   1.01   ---
+
+    Proportion Variance Explained   
+ 16  by Coefficients                  1.03   1.02   1.01   1.01   1.01   ---
+ 17  by Residual Variation            1.03   1.02   1.01   1.01   1.01   ---
+
+
+Additional Parameters:
+
+ 18  a_prior                          1.00   1.00   1.00   1.00   1.00   normal(1, 0.300000) 
+ 19  l_prior                          1.00   1.00   1.00   1.00   1.00   normal(0, 2)        
+
+
+Complete predictor: age        
+
+ 20  Grand Mean                       1.00   1.00   1.00   1.00   1.00   N(0.0, Inf)
+
+     Level 1:                       
+ 21   Residual Var.                   1.00   1.00   1.00   1.00   1.00   IG(1.0, 0.5)        
+
+
+METROPOLIS-HASTINGS ACCEPTANCE RATES:
+
+  Chain 1:
+
+    Variable                            Type    Probability   Target Value 
+    alpha_i                       latent imp          0.507          0.500 
+    lambda_i                      latent imp          0.500          0.500 
+    age                            parameter          0.502          0.500 
+
+  NOTE: Suppressing printing of 3 chains.
+        Use keyword 'tuneinfo' in options to override.
+
+
+DATA INFORMATION:
+
+  Level-2 identifier:       id
+  Sample Size:              3150
+  Level-2 Clusters:         500
+  Missing Data Info:
+
+                      Pattern #:       1
+                          miss % --------
+                      pds =  0.0       -  
+                      age =  0.0       -  
+                                 --------
+                                 % 100.0
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         5
+    Predictor Models:       2
+
+  PREDICTORS
+    Complete continuous:    age
+
+  FACTORS
+    Level-2:                alpha_i lambda_i
+
+  CENTERED PREDICTORS
+    Grand Mean Centered:    age
+
+  DEFINED VARIABLES
+    [1]  nlfunc = ( 4 - 1 ) * sigm( alpha_i * ( age - lambda_i ) ) 
+
+  MODELS
+    [1]  alpha_i ~ Intercept@a_prior
+    [2]  lambda_i ~ Intercept@l_prior
+    [3]  pds ~ Intercept@1 nlfunc@1
+
+  PRIORS SPECIFIED
+    [1]  a_prior ~ normal(1, 0.300000)
+    [2]  l_prior ~ normal(0, 2)
+
+
+WARNING MESSAGES:
+
+  WARNING: 350 observations have all variables in the imputation
+           model missing. They have been dropped from data set.
+  WARNING: Excluding the following variables as predictors at the listed level.
+           Their latent cluster means will not be estimated at the listed level.
+  
+             Variable "age" excluded from level-2.
+  
+           These variables are orthogonal to all variables at that level
+           (e.g., because they lack variation at that level).
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Conditional Likelihood
+      DIC2                  3317.193
+      WAIC                  3710.447
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 200000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  alpha_i                             1.022      0.310      0.820      1.021      1.228      0.024      1.962 
+  lambda_i                           -0.035      1.007     -0.700     -0.044      0.625     -3.251      3.022 
+  pds                                 2.512      1.118      1.454      2.516      3.558      0.050      5.148 
+  age                                11.530      2.331      9.167     11.500     13.833      8.000     15.000 
+
+                                ------------------------------------------------------------------------------
+
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 200000 iterations using 4 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+   Level-2:
+
+Correlations                       Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  alpha_i, lambda_i                  -0.010      0.056     -0.120      0.100      0.032      0.858  65395.678 
+
+                                ------------------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 200000 iterations using 4 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+Latent Variable:   alpha_i    
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.096      0.010      0.078      0.118        ---        ---  13954.068 
+
+Coefficients:                   
+  Intercept                           1.022      0.019      0.985      1.061   2773.786      0.000  21232.966 
+
+Standard Deviations:            
+  Residual SD                         0.310      0.016      0.280      0.344        ---        ---  13844.329 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Latent Variable:   lambda_i   
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.020      0.072      0.892      1.173        ---        ---  87572.250 
+
+Coefficients:                   
+  Intercept                          -0.035      0.062     -0.158      0.087      0.311      0.577   3790.011 
+
+Standard Deviations:            
+  Residual SD                         1.010      0.035      0.945      1.083        ---        ---  87414.647 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  pds        
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.089      0.003      0.084      0.095        ---        ---  49699.529 
+
+Coefficients:                   
+  Intercept                         @ 1.000        ---        ---        ---        ---        ---        --- 
+  nlfunc                            @ 1.000        ---        ---        ---        ---        ---        --- 
+
+Standard Deviations:            
+  Residual SD                         0.299      0.004      0.290      0.308        ---        ---  49691.758 
+
+Standardized Coefficients:      
+  nlfunc                              0.964      0.001      0.962      0.966  7.905e+05      0.000  36601.121 
+
+Proportion Variance Explained   
+  by Coefficients                     0.929      0.002      0.925      0.933        ---        ---  36601.190 
+  by Residual Variation               0.071      0.002      0.067      0.075        ---        ---  36601.190 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Additional Parameters:
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  a_prior                             1.022      0.019      0.985      1.061   2773.786      0.000  21232.966 
+  l_prior                            -0.035      0.062     -0.158      0.087      0.311      0.577   3790.011 
+
+                                ------------------------------------------------------------------------------
+
+
+
+
+PREDICTOR MODEL ESTIMATES:
+
+  Summaries based on 200000 iterations using 4 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+
+Complete predictor: age        
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+Grand Mean                           11.532      0.041     11.454     11.613  80372.915      0.000   1809.094 
+
+Level 1:                                                                                                      
+  Residual Var.                       5.433      0.137      5.173      5.710        ---        ---  1.969e+05 
+                                                                                                              
+                                ------------------------------------------------------------------------------
+
+

@@ -18,5 +18,5 @@ x1 = 1;
 ab_at_x0 = alpha * (beta*exp(y_icept + beta*m_icept + tau*x0)); 
 ab_at_x1 = alpha * (beta*exp(y_icept + beta*(m_icept + alpha*x1) + tau*x1));
 SEED: 90291;
-BURN: 5000;
+BURN: 10000;
 ITERATIONS: 10000;

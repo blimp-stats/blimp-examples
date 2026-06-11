@@ -20,6 +20,6 @@ beta1 = p_obs * beta1_obs + p_mis * (beta1_obs + beta1_dif);
 beta2 = p_obs * beta2_obs + p_mis * (beta2_obs + beta2_dif);
 beta3 = p_obs * beta3_obs + p_mis * (beta3_obs + beta3_dif);
 SEED: 90291;
-BURN: 5000;
+BURN: 10000;
 ITERATIONS: 10000;
 

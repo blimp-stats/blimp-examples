@@ -16,8 +16,8 @@ VARIABLES: x y z level_2;
 CLUSTERID: level_2;
 MODEL: 
 	y ~ x z;
-BURN: 5000;
-ITER: 5000;
+BURN: 10000;
+ITER: 10000;
 SEED: 198723;
 SAVE:
 	dataset = generated_data.csv;

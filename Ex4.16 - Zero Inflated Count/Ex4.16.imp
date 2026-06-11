@@ -13,5 +13,5 @@ MODEL:
 y ~ d1 d2 x1 x2;
 ybin ~ d1 d2 x1 x2;
 SEED: 90291;
-BURN: 5000;
+BURN: 10000;
 ITERATIONS: 10000;

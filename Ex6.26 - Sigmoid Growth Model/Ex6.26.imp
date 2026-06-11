@@ -1,0 +1,20 @@
+DATA: sigmoid_growth.csv;
+# VARIABLES: level2id wave time_i y_i;
+MISSING: NA;
+CLUSTERID: level2id;
+LATENT: gamma_j delta_j;
+CENTER: grandmean = time_i;
+MODEL:
+gamma_j ~ 1@a_prior;
+delta_j ~ 1@l_prior;
+gamma_j ~~ delta_j;
+nlpredictor = (4 - 1) * sigm(gamma_j * (time_i - delta_j));
+y_i <- 1@1 nlpredictor@1;
+PARAMETERS:
+a_prior ~ normal(1.0, 0.3) %1.0;
+l_prior ~ normal(0, 2) %0;
+CHAINS: 4;
+SEED: 90291;
+BURN: 200000;
+ITER: 200000;
+OPTIONS: pinfo;

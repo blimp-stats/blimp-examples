@@ -5,5 +5,5 @@ WEIGHTS: level1wgt level2wgt;
 MISSING: 999;
 MODEL: y_i ~ x1_i x2_i x3_i;
 SEED: 90291;
-BURN: 2000;
+BURN: 10000;
 ITERATIONS: 10000;

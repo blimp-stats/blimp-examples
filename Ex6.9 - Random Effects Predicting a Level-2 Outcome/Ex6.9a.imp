@@ -8,9 +8,9 @@ RANDOMEFFECT:
 beta0_j = y_i | 1 [level2id];
 beta1_j = y_i | x1_i [level2id];
 FIXED: d_j;
-CENTER: 
+CENTER:
 groupmean = x1_i;
-grandmean = x2_i x3_j d_j;
+grandmean = x2_i x3_j;
 MODEL: 
 focal.model:
 y_i ~ x1_i x2_i x3_j d_j | x1_i;

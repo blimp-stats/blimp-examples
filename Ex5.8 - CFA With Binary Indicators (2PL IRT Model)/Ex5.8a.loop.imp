@@ -11,9 +11,8 @@ PARAMETERS:
 { i in 1:6 } : discrim[i] = load[i];
 { i in 1:6 } : difficulty[i] = - icept[i] / load[i];
 SEED: 90291;
-BURN: 2000;
+BURN: 10000;
 ITERATIONS: 10000;
 # save model-based multiple imputations;
-# CHAINS: 20;
 # NIMPS: 20;
 # SAVE: stacked = imps.dat;

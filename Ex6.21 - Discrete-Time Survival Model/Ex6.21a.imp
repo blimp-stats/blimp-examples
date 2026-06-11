@@ -15,5 +15,5 @@ hazard.4 = exp(alpha4) / (1 + exp(alpha4));
 hazard.5 = exp(alpha5) / (1 + exp(alpha5));
 hazard.6 = exp(alpha6) / (1 + exp(alpha6));
 SEED: 90291;
-BURN: 2000;
+BURN: 10000;
 ITERATIONS: 10000;

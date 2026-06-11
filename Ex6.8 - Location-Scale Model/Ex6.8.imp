@@ -8,7 +8,7 @@ LATENT: level2id = beta0_j beta1_j logvar_j;
 FIXED: d_j;
 CENTER:
 groupmean = x1_i;
-grandmean = x2_i x3_j d_j;
+grandmean = x2_i x3_j;
 MODEL:
 level2.model:
 beta0_j ~ 1 x3_j d_j;

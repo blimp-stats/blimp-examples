@@ -7,5 +7,5 @@ FIXED: time_i d_j;
 MODEL: y_i ~ time_i d_j time_i*d_j | time_i;
 SIMPLE: time_i | d_j;
 SEED: 90291;
-BURN: 2000;
+BURN: 10000;
 ITERATIONS: 10000;

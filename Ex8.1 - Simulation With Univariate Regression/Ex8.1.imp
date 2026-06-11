@@ -6,8 +6,8 @@ SIMULATE:
 VARIABLES: x y;
 MODEL: 
 	y ~ x;
-BURN: 5000;
-ITER: 5000;
+BURN: 10000;
+ITER: 10000;
 SEED: 10972;
 SAVE:
 	dataset = generated_data.csv;

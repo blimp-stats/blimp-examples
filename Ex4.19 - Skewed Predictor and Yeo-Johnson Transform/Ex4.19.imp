@@ -7,13 +7,12 @@ MODEL:
 focal.model:
 logit(y) ~ x1 x2 d1 d2;
 predictor.model:
-yjt(x2 - 15.5) ~ x1 d1; # sequential specification for predictors
+yjt(x2 - 15) ~ x1 d1; # sequential specification for predictors
 d2 ~ x2 x1 d1;
 SEED: 90291;
-BURN: 1000;
+BURN: 10000;
 ITERATIONS: 10000;
 # save model-based multiple imputations;
-# CHAINS: 20;
 # NIMPS: 20;
 # SAVE: stacked = imps.dat;
 

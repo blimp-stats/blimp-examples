@@ -3,11 +3,11 @@ fdir::set()
 
 # read data from working directory
 imps <- read.table("imps.dat")
-names(imps) <- c("imputation","id","y","v1","x1","d","v2","v3","x2","v4","ytransform","d1.latent")
+names(imps) <- c("imputation","id","y","v1","x1","d","v2","v3","x2","v4","y.yjt","d1.latent")
 
 # plot raw and transformed scores
 hist(imps$y)
-hist(imps$ytransform)
+hist(imps$y.yjt)
 
 # center predictors
 imps$x1_cgm <- imps$x1 - mean(imps$x1)

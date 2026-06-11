@@ -16,6 +16,5 @@ SEED: 90291;
 BURN: 10000;
 ITERATIONS: 10000;
 # OPTIONS: savelatent;
-# CHAINS: 20;
 # NIMPS: 20;
 # SAVE: stacked = imps.dat;

@@ -23,8 +23,7 @@ SIMPLE:
 latenty | g;
 SEED: 90291;
 BURN: 20000;
-ITERATIONS: 10000;
+ITERATIONS: 20000;
 # OPTIONS: savelatent;
-# CHAINS: 20;
 # NIMPS: 20;
 # SAVE: stacked = imps.dat;

@@ -2,7 +2,7 @@ DATA: data3.dat;
 VARIABLES: id x1 x2 x3 y d1 d2 v1:v4;
 MISSING: 999;
 ORDINAL: d1 d2 ymis;
-CENTER: x1 d2;
+CENTER: x1;
 TRANSFORM:
 ymis = ismissing(y);
 MODEL:
@@ -28,6 +28,6 @@ b0_obs = b0obs;
 b0_mis = b0obs + b0diff;
 b0 = (b0_obs * p_obs) + (b0_mis * p_mis);
 SEED: 90291;
-BURN: 2000;
+BURN: 10000;
 ITERATIONS: 10000;
 

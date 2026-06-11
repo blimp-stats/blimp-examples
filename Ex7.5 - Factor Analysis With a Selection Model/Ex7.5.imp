@@ -1,14 +1,14 @@
 DATA: data4.dat;
 VARIABLES: id v1:v9 y1:y6 v10:v16 x1:x6;
 MISSING: 999;
-ORDINAL: y1mis y2mis y3mis y4mis y5mis y6mis;
+ORDINAL: m1:m6;
 TRANSFORM:
-y1mis = ismissing(y1);
-y2mis = ismissing(y2);
-y3mis = ismissing(y3);
-y4mis = ismissing(y4);
-y5mis = ismissing(y5);
-y6mis = ismissing(y6);
+m1 = ismissing(y1);
+m2 = ismissing(y2);
+m3 = ismissing(y3);
+m4 = ismissing(y4);
+m5 = ismissing(y5);
+m6 = ismissing(y6);
 LATENT: latenty latentx;
 MODEL: 
 latent.model:
@@ -19,15 +19,15 @@ measurement.models:
 latentx -> x1@xload_prior x2:x6;
 latenty -> y1@yload_prior y2:y6;
 missingness.model:
-y1mis ~ latenty@misconstraint;
-y2mis ~ latenty@misconstraint;
-y3mis ~ latenty@misconstraint;
-y4mis ~ latenty@misconstraint;
-y5mis ~ latenty@misconstraint;
-y6mis ~ latenty@misconstraint;
+m1 ~ latenty@misconstraint;
+m2 ~ latenty@misconstraint;
+m3 ~ latenty@misconstraint;
+m4 ~ latenty@misconstraint;
+m5 ~ latenty@misconstraint;
+m6 ~ latenty@misconstraint;
 PARAMETERS:
 xload_prior ~ truncate(0, Inf);
 yload_prior ~ truncate(0, Inf);
 SEED: 90291;
 BURN: 20000;
-ITERATIONS: 20000;
+ITER: 20000;

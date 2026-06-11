@@ -4,14 +4,13 @@ ORDINAL: d;
 NOMINAL: m;
 MISSING: 999;
 FIXED: m;
-CENTER: x d;
+CENTER: x;
 MODEL: y ~ x m x*m d;
 SIMPLE: x | m;
 SEED: 90291;
-BURN: 1000;
+BURN: 10000;
 ITERATIONS: 10000;
 # save model-based multiple imputations;
-# CHAINS: 20;
 # NIMPS: 20;
 # SAVE: stacked = imps.dat;
 

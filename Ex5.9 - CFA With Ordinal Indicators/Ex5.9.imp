@@ -18,6 +18,5 @@ SEED: 90291;
 BURN: 50000;
 ITERATIONS: 50000;
 # save model-based multiple imputations;
-# CHAINS: 20;
 # NIMPS: 20;
 # SAVE: stacked = imps.dat;

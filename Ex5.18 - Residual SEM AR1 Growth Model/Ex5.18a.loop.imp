@@ -14,4 +14,4 @@ y1 ~ 1@icept slope@0;
 TEST: ac1 = ac2:ac5;
 SEED: 90291;
 BURN: 30000;
-ITERATIONS: 20000;
+ITERATIONS: 30000;

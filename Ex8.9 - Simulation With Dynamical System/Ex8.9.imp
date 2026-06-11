@@ -16,8 +16,8 @@ TIMEID: time;
 LATENT: level_2 = b0j;
 MODEL: 
 	y ~ 1@b0j (y.lag - b0j);
-BURN: 5000;
-ITER: 5000;
+BURN: 10000;
+ITER: 10000;
 SEED: 198723;
 SAVE:
 	dataset = generated_data.csv;
