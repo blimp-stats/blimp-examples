@@ -4,11 +4,11 @@ MISSING: 999;
 ORDINAL: d a3;
 FIXED: d;
 CENTER: x;
-MODEL: 
-focal.model:
-y ~ x d;
-auxiliary.model:
-a3 a2 a1 ~ y x d;
+MODEL:
+  focal.model:
+  y ~ x d;
+  auxiliary.model:
+  a3 a2 a1 ~ y x d;
 SEED: 90291;
 BURN: 10000;
 ITERATIONS: 10000;

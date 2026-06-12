@@ -3,17 +3,17 @@ VARIABLES: id v1:v9 y1:y6 v10:v16 x1:x6;
 ORDINAL: x1:x6 y1:y6;
 MISSING: 999;
 LATENT: latenty latentx;
-MODEL: 
-latent.model:
-latentx@1;
-latenty@1;
-latentx ~~ latenty;
-measurement.model:
-latentx -> x1@xload_prior x2:x6;
-latenty -> y1@yload_prior y2:y6;
+MODEL:
+  latent.model:
+  latentx@1;
+  latenty@1;
+  latentx ~~ latenty;
+  measurement.model:
+  latentx -> x1@xload_prior x2:x6;
+  latenty -> y1@yload_prior y2:y6;
 PARAMETERS:
-xload_prior ~ truncate(0, Inf);
-yload_prior ~ truncate(0, Inf);
+  xload_prior ~ truncate(0, Inf);
+  yload_prior ~ truncate(0, Inf);
 SEED: 90291;
 BURN: 50000;
 ITERATIONS: 50000;

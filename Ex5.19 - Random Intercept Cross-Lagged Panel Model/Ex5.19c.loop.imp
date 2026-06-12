@@ -2,20 +2,20 @@ DATA: RICLPM.dat;
 VARIABLES: x1:x5 y1:y5 z2 z1;
 LATENT: etax etay;
 ORDINAL: z1;
-MODEL: 
-# define residual calculations
-{ v in x y, i in 1:4 } : r[v][i] = [v][i] - (mu[v][i] + eta[v]);
-random.intercepts:
-{ etax etay } ~ z1;
-etax ~~ etay;
-x.models:
-x1 ~ 1@mux1 etax@1;
-{ i in 2:5 } : x[i] ~ 1@mux[i] etax@1 rx[i-1] ry[i-1];
-y.models:
-y1 ~ 1@muy1 etay@1;
-{ i in 2:5 } : y[i] ~ 1@muy[i] etay@1 ry[i-1] rx[i-1];
-covaetaances:
-{ i in 1:5 } : x[i] ~~ y[i];
+MODEL:
+  # define residual calculations
+  { v in x y, i in 1:4 } : r[v][i] = [v][i] - (mu[v][i] + eta[v]);
+  random.intercepts:
+  { etax etay } ~ z1;
+  etax ~~ etay;
+  x.models:
+  x1 ~ 1@mux1 etax@1;
+  { i in 2:5 } : x[i] ~ 1@mux[i] etax@1 rx[i-1] ry[i-1];
+  y.models:
+  y1 ~ 1@muy1 etay@1;
+  { i in 2:5 } : y[i] ~ 1@muy[i] etay@1 ry[i-1] rx[i-1];
+  covaetaances:
+  { i in 1:5 } : x[i] ~~ y[i];
 SEED: 90291;
 BURN: 10000;
 ITERATIONS: 10000;

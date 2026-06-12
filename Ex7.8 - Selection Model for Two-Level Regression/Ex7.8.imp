@@ -5,16 +5,16 @@ CLUSTERID: level2id;
 ORDINAL: d_j m_i;
 MISSING: 999;
 TRANSFORM:
-m_i = ismissing(y_i);
+  m_i = ismissing(y_i);
 FIXED: d_j;
 CENTER:
 groupmean = x1_i;
 grandmean = x2_i x3_j;
-MODEL: 
-focal.model:
-y_i ~ x1_i x2_i x3_j d_j | x1_i;
-missingness.model:
-m_i ~ y_i x1_i;
+MODEL:
+  focal.model:
+  y_i ~ x1_i x2_i x3_j d_j | x1_i;
+  missingness.model:
+  m_i ~ y_i x1_i;
 SEED: 90291;
 BURN: 20000;
 ITERATIONS: 20000;

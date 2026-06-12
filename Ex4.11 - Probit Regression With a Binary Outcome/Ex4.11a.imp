@@ -5,7 +5,7 @@ MISSING: 999;
 FIXED: d;
 CENTER: x1 x2;
 MODEL:
-y ~ x1 x2 d;
+  y ~ x1 x2 d;
 SEED: 90291;
 BURN: 10000;
 ITERATIONS: 10000;

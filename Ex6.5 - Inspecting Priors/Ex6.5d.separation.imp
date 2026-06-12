@@ -8,12 +8,12 @@ CENTER:
 groupmean = x1_i;
 grandmean = x2_i;
 MODEL:
-latent.variables:
-beta0_j ~ 1;
-beta1_j ~ 1;
-beta0_j ~~ beta1_j;
-focal.model:
-y_i ~ 1@beta0_j x1_i@beta1_j x2_i;
+  latent.variables:
+  beta0_j ~ 1;
+  beta1_j ~ 1;
+  beta0_j ~~ beta1_j;
+  focal.model:
+  y_i ~ 1@beta0_j x1_i@beta1_j x2_i;
 SEED: 90291;
 BURN: 10000;
 ITERATIONS: 10000;

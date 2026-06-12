@@ -3,14 +3,14 @@ VARIABLES: id x v1:v4 m y v5 v6;
 ORDINAL: x;
 COUNT: y;
 MISSING: 999;
-MODEL: 
-m ~ 1@m_icept x@alpha; # label all coefficients with @
-y ~ 1@y_icept m@beta x@tau; # count model
+MODEL:
+  m ~ 1@m_icept x@alpha; # label all coefficients with @
+    y ~ 1@y_icept m@beta x@tau; # count model
 PARAMETERS:
-x0 = 0; # conditioning value of x
-x1 = 1; # conditioning value of x
-ab_at_x0 = alpha * (beta*exp(y_icept + beta*m_icept + tau*x0)); # conditional mediated effect
-ab_at_x1 = alpha * (beta*exp(y_icept + beta*(m_icept + alpha*x1) + tau*x1)); # conditional mediated effect
+  x0 = 0; # conditioning value of x
+    x1 = 1; # conditioning value of x
+    ab_at_x0 = alpha * (beta*exp(y_icept + beta*m_icept + tau*x0)); # conditional mediated effect
+    ab_at_x1 = alpha * (beta*exp(y_icept + beta*(m_icept + alpha*x1) + tau*x1)); # conditional mediated effect
 SEED: 90291;
 BURN: 10000;
 ITERATIONS: 10000;

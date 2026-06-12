@@ -1,13 +1,13 @@
 DATA: data4.dat;
-VARIABLES: id v1:v3 y v4:v6 d1 d2 v7:v12 x1:x7 v13:v18;
+VARIABLES: id v1:v3 yscale v4:v6 d1 d2 y1:y6 x1:x7 v13:v18;
 ORDINAL: x1:x7 d1 d2;
 MISSING: 999;
 MODEL:
-focal.model:
-xscale = x1:+:x7; # define sum function
-y ~  xscale d1 d2; # embedded sum variable as a predictor
-predictor.model:
-x1:x7 d1 d2 ~ 1; 
+  focal.model:
+  xscale = x1:+:x7; # define sum function
+    yscale ~  xscale d1 d2; # embedded sum variable as a predictor
+    predictor.model:
+  x1:x7 d1 d2 ~ 1;
 SEED: 90291;
 BURN: 10000;
 ITERATIONS: 10000;

@@ -3,7 +3,7 @@ VARIABLES: level1id level2id x1_i x2_i y_i v1_i v2_i d_j
    v3_j v4_j v5_j x3_j v6_j v7_j;
 CLUSTERID: level2id;
 MISSING: 999;
-CENTER: 
+CENTER:
 groupmean = x1_i;
 grandmean = x2_i;
 MODEL: y_i ~ x1_i x2_i | x1_i;

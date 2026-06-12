@@ -6,9 +6,9 @@ FIXED: d;
 m ~ x@alpha d x*d@alphadif;
 y ~ m@beta x d m*d@betadif;
 PARAMETERS:
-indirect_d0 = alpha * beta;
-indirect_d1 = ( alpha + alphadif ) * ( beta + betadif );
-indirect_dif = indirect_d1 - indirect_d0;
+  indirect_d0 = alpha * beta;
+  indirect_d1 = ( alpha + alphadif ) * ( beta + betadif );
+  indirect_dif = indirect_d1 - indirect_d0;
 SEED: 90291;
 BURN: 10000;
 ITERATIONS: 10000;

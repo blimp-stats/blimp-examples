@@ -5,11 +5,11 @@ MISSING: 999;
 FIXED: d;
 CENTER: x1 x2;
 MODEL:
-logit(y) ~ 1@b0 x1 x2 d@b3;
+  logit(y) ~ 1@b0 x1 x2 d@b3;
 PARAMETERS:
-pp_d0 = exp(b0) / (1 + exp(b0));
-pp_d1 = exp(b0 + b3) / (1 + exp(b0 + b3));
-pp_diff = pp_d1 - pp_d0;
+  pp_d0 = exp(b0) / (1 + exp(b0));
+  pp_d1 = exp(b0 + b3) / (1 + exp(b0 + b3));
+  pp_diff = pp_d1 - pp_d0;
 SEED: 90291;
 BURN: 10000;
 ITERATIONS: 10000;

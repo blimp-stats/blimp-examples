@@ -4,12 +4,12 @@ ORDINAL: y1:y6;
 MISSING: 999;
 LATENT: ability;
 MODEL:
-ability ~ 1@0;
-ability@1;
-{ i in 1:6 } : logit(y[i]) ~ 1@icept[i] ability@load[i];
+  ability ~ 1@0;
+  ability@1;
+  { i in 1:6 } : logit(y[i]) ~ 1@icept[i] ability@load[i];
 PARAMETERS:
-{ i in 1:6 } : discrim[i] = load[i];
-{ i in 1:6 } : difficulty[i] = - icept[i] / load[i];
+  { i in 1:6 } : discrim[i] = load[i];
+  { i in 1:6 } : difficulty[i] = - icept[i] / load[i];
 SEED: 90291;
 BURN: 10000;
 ITERATIONS: 10000;

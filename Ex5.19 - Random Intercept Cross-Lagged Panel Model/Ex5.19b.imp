@@ -3,35 +3,35 @@ VARIABLES: x1:x5 y1:y5 z2 z1;
 ORDINAL: z1;
 LATENT: etax etay;
 MODEL:
-# definition variables for residuals
-rx1 = x1 – (mux1 + etax + z1*a1);
-rx2 = x2 – (mux2 + etax + z1*a2);
-rx3 = x3 – (mux3 + etax + z1*a3);
-rx4 = x4 – (mux4 + etax + z1*a4);
-ry1 = y1 – (muy1 + etay + z1*b1);
-ry2 = y2 – (muy2 + etay + z1*b2);
-ry3 = y3 – (muy3 + etay + z1*b3);
-ry4 = y4 – (muy4 + etay + z1*b4);
-random.intercepts:
-etax ~~ etay;
-x.models:
-x1 ~ 1@mux1 etax@1 z1@a1;
-x2 ~ 1@mux2 etax@1 rx1 ry1 z1@a2;
-x3 ~ 1@mux3 etax@1 rx2 ry2 z1@a3;
-x4 ~ 1@mux4 etax@1 rx3 ry3 z1@a4;
-x5 ~ 1@mux5 etax@1 rx4 ry4 z1@a5;
-y.models:
-y1 ~ 1@muy1 etay@1 z1@b1;
-y2 ~ 1@muy2 etay@1 ry1 rx1 z1@b2;
-y3 ~ 1@muy3 etay@1 ry2 rx2 z1@b3;
-y4 ~ 1@muy4 etay@1 ry3 rx3 z1@b4;
-y5 ~ 1@muy5 etay@1 ry4 rx4 z1@b5;
-covariances:
-x1 ~~ y1;
-x2 ~~ y2;
-x3 ~~ y3;
-x4 ~~ y4;
-x5 ~~ y5;
+  # definition variables for residuals
+  rx1 = x1 – (mux1 + etax + z1*a1);
+  rx2 = x2 – (mux2 + etax + z1*a2);
+  rx3 = x3 – (mux3 + etax + z1*a3);
+  rx4 = x4 – (mux4 + etax + z1*a4);
+  ry1 = y1 – (muy1 + etay + z1*b1);
+  ry2 = y2 – (muy2 + etay + z1*b2);
+  ry3 = y3 – (muy3 + etay + z1*b3);
+  ry4 = y4 – (muy4 + etay + z1*b4);
+  random.intercepts:
+  etax ~~ etay;
+  x.models:
+  x1 ~ 1@mux1 etax@1 z1@a1;
+  x2 ~ 1@mux2 etax@1 rx1 ry1 z1@a2;
+  x3 ~ 1@mux3 etax@1 rx2 ry2 z1@a3;
+  x4 ~ 1@mux4 etax@1 rx3 ry3 z1@a4;
+  x5 ~ 1@mux5 etax@1 rx4 ry4 z1@a5;
+  y.models:
+  y1 ~ 1@muy1 etay@1 z1@b1;
+  y2 ~ 1@muy2 etay@1 ry1 rx1 z1@b2;
+  y3 ~ 1@muy3 etay@1 ry2 rx2 z1@b3;
+  y4 ~ 1@muy4 etay@1 ry3 rx3 z1@b4;
+  y5 ~ 1@muy5 etay@1 ry4 rx4 z1@b5;
+  covariances:
+  x1 ~~ y1;
+  x2 ~~ y2;
+  x3 ~~ y3;
+  x4 ~~ y4;
+  x5 ~~ y5;
 SEED: 90291;
 BURN: 10000;
 ITER: 10000;

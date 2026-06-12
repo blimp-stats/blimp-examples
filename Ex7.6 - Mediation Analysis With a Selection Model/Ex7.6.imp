@@ -2,20 +2,20 @@ DATA: data4.dat;
 VARIABLES: id a1:a3 v1 y m v2 x v3:v22;
 MISSING: 999;
 TRANSFORM:
-m.m = ismissing(m);
-m.y = ismissing(y);
-MODEL: 
-mediation.model:
-m ~ x@alpha;
-y ~ m@beta x;
-missingness.model:
-m.m ~ m x;
-m.y ~ y m x;
-auxiliary.model:
-# sequential specification for auxiliary variables
-a1:a3 ~ y m x;
+  m.m = ismissing(m);
+  m.y = ismissing(y);
+MODEL:
+  mediation.model:
+  m ~ x@alpha;
+  y ~ m@beta x;
+  missingness.model:
+  m.m ~ m x;
+  m.y ~ y m x;
+  auxiliary.model:
+  # sequential specification for auxiliary variables
+  a1:a3 ~ y m x;
 PARAMETERS:
-indirect = alpha * beta;
+  indirect = alpha * beta;
 SEED: 90291;
 BURN: 10000;
 ITERATIONS: 10000;
