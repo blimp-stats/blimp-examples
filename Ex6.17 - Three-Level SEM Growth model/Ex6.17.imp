@@ -20,4 +20,4 @@ MODEL:
   y_i ~ 1@beta0_j time_i@beta1_j;
 SEED: 90291;
 BURN: 30000;
-ITERATIONS: 30000;
+ITER: 30000;

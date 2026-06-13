@@ -3,12 +3,10 @@ VARIABLES: level1id level2id v1_i x_i y_i v2_i:v10_i;
 CLUSTERID: level2id;
 MISSING: 999;
 CENTER:
-groupmean = x_i;
-grandmean = x_i.mean;
-MODEL:
-  y_i ~ x_i@beta_w x_i.mean@beta_b | x_i;
-PARAMETERS:
-  contextual = beta_b - beta_w;
+  groupmean = x_i;
+  grandmean = x_i.mean;
+MODEL: y_i ~ x_i@beta_w x_i.mean@beta_b | x_i;
+PARAMETERS: contextual = beta_b - beta_w;
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
+ITER: 10000;

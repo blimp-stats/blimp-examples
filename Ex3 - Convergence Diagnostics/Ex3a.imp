@@ -11,5 +11,5 @@ grandmean = x2_i x7_j;
 MODEL: y_i ~ x1_i x2_i x7_j d1_j | x1_i;
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
+ITER: 10000;
 OPTIONS: pinfo;

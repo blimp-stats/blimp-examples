@@ -18,5 +18,4 @@ PARAMETERS:
     (1 + exp(m_icept + alpha*xvalue3))^2 * beta;
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
-OUTPUT: default wald pvalue;
+ITER: 10000;

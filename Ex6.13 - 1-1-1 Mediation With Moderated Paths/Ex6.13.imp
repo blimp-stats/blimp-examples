@@ -1,6 +1,6 @@
 DATA: data1.dat;
 VARIABLES: level1id level2id v1_i y_i m_i x_i v2_i w_j v3_j;
-CLUSTERID:  level2id;
+CLUSTERID: level2id;
 MISSING: 999;
 LATENT: level2id = xmean_j mmean_j ymean_j alpha_j beta_j tau_j;
 CENTER: grandmean = w_j;
@@ -25,5 +25,5 @@ PARAMETERS:
     beta_mean + ab_cov;
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
+ITER: 10000;
 

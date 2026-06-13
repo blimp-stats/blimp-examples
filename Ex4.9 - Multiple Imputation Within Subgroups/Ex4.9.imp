@@ -7,6 +7,6 @@ BYGROUP: group;
 FCS: a1:a3 y x d;
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
+ITER: 10000;
 NIMPS: 20;
 SAVE: stacked = imps.dat;

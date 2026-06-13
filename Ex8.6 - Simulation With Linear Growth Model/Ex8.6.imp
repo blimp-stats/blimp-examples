@@ -1,26 +1,18 @@
 SIMULATE:
-	# Calculate number of obs
-	level_1(1) = 4 * 1000; # n_j * J
+	level_1(1) = 4 * 1000;
 	level_2(2) = 1000;
 
-	# Specify level-2
 	level_2:
-		# random effect correlated
-		# Define correlation inline with `:=`
 		u0 ~~ u1 := 0.3;
 		u0 = normal(10,  1.0);
 		u1 = normal(0.5, 0.2);
-	# specify level-1
 	level_1:
-		# Define time centered
 		time0 = level_1.time - 1;
 		y = normal(u0 + time0 * u1, 1);
 VARIABLES: y time0 level_2;
 CLUSTERID: level_2;
-MODEL:
-  y ~ time0 | time0;
+MODEL: y ~ time0 | time0;
 BURN: 10000;
 ITER: 10000;
 SEED: 198723;
-SAVE:
-	dataset = generated_data.csv;
+SAVE: dataset = generated_data.csv;

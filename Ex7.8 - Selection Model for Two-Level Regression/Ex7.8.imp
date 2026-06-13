@@ -4,8 +4,7 @@ VARIABLES: level1id level2id x1_i x2_i y_i v1_i v2_i d_j
 CLUSTERID: level2id;
 ORDINAL: d_j m_i;
 MISSING: 999;
-TRANSFORM:
-  m_i = ismissing(y_i);
+TRANSFORM: m_i = ismissing(y_i);
 FIXED: d_j;
 CENTER:
 groupmean = x1_i;
@@ -17,4 +16,4 @@ MODEL:
   m_i ~ y_i x1_i;
 SEED: 90291;
 BURN: 20000;
-ITERATIONS: 20000;
+ITER: 20000;

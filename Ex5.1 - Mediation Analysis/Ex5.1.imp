@@ -4,11 +4,7 @@ MISSING: 999;
 MODEL:
   m ~ x@alpha;
   y ~ m@beta x;
-PARAMETERS:
-  indirect = alpha * beta;
+PARAMETERS: indirect = alpha * beta;
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
-# save model-based multiple imputations;
-# NIMPS: 20;
-# SAVE: stacked = imps.dat;
+ITER: 10000;

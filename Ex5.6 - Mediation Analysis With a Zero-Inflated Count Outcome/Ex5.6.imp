@@ -19,4 +19,4 @@ PARAMETERS:
   ab_at_x1 = alpha * (beta*exp(y_icept + beta*(m_icept + alpha*x1) + tau*x1));
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
+ITER: 10000;

@@ -14,7 +14,4 @@ MODEL:
   latenty -> y2 y3;
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
-# OPTIONS: savelatent;
-# NIMPS: 20;
-# SAVE: stacked = imps.dat;
+ITER: 10000;

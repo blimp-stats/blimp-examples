@@ -3,17 +3,17 @@ VARIABLES: y_i x_i w1_j w2_j level2id time;
 MISSING: 999;
 CLUSTERID: level2id;
 TIMEID: time;
-LATENT: level2id = xmean_j ymean_j phi_yj beta_xj phi_xj beta_yj logvar_yj logvar_xj;
+LATENT: level2id = xmean_j ymean_j phi_yj phi_xj beta_yj beta_xj logvar_yj logvar_xj;
 MODEL:
   level2.models:
-  1 -> xmean_j ymean_j phi_yj beta_xj phi_xj beta_yj;
+  1 -> xmean_j ymean_j phi_yj phi_xj beta_yj beta_xj;
   xmean_j ~~ ymean_j;
   level1.models:
   x_i ~ 1@xmean_j (x_i.lag - xmean_j)@phi_xj (y_i.lag - ymean_j)@beta_yj;
   y_i ~ 1@ymean_j (y_i.lag - ymean_j)@phi_yj (x_i.lag - xmean_j)@beta_xj;
   x_i ~~ y_i;
   variance.model:
-  1 -> logvar_yj logvar_xj;
+  1 -> logvar_xj logvar_yj;
   var(y_i) ~ 1@logvar_yj;
   var(x_i) ~ 1@logvar_xj;
 SEED: 90291;

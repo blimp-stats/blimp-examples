@@ -2,15 +2,14 @@ DATA: RICLPM.dat;
 VARIABLES: x1:x5 y1:y5 z2 z1;
 LATENT: etax etay;
 MODEL:
-  # definition variables for residuals
-  rx1 = x1 – (mux1 + etax);
-  rx2 = x2 – (mux2 + etax);
-  rx3 = x3 – (mux3 + etax);
-  rx4 = x4 – (mux4 + etax);
-  ry1 = y1 – (muy1 + etay);
-  ry2 = y2 – (muy2 + etay);
-  ry3 = y3 – (muy3 + etay);
-  ry4 = y4 – (muy4 + etay);
+  rx1 = x1 - (mux1 + etax);
+  rx2 = x2 - (mux2 + etax);
+  rx3 = x3 - (mux3 + etax);
+  rx4 = x4 - (mux4 + etax);
+  ry1 = y1 - (muy1 + etay);
+  ry2 = y2 - (muy2 + etay);
+  ry3 = y3 - (muy3 + etay);
+  ry4 = y4 - (muy4 + etay);
   random.intercepts:
   etax ~~ etay;
   x.models:

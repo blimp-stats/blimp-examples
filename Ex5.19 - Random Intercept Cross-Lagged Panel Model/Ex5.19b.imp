@@ -3,15 +3,14 @@ VARIABLES: x1:x5 y1:y5 z2 z1;
 ORDINAL: z1;
 LATENT: etax etay;
 MODEL:
-  # definition variables for residuals
-  rx1 = x1 – (mux1 + etax + z1*a1);
-  rx2 = x2 – (mux2 + etax + z1*a2);
-  rx3 = x3 – (mux3 + etax + z1*a3);
-  rx4 = x4 – (mux4 + etax + z1*a4);
-  ry1 = y1 – (muy1 + etay + z1*b1);
-  ry2 = y2 – (muy2 + etay + z1*b2);
-  ry3 = y3 – (muy3 + etay + z1*b3);
-  ry4 = y4 – (muy4 + etay + z1*b4);
+  rx1 = x1 - (mux1 + etax + z1*a1);
+  rx2 = x2 - (mux2 + etax + z1*a2);
+  rx3 = x3 - (mux3 + etax + z1*a3);
+  rx4 = x4 - (mux4 + etax + z1*a4);
+  ry1 = y1 - (muy1 + etay + z1*b1);
+  ry2 = y2 - (muy2 + etay + z1*b2);
+  ry3 = y3 - (muy3 + etay + z1*b3);
+  ry4 = y4 - (muy4 + etay + z1*b4);
   random.intercepts:
   etax ~~ etay;
   x.models:

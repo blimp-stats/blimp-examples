@@ -9,8 +9,5 @@ MODEL: y ~ x m x*m d;
 SIMPLE: x | m;
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
-# save model-based multiple imputations;
-# NIMPS: 20;
-# SAVE: stacked = imps.dat;
+ITER: 10000;
 

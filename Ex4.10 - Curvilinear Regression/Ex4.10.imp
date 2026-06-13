@@ -7,7 +7,4 @@ CENTER: x1 x2;
 MODEL: y ~ x1 (x1^2) x2 d1 d2;
 SEED: 12345;
 BURN: 10000;
-ITERATIONS: 10000;
-# save model-based multiple imputations;
-# NIMPS: 20;
-# SAVE: stacked = imps.dat;
+ITER: 10000;

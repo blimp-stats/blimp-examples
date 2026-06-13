@@ -5,7 +5,7 @@ MISSING: 999;
 FCS: x1:x6 y1:y6;
 SEED: 90291;
 BURN: 40000;
-ITERATIONS: 40000;
+ITER: 40000;
 NIMPS: 20;
 OPTIONS: savelatent;
 SAVE: stacked = imps.dat;

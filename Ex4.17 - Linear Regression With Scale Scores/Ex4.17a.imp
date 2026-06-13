@@ -4,14 +4,11 @@ ORDINAL: x1:x7 d1 d2;
 MISSING: 999;
 MODEL:
   focal.model:
-  xscale = x1:+:x7; # define sum function
-    yscale ~  xscale d1 d2; # embedded sum variable as a predictor
-    predictor.model:
+  xscale = x1:+:x7;
+  yscale ~ xscale d1 d2;
+  predictor.model:
   x1:x7 d1 d2 ~ 1;
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
-# save model-based multiple imputations;
-# NIMPS: 20;
-# SAVE: stacked = imps.dat;
+ITER: 10000;
 

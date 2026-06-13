@@ -1,17 +1,16 @@
 DATA: data27.dat;
 VARIABLES: y1:y6 z;
 MISSING: 999;
-LATENT: icept slope;
+LATENT: eta_icept eta_slope;
 MODEL:
-  # define residuals for calculations
-  { i in 1:5 } : ry[i] = y[i] - (icept + ([i-1] * slope));
+  { i in 1:5 } : ry[i] = y[i] - (eta_icept + ([i-1] * eta_slope));
   structural.model:
-  icept ~~ slope;
-  1 -> icept slope;
+  eta_icept ~~ eta_slope;
+  1 -> eta_icept eta_slope;
   measurement.model:
-  y1 ~ 1@icept slope@0;
-  { i in 2:6 } : y[i] ~ 1@icept slope@[i-1] ry[i-1]@ac[i-1];
-TEST: ac1 = ac2:ac5;
+  y1 ~ 1@eta_icept eta_slope@0;
+  { i in 2:6 } : y[i] ~ 1@eta_icept eta_slope@[i-1] ry[i-1]@ac[i-1];
+WALDTEST: ac1 = ac2:ac5;
 SEED: 90291;
 BURN: 30000;
-ITERATIONS: 30000;
+ITER: 30000;

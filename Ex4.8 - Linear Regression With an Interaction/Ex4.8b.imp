@@ -9,7 +9,7 @@ MODEL: y ~ x m x*m d;
 SIMPLE: x | m;
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
+ITER: 10000;
 NIMPS: 20;
 SAVE: stacked = imps.dat;
 

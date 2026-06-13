@@ -3,7 +3,6 @@ VARIABLES: x1:x5 y1:y5 z2 z1;
 ORDINAL: z1;
 LATENT: etax etay;
 MODEL:
-  # define residual calculations
   { v in x y, i in 1:4 } : r[v][i] = [v][i] - (mu[v][i] + eta[v] + z1*b[v][i]);
   random.intercept:
   etax ~~ etay;
@@ -17,4 +16,4 @@ MODEL:
   { i in 1:5 } : x[i] ~~ y[i];
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
+ITER: 10000;

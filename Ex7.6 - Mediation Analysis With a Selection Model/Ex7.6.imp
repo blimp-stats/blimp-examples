@@ -12,10 +12,8 @@ MODEL:
   m.m ~ m x;
   m.y ~ y m x;
   auxiliary.model:
-  # sequential specification for auxiliary variables
   a1:a3 ~ y m x;
-PARAMETERS:
-  indirect = alpha * beta;
+PARAMETERS: indirect = alpha * beta;
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
+ITER: 10000;

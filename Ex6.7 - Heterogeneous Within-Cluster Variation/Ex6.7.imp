@@ -6,10 +6,10 @@ ORDINAL: d_j;
 MISSING: 999;
 FIXED: d_j;
 CENTER:
-groupmean = x1_i;
-grandmean = x2_i x3_j;
+  groupmean = x1_i;
+  grandmean = x2_i x3_j;
 MODEL: y_i ~ x1_i x2_i x3_j d_j | x1_i;
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
+ITER: 10000;
 OPTIONS: hev;

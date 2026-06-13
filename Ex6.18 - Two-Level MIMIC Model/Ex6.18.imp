@@ -5,8 +5,7 @@ CLUSTERID: level2id;
 LATENT:
 laty_lev1;
 level2id = laty_lev2;
-CENTER:
-grandmean = x1_i x2_i x3_j;
+CENTER: grandmean = x1_i x2_i x3_j;
 MODEL:
   structural.model:
   laty_lev1 ~ x1_i x2_i;
@@ -18,4 +17,4 @@ MODEL:
   y4_i ~ laty_lev1 laty_lev2;
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
+ITER: 10000;

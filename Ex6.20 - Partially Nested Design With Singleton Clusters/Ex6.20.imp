@@ -8,4 +8,4 @@ MODEL:
   y_i ~ d_j d_j@beta0_j | 1@0;
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
+ITER: 10000;

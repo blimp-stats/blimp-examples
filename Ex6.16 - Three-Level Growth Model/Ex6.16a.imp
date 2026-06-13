@@ -5,10 +5,8 @@ NOMINAL: d_k;
 CLUSTERID: level2id level3id;
 MISSING: 999;
 FIXED: time_i d_k;
-MODEL:
-  y_i ~ time_i d_k time_i*d_k | time_i;
-SIMPLE:
-time_i | d_k;
+MODEL: y_i ~ time_i d_k time_i*d_k | time_i;
+SIMPLE: time_i | d_k;
 SEED: 90291;
 BURN: 15000;
-ITERATIONS: 15000;
+ITER: 15000;

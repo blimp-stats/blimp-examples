@@ -1,30 +1,20 @@
-SIMULATE:
-	# Sample Size
-	n = 1000;
+SIMULATE: n = 1000;
 
 	define:
-		# Factor correlation
 		f1 ~~ f2 = 0.3;
-		# reliability for items loading on factor 1
 		rel_1 = 0.7;
-		# reliability for items loading on factor 2
 		rel_2 = 0.8;
 
-		# Compute residual variances for given reliability.
-		# (v_explained / (v_resid + v_explained) = rel;
-		# Solve for v_resid;
 		v_1 = (1 / rel_1) - 1;
 		v_2 = (1 / rel_2) - 1;
 
 	n:
-		# Generate factor scores f1 and f2 ~ normal(0, 1)
 		f1:f2 = normal(0, 1);
 
-		# Generate items with equal loadings
 		y1_1:y1_5 = normal(f1, v_1);
 		y2_1:y2_5 = normal(f2, v_2);
 
-VARIABLES: y1_1:y1_5 y2_1:y2_5; # Save only items
+VARIABLES: y1_1:y1_5 y2_1:y2_5;
 LATENT: factor1 factor2;
 MODEL:
   factor_model:
@@ -36,5 +26,4 @@ MODEL:
 BURN: 10000;
 ITER: 10000;
 SEED: 10972;
-SAVE:
-	dataset = generated_data.csv;
+SAVE: dataset = generated_data.csv;

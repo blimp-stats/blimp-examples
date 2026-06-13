@@ -3,15 +3,14 @@ VARIABLES: id a1:a3 v1 y m v2 x d v3:v21;
 ORDINAL: d;
 MISSING: 999;
 FIXED: d;
+MODEL:
 m ~ x@alpha d x*d@alphadif;
 y ~ m@beta x d m*d@betadif;
+SIMPLE: x | d;
 PARAMETERS:
   indirect_d0 = alpha * beta;
   indirect_d1 = ( alpha + alphadif ) * ( beta + betadif );
   indirect_dif = indirect_d1 - indirect_d0;
 SEED: 90291;
 BURN: 10000;
-ITERATIONS: 10000;
-# save model-based multiple imputations;
-# NIMPS: 20;
-# SAVE: stacked = imps.dat;
+ITER: 10000;

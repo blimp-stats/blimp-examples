@@ -2,7 +2,7 @@
 ---------------------------------------------------------------------------
 
                                    Blimp
-                                   4.0.3
+                              4.0.5-nightly15
 
              Blimp was developed with funding from Institute of
            Education Sciences awards R305D150056 and R305D190002.
@@ -87,7 +87,6 @@ MODEL INFORMATION:
 
   NUMBER OF PARAMETERS
     Outcome Models:         31
-    Generated Parameters:   3
     Predictor Models:       0
 
   FACTORS
@@ -96,7 +95,7 @@ MODEL INFORMATION:
   MODELS
 
    structural.model:
-    [1]  latenty ~ latentx@b1 latentm@b2 latentx*latentm@b3
+    [1]  latenty ~ latentx latentm latentx*latentm
 
    predictor.model:
     [2]  latentm ~ Intercept@0
@@ -119,15 +118,13 @@ MODEL INFORMATION:
     [2]  mload_prior ~ truncate(0, inf)
     [3]  yload_prior ~ truncate(0, inf)
 
-  GENERATED PARAMETERS
-    [1]  xslope_mlow = b1-b3*(-1)
-    [2]  xslope_mmean = b1*(0)
-    [3]  xslope_mhigh = b1+b3*(-1)
-
 
 WARNING MESSAGES:
 
-  No warning messages.
+  WARNING: The focal predictor "latentx" is not centered.
+           Simple intercepts in the conditional effects table are
+           evaluated at a score of zero on the focal predictor.
+  
 
 
 MODEL FIT:
@@ -264,7 +261,7 @@ Coefficients:
   latentx*latentm                     0.622      0.113      0.428      0.871     30.794      0.000    194.246 
 
 Standard Deviations:            
-  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
+  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        --- 
 
 Standardized Coefficients:      
   latentx                             0.371      0.045      0.278      0.456     66.184      0.000    904.424 
@@ -278,6 +275,29 @@ Proportion Variance Explained
                                 ------------------------------------------------------------------------------
 
 
+
+Conditional Effects                Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+  latentx |                                                                                                   
+         latentm @ Mean + 1 SD                                                                                
+    Intercept                        -0.002      0.053     -0.109      0.103      0.001      0.970    872.358 
+    Slope                             1.303      0.187      0.991      1.710     49.624      0.000    152.800 
+                                                                                                              
+  latentx | latentm @ Mean                                                                                    
+    Intercept                        -0.002      0.053     -0.109      0.103      0.001      0.970    872.358 
+    Slope                             0.688      0.112      0.487      0.926     38.344      0.000    225.245 
+                                                                                                              
+  latentx |                                                                                                   
+         latentm @ Mean - 1 SD                                                                                
+    Intercept                        -0.002      0.053     -0.109      0.103      0.001      0.970    872.358 
+    Slope                             0.072      0.120     -0.176      0.299      0.317      0.573   1646.998 
+                                                                                                              
+                                ------------------------------------------------------------------------------
+
+                                NOTE: Intercepts are computed by setting all predictors
+                                      not involved in the conditional effect to zero.
+
+
   predictor.model block:
 
 Latent Variable:   latentm    
@@ -288,11 +308,11 @@ Variances:
   Residual Var.                     @ 1.000        ---        ---        ---        ---        ---        --- 
 
 Standard Deviations:            
-  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
+  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        --- 
 
 Proportion Variance Explained   
-  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
-  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        --- 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        --- 
 
                                 ------------------------------------------------------------------------------
 
@@ -306,11 +326,11 @@ Variances:
   Residual Var.                     @ 1.000        ---        ---        ---        ---        ---        --- 
 
 Standard Deviations:            
-  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        nan 
+  Residual SD                         1.000      0.000      1.000      1.000        ---        ---        --- 
 
 Proportion Variance Explained   
-  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
-  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        --- 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        --- 
 
                                 ------------------------------------------------------------------------------
 
@@ -568,19 +588,4 @@ Parameters                         Estimate     StdDev       2.5%      97.5%    
                                 ------------------------------------------------------------------------------
 
 
-
-GENERATED PARAMETERS:
-
-  Summaries based on 10000 iterations using 4 chains.
-  NOTE: Estimate column based on posterior median.
-
-
-Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
-                                ------------------------------------------------------------------------------
-
-  xslope_mlow                         1.307      0.191      0.992      1.721     47.944      0.000    147.881 
-  xslope_mmean                        0.000      0.000      0.000      0.000        nan        nan        nan 
-  xslope_mhigh                        0.068      0.126     -0.191      0.302      0.261      0.609   1361.604 
-
-                                ------------------------------------------------------------------------------
 
