@@ -1,0 +1,246 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                   4.0.4
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Default Priors:
+    Multilevel covariance matrices:  Not applicable, single-level imputation
+    Outcome covariance matrices:     Zero matrix, df = -(p + 1) (PRIOR2)
+    Predictor model variances:       Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+  NOTE: For complete list of priors include 'pinfo' in the options.
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Rank-normalized Rhat (Vehtari et al., 2021) is being used.
+        This applies rank normalization and chain folding for robust
+        convergence detection across all chains.
+
+  Comparing iterations across 4 chains     Highest Rhat   Parameter #  
+                          501 to 1000            1.275             3  
+                         1001 to 2000            1.067             3  
+                         1501 to 3000            1.051             3  
+                         2001 to 4000            1.047             3  
+                         2501 to 5000            1.018             3  
+                         3001 to 6000            1.015             3  
+                         3501 to 7000            1.011             3  
+                         4001 to 8000            1.003            11  
+                         4501 to 9000            1.007            11  
+                         5001 to 10000           1.010            11  
+                         5501 to 11000           1.008            11  
+                         6001 to 12000           1.003             3  
+                         6501 to 13000           1.004            11  
+                         7001 to 14000           1.012             3  
+                         7501 to 15000           1.010             3  
+                         8001 to 16000           1.005             9  
+                         8501 to 17000           1.007             3  
+                         9001 to 18000           1.007             3  
+                         9501 to 19000           1.004            14  
+                        10001 to 20000           1.005             3  
+
+
+METROPOLIS-HASTINGS ACCEPTANCE RATES:
+
+  Chain 1:
+
+    Variable                            Type    Probability   Target Value 
+    m                             imputation          0.500          0.500 
+    x                             imputation          0.518          0.500 
+
+  NOTE: Suppressing printing of 3 chains.
+        Use keyword 'tuneinfo' in options to override.
+
+
+DATA INFORMATION:
+
+  Sample Size:              300
+  Missing Data Info:
+
+                      Pattern #:       1     2     3     4     5     6
+                          miss % --------------------------------------
+                        y = 13.3       -     M     -     -     M     M  
+                        m = 10.7       -     -     M     -     -     M  
+                        x =  7.3       -     -     -     M     M     -  
+                                 --------------------------------------
+                                 %  71.7  10.3  10.3   4.7   2.7   0.3
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         7
+    Predictor Models:       2
+
+  PREDICTORS
+    Incomplete continuous:  x
+
+  MODELS
+    [1]  m ~ Intercept x@alpha
+    [2]  y ~ Intercept x (m/alpha)@indirect
+
+  PRIORS SPECIFIED
+    [1]  indirect ~ normal(0, 10)
+    [2]  alpha ~ normal(0, inf)
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Conditional Likelihood
+      DIC2                  4032.337
+      WAIC                  4061.630
+
+
+IMPUTED DATA SUMMARIES:
+
+  NOTE: Imputed data summaries are averaged across 20000 data sets.
+
+
+Variables                              Mean     StdDev        25%        50%        75%        Min        Max 
+                                ------------------------------------------------------------------------------
+
+  m                                  27.293      8.685     21.459     28.859     33.796      5.397     45.811 
+  y                                  14.751      6.253      9.009     13.961     19.545      1.434     29.383 
+  x                                   0.337      0.473      0.000      0.000      1.000     -0.578      1.274 
+
+                                ------------------------------------------------------------------------------
+
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 20000 iterations using 4 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+Correlations                       Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  m, y                                0.006      0.082     -0.155      0.162      0.004      0.950   1439.866 
+
+                                ------------------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 20000 iterations using 4 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+Outcome Variable:  m          
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                      61.136      5.492     51.612     73.082        ---        ---   9704.592 
+
+Coefficients:                   
+  Intercept                          24.402      0.604     23.202     25.567   1630.922      0.000    892.971 
+  x                                   8.599      1.032      6.572     10.646     69.379      0.000    350.910 
+
+Standard Deviations:            
+  Residual SD                         7.819      0.349      7.184      8.549        ---        ---   9681.167 
+
+Standardized Coefficients:      
+  x                                   0.462      0.046      0.364      0.545     97.982      0.000    426.843 
+
+Proportion Variance Explained   
+  by Coefficients                     0.213      0.042      0.132      0.297        ---        ---    416.443 
+  by Residual Variation               0.787      0.042      0.703      0.868        ---        ---    416.443 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y          
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                      34.995      3.180     29.560     42.116        ---        ---  13739.792 
+
+Coefficients:                   
+  Intercept                           8.670      1.278      6.043     11.063     45.670      0.000    616.966 
+  x                                   1.099      0.898     -0.677      2.827      1.479      0.224   2045.663 
+  (m/alpha)                           1.788      0.558      0.871      3.052     10.773      0.001    446.276 
+
+Standard Deviations:            
+  Residual SD                         5.916      0.267      5.437      6.490        ---        ---  13753.096 
+
+Standardized Coefficients:      
+  x                                   0.083      0.067     -0.051      0.209      1.496      0.221   1937.512 
+  (m/alpha)                           0.289      0.065      0.162      0.416     19.743      0.000    595.088 
+
+Proportion Variance Explained   
+  by Coefficients                     0.116      0.037      0.052      0.196        ---        ---    961.416 
+  by Residual Variation               0.884      0.037      0.804      0.948        ---        ---    961.416 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Additional Parameters:
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  indirect                            1.788      0.558      0.871      3.052     10.773      0.001    446.276 
+  alpha                               8.599      1.032      6.572     10.646     69.379      0.000    350.910 
+
+                                ------------------------------------------------------------------------------
+
+
+
+
+PREDICTOR MODEL ESTIMATES:
+
+  Summaries based on 20000 iterations using 4 chains.
+  NOTE: Estimate column based on posterior median.
+
+
+
+Missing predictor:  x          
+
+Parameters                         Estimate     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+Grand Mean                            0.336      0.028      0.281      0.392    140.822      0.000  15298.137 
+
+Level 1:                                                                                                      
+  Residual Var.                       0.226      0.019      0.193      0.268        ---        ---  15129.345 
+                                                                                                              
+                                ------------------------------------------------------------------------------
+
+

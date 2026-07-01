@@ -1,0 +1,12 @@
+DATA: data4.dat;
+VARIABLES: id a1:a3 v1 y m v2 x v3:v22;
+MISSING: 999;
+MODEL:
+m ~ x@alpha%1;           # Specify starting value that is nonzero
+y ~ x (m / alpha)@indirect;
+PARAMETERS:
+indirect ~ normal(0, 10); # Informative Prior on Indirect effect
+alpha ~ normal(0, Inf);  # Uniformative Prior on A path
+SEED: 90291;
+BURN: 20000;
+ITERATIONS: 20000;
