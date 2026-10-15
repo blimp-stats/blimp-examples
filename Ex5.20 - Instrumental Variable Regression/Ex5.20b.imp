@@ -2,7 +2,7 @@ DATA: ivreg.dat;
 VARIABLES: z x y;
 MISSING: 999;
 MODEL:
-  x ~ 1@x_icept z@alpha;
+  x ~ 1@x_icept z@alpha%1;
   xpredicted = x_icept + alpha*z;
   xresidual = x - (x_icept + alpha*z);
   y ~ xpredicted xresidual;
